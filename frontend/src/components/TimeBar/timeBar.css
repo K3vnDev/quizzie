@@ -1,0 +1,55 @@
+.time-bar-wrapper{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 40px;
+  background: #151515;
+  overflow: hidden;
+  animation: time-bar-appear .4s ease-out both;
+}
+
+.time-bar-wrapper.unloading{
+  animation: time-bar-disappear .3s ease-in both;
+}
+
+.time-bar{
+  background: #A37DF3;
+  width: 0%;
+  height: 100%;
+  border-radius: 20px;
+  position: absolute;
+  left: -20px;
+  top: 0;
+}
+
+@keyframes time-bar {
+  from{
+    width: 0%;
+    filter: saturate(100%);
+  }
+  to{
+    width: calc(100% + 40px);
+    filter: saturate(120%);
+  }
+}
+
+@keyframes time-bar-appear{
+  from{
+    transform: translateY(40px)
+  }
+  to{
+    transform: translateY(0)
+  }
+}
+
+@keyframes time-bar-disappear{
+  from{
+    transform: translateY(0)
+  }
+  to{
+    transform: translateY(40px)
+  }
+}
+

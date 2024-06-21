@@ -1,0 +1,29 @@
+.question-answer-message{
+  font-family: Poppins;
+  font-weight: 600;
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  bottom: calc(11vh + 40px);
+  font-size: 36px;
+  animation: question-answer-message 1s ease both;
+  color: var(--qm-color);
+}
+
+@keyframes question-answer-message{
+  0%{
+    opacity: 0;
+    translate: -50% 0;
+  }
+  30%{
+    opacity: 1;
+    scale: 1.1;
+    translate: -50% 15px;
+    text-shadow: 0 0 10px var(--qm-color-st);
+  }
+  100%{
+    opacity: 0;
+    scale: 1.11;
+    translate: -50% 40px;
+  }
+}

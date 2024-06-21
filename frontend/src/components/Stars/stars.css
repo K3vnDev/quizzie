@@ -1,0 +1,35 @@
+
+.stars-wrapper{
+  display: flex;
+  gap: 52px;
+  margin-bottom: 10px;
+}
+
+.stars-wrapper svg{
+  color: #f6d242;
+  width: 50px;
+  scale: 2.2;
+  stroke-width: .8;
+  opacity: .5;
+  fill: none;
+}
+
+
+@keyframes star-popup{
+  25%{
+    fill: currentColor;
+  }
+  45%, 55%{
+    scale: 2.35;
+    opacity: 1;
+    fill: currentColor;
+    filter: brightness(125%);
+  }
+  100%{
+    scale: 2.2;
+    fill: currentColor;
+    filter: brightness(110%);
+    opacity: 1;
+    stroke-width: .1;
+  }
+}

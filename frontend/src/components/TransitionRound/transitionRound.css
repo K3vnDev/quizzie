@@ -1,0 +1,19 @@
+.bg-transition-round{
+  position: absolute;
+  height: 100vh;
+  width: 200vw;
+  border-radius: 50vh;
+  right: -200vw;
+  background: black;
+}
+
+.bg-transition-round.transitioning{
+  animation: bg-transition-round .8s ease-in .2s both;
+}
+
+@keyframes bg-transition-round{
+  to{
+    right: -50vw;
+    background: #090909;
+  }
+}
