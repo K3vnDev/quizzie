@@ -1,0 +1,247 @@
+.edit-question-box{
+  background: #262627;  
+  border-radius: 20px;
+  padding: 50px;
+  max-width: 1000px;
+  position: relative;
+}
+
+.edit-question-box header{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.edit-question-box header .question-query{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 85%;
+  gap: 10px;
+}
+
+.edit-question-box header .question-query textarea{
+  --bg-color: #2b2b2c;
+  border-radius: 10px;
+  border: none;
+  font-size: 32px;
+  background: var(--bg-color);
+  outline: 10px solid var(--bg-color);
+  resize: none;
+}
+
+.edit-question-box header .question-query span{
+  font-size: 32px;
+  font-weight: 500;
+  width: 100%;
+  cursor: pointer;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+
+  &:hover{
+    animation: question-query-blink .9s ease infinite both;
+  }
+  transition: all .2s ease;
+}
+
+@keyframes question-query-blink{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: .6;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.edit-question-box header .question-query span:hover + svg{
+  opacity: .5;
+}
+
+.edit-question-box header .question-query svg{
+  max-width: 22px;
+  max-height: 22px;
+  min-width: 22px;
+  min-height: 22px;
+  opacity: 0;
+  transition: all .12s ease;
+}
+
+
+.edit-question-box header .edit-question-options svg{
+  --svg-size: 34px;
+  max-width: var(--svg-size);
+  max-height: var(--svg-size);
+  min-width: var(--svg-size);
+  min-height: var(--svg-size);
+}
+
+
+
+.edit-question-box .answers .edit-answer-box{
+  border-radius: 10px;
+  user-select: none;
+  background: var(--bg-color);
+  border: none;
+  text-align: left;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 12px;
+  transition: all .3s ease;
+  overflow: hidden;
+}
+
+.edit-question-box .answers .edit-answer-box span{
+  font-size: 24px;
+  font-family: Roboto;
+  line-height: 36px;
+}
+.edit-question-box .answers .edit-answer-box svg{
+  min-width: 40px;
+  transition: all .3s ease;
+}
+.edit-answer-box:disabled{
+  pointer-events: none;
+}
+
+
+/* IF LIST */
+/* .edit-question-box .answers.list{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.edit-question-box .answers.list .edit-answer-box{
+  padding: 18px;
+  padding-right: 36px;
+  width: max-content;
+  max-width: 100%;
+}
+.edit-question-box .answers.list .edit-answer-box span{
+  max-width: 700px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.edit-question-box .answers.list .edit-answer-box:not(:disabled){
+  &:hover{
+    scale: 1.01;
+  }
+  &:active{
+    scale: .99;
+    transform: translateX(25px);
+  }
+} */
+
+
+/* IF GRID */
+.edit-question-box .answers.grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.edit-question-box .answers.grid .edit-answer-box:not(:disabled){
+  &:hover{
+  }
+  &:active{
+  }
+}
+.add-answer-btn{
+  padding: 20px 20px;
+  background: #313131;
+  border: 1px solid #5A5A5A;
+  border-radius: 10px;
+
+  transition: all .2s ease;
+
+  &:hover{
+    filter: brightness(115%);
+    scale: 1.02;
+  }
+  &:active{
+    box-shadow: none;
+    filter: brightness(95%);
+    scale: .99;
+  }
+}
+.add-answer-btn svg{
+  width: 30px;
+  height: 30px;
+}
+  
+.edit-question-box .answers.grid .edit-answer-box span{
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.edit-answer-box .edit-answer-menu{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: rgba(0 0 0 / 0.3);
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+
+  opacity: 0;
+  transition: all .1s ease;
+  &:hover{
+    opacity: 1;
+  }
+}
+
+.edit-answer-box .edit-answer-menu button{
+  --btn-size: 65px;
+  height: var(--btn-size);
+  width: calc(var(--btn-size) + 8px);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #00000095;
+  transition: all .25s ease;
+
+  &:hover{
+    background: #000000dc;
+    scale: 1.01;
+    transform: translate(0, -1px);
+  }
+  &:active{
+    transform: translate(0, 1px);
+    scale: .95;
+    background: #00000095;
+  }
+}
+
+.edit-answer-box .edit-answer-menu button svg{
+  height: 40px;
+}
+.edit-answer-box .edit-answer-menu button:hover svg{
+  scale: 1.05;
+}
+
+.edit-answer-box textarea{
+  font-size: 24px;
+  font-family: Roboto;
+  overflow: hidden;
+  resize: none;
+  padding: 4px;
+  border: none;
+  outline: 10px solid #00000014;
+  background: #00000014;
+  border-radius: 10px;
+}

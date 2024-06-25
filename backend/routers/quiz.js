@@ -15,7 +15,22 @@ quizRouter.get('/:id', async (req, res) => {
   return res.status(404).json($error('requested quiz not found'))
 })
 
+// TODO: get all quizzes
+
 quizRouter.use(userAuth)
+
+quizRouter.get('/edit/:id', async (req, res) => {
+  const { username } = req.session
+
+  if (!username) return res.status(301).json($error('access denied'))
+
+  const quizFromDb = await Quiz.findOne({ id })
+  if (!quizFromDb) return res.status(404).json($error('requested quiz not found'))
+
+  if (quizFromDb.owner !== username) return res.status(401).json($error('access denied'))
+
+  res.json(quizFromDb)
+})
 
 // TODO: get all quizzes from an user
 

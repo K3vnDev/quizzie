@@ -79,7 +79,7 @@ function ScoreMessage ({ score }) {
   const message = (() => {
     if (score <= 30) {
       return randomElement(
-        'Better luck next time!', 'Keep trying!', 'Practice makes perfect!', 'Try again!', '"Next time will be better!'
+        'Better luck next time!', 'Keep trying!', 'Practice makes perfect!', 'Try again!', 'Next time will be better!'
       )
     }
     if (score <= 60) {

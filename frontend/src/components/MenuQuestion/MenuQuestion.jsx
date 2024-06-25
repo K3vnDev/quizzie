@@ -2,15 +2,20 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { colorAndIcon } from '../../services/colorAndIcon.jsx'
 import { useStore } from '../../store/useStore.js'
+import { demoQuiz } from '../../store/quizes/demoQuiz.js'
 
 export function MenuQuestion () {
   const navigate = useNavigate()
   const [buttonPressed, setButtonPressed] = useState(false)
+  const setQuiz = useStore(state => state.setQuiz)
 
   const answers = [
     {
       text: 'Play a demo quiz',
-      callback: () => navigate('/play')
+      callback: () => {
+        setQuiz(demoQuiz)
+        navigate('/play')
+      }
     },
     {
       text: 'Play an existing quiz',
@@ -18,7 +23,9 @@ export function MenuQuestion () {
     },
     {
       text: 'Make my own quiz',
-      callback: () => {}
+      callback: () => {
+        navigate('/edit')
+      }
     }
   ]
 

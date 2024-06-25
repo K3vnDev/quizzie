@@ -1,4 +1,5 @@
 export const demoQuiz = {
+  id: 'demo',
   name: 'Demo Quiz',
   config: {
     shuffleQuestions: false,

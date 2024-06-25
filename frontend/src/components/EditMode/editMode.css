@@ -1,0 +1,74 @@
+body.edit{
+  background: #090909;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.edit nav{
+  --nav-size: 80px;
+  display: flex;
+  width: 100vw;
+  height: var(--nav-size);
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 0 40px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+body.edit nav section{
+  display: flex;
+  gap: 30px;
+}
+
+body.edit nav section button{
+  border: none;
+  border-radius: 10px;
+  height: var(--nav-size);
+  width: var(--nav-size);
+}
+body.edit nav section button svg{
+  width: 85%;
+  height: 85%;
+  stroke-width: 1.2;
+}
+
+body.edit nav section .quiz-settings-btn{
+  background: #343434;
+}
+body.edit nav section .quiz-play-btn{
+  background: #0647ED;
+}
+
+body.edit nav .app-logo{
+  background: url(../../../public/favicon.png);
+  width: var(--nav-size);
+  height: var(--nav-size);
+  background-size: 115%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.quiz-title-and-progress{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5vh;
+}
+.quiz-title-and-progress h3{
+  font-family: Poppins;
+  font-size: 58px;
+  font-weight: 600;
+  color: #fff;
+}
+.quiz-title-and-progress span{
+  font-family: Poppins;
+  font-size: 26px;
+  color: #cdcdcd;
+}
+

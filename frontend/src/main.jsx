@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import LandingPage from './routes/LandingPage/LandingPage.jsx'
 import PlayPage from './routes/PlayPage/PlayPage.jsx'
+import EditPage from './routes/EditPage/EditPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: '/play',
     element: <PlayPage />
+  },
+  {
+    path: '/edit',
+    element: <EditPage />
   }
 ])
 

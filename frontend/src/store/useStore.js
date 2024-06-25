@@ -36,7 +36,38 @@ const testQuiz = {
 }
 
 export const useStore = create((set, get) => ({
-  quiz: demoQuiz,
+
+  // Quiz
+
+  quiz: null,
+  setQuiz: value => set(() => ({ quiz: value })),
+  setAnswerText: (value, questionIndex, answerIndex) => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.questions[questionIndex].answers[answerIndex].text = value
+    return { quiz: newQuiz }
+  }),
+  addAnswer: (questionIndex) => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    const prevAnswers = newQuiz.questions[questionIndex].answers
+    const newAnswers = [...prevAnswers, { text: '', isCorrect: false }]
+    newQuiz.questions[questionIndex].answers = newAnswers
+    return prevAnswers.length < 4
+      ? { quiz: newQuiz }
+      : { quiz: state.quiz }
+  }),
+  deleteAnswer: (questionIndex, answerIndex) => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    const newAnswers = newQuiz.questions[questionIndex].answers
+    newAnswers.splice(answerIndex, 1)
+    newQuiz.questions[questionIndex].answers = newAnswers
+    return { quiz: newQuiz }
+  }),
+
+  setQuestionQuery: (value, questionIndex) => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.questions[questionIndex].query = value
+    return { quiz: newQuiz }
+  }),
 
   transitioning: false,
   setTransitioning: value => set(() => ({ transitioning: value })),

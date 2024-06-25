@@ -37,7 +37,7 @@ export const Quiz = model('Quiz', quizSchema)
 
 // Validations
 const quizValidationSchema = z.object({
-  name: z.string().min(3).max(25),
+  name: z.string().min(3).max(25).trim(),
   config: z.object({
     shuffleQuestions: z.boolean(),
     shuffleAnswers: z.boolean(),
@@ -47,16 +47,16 @@ const quizValidationSchema = z.object({
   }),
   questions: z.array(
     z.object({
-      query: z.string().min(3).max(100),
+      query: z.string().min(1).max(100).trim(),
       displayMode: z.string().length(4),
       answers: z.array(
         z.object({
-          text: z.string().min(1).max(120),
+          text: z.string().min(1).max(200).trim(),
           isCorrect: z.boolean()
         })
       )
     })
-  )
+  ).min(2).max(4)
 })
 
 export const validateQuiz = quiz => quizValidationSchema.safeParse(quiz)

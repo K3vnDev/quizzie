@@ -8,13 +8,15 @@ import { TransitionRound } from '../../components/TransitionRound/TransitionRoun
 
 export default function LandingPage () {
   useRouteClassName('landing')
-  const [setIsShowingResults] = useStore(
+  const [setIsShowingResults, setQuiz] = useStore(
     state => [
-      state.setIsShowingResults
+      state.setIsShowingResults,
+      state.setQuiz
     ]
   )
 
   useEffect(() => {
+    setQuiz(null)
     setIsShowingResults(false)
   }, [])
 
