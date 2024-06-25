@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export function EditableText ({ initialText, setIsEditing, handleTextChange, maxLength }) {
+export function EditableTextArea ({ initialText, setIsEditing, handleTextChange, maxLength, outsideContainerRef }) {
   const inputRef = useRef()
   const firstClick = useRef(true)
 
@@ -40,7 +40,11 @@ export function EditableText ({ initialText, setIsEditing, handleTextChange, max
       return
     }
 
-    if (inputRef.current.contains(target)) {
+    if (
+      inputRef.current.contains(target) ||
+      (outsideContainerRef &&
+      outsideContainerRef.current.contains(target))
+    ) {
       inputRef.current.focus()
     } else exitEditMode()
   }

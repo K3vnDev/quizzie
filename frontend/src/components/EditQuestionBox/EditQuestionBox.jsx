@@ -5,7 +5,7 @@ import { Pencil as PencilIcon } from '../../icons/Pencil.jsx'
 import { More as MoreIcon } from '../../icons/More.jsx'
 import './editQuestionBox.css'
 import { useState } from 'react'
-import { EditableText } from '../EditableText/EditableText.jsx'
+import { EditableTextArea } from '../EditableTextArea/EditableTextArea.jsx'
 
 export function EditQuestionBox ({ currentQuestionIndex }) {
   const { config, questions } = useStore(state => state.quiz)
@@ -76,7 +76,7 @@ const QuestionQuery = ({ query, questionIndex }) => {
   if (isEditing) {
     return (
       <div className='question-query'>
-        <EditableText
+        <EditableTextArea
           initialText={query}
           setIsEditing={setIsEditing}
           handleTextChange={handleTextChange}
