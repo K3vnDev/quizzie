@@ -31,7 +31,7 @@ const EditModeButton = ({ setEditingText }) => {
 const MakeCorrectButton = () => {
   return (
     <button>
-      <CheckboxIcon m='Make Correct' />
+      <CheckboxIcon m='Mark as Correct' />
     </button>
   )
 }

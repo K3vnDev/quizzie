@@ -64,10 +64,11 @@
 }
 
 .edit-question-box header .question-query svg{
-  max-width: 22px;
-  max-height: 22px;
-  min-width: 22px;
-  min-height: 22px;
+  --svg-size: 22px;
+  max-width: var(--svg-size);
+  max-height: var(--svg-size);
+  min-width: var(--svg-size);
+  min-height: var(--svg-size);
   opacity: 0;
   transition: all .12s ease;
 }

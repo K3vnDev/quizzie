@@ -1,20 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useEditableText } from '../../hooks/useEditableText'
+import { useRef } from 'react'
 
 export function EditableTextArea ({ initialText, setIsEditing, handleTextChange, maxLength, outsideContainerRef }) {
   const inputRef = useRef()
-  const firstClick = useRef(true)
-
-  useEffect(() => {
-    inputRef.current.focus()
-    resizeScroll(true)
-    document.addEventListener('click', handleClick)
-    document.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.removeEventListener('click', handleClick)
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
 
   const exitEditMode = () => setIsEditing(false)
 
@@ -34,27 +22,7 @@ export function EditableTextArea ({ initialText, setIsEditing, handleTextChange,
     if (setCursor) textarea.setSelectionRange(textarea.value.length, textarea.value.length)
   }
 
-  const handleClick = ({ target }) => {
-    if (firstClick.current) {
-      firstClick.current = false
-      return
-    }
-
-    if (
-      inputRef.current.contains(target) ||
-      (outsideContainerRef &&
-      outsideContainerRef.current.contains(target))
-    ) {
-      inputRef.current.focus()
-    } else exitEditMode()
-  }
-
-  const handleKeyDown = e => {
-    if (e.code === 'Enter') {
-      e.preventDefault()
-      exitEditMode()
-    }
-  }
+  useEditableText({ inputRef, outsideContainerRef, exitEditMode, resizeScroll })
 
   const handleChange = e => {
     const { value } = e.target

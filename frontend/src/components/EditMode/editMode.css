@@ -60,15 +60,68 @@ body.edit nav .app-logo{
   transform: translateX(-50%);
   top: 5vh;
 }
-.quiz-title-and-progress h3{
+
+.quiz-title-and-progress .quiz-title h3{
   font-family: Poppins;
   font-size: 58px;
   font-weight: 600;
+  text-wrap: nowrap;
   color: #fff;
+  position: relative;
+  
+  &:hover{
+    animation: question-query-blink .9s ease infinite both;
+  }
+  transition: all .2s ease;
 }
-.quiz-title-and-progress span{
+
+@keyframes question-query-blink{
+  0%{
+    color: #fff;
+  }
+  50%{
+    color: #acacac;
+  }
+  100%{
+    color: #fff;
+  }
+}
+
+.quiz-title-and-progress .quiz-title input{
+  font-family: Poppins;
+  font-size: 58px;
+  font-weight: 500;
+  padding: 0 20px;
+  background: rgb(255 255 255 / .025);
+  outline: none;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+}
+
+.quiz-title-and-progress .quiz-title h3:hover svg{
+  opacity: .5;
+}
+
+.quiz-title-and-progress .quiz-title h3 svg{
+  --svg-size: 26px;
+  max-width: var(--svg-size);
+  max-height: var(--svg-size);
+  min-width: var(--svg-size);
+  min-height: var(--svg-size);
+  position: absolute;
+  color: #fff;
+  right: -42px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all .12s ease;
+}
+
+.quiz-title-and-progress .quiz-progress{
   font-family: Poppins;
   font-size: 26px;
   color: #cdcdcd;
 }
+
 
