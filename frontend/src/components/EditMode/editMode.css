@@ -68,6 +68,7 @@ body.edit nav .app-logo{
   text-wrap: nowrap;
   color: #fff;
   position: relative;
+  cursor: pointer;
   
   &:hover{
     animation: question-query-blink .9s ease infinite both;

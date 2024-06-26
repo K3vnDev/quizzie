@@ -75,6 +75,16 @@ export const useStore = create((set, get) => ({
     newQuiz.questions[questionIndex].query = value
     return { quiz: newQuiz }
   }),
+  toggleQuestionDisplayMode: (questionIndex) => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    const newDisplayMode =
+      newQuiz.questions[questionIndex].displayMode === 'grid'
+        ? 'list'
+        : 'grid'
+
+    newQuiz.questions[questionIndex].displayMode = newDisplayMode
+    return { quiz: newQuiz }
+  }),
 
   transitioning: false,
   setTransitioning: value => set(() => ({ transitioning: value })),

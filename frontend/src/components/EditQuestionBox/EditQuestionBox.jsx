@@ -2,10 +2,10 @@ import { Add as AddIcon } from '../../icons/Add.jsx'
 import { useStore } from '../../store/useStore.js'
 import { EditableAnswer } from './EditableAnswer.jsx'
 import { Pencil as PencilIcon } from '../../icons/Pencil.jsx'
-import { More as MoreIcon } from '../../icons/More.jsx'
 import './editQuestionBox.css'
 import { useState } from 'react'
 import { EditableTextArea } from '../EditableTextArea/EditableTextArea.jsx'
+import { QuestionOptions } from './QuestionOptions.jsx'
 
 export function EditQuestionBox ({ currentQuestionIndex }) {
   const { config, questions } = useStore(state => state.quiz)
@@ -18,7 +18,7 @@ export function EditQuestionBox ({ currentQuestionIndex }) {
           questionIndex={currentQuestionIndex}
           query={query}
         />
-        <QuestionOptions />
+        <QuestionOptions questionIndex={currentQuestionIndex} />
       </header>
       <section className={`answers ${displayMode}`}>
         {
@@ -54,14 +54,6 @@ const AddAnswerButton = ({ questionIndex }) => {
     >
       <AddIcon />
     </button>
-  )
-}
-
-const QuestionOptions = () => {
-  return (
-    <div className='edit-question-options'>
-      <MoreIcon />
-    </div>
   )
 }
 
