@@ -309,7 +309,9 @@
   border-radius: 8px;
   background: rgb(0 0 0 / .4);
   backdrop-filter: blur(8px);
+}
 
+.edit-question-options button:not(:disabled){
   &:hover{
     background: black;
     scale: 1.025;
@@ -319,6 +321,10 @@
     scale: .99;
   }
   transition: all .15s ease;
+}
+
+.edit-question-options button:disabled{
+  opacity: .5;
 }
 
 .edit-question-options .more-btn{

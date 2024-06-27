@@ -7,9 +7,15 @@ import { useStore } from '../../store/useStore.js'
 import { EditQuestionBox } from '../EditQuestionBox/EditQuestionBox.jsx'
 import './editMode.css'
 import { EditableTextInput } from '../EditableTextInput/EditableTextInput.jsx'
+import { Left as LeftIcon } from '../../icons/Left.jsx'
+import { Right as RightIcon } from '../../icons/Rigth.jsx'
 
 export function EditMode () {
-  const { currentQuestionIndex } = useEditMode()
+  const {
+    currentQuestionIndex,
+    navigateQuestion,
+    deleteQuestion
+  } = useEditMode()
 
   return (
     <>
@@ -27,12 +33,17 @@ export function EditMode () {
       />
       <EditQuestionBox
         currentQuestionIndex={currentQuestionIndex}
+        deleteQuestion={deleteQuestion}
+      />
+      <QuestionNavigation
+        currentQuestionIndex={currentQuestionIndex}
+        navigateQuestion={navigateQuestion}
       />
     </>
   )
 }
 
-function TitleAndProgress ({ currentQuestionIndex }) {
+const TitleAndProgress = ({ currentQuestionIndex }) => {
   const { name: quizName, questions } = useStore(state => state.quiz)
   const setQuizName = useStore(state => state.setQuizName)
   const [isEditing, setIsEditing] = useState(false)
@@ -67,7 +78,7 @@ function TitleAndProgress ({ currentQuestionIndex }) {
   )
 }
 
-function QuizSettingsButton () {
+const QuizSettingsButton = () => {
   return (
     <button className='quiz-settings-btn'>
       <SettingsIcon />
@@ -75,10 +86,31 @@ function QuizSettingsButton () {
   )
 }
 
-function QuizPlayButton () {
+const QuizPlayButton = () => {
   return (
     <button className='quiz-play-btn'>
       <PlayIcon />
     </button>
+  )
+}
+
+const QuestionNavigation = ({ navigateQuestion, currentQuestionIndex }) => {
+  return (
+    <div className='edit-question-navigation'>
+      <button
+        className='left'
+        onClick={() => navigateQuestion('left')}
+        disabled={currentQuestionIndex === 0}
+      >
+        <LeftIcon />
+      </button>
+      <button
+        className='right'
+        onClick={() => navigateQuestion('right')}
+        disabled={currentQuestionIndex >= 14}
+      >
+        <RightIcon />
+      </button>
+    </div>
   )
 }

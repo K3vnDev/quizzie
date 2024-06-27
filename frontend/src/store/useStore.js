@@ -70,6 +70,21 @@ export const useStore = create((set, get) => ({
     return { quiz: newQuiz }
   }),
 
+  createNewQuestion: () => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    const newQuestion = {
+      query: 'My question',
+      displayMode: 'grid',
+      answers: [{ text: 'my answer', isCorrect: true }]
+    }
+    newQuiz.questions.push(newQuestion)
+    return { quiz: newQuiz }
+  }),
+  deleteQuestion: (questionIndex) => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.questions.splice(questionIndex, 1)
+    return { quiz: newQuiz }
+  }),
   setQuestionQuery: (value, questionIndex) => set(state => {
     const newQuiz = structuredClone(state.quiz)
     newQuiz.questions[questionIndex].query = value

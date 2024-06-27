@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { EditableTextArea } from '../EditableTextArea/EditableTextArea.jsx'
 import { QuestionOptions } from './QuestionOptions.jsx'
 
-export function EditQuestionBox ({ currentQuestionIndex }) {
+export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
   const { config, questions } = useStore(state => state.quiz)
   const { query, displayMode, answers } = questions[currentQuestionIndex]
 
@@ -18,7 +18,10 @@ export function EditQuestionBox ({ currentQuestionIndex }) {
           questionIndex={currentQuestionIndex}
           query={query}
         />
-        <QuestionOptions questionIndex={currentQuestionIndex} />
+        <QuestionOptions
+          questionIndex={currentQuestionIndex}
+          deleteQuestion={deleteQuestion}
+        />
       </header>
       <section className={`answers ${displayMode}`}>
         {

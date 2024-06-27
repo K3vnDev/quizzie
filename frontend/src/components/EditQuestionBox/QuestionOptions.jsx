@@ -4,7 +4,7 @@ import { Grid as GridIcon } from '../../icons/Grid.jsx'
 import { List as ListIcon } from '../../icons/List.jsx'
 import { useStore } from '../../store/useStore.js'
 
-export function QuestionOptions ({ questionIndex }) {
+export function QuestionOptions ({ questionIndex, deleteQuestion }) {
   const { questions } = useStore(state => state.quiz)
   const { displayMode } = questions[questionIndex]
 
@@ -13,15 +13,13 @@ export function QuestionOptions ({ questionIndex }) {
       <button className='more-btn'>
         <MoreIcon />
       </button>
-
       <ChangeButton
         displayMode={displayMode}
         questionIndex={questionIndex}
       />
-
-      <button className='delete-btn'>
-        <DeleteIcon />
-      </button>
+      <DeleteButton
+        deleteQuestion={deleteQuestion}
+      />
     </div>
   )
 }
@@ -43,6 +41,19 @@ const ChangeButton = ({ displayMode, questionIndex }) => {
           ? <GridIcon />
           : <ListIcon />
       }
+    </button>
+  )
+}
+
+const DeleteButton = ({ deleteQuestion }) => {
+  const { questions } = useStore(state => state.quiz)
+  return (
+    <button
+      className='delete-btn'
+      onClick={deleteQuestion}
+      disabled={questions.length === 1}
+    >
+      <DeleteIcon />
     </button>
   )
 }
