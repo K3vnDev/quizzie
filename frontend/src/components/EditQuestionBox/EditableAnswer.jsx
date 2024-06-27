@@ -20,8 +20,7 @@ export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex 
 
   const style = {
     '--bg-color': color,
-    '--bg-color-st': color + 80,
-    padding: '26px 28px 26px 16px' // Make conditional
+    '--bg-color-st': color + 80
   }
 
   const handleTextChange = text => {

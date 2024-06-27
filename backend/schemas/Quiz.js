@@ -51,7 +51,7 @@ const quizValidationSchema = z.object({
       displayMode: z.string().length(4),
       answers: z.array(
         z.object({
-          text: z.string().min(1).max(200).trim(),
+          text: z.string().min(1).max(50).trim(),
           isCorrect: z.boolean()
         })
       )
