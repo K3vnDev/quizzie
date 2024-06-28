@@ -41,7 +41,7 @@ export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex 
               setIsEditing={setIsEditing}
               handleTextChange={handleTextChange}
               outsideContainerRef={answerBoxRef}
-              maxLength={100}
+              maxLength={50}
             />
           : <span>{answer.text}</span>
       }

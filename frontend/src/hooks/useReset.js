@@ -7,7 +7,8 @@ export default function useReset () {
     setIsUnloadingPlayMode,
     setIsShowingResults,
     resetResults
-  ] = useStore(s => [
+  ] =
+  useStore(s => [
     s.setIsShowingQuestion,
     s.setIsUnloadingQuestion,
     s.setIsUnloadingPlayMode,
@@ -23,5 +24,13 @@ export default function useReset () {
     resetResults()
   }
 
-  return { resetPlayMode }
+  const resetEditMode = () => {
+    setIsShowingQuestion(true)
+    setIsUnloadingQuestion(false)
+    setIsUnloadingPlayMode(false)
+    setIsShowingResults(false)
+    resetResults()
+  }
+
+  return { resetPlayMode, resetEditMode }
 }

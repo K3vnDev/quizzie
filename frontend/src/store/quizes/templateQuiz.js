@@ -2,7 +2,7 @@ export const templateQuiz = {
   name: 'My Quiz',
   config: {
     shuffleQuestions: false,
-    shufleAnswers: true,
+    shuffleAnswers: true,
     shuffleAnswerColors: false,
     showIcons: true,
     answerTime: 10

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { colorAndIcon } from '../../services/colorAndIcon.jsx'
 import { useStore } from '../../store/useStore.js'
@@ -54,12 +54,17 @@ export function MenuQuestion () {
 function MenuAnswer ({ children, callback, index, buttonPressed, setButtonPressed }) {
   const { color, icon } = colorAndIcon[index]
   const setTransitioning = useStore(state => state.setTransitioning)
+  const timeoutRef = useRef()
 
   const handleClick = () => {
     setButtonPressed(true)
     setTransitioning(true)
-    setTimeout(callback, 1000)
+    timeoutRef.current = setTimeout(callback, 1000)
   }
+
+  useEffect(() => {
+    return () => clearTimeout(timeoutRef.current)
+  }, [])
 
   return (
     <button

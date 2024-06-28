@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { useEditMode } from '../../hooks/useEditMode.js'
-import { Play as PlayIcon } from '../../icons/Play.jsx'
-import { Settings as SettingsIcon } from '../../icons/Settings.jsx'
 import { Pencil as PencilIcon } from '../../icons/Pencil.jsx'
 import { useStore } from '../../store/useStore.js'
 import { EditQuestionBox } from '../EditQuestionBox/EditQuestionBox.jsx'
@@ -9,6 +7,8 @@ import './editMode.css'
 import { EditableTextInput } from '../EditableTextInput/EditableTextInput.jsx'
 import { Left as LeftIcon } from '../../icons/Left.jsx'
 import { Right as RightIcon } from '../../icons/Rigth.jsx'
+import { TransitionRound } from '../TransitionRound/TransitionRound.jsx'
+import { EditModeButtonsHeader } from '../EditModeButtonsHeader/EditModeButtonsHeader.jsx'
 
 export function EditMode () {
   const {
@@ -19,15 +19,8 @@ export function EditMode () {
 
   return (
     <>
-      <nav>
-        <section>
-          <div className='app-logo' />
-        </section>
-        <section>
-          <QuizSettingsButton />
-          <QuizPlayButton />
-        </section>
-      </nav>
+      <EditModeButtonsHeader />
+
       <TitleAndProgress
         currentQuestionIndex={currentQuestionIndex}
       />
@@ -39,6 +32,7 @@ export function EditMode () {
         currentQuestionIndex={currentQuestionIndex}
         navigateQuestion={navigateQuestion}
       />
+      <TransitionRound />
     </>
   )
 }
@@ -75,22 +69,6 @@ const TitleAndProgress = ({ currentQuestionIndex }) => {
         {`Question ${currentQuestionIndex + 1} of ${questions.length}`}
       </span>
     </div>
-  )
-}
-
-const QuizSettingsButton = () => {
-  return (
-    <button className='quiz-settings-btn'>
-      <SettingsIcon />
-    </button>
-  )
-}
-
-const QuizPlayButton = () => {
-  return (
-    <button className='quiz-play-btn'>
-      <PlayIcon />
-    </button>
   )
 }
 

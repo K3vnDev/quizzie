@@ -5,7 +5,7 @@ body.edit{
   align-items: center;
 }
 
-body.edit nav{
+body.edit .edit-mode-header{
   --nav-size: 80px;
   display: flex;
   width: 100vw;
@@ -18,37 +18,66 @@ body.edit nav{
   top: 0;
 }
 
-body.edit nav section{
+body.edit .edit-mode-header section{
   display: flex;
   gap: 30px;
 }
 
-body.edit nav section button{
+body.edit .edit-mode-header section button{
   border: none;
   border-radius: 10px;
   height: var(--nav-size);
   width: var(--nav-size);
 }
-body.edit nav section button svg{
+body.edit .edit-mode-header section button svg{
   width: 85%;
   height: 85%;
   stroke-width: 1.2;
 }
 
-body.edit nav section .quiz-settings-btn{
-  background: #343434;
-}
-body.edit nav section .quiz-play-btn{
-  background: #0647ED;
+.quiz-settings-btn, .quiz-play-btn{
+  background: var(--bg-color);
+  transition: 
+    filter .1s ease,
+    scale .25s ease-out
+  ;
 }
 
-body.edit nav .app-logo{
+.quiz-settings-btn:not(:disabled), .quiz-play-btn:not(:disabled){
+  cursor: pointer;
+
+  &:hover{
+    filter: brightness(115%);
+    scale: 1.03;
+  }
+  &:active{
+    filter: brightness(90%);
+    scale: .98;
+  }
+}
+
+.quiz-settings-btn:disabled, .quiz-play-btn:disabled{
+  opacity: .9;
+}
+
+
+body.edit .edit-mode-header .app-logo{
   background: url(../../../public/favicon.png);
   width: var(--nav-size);
   height: var(--nav-size);
   background-size: 115%;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+body.edit .edit-mode-header .app-logo:not(:disabled){
+  &:hover{
+    filter: brightness(110%)
+  }
+  cursor: pointer;
+}
+body.edit .edit-mode-header .app-logo:disabled{
+  opacity: .8;
 }
 
 .quiz-title-and-progress{

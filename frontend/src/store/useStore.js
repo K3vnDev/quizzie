@@ -73,9 +73,12 @@ export const useStore = create((set, get) => ({
   createNewQuestion: () => set(state => {
     const newQuiz = structuredClone(state.quiz)
     const newQuestion = {
-      query: 'My question',
+      query: 'my question',
       displayMode: 'grid',
-      answers: [{ text: 'my answer', isCorrect: true }]
+      answers: [
+        { text: 'first answer', isCorrect: true },
+        { text: 'second answer', isCorrect: true }
+      ]
     }
     newQuiz.questions.push(newQuestion)
     return { quiz: newQuiz }

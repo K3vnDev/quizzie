@@ -62,8 +62,7 @@ export function useEditQuiz () {
   }, [])
 
   useEffect(() => {
-    // window.localStorage.setItem('localQuiz', JSON.stringify(quiz))
-    // console.log('quiz:', quiz)
+    window.localStorage.setItem('localQuiz', JSON.stringify(quiz))
   }, [quiz])
 
   return { isLoading, fetchQuiz }

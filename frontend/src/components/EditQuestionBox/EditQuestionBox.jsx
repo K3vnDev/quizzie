@@ -75,7 +75,7 @@ const QuestionQuery = ({ query, questionIndex }) => {
           initialText={query}
           setIsEditing={setIsEditing}
           handleTextChange={handleTextChange}
-          maxLength={100}
+          maxLength={50}
         />
       </div>
     )

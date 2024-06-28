@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useStore } from '../store/useStore'
+import useReset from './useReset'
 
 export function useEditMode () {
   const [
@@ -14,6 +15,11 @@ export function useEditMode () {
   ])
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const { resetEditMode } = useReset()
+
+  useEffect(() => {
+    resetEditMode()
+  }, [])
 
   const navigateQuestion = direction => {
     switch (direction) {
