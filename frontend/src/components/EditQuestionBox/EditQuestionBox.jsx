@@ -44,10 +44,10 @@ export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
 }
 
 const AddAnswerButton = ({ questionIndex }) => {
-  const addAnswer = useStore(state => state.addAnswer)
+  const createNewAnswer = useStore(state => state.createNewAnswer)
 
   const handleClick = () => {
-    addAnswer(questionIndex)
+    createNewAnswer(questionIndex)
   }
 
   return (

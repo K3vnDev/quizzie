@@ -54,7 +54,7 @@ const quizValidationSchema = z.object({
           text: z.string().min(1).max(50).trim(),
           isCorrect: z.boolean()
         })
-      ).min(2).max(4)
+      ).max(4)
     })
   ).min(1).max(15)
 })

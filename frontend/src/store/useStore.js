@@ -48,12 +48,7 @@ export const useStore = create((set, get) => ({
     return { quiz: newQuiz }
   }),
 
-  setAnswerText: (value, questionIndex, answerIndex) => set(state => {
-    const newQuiz = structuredClone(state.quiz)
-    newQuiz.questions[questionIndex].answers[answerIndex].text = value
-    return { quiz: newQuiz }
-  }),
-  addAnswer: (questionIndex) => set(state => {
+  createNewAnswer: (questionIndex) => set(state => {
     const newQuiz = structuredClone(state.quiz)
     const prevAnswers = newQuiz.questions[questionIndex].answers
     const newAnswers = [...prevAnswers, { text: '', isCorrect: false }]
@@ -61,6 +56,21 @@ export const useStore = create((set, get) => ({
     return prevAnswers.length < 4
       ? { quiz: newQuiz }
       : { quiz: state.quiz }
+  }),
+  setAnswerText: (value, questionIndex, answerIndex) => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.questions[questionIndex].answers[answerIndex].text = value
+    return { quiz: newQuiz }
+  }),
+  setCorrectAnswer: (questionIndex, answerIndex) => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    const prevAnswers = newQuiz.questions[questionIndex].answers
+    const newAnswers = prevAnswers.map((answer, index) => {
+      answer.isCorrect = index === answerIndex
+      return answer
+    })
+    newQuiz.questions[questionIndex].answers = newAnswers
+    return { quiz: newQuiz }
   }),
   deleteAnswer: (questionIndex, answerIndex) => set(state => {
     const newQuiz = structuredClone(state.quiz)
@@ -77,7 +87,7 @@ export const useStore = create((set, get) => ({
       displayMode: 'grid',
       answers: [
         { text: 'first answer', isCorrect: true },
-        { text: 'second answer', isCorrect: true }
+        { text: 'second answer', isCorrect: false }
       ]
     }
     newQuiz.questions.push(newQuestion)

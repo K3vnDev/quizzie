@@ -7,7 +7,10 @@ export function EditAnswerMenu ({ setEditingText, questionIndex, answerIndex }) 
   return (
     <div className='edit-answer-menu'>
       <EditModeButton setEditingText={setEditingText} />
-      <MakeCorrectButton />
+      <MakeCorrectButton
+        questionIndex={questionIndex}
+        answerIndex={answerIndex}
+      />
       <DeleteButton
         questionIndex={questionIndex}
         answerIndex={answerIndex}
@@ -28,9 +31,15 @@ const EditModeButton = ({ setEditingText }) => {
   )
 }
 
-const MakeCorrectButton = () => {
+const MakeCorrectButton = ({ questionIndex, answerIndex }) => {
+  const setCorrectAnswer = useStore(state => state.setCorrectAnswer)
+
+  const handleClick = () => {
+    setCorrectAnswer(questionIndex, answerIndex)
+  }
+
   return (
-    <button>
+    <button onClick={handleClick}>
       <CheckboxIcon m='Mark as Correct' />
     </button>
   )

@@ -105,10 +105,6 @@
   font-family: Roboto;
   line-height: 36px;
 }
-.edit-question-box .answers .edit-answer-box svg{
-  min-width: 40px;
-  transition: all .3s ease;
-}
 
 /* IF LIST */
 .edit-question-box .answers.list{
@@ -137,8 +133,9 @@
   max-height: 55px;
 }
 .edit-question-box .answers.list .edit-answer-box > svg{
+  opacity: .9;
   min-width: 30px;
-  height: 28px;
+  height: 30px;
   transition: all .3s ease;
 }
 .edit-question-box .answers.list .edit-answer-box .edit-answer-menu{
@@ -180,6 +177,13 @@
   font-size: 24px;
   line-height: 32px;
   max-height: 100px;
+}
+.edit-question-box .answers.grid .edit-answer-box > svg{
+  opacity: .9;
+  min-width: 30px;
+  height: 38px;
+  stroke-width: 1.6;
+  transition: all .3s ease;
 }
 .edit-question-box .answers.grid .edit-answer-box .edit-answer-menu{
   &:hover{
