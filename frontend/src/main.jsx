@@ -5,6 +5,7 @@ import './index.css'
 import LandingPage from './routes/LandingPage/LandingPage.jsx'
 import PlayPage from './routes/PlayPage/PlayPage.jsx'
 import EditPage from './routes/EditPage/EditPage.jsx'
+import { LoginPage } from './routes/LoginPage/LoginPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: '/edit',
     element: <EditPage />
+  },
+  {
+    path: '/login',
+    element: <LoginPage />
   }
 ])
 

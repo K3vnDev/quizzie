@@ -7,6 +7,14 @@ import { $error, $success } from '../services/jsonMessages.js'
 
 export const quizRouter = Router()
 
+// get all quizzes
+quizRouter.get('/all', async (req, res) => {
+  try {
+    const quizzes = await Quiz.find({})
+    res.json(quizzes)
+  } catch { res.status(500) }
+})
+
 // get quiz
 quizRouter.get('/:id', async (req, res) => {
   const { id } = req.params
@@ -15,14 +23,13 @@ quizRouter.get('/:id', async (req, res) => {
   return res.status(404).json($error('requested quiz not found'))
 })
 
-// TODO: get all quizzes
-
 quizRouter.use(userAuth)
 
 quizRouter.get('/edit/:id', async (req, res) => {
-  const { username } = req.session
+  const { username } = req
+  const { id } = req.params
 
-  if (!username) return res.status(301).json($error('access denied'))
+  if (!username) return res.status(401).json($error('access denied'))
 
   const quizFromDb = await Quiz.findOne({ id })
   if (!quizFromDb) return res.status(404).json($error('requested quiz not found'))
@@ -32,19 +39,16 @@ quizRouter.get('/edit/:id', async (req, res) => {
   res.json(quizFromDb)
 })
 
-// TODO: get all quizzes from an user
-
 // create quiz
 quizRouter.post('/', async (req, res) => {
+  const { username } = req
   const quizFromReq = req.body
-  const { username } = req.session
 
   const { success, data: validatedQuiz, error } = validateQuiz(quizFromReq)
-  if (!success) return res.status(300).json(error.issues)
+  if (!success) return res.status(400).json(error.issues)
 
-  if (!await User.findOne({ username })) {
-    return res.status(301).json($error('invalid owner'))
-  }
+  const userFromDb = await User.findOne({ username })
+  if (!userFromDb) return res.status(401).json($error('access denied'))
 
   const id = await generateQuizId()
   const newQuiz = new Quiz({
@@ -63,8 +67,8 @@ quizRouter.post('/', async (req, res) => {
 
 // update quiz
 quizRouter.put('/', async (req, res) => {
+  const { username } = req
   const { id, ...quizFromReq } = req.body
-  const { username } = req.session
 
   const quizFromDb = await Quiz.findOne({ id })
   if (!quizFromDb) return res.status(404).json($error('requested quiz not found'))
@@ -82,8 +86,8 @@ quizRouter.put('/', async (req, res) => {
 
 // delete quiz
 quizRouter.delete('/:id', async (req, res) => {
+  const { username } = req
   const { id } = req.params
-  const { username } = req.session
 
   const quizFromDb = await Quiz.findOne({ id })
   if (quizFromDb.owner !== username) return res.status(401).json($error('unauthorized'))

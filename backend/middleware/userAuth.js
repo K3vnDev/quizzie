@@ -1,16 +1,27 @@
 import jwt from 'jsonwebtoken'
+import { $error } from '../services/jsonMessages.js'
 
 export const userAuth = (req, res, next) => {
-  const { token } = req.cookies
-  if (!token) { return res.status(401).json({ error: 'unauthorized' }) }
-  req.session = { username: null }
-
   try {
-    const data = jwt.verify(token, process.env.SKW)
-    req.session.username = data
-  } catch (err) {
-    console.error(err)
-  }
+    const auth = req.get('authorization')
 
-  next()
+    if (!auth || !auth.startsWith('Bearer')) {
+      return res
+        .status(401).json($error('Token missing or invalid'))
+    }
+
+    const token = auth.substring(7)
+    if (!token) {
+      return res
+        .status(401).json($error('Token missing or invalid'))
+    }
+
+    const { username } = jwt.verify(token, process.env.SKW)
+    if (!username) {
+      return res
+        .status(401).json($error('Token missing or invalid'))
+    }
+    req.username = username
+    next()
+  } catch { res.status(401).json($error('Token missing or invalid')) }
 }

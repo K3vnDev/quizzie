@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '../store/useStore'
 import { useNavigate } from 'react-router-dom'
-const API_URL = import.meta.env.VITE_API_URL
+const { VITE_API_URL: API_URL } = import.meta.env
 
 export function usePlayQuiz () {
   const quiz = useStore(state => state.quiz)
@@ -17,7 +17,6 @@ export function usePlayQuiz () {
       if (!res.ok) throw new Error('')
 
       const data = await res.json()
-      console.log(data)
       if (data.status !== 'error') {
         setQuiz(data)
         setIsLoading(false)

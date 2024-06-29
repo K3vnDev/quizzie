@@ -26,6 +26,21 @@ body.landing{
 .title-n-slogan h3 span{
   color: #A37DF3;
 }
+.title-n-slogan p {
+  margin-top: 30px;
+  font-size: 22px;
+  color: #a1a1a1;
+  cursor: pointer;
+
+  transition: all .1s ease;
+  &:hover{
+    color: #A37DF3;
+    text-decoration: underline;
+  }
+  &:active{
+    opacity: .5;
+  }
+}
 
 
 .menu-question-box{

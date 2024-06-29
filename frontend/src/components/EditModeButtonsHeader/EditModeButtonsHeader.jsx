@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Play as PlayIcon } from '../../icons/Play.jsx'
 import { Settings as SettingsIcon } from '../../icons/Settings.jsx'
 import { useStore } from '../../store/useStore.js'
+const { VITE_API_URL: API_URL } = import.meta.env
 
 export function EditModeButtonsHeader () {
   const [disabledButtons, setDisabledButtons] = useState(false)
@@ -28,10 +29,20 @@ export function EditModeButtonsHeader () {
 }
 
 const AppLogo = ({ disabledButtons }) => {
+  const handleClick = async () => {
+    const token = window.localStorage.getItem('token')
+    const res = await fetch(`${API_URL}/user/quizzes`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    const data = await res.json()
+    console.log(data)
+  }
+
   return (
     <button
       className='app-logo'
       disabled={disabledButtons}
+      onClick={handleClick}
     />
   )
 }
