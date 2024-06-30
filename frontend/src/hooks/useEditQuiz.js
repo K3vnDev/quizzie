@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '../store/useStore'
 import { useNavigate } from 'react-router-dom'
-import { templateQuiz } from '../store/quizes/templateQuiz'
+import { templateQuiz } from '../store/quizzes/templateQuiz'
 import { validateQuiz } from '../services/validateQuiz'
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -16,8 +16,14 @@ export function useEditQuiz () {
   }
   const fetchQuiz = async (id) => {
     try {
-      const res = await fetch(`${API_URL}/quiz/edit/${id}`)
-      if (!res.ok) throw new Error('')
+      const token = window.localStorage.getItem('token')
+
+      const res = await fetch(`${API_URL}/quiz/edit/${id}`, {
+        headers: {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      })
+      if (!res.ok) throw new Error('Error fetching quiz')
 
       const data = await res.json()
       console.log(data)
@@ -26,15 +32,14 @@ export function useEditQuiz () {
         setQuiz(data)
         setIsLoading(false)
       } else throw new Error('')
-    } catch (err) {
-      navigate('/') // TODO: redirect to login page
-      console.error(err)
+    } catch {
+      navigate('/login') // TODO: redirect to login page
     }
   }
 
   useEffect(() => {
     if (quiz) {
-      setQueryParam(quiz.id)
+      if (quiz.id) setQueryParam(quiz.id)
       setIsLoading(false)
       return
     }
@@ -55,7 +60,7 @@ export function useEditQuiz () {
             : templateQuiz
         )
       } else {
-        setQuiz(templateQuiz)
+        navigate('/dashboard')
       }
       setIsLoading(false)
     }

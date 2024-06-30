@@ -11,13 +11,13 @@ export const userRouter = Router()
 userRouter.post('/signup', async (req, res) => {
   const userFromReq = req.body
 
-  const { success, data: validatedUser, error: { issues } } = validateUser(userFromReq)
+  const { success, data: validatedUser, error } = validateUser(userFromReq)
   if (!success) {
     return res
       .status(400)
       .json({
         ...$error('Invalid Data'),
-        issues
+        issues: error.issues
       })
   }
 
@@ -48,17 +48,17 @@ userRouter.post('/signup', async (req, res) => {
 userRouter.post('/login', async (req, res) => {
   try {
     const userFromReq = req.body
-    const { success, data: validatedUser, error: { issues } } = validateUser(userFromReq)
+    const { success, data: validatedUser, error } = validateUser(userFromReq)
     if (!success) {
       return res
         .status(400)
         .json({
           ...$error('Invalid Data'),
-          issues
+          issues: error.issues
         })
     }
-
     const { username, password } = validatedUser
+
     const user = await User.findOne({ username })
     if (!user) return res.status(401).json($error('Invalid username or password'))
 
@@ -77,10 +77,6 @@ userRouter.post('/login', async (req, res) => {
   } catch { res.status(500) }
 })
 
-userRouter.post('/logout', async (req, res) => {
-  res.clearCookie('token').json($success(''))
-})
-
 userRouter.use(userAuth)
 
 // get all quizzes from an user
@@ -92,5 +88,8 @@ userRouter.get('/quizzes', async (req, res) => {
   if (!userFromDb) return res.status(401).json($error('Access denied'))
 
   const quizzes = await Quiz.find({ owner: username })
-  res.json(quizzes)
+  res.json({
+    ...$success('Quizzes successfully fetched'),
+    data: { username, quizzes }
+  })
 })

@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { colorAndIcon } from '../../services/colorAndIcon.jsx'
 import { useStore } from '../../store/useStore.js'
-import { demoQuiz } from '../../store/quizes/demoQuiz.js'
+import { demoQuiz } from '../../store/quizzes/demoQuiz.js'
+import { validateQuiz } from '../../services/validateQuiz.js'
+import { templateQuiz } from '../../store/quizzes/templateQuiz.js'
 
 export function MenuQuestion () {
   const navigate = useNavigate()
@@ -24,6 +26,19 @@ export function MenuQuestion () {
     {
       text: 'Make my own quiz',
       callback: () => {
+        const quizFromStorage = JSON.parse(
+          window.localStorage.getItem('localQuiz')
+        )
+        if (quizFromStorage) {
+          const { success } = validateQuiz(quizFromStorage)
+          setQuiz(
+            success
+              ? quizFromStorage
+              : templateQuiz
+          )
+        } else {
+          setQuiz(templateQuiz)
+        }
         navigate('/edit')
       }
     }

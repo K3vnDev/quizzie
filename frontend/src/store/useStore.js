@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-import { newQuiz } from './quizes/newQuiz.js'
-import { demoQuiz } from './quizes/demoQuiz.js'
+import { newQuiz } from './quizzes/newQuiz.js'
+import { demoQuiz } from './quizzes/demoQuiz.js'
 
 const testQuiz = {
   name: 'Quiz de prueba',
@@ -41,6 +41,9 @@ export const useStore = create((set, get) => ({
 
   quiz: null,
   setQuiz: value => set(() => ({ quiz: value })),
+
+  userQuizzes: null,
+  setUserQuizzes: value => set(() => ({ userQuizzes: value })),
 
   setQuizName: value => set(state => {
     const newQuiz = structuredClone(state.quiz)

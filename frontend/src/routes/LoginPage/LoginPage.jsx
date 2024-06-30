@@ -17,6 +17,7 @@ export function LoginPage () {
     if (!res.ok) setError(data.message) // TODO: improve error handling
 
     const { token } = data.data
+    console.log(token)
     window.localStorage.setItem('token', token)
   }
 
@@ -34,11 +35,7 @@ export function LoginPage () {
   }
 
   const handleLogOut = async () => {
-    const res = await fetch(`${API_URL}/user/logout`, {
-      method: 'POST'
-    })
-    const data = await res.json()
-    if (!res.ok) setError(data.message) // TODO: improve error handling
+    window.localStorage.removeItem('token')
   }
 
   return (

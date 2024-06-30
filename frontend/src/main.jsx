@@ -6,6 +6,7 @@ import LandingPage from './routes/LandingPage/LandingPage.jsx'
 import PlayPage from './routes/PlayPage/PlayPage.jsx'
 import EditPage from './routes/EditPage/EditPage.jsx'
 import { LoginPage } from './routes/LoginPage/LoginPage.jsx'
+import { DashboardPage } from './routes/DashboardPage/DashboardPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />
+  },
+  {
+    path: 'dashboard',
+    element: <DashboardPage />
   }
 ])
 
