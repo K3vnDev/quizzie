@@ -3,7 +3,8 @@ import { z } from 'zod'
 
 const userSchema = new Schema({
   username: String,
-  passwordHash: String
+  passwordHash: String,
+  profileColor: String
 })
 
 userSchema.set('toJSON', {

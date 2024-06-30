@@ -1,7 +1,7 @@
 import '../../index.css'
 import './landingPage.css'
 import useRouteClassName from '../../hooks/useRouteClassName.js'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useStore } from '../../store/useStore.js'
 import { MenuQuestion } from '../../components/MenuQuestion/MenuQuestion.jsx'
 import { TransitionRound } from '../../components/TransitionRound/TransitionRound.jsx'
@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 
 export default function LandingPage () {
   useRouteClassName('landing')
+  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
   const [setIsShowingResults, setQuiz] = useStore(
     state => [
       state.setIsShowingResults,
@@ -19,7 +21,13 @@ export default function LandingPage () {
   useEffect(() => {
     setQuiz(null)
     setIsShowingResults(false)
+
+    const token = window.localStorage.getItem('token')
+    if (token) navigate('/dashboard')
+    else setIsLoading(false)
   }, [])
+
+  if (isLoading) return
 
   return (
     <>

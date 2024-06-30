@@ -42,9 +42,6 @@ export const useStore = create((set, get) => ({
   quiz: null,
   setQuiz: value => set(() => ({ quiz: value })),
 
-  userQuizzes: null,
-  setUserQuizzes: value => set(() => ({ userQuizzes: value })),
-
   setQuizName: value => set(state => {
     const newQuiz = structuredClone(state.quiz)
     newQuiz.name = value

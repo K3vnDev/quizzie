@@ -1,0 +1,23 @@
+
+.user-quizzes-display{
+  height: 100%;
+  width: 100%;
+  display: grid;
+
+  --element-width: 400px;
+  --element-height: 200px;
+}
+
+.user-quizzes-display .create-new-quiz-btn{
+  width: var(--element-width);
+  height: var(--element-height);
+  background: #313131;
+  border: 1px solid #5A5A5A;
+  border-radius: 10px;
+}
+
+.user-quizzes-display .create-new-quiz-btn svg{
+  width: 30%;
+  height: 30%;
+  opacity: .5;
+}

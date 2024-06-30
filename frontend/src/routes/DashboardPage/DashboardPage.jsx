@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 import './dashboardPage.css'
-import { useStore } from '../../store/useStore'
 import { useNavigate } from 'react-router-dom'
 import useRouteClassName from '../../hooks/useRouteClassName.js'
+import { Search as SearchIcon } from '../../icons/Search.jsx'
+import { UserProfilePic } from '../../components/UserProfilePic/UserProfilePic.jsx'
+import { UserQuizzesDisplay } from '../../components/UserQuizzesDisplay/UserQuizzesDisplay.jsx'
 const { VITE_API_URL: API_URL } = import.meta.env
 
 export function DashboardPage () {
-  const [userQuizzes, setUserQuizzes] = useStore(
-    state =>
-      [state.userQuizzes, state.setUserQuizzes]
-  )
-  const navigate = useNavigate()
-  const [username, setUsername] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [userData, setUserData] = useState({})
+
+  const navigate = useNavigate()
   useRouteClassName('dashboard')
 
   const fetchQuizzes = async () => {
@@ -24,9 +23,7 @@ export function DashboardPage () {
     })
     const data = await res.json()
     if (res.ok) {
-      const { quizzes, username } = data.data
-      setUserQuizzes(quizzes)
-      setUsername(username)
+      setUserData(data.data)
       setIsLoading(false)
     } else {
       navigate('/login')
@@ -42,8 +39,13 @@ export function DashboardPage () {
   return (
     <>
       <aside>
-        <button className='user-profile' />
-        <button className='search' />
+        <UserProfilePic
+          username={userData.username}
+          profileColor={userData.profileColor}
+        />
+        <button className='search'>
+          <SearchIcon />
+        </button>
       </aside>
       <main>
         <header>
@@ -52,9 +54,9 @@ export function DashboardPage () {
             {/* Displaymode buttons here */}
           </div>
         </header>
-        <section>
-          {/* Quizzes here */}
-        </section>
+        <UserQuizzesDisplay
+          quizzes={userData.quizzes}
+        />
       </main>
     </>
   )

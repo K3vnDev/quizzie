@@ -5,6 +5,7 @@ import { compare, hash } from 'bcrypt'
 import { $error, $success } from '../services/jsonMessages.js'
 import { Quiz } from '../schemas/Quiz.js'
 import { userAuth } from '../middleware/userAuth.js'
+import { generateColor } from '../services/generateColor.js'
 
 export const userRouter = Router()
 
@@ -22,6 +23,7 @@ userRouter.post('/signup', async (req, res) => {
   }
 
   const { username, password } = validatedUser
+  const profileColor = generateColor()
 
   if (await User.findOne({ username })) {
     return res.status(406).json($error('Username already exists'))
@@ -29,10 +31,17 @@ userRouter.post('/signup', async (req, res) => {
 
   try {
     const passwordHash = await hash(password, 10)
-    const newUser = new User({ username, passwordHash })
+    const newUser = new User({
+      username,
+      passwordHash,
+      profileColor
+    })
     await newUser.save()
 
-    const token = jwt.sign({ username }, process.env.SKW)
+    const token = jwt.sign({
+      username, profileColor
+    }, process.env.SKW)
+
     return res
       .status(201)
       .json({
@@ -62,8 +71,13 @@ userRouter.post('/login', async (req, res) => {
     const user = await User.findOne({ username })
     if (!user) return res.status(401).json($error('Invalid username or password'))
 
+    const { profileColor } = user
+
     if (await compare(password, user.passwordHash)) {
-      const token = jwt.sign({ username }, process.env.SKW)
+      const token = jwt.sign({
+        username, profileColor
+      }, process.env.SKW)
+
       return res
         .json({
           ...$success('Login Successful'),
@@ -87,9 +101,15 @@ userRouter.get('/quizzes', async (req, res) => {
   const userFromDb = await User.findOne({ username })
   if (!userFromDb) return res.status(401).json($error('Access denied'))
 
+  const { profileColor } = userFromDb
+
   const quizzes = await Quiz.find({ owner: username })
   res.json({
     ...$success('Quizzes successfully fetched'),
-    data: { username, quizzes }
+    data: {
+      username,
+      profileColor,
+      quizzes
+    }
   })
 })

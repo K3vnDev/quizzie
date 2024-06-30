@@ -44,6 +44,8 @@ quizRouter.post('/', async (req, res) => {
   const { username } = req
   const quizFromReq = req.body
 
+  console.log(quizFromReq)
+
   const { success, data: validatedQuiz, error } = validateQuiz(quizFromReq)
   if (!success) return res.status(400).json(error.issues)
 
