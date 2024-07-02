@@ -5,11 +5,14 @@ import useRouteClassName from '../../hooks/useRouteClassName.js'
 import { Search as SearchIcon } from '../../icons/Search.jsx'
 import { UserProfilePic } from '../../components/UserProfilePic/UserProfilePic.jsx'
 import { UserQuizzesDisplay } from '../../components/UserQuizzesDisplay/UserQuizzesDisplay.jsx'
+import { TransitionRound } from '../../components/TransitionRound/TransitionRound.jsx'
+import useReset from '../../hooks/useReset.js'
 const { VITE_API_URL: API_URL } = import.meta.env
 
 export function DashboardPage () {
   const [isLoading, setIsLoading] = useState(true)
   const [userData, setUserData] = useState({})
+  const { resetDashboard } = useReset()
 
   const navigate = useNavigate()
   useRouteClassName('dashboard')
@@ -31,6 +34,7 @@ export function DashboardPage () {
   }
 
   useEffect(() => {
+    resetDashboard()
     fetchQuizzes()
   }, [])
 
@@ -51,13 +55,15 @@ export function DashboardPage () {
         <header>
           <h2>Your Quizzes</h2>
           <div className='buttons'>
-            {/* Displaymode buttons here */}
+            <button />
+            <button />
           </div>
         </header>
         <UserQuizzesDisplay
           quizzes={userData.quizzes}
         />
       </main>
+      <TransitionRound />
     </>
   )
 }
