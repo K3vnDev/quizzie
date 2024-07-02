@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
 import { TransitionRound } from '../TransitionRound/TransitionRound.jsx'
 import { waitForSeconds } from '../../services/waitForSeconds.js'
 import { useResults } from '../../hooks/useResults.js'
+import { EditButton } from '../PlayMode/EditButton.jsx'
 
 export default function Results () {
   const results = useStore(state => state.results)
@@ -45,6 +46,7 @@ export default function Results () {
         </div>
         <section className='buttons'>
           <HomeButton />
+          <EditButton />
           <PlayAgainButton />
         </section>
       </div>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Play as PlayIcon } from '../../icons/Play.jsx'
 import { Settings as SettingsIcon } from '../../icons/Settings.jsx'
 import { useStore } from '../../store/useStore.js'
+import { AppLogo } from '../AppLogo/AppLogo.jsx'
 
 export function EditModeButtonsHeader () {
   const [disabledButtons, setDisabledButtons] = useState(false)
@@ -24,25 +25,6 @@ export function EditModeButtonsHeader () {
         />
       </section>
     </header>
-  )
-}
-
-const AppLogo = ({ disabledButtons }) => {
-  const navigate = useNavigate()
-
-  const handleClick = async () => {
-    const token = window.localStorage.getItem('token')
-    if (!token) return navigate('/')
-
-    navigate('/dashboard')
-  }
-
-  return (
-    <button
-      className='app-logo'
-      disabled={disabledButtons}
-      onClick={handleClick}
-    />
   )
 }
 

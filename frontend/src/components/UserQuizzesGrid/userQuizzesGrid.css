@@ -32,9 +32,24 @@
 }
 
 .user-quizzes-grid .create-new-quiz-btn svg{
-  width: 30%;
-  height: 30%;
+  --size: 30%;
+  width: var(--size);
+  height: var(--size);
   opacity: .5;
+}
+
+.user-quizzes-grid .create-new-quiz-btn.loading svg{
+  --size: 50%;
+  animation: loading-spin 1.2s linear infinite both;
+}
+
+@keyframes loading-spin{
+  from{
+    rotate: 0deg;
+  }
+  to{
+    rotate: 360deg;
+  }
 }
 
 .user-quizzes-grid .user-quiz{
@@ -134,13 +149,13 @@
 .user-quizzes-grid .user-quiz.delete-mode{
   --red: #ca2631;
   box-shadow: 0px 0px 8px var(--red);
-  outline-color: var(--red);
-  cursor: pointer;
+    outline: 1px solid var(--red);
+    cursor: pointer;
 
   transition: all .15s ease;
   &:hover{
-    outline: 4px solid var(--red);
-    box-shadow: 0px 0px 22px var(--red);
+    outline: 5px solid var(--red);
+    box-shadow: 0px 0px 28px var(--red);
     --del-vib-rate: .8deg;
     scale: 1.04;
   }

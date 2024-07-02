@@ -110,7 +110,7 @@ export default function usePlayMode () {
   }
 
   return {
-    questionName: name,
+    quizName: name,
     progress,
     currentQuestion: questionsToShow[currentQuestionIndex],
     setResponse,

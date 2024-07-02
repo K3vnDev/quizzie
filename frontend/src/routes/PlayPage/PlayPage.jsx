@@ -9,6 +9,7 @@ import { usePlayQuiz } from '../../hooks/usePlayQuiz.js'
 export default function PlayPage () {
   const isShowingResults = useStore(state => state.isShowingResults)
   const { isLoading } = usePlayQuiz()
+
   useRouteClassName('play')
 
   if (isLoading) return

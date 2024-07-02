@@ -21,7 +21,7 @@ export function useEditQuiz () {
   const fetchQuiz = async (id) => {
     try {
       const res = await fetch(`${API_URL}/quiz/edit/${id}`, {
-        headers: { Authorization: 'Bearer $token}' }
+        headers: { Authorization: `Bearer ${token}` }
       })
       if (!res.ok) throw new Error('Error fetching quiz')
 

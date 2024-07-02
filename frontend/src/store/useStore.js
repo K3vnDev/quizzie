@@ -1,39 +1,4 @@
 import { create } from 'zustand'
-import { newQuiz } from './quizzes/newQuiz.js'
-import { demoQuiz } from './quizzes/demoQuiz.js'
-
-const testQuiz = {
-  name: 'Quiz de prueba',
-  config: {
-    shuffleQuestions: false,
-    shuffleAnswers: true,
-    shuffleAnswerColors: false,
-    showIcons: true,
-    answerTime: 1800
-  },
-  questions: [{
-    query: 'What is the main ingredient in traditional Japanese miso soup?',
-    displayMode: 'grid',
-    answers: [
-      {
-        text: 'Rice',
-        isCorrect: false
-      },
-      {
-        text: 'Tofu',
-        isCorrect: false
-      },
-      {
-        text: 'Soup',
-        isCorrect: false
-      },
-      {
-        text: 'Miso paste',
-        isCorrect: true
-      }
-    ]
-  }]
-}
 
 export const useStore = create((set, get) => ({
 
@@ -116,6 +81,9 @@ export const useStore = create((set, get) => ({
 
   transitioning: false,
   setTransitioning: value => set(() => ({ transitioning: value })),
+
+  quizOwnedByUser: false,
+  setQuizOwnedByUser: value => set(() => ({ quizOwnedByUser: value })),
 
   // Play Mode
 

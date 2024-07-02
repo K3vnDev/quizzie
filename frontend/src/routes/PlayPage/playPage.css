@@ -6,6 +6,66 @@ body.play{
   background: #090909;
 }
 
+.header-buttons-wrapper{
+  position: absolute;
+  width: 100vw;
+  top: 40px;
+  left: 0;
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-btns-size);
+  --header-btns-size: 80px;
+}
+
+.header-buttons-wrapper .app-logo{
+  animation: header-btn-appear .4s ease .3s both;
+}
+
+.header-buttons-wrapper .edit-btn{
+  background: #0647ED;
+  border: none;
+  border-radius: 10px;
+  height: var(--header-btns-size);
+  width: var(--header-btns-size);
+  cursor: pointer;
+
+  transition: 
+    filter .1s ease,
+    scale .25s ease-out
+  ;
+  &:hover{
+    filter: brightness(115%);
+    scale: 1.03;
+  }
+  &:active{
+    filter: brightness(90%);
+    scale: .98;
+  }
+  animation: header-btn-appear .4s ease .5s both;
+}
+
+@keyframes header-btn-appear {
+  0%{
+    opacity: 0;
+    scale: .8;
+  }
+  90%{
+    scale: 1.01;
+  }
+  100%{
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.header-buttons-wrapper .edit-btn svg{
+  width: 85%;
+  height: 85%;
+  stroke-width: 1.2;
+}
+
 .text-section{
   display: flex;
   flex-direction: column;
@@ -23,7 +83,6 @@ body.play{
 .text-section h2{
   font-size: 56px;
   text-wrap: nowrap;
-  animation: quiz-name-appear 3.4s ease both;
 }
 
 .text-section h6{

@@ -62,22 +62,7 @@ body.edit .edit-mode-header section button svg{
 
 
 body.edit .edit-mode-header .app-logo{
-  background: url(../../../public/favicon.png);
-  width: var(--nav-size);
-  height: var(--nav-size);
-  background-size: 115%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-body.edit .edit-mode-header .app-logo:not(:disabled){
-  &:hover{
-    filter: brightness(110%)
-  }
-  cursor: pointer;
-}
-body.edit .edit-mode-header .app-logo:disabled{
-  opacity: .8;
+  --app-logo-size: var(--nav-size);
 }
 
 .quiz-title-and-progress{

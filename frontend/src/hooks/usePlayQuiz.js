@@ -6,6 +6,7 @@ const { VITE_API_URL: API_URL } = import.meta.env
 export function usePlayQuiz () {
   const quiz = useStore(state => state.quiz)
   const setQuiz = useStore(state => state.setQuiz)
+  const setQuizOwnedByUser = useStore(state => state.setQuizOwnedByUser)
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
@@ -26,6 +27,20 @@ export function usePlayQuiz () {
       console.error(err)
     }
   }
+
+  useEffect(() => {
+    if (!quiz) return
+
+    const token = window.localStorage.getItem('token')
+    if (!token) return
+
+    fetch(`${API_URL}/quiz/edit/${quiz.id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => { if (res.ok) setQuizOwnedByUser(true) })
+
+    return () => setQuizOwnedByUser(false)
+  }, [quiz])
 
   useEffect(() => {
     if (quiz) {
