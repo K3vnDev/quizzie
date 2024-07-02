@@ -3,7 +3,7 @@ const colors = [
   '#365E32', '#81A263', '#005C78', '#E49BFF'
 ]
 
-export function generateColor () {
+export function generateUserColor () {
   const randomIndex = Math.floor(Math.random() * colors.length)
   return colors[randomIndex]
 }

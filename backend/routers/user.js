@@ -5,7 +5,7 @@ import { compare, hash } from 'bcrypt'
 import { $error, $success } from '../services/jsonMessages.js'
 import { Quiz } from '../schemas/Quiz.js'
 import { userAuth } from '../middleware/userAuth.js'
-import { generateColor } from '../services/generateColor.js'
+import { generateUserColor } from '../services/generateUserColor.js'
 
 export const userRouter = Router()
 
@@ -23,7 +23,7 @@ userRouter.post('/signup', async (req, res) => {
   }
 
   const { username, password } = validatedUser
-  const profileColor = generateColor()
+  const profileColor = generateUserColor()
 
   if (await User.findOne({ username })) {
     return res.status(406).json($error('Username already exists'))

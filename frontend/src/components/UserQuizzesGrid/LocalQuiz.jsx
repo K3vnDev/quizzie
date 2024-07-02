@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { validateQuiz } from '../../services/validateQuiz'
-import { UserQuiz } from './UserQuizzesDisplay'
+import { UserQuiz } from './UserQuizzesGrid.jsx'
 const API_URL = import.meta.env.VITE_API_URL
 
 export const LocalQuiz = () => {

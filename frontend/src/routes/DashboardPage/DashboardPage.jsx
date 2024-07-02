@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import useRouteClassName from '../../hooks/useRouteClassName.js'
 import { Search as SearchIcon } from '../../icons/Search.jsx'
 import { UserProfilePic } from '../../components/UserProfilePic/UserProfilePic.jsx'
-import { UserQuizzesDisplay } from '../../components/UserQuizzesDisplay/UserQuizzesDisplay.jsx'
+import { UserQuizzesGrid } from '../../components/UserQuizzesGrid/UserQuizzesGrid.jsx'
 import { TransitionRound } from '../../components/TransitionRound/TransitionRound.jsx'
+import { Delete as DeleteIcon } from '../../icons/Delete.jsx'
 import useReset from '../../hooks/useReset.js'
 const { VITE_API_URL: API_URL } = import.meta.env
 
@@ -13,6 +14,7 @@ export function DashboardPage () {
   const [isLoading, setIsLoading] = useState(true)
   const [userData, setUserData] = useState({})
   const { resetDashboard } = useReset()
+  const [deleteMode, setDeleteMode] = useState(false)
 
   const navigate = useNavigate()
   useRouteClassName('dashboard')
@@ -34,6 +36,15 @@ export function DashboardPage () {
   }
 
   useEffect(() => {
+    if (
+      userData.quizzes &&
+      userData.quizzes.length === 0
+    ) {
+      setDeleteMode(false)
+    }
+  }, [userData.quizzes])
+
+  useEffect(() => {
     resetDashboard()
     fetchQuizzes()
   }, [])
@@ -50,20 +61,63 @@ export function DashboardPage () {
         <button className='search'>
           <SearchIcon />
         </button>
+        <DeleteModeButton
+          deleteMode={deleteMode}
+          setDeleteMode={setDeleteMode}
+          userQuizzes={userData.quizzes}
+        />
       </aside>
       <main>
-        <header>
-          <h2>Your Quizzes</h2>
-          <div className='buttons'>
-            <button />
-            <button />
-          </div>
-        </header>
-        <UserQuizzesDisplay
+        <UserQuizzesHeader
+          deleteMode={deleteMode}
+          setDeleteMode={setDeleteMode}
+        />
+        <UserQuizzesGrid
           quizzes={userData.quizzes}
+          deleteMode={deleteMode}
+          setUserData={setUserData}
         />
       </main>
       <TransitionRound />
     </>
+  )
+}
+
+const UserQuizzesHeader = ({ deleteMode, setDeleteMode }) => {
+  const handleCancel = () => {
+    setDeleteMode(false)
+  }
+
+  if (deleteMode) {
+    return (
+      <header>
+        <h3>Select a quiz to delete</h3>
+        <button onClick={handleCancel}>
+          Cancel
+        </button>
+      </header>
+    )
+  }
+
+  return (
+    <header>
+      <h2>Your Quizzes</h2>
+    </header>
+  )
+}
+
+const DeleteModeButton = ({ deleteMode, setDeleteMode, userQuizzes }) => {
+  const handleClick = () => {
+    setDeleteMode(c => !c)
+  }
+
+  return (
+    <button
+      className='delete-btn'
+      onClick={handleClick}
+      disabled={userQuizzes.length === 0}
+    >
+      <DeleteIcon />
+    </button>
   )
 }

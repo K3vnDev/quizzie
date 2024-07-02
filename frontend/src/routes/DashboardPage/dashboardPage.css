@@ -5,7 +5,7 @@
   --side-bar-width: 100px;
   margin-left: var(--side-bar-width);
   width: calc(100vw - var(--side-bar-width));
-  padding: 80px 120px;
+  padding: 80px 140px;
 }
 
 #root.dashboard aside{
@@ -34,12 +34,38 @@
 
 #root.dashboard main header{
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 40px;
+  height: 90px;
 }
 
 #root.dashboard main header h2{
   font-size: 58px;
+}
+
+#root.dashboard main header h3{
+  font-size: 38px;
+  font-weight: 600;
+}
+
+#root.dashboard main header button{
+  padding: 10px 20px;
+  font-size: 22px;
+  border: none;
+  border-radius: 6px;
+  background: #313131;
+  border: 1px solid #5A5A5A;
+  cursor: pointer;
+
+  transition: all .15s ease;
+  &:hover{
+    scale: 1.03;
+    filter: brightness(120%);
+  }
+  &:active{
+    scale: .98;
+    filter: brightness(90%);
+  }
 }
 
 #root.dashboard main header .buttons{
@@ -61,7 +87,7 @@
   height: var(--element-size);
 }
 
-#root.dashboard aside .search{
+#root.dashboard aside button{
   width: var(--element-size);
   height: var(--element-size);
   border: none;
@@ -69,9 +95,20 @@
   background: #343434;
 }
 
-#root.dashboard aside .search svg{
+#root.dashboard aside button svg{
   stroke-width: 2;
   width: 65%;
   height: 65%;
 }
+
+
+#root.dashboard aside .delete-btn{
+  background: #262626;
+}
+
+#root.dashboard aside .delete-btn svg{
+  stroke-width: 1.5;
+  color: #b8b8b8;
+}
+
 

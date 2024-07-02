@@ -4,6 +4,7 @@ import { generateQuizId } from '../services/generateQuizId.js'
 import { User } from '../schemas/User.js'
 import { userAuth } from '../middleware/userAuth.js'
 import { $error, $success } from '../services/jsonMessages.js'
+import { generateQuizColor } from '../services/generateQuizColor.js'
 
 export const quizRouter = Router()
 
@@ -52,15 +53,22 @@ quizRouter.post('/', async (req, res) => {
   const userFromDb = await User.findOne({ username })
   if (!userFromDb) return res.status(401).json($error('access denied'))
 
+  const userQuizzes = await Quiz.find({ owner: username })
+  const previewColor = generateQuizColor(userQuizzes)
+
   const id = await generateQuizId()
   const newQuiz = new Quiz({
     id,
     owner: username,
+    previewColor,
     ...validatedQuiz
   })
   newQuiz.save()
     .then(savedQuiz => {
-      res.status(201).json(savedQuiz)
+      res.status(201).json({
+        ...$success('quiz created'),
+        data: savedQuiz
+      })
     })
     .catch(() => {
       res.status(500).json($error('couldnt create quiz'))

@@ -1,5 +1,5 @@
 
-.user-quizzes-display{
+.user-quizzes-grid{
   height: 100%;
   width: 100%;
   display: grid;
@@ -13,24 +13,34 @@
   --element-height: 200px;
 }
 
-.user-quizzes-display .create-new-quiz-btn{
+.user-quizzes-grid .create-new-quiz-btn{
   width: var(--element-width);
   height: var(--element-height);
   background: #313131;
   border: 1px solid #5A5A5A;
   border-radius: 10px;
+
+  transition: all .2s ease;
+  &:hover{
+    scale: 1.03;
+    filter: brightness(120%);
+  }
+  &:active{
+    scale: .98;
+    filter: brightness(90%);
+  }
 }
 
-.user-quizzes-display .create-new-quiz-btn svg{
+.user-quizzes-grid .create-new-quiz-btn svg{
   width: 30%;
   height: 30%;
   opacity: .5;
 }
 
-.user-quizzes-display .user-quiz{
+.user-quizzes-grid .user-quiz{
   width: var(--element-width);
   height: var(--element-height);
-  background: #2B8E5F;
+  background: var(--bg-color);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -38,9 +48,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  user-select: none;
 }
 
-.user-quizzes-display .user-quiz h4{
+.user-quizzes-grid .user-quiz h4{
   font-size: 36px;
   text-wrap: nowrap;
   overflow: hidden;
@@ -48,29 +59,29 @@
   max-width: 75%;
 }
 
-.user-quizzes-display .user-quiz section{
+.user-quizzes-grid .user-quiz section{
   display: flex;
   width: 50%;
   justify-content: space-between;
   opacity: .8;
 }
 
-.user-quizzes-display .user-quiz section div{
+.user-quizzes-grid .user-quiz section div{
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.user-quizzes-display .user-quiz section div svg{
+.user-quizzes-grid .user-quiz section div svg{
   width: 32px;
   height: 32px;
 }
 
-.user-quizzes-display .user-quiz section div span{
+.user-quizzes-grid .user-quiz section div span{
   font-size: 28px;
 }
 
-.user-quizzes-display .user-quiz .edit-menu{
+.user-quizzes-grid .user-quiz .edit-menu{
   position: absolute;
   width: 100%;
   height: 100%;
@@ -89,7 +100,7 @@
   }
 }
 
-.user-quizzes-display .user-quiz .edit-menu button{
+.user-quizzes-grid .user-quiz .edit-menu button{
   --size: 140px;
   width: var(--size);
   height: var(--size);
@@ -111,7 +122,42 @@
   }
 }
 
-.user-quizzes-display .user-quiz .edit-menu button svg{
+.user-quizzes-grid .user-quiz .edit-menu button svg{
   width: 80%;
   height: 80%;
+}
+
+:root{
+  --del-vib-rate: .4deg;
+}
+
+.user-quizzes-grid .user-quiz.delete-mode{
+  --red: #ca2631;
+  box-shadow: 0px 0px 8px var(--red);
+  outline-color: var(--red);
+  cursor: pointer;
+
+  transition: all .15s ease;
+  &:hover{
+    outline: 4px solid var(--red);
+    box-shadow: 0px 0px 22px var(--red);
+    --del-vib-rate: .8deg;
+    scale: 1.04;
+  }
+  &:active{
+    scale: .9;
+    filter: brightness(75%);
+    --del-vib-rate: .1deg;
+  }
+
+  animation: delete-vibration .1s linear infinite both alternate-reverse;
+}
+
+@keyframes delete-vibration{
+  from{
+    rotate: var(--del-vib-rate);
+  }
+  to{
+    rotate: calc(var(--del-vib-rate) * -1);
+  }
 }

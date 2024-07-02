@@ -5,6 +5,7 @@ const quizSchema = new Schema({
   id: String,
   owner: String,
   name: String,
+  previewColor: String,
   config: {
     shuffleQuestions: Boolean,
     shuffleAnswers: Boolean,
