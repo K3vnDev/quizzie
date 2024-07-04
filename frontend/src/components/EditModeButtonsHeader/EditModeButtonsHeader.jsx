@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Play as PlayIcon } from '../../icons/Play.jsx'
+import { Share as ShareIcon } from '../../icons/Share.jsx'
 import { Settings as SettingsIcon } from '../../icons/Settings.jsx'
+import { CloudSaved as CloudSavedIcon } from '../../icons/CloudSaved.jsx'
+import { CloudUpload as CloudUploadIcon } from '../../icons/CloudUpload.jsx'
+import { CloudError as CloudErrorIcon } from '../../icons/CloudError.jsx'
 import { useStore } from '../../store/useStore.js'
 import { AppLogo } from '../AppLogo/AppLogo.jsx'
+import { LoadingArrows } from '../LoadingArrows/LoadingArrows.jsx'
 
 export function EditModeButtonsHeader () {
   const [disabledButtons, setDisabledButtons] = useState(false)
@@ -14,8 +19,13 @@ export function EditModeButtonsHeader () {
         <AppLogo
           disabledButtons={disabledButtons}
         />
+        <CloudInfo />
       </section>
+
       <section>
+        <ShareButton
+          disabledButtons={disabledButtons}
+        />
         <SettingsButton
           disabledButtons={disabledButtons}
         />
@@ -26,6 +36,49 @@ export function EditModeButtonsHeader () {
       </section>
     </header>
   )
+}
+
+const CloudInfo = () => {
+  const cloudState = useStore(state => state.cloudState)
+
+  const icon = {
+    uploading: <LoadingArrows />,
+    'not saved': <CloudUploadIcon />,
+    saved: <CloudSavedIcon />,
+    error: <CloudErrorIcon />
+  }
+
+  return (
+    <div className='cloud-info'>
+      {icon[cloudState]}
+    </div>
+  )
+}
+
+const ShareButton = ({ disabledButtons }) => {
+  const { id } = useStore(state => state.quiz)
+  const token = window.localStorage.getItem('token')
+
+  const handleClick = () => {
+    const quizUrl = `${window.location.host}/play?q=${id}`
+    navigator.clipboard.writeText(quizUrl)
+    console.log('Quiz URL copied to clipboard!')
+
+    // TODO: inprove message display
+  }
+
+  return token
+    ? (
+      <button
+        className='quiz-share-btn'
+        style={{ '--bg-color': '#343434' }}
+        disabled={disabledButtons}
+        onClick={handleClick}
+      >
+        <ShareIcon />
+      </button>
+      )
+    : <></>
 }
 
 const SettingsButton = ({ disabledButtons }) => {

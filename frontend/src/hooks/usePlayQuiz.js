@@ -44,7 +44,7 @@ export function usePlayQuiz () {
 
   useEffect(() => {
     if (quiz) {
-      setQueryParam(quiz.id)
+      if (quiz.id) setQueryParam(quiz.id)
       setIsLoading(false)
       return
     }

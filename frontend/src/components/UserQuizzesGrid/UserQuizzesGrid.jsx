@@ -1,5 +1,4 @@
 import { Add as AddIcon } from '../../icons/Add.jsx'
-import { Loading as LoadingIcon } from '../../icons/Loading.jsx'
 import './userQuizzesGrid.css'
 import { LocalQuiz } from './LocalQuiz.jsx'
 import { useStore } from '../../store/useStore.js'
@@ -7,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { templateQuiz } from '../../store/quizzes/templateQuiz.js'
 import { UserQuiz } from './UserQuiz.jsx'
+import { LoadingArrows } from '../LoadingArrows/LoadingArrows.jsx'
 const API_URL = import.meta.env.VITE_API_URL
 
 export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode }) {
@@ -73,7 +73,7 @@ const CreateNewQuizButton = () => {
     >
       {
         buttonLoading
-          ? <LoadingIcon />
+          ? <LoadingArrows />
           : <AddIcon />
       }
     </button>

@@ -40,17 +40,9 @@
 
 .user-quizzes-grid .create-new-quiz-btn.loading svg{
   --size: 50%;
-  animation: loading-spin 1.2s linear infinite both;
 }
 
-@keyframes loading-spin{
-  from{
-    rotate: 0deg;
-  }
-  to{
-    rotate: 360deg;
-  }
-}
+
 
 .user-quizzes-grid .user-quiz{
   width: var(--element-width);

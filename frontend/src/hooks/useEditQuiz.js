@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useStore } from '../store/useStore'
 import { useNavigate } from 'react-router-dom'
 import { templateQuiz } from '../store/quizzes/templateQuiz'
@@ -9,8 +9,11 @@ const API_URL = import.meta.env.VITE_API_URL
 export function useEditQuiz () {
   const quiz = useStore(state => state.quiz)
   const setQuiz = useStore(state => state.setQuiz)
+  const setCloudState = useStore(state => state.setCloudState)
+  const cloudState = useStore(state => state.cloudState)
   const [isLoading, setIsLoading] = useState(true)
-  const debouncedQuiz = useDebounce(quiz, 500)
+  const isFirstRender = useRef(true)
+  const debouncedQuiz = useDebounce(quiz, 400)
   const navigate = useNavigate()
 
   const token = window.localStorage.getItem('token')
@@ -37,7 +40,10 @@ export function useEditQuiz () {
   }
 
   const saveQuizToDB = async (q) => {
-    const res = await fetch(
+    setCloudState('uploading')
+
+    try {
+      const res = await fetch(
       `${API_URL}/quiz`, {
         method: 'PUT',
         headers: {
@@ -47,8 +53,12 @@ export function useEditQuiz () {
         body: JSON.stringify(q)
       })
 
-    if (!res.ok) {
-      // Handle Errors
+      if (res.ok) {
+        setCloudState('saved')
+      // TODO: Handle Errors
+      } else throw new Error('Error fetching data')
+    } catch {
+      setCloudState('error')
     }
   }
 
@@ -82,14 +92,18 @@ export function useEditQuiz () {
   }, [])
 
   useEffect(() => {
-    if (!token) {
-      window.localStorage.setItem('localQuiz', JSON.stringify(quiz))
-    }
+    if (!token) window.localStorage.setItem('localQuiz', JSON.stringify(quiz))
+
+    if (isFirstRender.current) isFirstRender.current = false
+    else if (cloudState !== 'uploading') setCloudState('not saved')
   }, [quiz])
 
   useEffect(() => {
-    saveQuizToDB(debouncedQuiz)
+    if (debouncedQuiz) {
+      saveQuizToDB(debouncedQuiz)
+      setCloudState('uploading')
+    }
   }, [debouncedQuiz])
 
-  return { isLoading, fetchQuiz }
+  return { isLoading }
 }

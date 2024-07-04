@@ -115,6 +115,8 @@ export const useStore = create((set, get) => ({
 
   results: [],
   addResult: value => set(state => ({ results: [...state.results, value] })),
-  resetResults: () => set(() => ({ results: [] }))
+  resetResults: () => set(() => ({ results: [] })),
 
+  cloudState: 'saved', // 'not saved', 'uploading'
+  setCloudState: value => set(() => ({ cloudState: value }))
 }))
