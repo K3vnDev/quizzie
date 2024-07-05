@@ -6,9 +6,12 @@ import { Settings as SettingsIcon } from '../../icons/Settings.jsx'
 import { CloudSaved as CloudSavedIcon } from '../../icons/CloudSaved.jsx'
 import { CloudUpload as CloudUploadIcon } from '../../icons/CloudUpload.jsx'
 import { CloudError as CloudErrorIcon } from '../../icons/CloudError.jsx'
+import { Check as CheckIcon } from '../../icons/Check.jsx'
+import { useCooldown } from '../../hooks/useCooldown.js'
 import { useStore } from '../../store/useStore.js'
 import { AppLogo } from '../AppLogo/AppLogo.jsx'
 import { LoadingArrows } from '../LoadingArrows/LoadingArrows.jsx'
+import './editModeButtonsHeader.css'
 
 export function EditModeButtonsHeader () {
   const [disabledButtons, setDisabledButtons] = useState(false)
@@ -57,26 +60,44 @@ const CloudInfo = () => {
 
 const ShareButton = ({ disabledButtons }) => {
   const { id } = useStore(state => state.quiz)
+  const [animation, setAnimation] = useState('none')
+  const animationTime = 2.5
+
+  const toggleMessageClassName = useCooldown({
+    action: () => setAnimation(`copied-message-appear ${animationTime}s ease both`),
+    reset: () => setAnimation('none'),
+    cooldown: animationTime * 1000
+  })
   const token = window.localStorage.getItem('token')
 
   const handleClick = () => {
     const quizUrl = `${window.location.host}/play?q=${id}`
     navigator.clipboard.writeText(quizUrl)
-    console.log('Quiz URL copied to clipboard!')
-
-    // TODO: inprove message display
+    toggleMessageClassName()
   }
 
   return token
     ? (
-      <button
-        className='quiz-share-btn'
-        style={{ '--bg-color': '#343434' }}
-        disabled={disabledButtons}
-        onClick={handleClick}
-      >
-        <ShareIcon />
-      </button>
+      <>
+        <button
+          className='quiz-share-btn'
+          style={{ '--bg-color': '#343434' }}
+          disabled={disabledButtons || animation !== 'none'}
+          onClick={handleClick}
+        >
+          {
+            animation === 'none'
+              ? <ShareIcon />
+              : <CheckIcon />
+          }
+        </button>
+        <div
+          className='quiz-url-copied-message'
+          style={{ animation }}
+        >
+          Url copied to clipboard!
+        </div>
+      </>
       )
     : <></>
 }

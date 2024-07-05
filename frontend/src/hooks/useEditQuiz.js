@@ -101,7 +101,6 @@ export function useEditQuiz () {
   useEffect(() => {
     if (debouncedQuiz) {
       saveQuizToDB(debouncedQuiz)
-      setCloudState('uploading')
     }
   }, [debouncedQuiz])
 

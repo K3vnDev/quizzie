@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { templateQuestion } from './quizzes/templateQuiz'
 
 export const useStore = create((set, get) => ({
 
@@ -47,14 +48,7 @@ export const useStore = create((set, get) => ({
 
   createNewQuestion: () => set(state => {
     const newQuiz = structuredClone(state.quiz)
-    const newQuestion = {
-      query: 'my question',
-      displayMode: 'grid',
-      answers: [
-        { text: 'first answer', isCorrect: true },
-        { text: 'second answer', isCorrect: false }
-      ]
-    }
+    const newQuestion = { ...templateQuestion }
     newQuiz.questions.push(newQuestion)
     return { quiz: newQuiz }
   }),

@@ -3,8 +3,8 @@ import { useStore } from '../../store/useStore.js'
 import { EditableAnswer } from './EditableAnswer.jsx'
 import { Pencil as PencilIcon } from '../../icons/Pencil.jsx'
 import './editQuestionBox.css'
-import { useState } from 'react'
-import { EditableTextArea } from '../EditableTextArea/EditableTextArea.jsx'
+import { useEffect, useState } from 'react'
+import { EditableTextArea } from '../EditableText/EditableText.jsx'
 import { QuestionOptions } from './QuestionOptions.jsx'
 
 export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
@@ -68,6 +68,12 @@ const QuestionQuery = ({ query, questionIndex }) => {
     setQuestionQuery(newText, questionIndex)
   }
 
+  useEffect(() => {
+    if (!isEditing && query === '') {
+      setQuestionQuery('my question', questionIndex)
+    }
+  }, [isEditing])
+
   if (isEditing) {
     return (
       <div className='question-query'>
@@ -75,6 +81,7 @@ const QuestionQuery = ({ query, questionIndex }) => {
           initialText={query}
           setIsEditing={setIsEditing}
           handleTextChange={handleTextChange}
+          selectOn={['my question']}
           maxLength={50}
         />
       </div>

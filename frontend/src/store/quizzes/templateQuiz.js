@@ -1,5 +1,20 @@
+export const templateQuestion = {
+  query: 'my question',
+  displayMode: 'grid',
+  answers: [
+    {
+      text: 'first answer',
+      isCorrect: true
+    },
+    {
+      text: 'second answer',
+      isCorrect: false
+    }
+  ]
+}
+
 export const templateQuiz = {
-  name: 'My Quiz',
+  name: 'My New Quiz',
   config: {
     shuffleQuestions: false,
     shuffleAnswers: true,
@@ -8,19 +23,6 @@ export const templateQuiz = {
     answerTime: 10
   },
   questions: [
-    {
-      query: 'Is this an example question?',
-      displayMode: 'grid',
-      answers: [
-        {
-          text: 'Yes',
-          isCorrect: true
-        },
-        {
-          text: 'No',
-          isCorrect: false
-        }
-      ]
-    }
+    { ...templateQuestion }
   ]
 }

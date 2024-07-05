@@ -20,6 +20,7 @@
   align-items: center;
   justify-content: flex-start;
   max-width: calc(100% - 80px);
+  user-select: none;
   gap: 10px;
 }
 

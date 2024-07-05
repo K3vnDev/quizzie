@@ -5,106 +5,6 @@ body.edit{
   align-items: center;
 }
 
-body.edit .edit-mode-header{
-  --nav-size: 80px;
-  display: flex;
-  width: 100vw;
-  height: var(--nav-size);
-  justify-content: space-between;
-  margin-top: 40px;
-  padding: 0 40px;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-body.edit .edit-mode-header section{
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-body.edit .edit-mode-header section button{
-  border: none;
-  border-radius: 12px;
-  height: var(--nav-size);
-  width: var(--nav-size);
-  --svg-size: 85%;
-}
-body.edit .edit-mode-header section button svg{
-  width: var(--svg-size);
-  height: var(--svg-size);
-  stroke-width: 1.2;
-}
-body.edit .edit-mode-header section .quiz-share-btn{
-  background: #1f1f1f;
-}
-body.edit .edit-mode-header section .quiz-share-btn svg{
-  --svg-size: 65%;
-  stroke-width: 1.5;
-  color: gray;
-}
-
-.quiz-settings-btn, .quiz-play-btn, .quiz-share-btn{
-  background: var(--bg-color);
-  transition: 
-    filter .1s ease,
-    scale .25s ease-out
-  ;
-}
-
-.quiz-share-btn:not(:disabled), 
-.quiz-settings-btn:not(:disabled), 
-.quiz-play-btn:not(:disabled){
-  cursor: pointer;
-
-  &:hover{
-    filter: brightness(115%);
-    scale: 1.03;
-  }
-  &:active{
-    filter: brightness(90%);
-    scale: .98;
-  }
-}
-
-body.edit .edit-mode-header section > div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin-left: 12px;
-}
-
-body.edit .edit-mode-header section div svg{
-  width: 86%;
-  height: 86%;
-  opacity: .2;
-  animation: cloud-svg-pop .2s ease-out both;
-}
-
-@keyframes cloud-svg-pop{
-  0%{
-    scale: .99;
-  }
-  20%{
-    scale: 1.05;
-    opacity: .25;
-  }
-  100%{
-    scale: 1;
-  }
-}
-
-.quiz-settings-btn:disabled, .quiz-play-btn:disabled{
-  opacity: .9;
-}
-
-
-body.edit .edit-mode-header .app-logo{
-  --app-logo-size: var(--nav-size);
-}
-
 .quiz-title-and-progress{
   display: flex;
   flex-direction: column;
@@ -123,6 +23,7 @@ body.edit .edit-mode-header .app-logo{
   color: #fff;
   position: relative;
   cursor: pointer;
+  user-select: none;
   
   &:hover{
     animation: question-query-blink .9s ease infinite both;
@@ -177,6 +78,7 @@ body.edit .edit-mode-header .app-logo{
   font-family: Poppins;
   font-size: 26px;
   color: #cdcdcd;
+  user-select: none;
 }
 
 .edit-question-navigation{
@@ -201,6 +103,7 @@ body.edit .edit-mode-header .app-logo{
 }
 
 .edit-question-navigation button:not(:disabled){
+  cursor: pointer;
   &:hover{
     opacity: .2;
     scale: 1.05;

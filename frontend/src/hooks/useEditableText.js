@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 
+const event = new Event('editmodeexitfromenterkey', { target: 'hola' })
 export function useEditableText ({ inputRef, outsideContainerRef, exitEditMode, resizeScroll }) {
   const firstClick = useRef(true)
 
@@ -21,6 +22,7 @@ export function useEditableText ({ inputRef, outsideContainerRef, exitEditMode, 
   const handleKeyDown = e => {
     if (e.code === 'Enter') {
       e.preventDefault()
+      document.dispatchEvent(event)
       exitEditMode()
     }
   }
