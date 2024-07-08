@@ -61,7 +61,7 @@
   }
 }
 
-.edit-question-box header .question-query span:hover + svg{
+.edit-question-box header .question-query span:hover ~ svg{
   opacity: .5;
 }
 
@@ -74,7 +74,6 @@
   opacity: 0;
   transition: all .12s ease;
 }
-
 
 .edit-question-box header .edit-question-options svg{
   --svg-size: 34px;
@@ -137,6 +136,8 @@
   opacity: .9;
   min-width: 30px;
   height: 30px;
+  scale: 1.1;
+  stroke-width: 2;
   transition: all .3s ease;
 }
 .edit-question-box .answers.list .edit-answer-box .edit-answer-menu{
@@ -183,7 +184,8 @@
   opacity: .9;
   min-width: 30px;
   height: 38px;
-  stroke-width: 1.6;
+  scale: 1.1;
+  stroke-width: 2;
   transition: all .3s ease;
 }
 .edit-question-box .answers.grid .edit-answer-box .edit-answer-menu{
@@ -313,6 +315,10 @@
   border: none;
   border-radius: 8px;
   background: rgb(0 0 0 / .4);
+}
+
+.edit-question-options .change-btn,
+.edit-question-options .delete-btn{
   backdrop-filter: blur(8px);
 }
 

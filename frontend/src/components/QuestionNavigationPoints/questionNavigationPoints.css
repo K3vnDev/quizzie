@@ -14,12 +14,19 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  background: #2d2d2d;
-  transition: all .15s ease-out;
   position: relative;
+  background: white;
+  opacity: .2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 
+    all .15s ease-out,
+    background 0s ease
+  ;
 
   &:hover{
-    scale: 1.1;
+    opacity: .25;
     filter: brightness(120%);
   }
   &::before{
@@ -34,8 +41,13 @@
   }
 }
 
+.question-navigation-points .navigation-point.invalid{
+  background: #ffff81;
+}
+
 .question-navigation-points .navigation-point.selected{
   scale: 1.25;
-  filter: brightness(150%);
   cursor: default;
+  filter: saturate(140%);
+  opacity: .55;
 }

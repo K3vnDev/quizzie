@@ -6,6 +6,7 @@ import './editQuestionBox.css'
 import { useEffect, useState } from 'react'
 import { EditableTextArea } from '../EditableText/EditableText.jsx'
 import { QuestionOptions } from './QuestionOptions.jsx'
+import { QuestionWarningMessage } from '../QuestionWarningMessage/QuestionWarningMessage.jsx'
 
 export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
   const { config, questions } = useStore(state => state.quiz)
@@ -16,6 +17,7 @@ export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
       <header>
         <QuestionQuery
           questionIndex={currentQuestionIndex}
+          answers={answers}
           query={query}
         />
         <QuestionOptions
@@ -39,6 +41,7 @@ export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
             <AddAnswerButton questionIndex={currentQuestionIndex} />
         }
       </section>
+      <QuestionWarningMessage answers={answers} />
     </div>
   )
 }
@@ -60,7 +63,7 @@ const AddAnswerButton = ({ questionIndex }) => {
   )
 }
 
-const QuestionQuery = ({ query, questionIndex }) => {
+const QuestionQuery = ({ query, questionIndex, answers }) => {
   const [isEditing, setIsEditing] = useState(false)
   const setQuestionQuery = useStore(state => state.setQuestionQuery)
 

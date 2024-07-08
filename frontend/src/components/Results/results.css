@@ -168,7 +168,7 @@ body.results{
 .results-box .buttons .edit-btn svg{
   width: 70%;
 }
-.results-box .buttons button:hover svg{
+.results-box .buttons button:not(:disabled):hover svg{
   scale: 1.05;
 }
 

@@ -47,7 +47,7 @@ export default function PlayMode () {
         className='header-buttons-wrapper'
       >
         <AppLogo />
-        <EditButton />
+        <EditButton onMenu={false} />
       </header>
 
       <section

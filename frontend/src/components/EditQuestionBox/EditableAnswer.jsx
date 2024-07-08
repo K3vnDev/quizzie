@@ -7,18 +7,11 @@ import { Checkbox as CheckboxIcon } from '../../icons/Checkbox.jsx'
 import { Cross as CrossIcon } from '../../icons/Cross.jsx'
 
 export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex }) {
-  const setAnswerText = useStore(state => state.setAnswerText)
   const { color } = colorAndIcon[answerIndex]
   const { text: answerText, isCorrect } = answer
-  const [isEditing, setIsEditing] = useState(answerText === '')
   const [canShowMenu, setCanShowMenu] = useState(true)
-  const deleteAnswer = useStore(state => state.deleteAnswer)
   const answerBoxRef = useRef()
   const timeout = useRef()
-
-  useEffect(() => {
-    if (answerText === '' && !isEditing) deleteAnswer(questionIndex, answerIndex)
-  })
 
   useEffect(() => {
     const handleEnterKey = () => {
@@ -51,30 +44,6 @@ export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex 
     '--bg-color-st': color + 80
   }
 
-  const handleTextChange = text => {
-    setAnswerText(text, questionIndex, answerIndex)
-  }
-
-  if (isEditing) {
-    return (
-      <div
-        className='edit-answer-box'
-        style={style}
-        ref={answerBoxRef}
-      >
-        {icon}
-        <EditableTextArea
-          initialText={answerText}
-          setIsEditing={setIsEditing}
-          handleTextChange={handleTextChange}
-          outsideContainerRef={answerBoxRef}
-          selectOn={['first answer', 'second answer']}
-          maxLength={50}
-        />
-      </div>
-    )
-  }
-
   return (
     <div
       className='edit-answer-box'
@@ -82,15 +51,49 @@ export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex 
       ref={answerBoxRef}
     >
       {icon}
-      <span>{answerText}</span>
-      {
-        canShowMenu &&
-          <EditAnswerMenu
-            setEditingText={setIsEditing}
-            questionIndex={questionIndex}
-            answerIndex={answerIndex}
-          />
-      }
+      <TextContent
+        questionIndex={questionIndex}
+        answerIndex={answerIndex}
+        answerText={answerText}
+        answerBoxRef={answerBoxRef}
+        canShowMenu={canShowMenu}
+      />
     </div>
   )
+}
+
+const TextContent = ({ questionIndex, answerIndex, answerText, answerBoxRef, canShowMenu }) => {
+  const setAnswerText = useStore(state => state.setAnswerText)
+  const deleteAnswer = useStore(state => state.deleteAnswer)
+  const [isEditing, setIsEditing] = useState(answerText === '')
+  useEffect(() => {
+    if (answerText === '' && !isEditing) deleteAnswer(questionIndex, answerIndex)
+  })
+
+  const handleTextChange = text => {
+    setAnswerText(text, questionIndex, answerIndex)
+  }
+
+  return isEditing
+    ? <EditableTextArea
+        initialText={answerText}
+        setIsEditing={setIsEditing}
+        handleTextChange={handleTextChange}
+        outsideContainerRef={answerBoxRef}
+        selectOn={['first answer', 'second answer']}
+        maxLength={50}
+      />
+    : (
+      <>
+        <span>{answerText}</span>
+        {
+          canShowMenu &&
+            <EditAnswerMenu
+              setEditingText={setIsEditing}
+              questionIndex={questionIndex}
+              answerIndex={answerIndex}
+            />
+          }
+      </>
+      )
 }

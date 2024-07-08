@@ -53,7 +53,7 @@ const DeleteButton = ({ deleteQuestion }) => {
       onClick={deleteQuestion}
       disabled={questions.length === 1}
     >
-      <DeleteIcon />
+      <DeleteIcon m='Delete' />
     </button>
   )
 }

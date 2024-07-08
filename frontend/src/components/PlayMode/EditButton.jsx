@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../store/useStore'
 import { Edit as EditIcon } from '../../icons/Edit'
 
-export function EditButton () {
+export function EditButton ({ onMenu }) {
   const navigate = useNavigate()
   const quizOwnedByUser = useStore(state => state.quizOwnedByUser)
   const disabledButtons = useStore(state => state.disabledButtons)
@@ -16,7 +16,7 @@ export function EditButton () {
       <button
         className='edit-btn'
         onClick={handleClick}
-        disabled={disabledButtons}
+        disabled={disabledButtons && onMenu}
       >
         <EditIcon />
       </button>

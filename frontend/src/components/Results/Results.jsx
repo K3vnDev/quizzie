@@ -46,7 +46,7 @@ export default function Results () {
         </div>
         <section className='buttons'>
           <HomeButton />
-          <EditButton />
+          <EditButton onMenu />
           <PlayAgainButton />
         </section>
       </div>

@@ -11,6 +11,7 @@ export function QuestionNavigationPoints ({ navigateQuestion, questionIndex }) {
           <NavigationPoint
             navigateQuestion={navigateQuestion}
             questionIndex={questionIndex}
+            question={question}
             index={index}
             key={index}
           />
@@ -20,19 +21,21 @@ export function QuestionNavigationPoints ({ navigateQuestion, questionIndex }) {
   )
 }
 
-const NavigationPoint = ({ navigateQuestion, questionIndex, index }) => {
-  const handleClick = () => {
-    navigateQuestion(index)
-  }
+const NavigationPoint = ({ navigateQuestion, question, questionIndex, index }) => {
+  const isInvalid = question.answers.every(ans => !ans.isCorrect)
+  const selected = questionIndex === index
 
-  const className = questionIndex === index
-    ? 'navigation-point selected'
-    : 'navigation-point'
+  const className = (() => {
+    let val = 'navigation-point'
+    if (selected) val += ' selected'
+    if (isInvalid) val += ' invalid'
+    return val
+  })()
 
   return (
     <button
       className={className}
-      onClick={handleClick}
+      onClick={() => navigateQuestion(index)}
     />
   )
 }
