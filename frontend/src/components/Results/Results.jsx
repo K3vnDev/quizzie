@@ -56,11 +56,13 @@ export default function Results () {
 }
 
 function QuestionResultBox ({ question, isQuestionCorrect, index }) {
+  const { questions } = useStore(state => state.quiz)
   const { color, icon } = isQuestionCorrect(question)
     ? { color: '#00B15C', icon: <Checkbox /> }
     : { color: '#C12323', icon: <Cross /> }
 
-  const delay = index * 0.15 + 0.4
+  const lengthFactor = (1 - (questions.length / 15)) / 3 + 0.07
+  const delay = index * lengthFactor + 0.4
 
   return (
     <div

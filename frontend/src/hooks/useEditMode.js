@@ -21,8 +21,8 @@ export function useEditMode () {
     resetEditMode()
   }, [])
 
-  const navigateQuestion = direction => {
-    switch (direction) {
+  const navigateQuestion = value => {
+    switch (value) {
       case 'right':
         if (currentQuestionIndex < questions.length - 1) {
           setCurrentQuestionIndex(c => c + 1)
@@ -34,6 +34,12 @@ export function useEditMode () {
 
       case 'left':
         setCurrentQuestionIndex(c => c - 1)
+        break
+
+      default:
+        if (typeof (value) === 'number') {
+          setCurrentQuestionIndex(value)
+        }
         break
     }
   }

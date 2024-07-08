@@ -8,6 +8,7 @@ import { Left as LeftIcon } from '../../icons/Left.jsx'
 import { Right as RightIcon } from '../../icons/Rigth.jsx'
 import { TransitionRound } from '../TransitionRound/TransitionRound.jsx'
 import { EditModeButtonsHeader } from '../EditModeButtonsHeader/EditModeButtonsHeader.jsx'
+import { QuestionNavigationPoints } from '../QuestionNavigationPoints/QuestionNavigationPoints.jsx'
 
 export function EditMode () {
   const {
@@ -21,14 +22,18 @@ export function EditMode () {
       <EditModeButtonsHeader />
 
       <TitleAndProgress
-        currentQuestionIndex={currentQuestionIndex}
+        questionIndex={currentQuestionIndex}
       />
       <EditQuestionBox
         currentQuestionIndex={currentQuestionIndex}
         deleteQuestion={deleteQuestion}
       />
-      <QuestionNavigation
-        currentQuestionIndex={currentQuestionIndex}
+      <QuestionNavigationArrows
+        questionIndex={currentQuestionIndex}
+        navigateQuestion={navigateQuestion}
+      />
+      <QuestionNavigationPoints
+        questionIndex={currentQuestionIndex}
         navigateQuestion={navigateQuestion}
       />
       <TransitionRound />
@@ -36,7 +41,7 @@ export function EditMode () {
   )
 }
 
-const TitleAndProgress = ({ currentQuestionIndex }) => {
+const TitleAndProgress = ({ questionIndex }) => {
   const { name: quizName, questions } = useStore(state => state.quiz)
   const setQuizName = useStore(state => state.setQuizName)
   const [isEditing, setIsEditing] = useState(false)
@@ -65,26 +70,26 @@ const TitleAndProgress = ({ currentQuestionIndex }) => {
           }
       </div>
       <span className='quiz-progress'>
-        {`Question ${currentQuestionIndex + 1} of ${questions.length}`}
+        {`Question ${questionIndex + 1} of ${questions.length}`}
       </span>
     </div>
   )
 }
 
-const QuestionNavigation = ({ navigateQuestion, currentQuestionIndex }) => {
+const QuestionNavigationArrows = ({ navigateQuestion, questionIndex }) => {
   return (
     <div className='edit-question-navigation'>
       <button
         className='left'
         onClick={() => navigateQuestion('left')}
-        disabled={currentQuestionIndex === 0}
+        disabled={questionIndex === 0}
       >
         <LeftIcon />
       </button>
       <button
         className='right'
         onClick={() => navigateQuestion('right')}
-        disabled={currentQuestionIndex >= 14}
+        disabled={questionIndex >= 14}
       >
         <RightIcon />
       </button>

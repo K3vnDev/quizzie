@@ -1,0 +1,41 @@
+.question-navigation-points{
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  translate: -50%;
+  display: flex;
+  --size: 22px;
+  gap: calc(var(--size) / 1.1);
+}
+
+.question-navigation-points .navigation-point{
+  width: var(--size);
+  height: var(--size);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #2d2d2d;
+  transition: all .15s ease-out;
+  position: relative;
+
+  &:hover{
+    scale: 1.1;
+    filter: brightness(120%);
+  }
+  &::before{
+    position: absolute;
+    content: '';
+    --ratio: 150%;
+    width: var(--ratio);
+    height: var(--ratio);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+}
+
+.question-navigation-points .navigation-point.selected{
+  scale: 1.25;
+  filter: brightness(150%);
+  cursor: default;
+}

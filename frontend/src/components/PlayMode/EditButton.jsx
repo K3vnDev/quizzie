@@ -5,6 +5,7 @@ import { Edit as EditIcon } from '../../icons/Edit'
 export function EditButton () {
   const navigate = useNavigate()
   const quizOwnedByUser = useStore(state => state.quizOwnedByUser)
+  const disabledButtons = useStore(state => state.disabledButtons)
 
   const handleClick = () => {
     navigate('/edit')
@@ -15,6 +16,7 @@ export function EditButton () {
       <button
         className='edit-btn'
         onClick={handleClick}
+        disabled={disabledButtons}
       >
         <EditIcon />
       </button>

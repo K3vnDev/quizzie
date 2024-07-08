@@ -7,7 +7,6 @@ export default function ProgressMessage ({ progress }) {
   })
 
   useEffect(() => {
-    console.log(current, last)
     setStyle({
       animation: 'message-slide-in .3s ease-out both, progress-message-pop 1s ease both'
     })

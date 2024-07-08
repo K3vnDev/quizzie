@@ -93,7 +93,7 @@ body.play{
 
 
 @keyframes progress-message-pop{
-  20%, 25%{
+  3%, 7%{
     scale: 1.05;
     filter: brightness(120%);
   }
