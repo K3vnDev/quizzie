@@ -58,11 +58,8 @@ export function DashboardPage () {
           username={userData.username}
           profileColor={userData.profileColor}
         />
-        <button className='search'>
-          <SearchIcon />
-        </button>
+        <SearchButton />
         <DeleteModeButton
-          deleteMode={deleteMode}
           setDeleteMode={setDeleteMode}
           userQuizzes={userData.quizzes}
         />
@@ -106,7 +103,7 @@ const UserQuizzesHeader = ({ deleteMode, setDeleteMode }) => {
   )
 }
 
-const DeleteModeButton = ({ deleteMode, setDeleteMode, userQuizzes }) => {
+const DeleteModeButton = ({ setDeleteMode, userQuizzes }) => {
   const handleClick = () => {
     setDeleteMode(c => !c)
   }
@@ -118,6 +115,22 @@ const DeleteModeButton = ({ deleteMode, setDeleteMode, userQuizzes }) => {
       disabled={userQuizzes.length === 0}
     >
       <DeleteIcon />
+    </button>
+  )
+}
+
+const SearchButton = () => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate('/browse')
+  }
+
+  return (
+    <button
+      className='search'
+      onClick={handleClick}
+    >
+      <SearchIcon />
     </button>
   )
 }

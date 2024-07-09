@@ -7,6 +7,7 @@ import PlayPage from './routes/PlayPage/PlayPage.jsx'
 import EditPage from './routes/EditPage/EditPage.jsx'
 import { LoginPage } from './routes/LoginPage/LoginPage.jsx'
 import { DashboardPage } from './routes/DashboardPage/DashboardPage.jsx'
+import { BrowsePage } from './routes/BrowsePage/BrowsePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,12 @@ const router = createBrowserRouter([
     element: <LoginPage />
   },
   {
-    path: 'dashboard',
+    path: '/dashboard',
     element: <DashboardPage />
+  },
+  {
+    path: '/browse',
+    element: <BrowsePage />
   }
 ])
 

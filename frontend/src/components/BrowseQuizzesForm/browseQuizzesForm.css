@@ -1,0 +1,66 @@
+.browse-quizzes-form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 60px;
+  gap: 12px;
+}
+
+.browse-quizzes-form h2{
+  font-family: Poppins;
+  font-size: 64px;
+}
+
+.browse-quizzes-form label{
+  display: flex;
+  background: #0C0C0C;
+  border: 1px solid #313131;
+  border-radius: 10px;
+  padding: 0 12px;
+  width: 600px;
+  align-items: center;
+  gap: 14px;
+  height: 54px;
+  cursor: pointer;
+  transition: all .1s ease-out;
+
+  &:hover{
+    border: 1px solid #4e4e4e;
+  }
+}
+
+.browse-quizzes-form label svg{
+  width: 26px;
+  height: 26px;
+  opacity: .6;
+  transition: all .25s ease-out;
+}
+
+.browse-quizzes-form label input{
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.browse-quizzes-form label input::placeholder{
+  transition: opacity .2s ease;
+  color: #4F4F4F;
+  font-size: 18px;
+  font-family: Roboto;
+}
+
+.browse-quizzes-form label input:focus{
+  cursor: text;
+}
+
+.browse-quizzes-form label input:focus::placeholder{
+  opacity: .7;
+}
+
+.browse-quizzes-form label input{
+  color: #dbdbdb;
+  font-size: 18px;
+  font-family: Roboto;
+}
