@@ -1,29 +1,33 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { Search as SearchIcon } from '../../icons/Search.jsx'
 import './browseQuizzesForm.css'
 import { validateInput } from '../../services/validateInput.js'
 import { useCantWriteAnimation } from '../../hooks/useCantWriteAnimation.js'
+import { LoadingArrows } from '../LoadingArrows/LoadingArrows.jsx'
 
-export function BrowseQuizzesForm () {
-  const [input, setInput] = useState('')
+export function BrowseQuizzesForm ({ input, setInput, isFetching }) {
   const { animation, triggerAnimation } = useCantWriteAnimation()
   const inputRef = useRef()
 
   const handleChange = e => {
     const { value } = e.target
-    const newInput = validateInput({ prevInput: input, newInput: value, maxLength: 20 })
-    if (newInput === input) {
+    const validatedInput = validateInput({ prevInput: input, newInput: value, maxLength: 20 })
+    if (validatedInput === input) {
       triggerAnimation()
       return
     }
-    setInput(newInput)
+    setInput(validatedInput)
   }
 
   return (
     <header className='browse-quizzes-form'>
       <h2>Browse Quizzes</h2>
       <label style={{ animation }}>
-        <SearchIcon />
+        {
+          isFetching
+            ? <LoadingArrows />
+            : <SearchIcon />
+        }
         <input
           placeholder='name or id...'
           value={input}

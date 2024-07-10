@@ -5,15 +5,43 @@ import { User } from '../schemas/User.js'
 import { userAuth } from '../middleware/userAuth.js'
 import { $error, $success } from '../services/jsonMessages.js'
 import { generateQuizColor } from '../services/generateQuizColor.js'
+import { findMatchedQuizzes } from '../services/findMatchedQuizzes.js'
 
 export const quizRouter = Router()
 
 // get all quizzes
-quizRouter.get('/all', async (req, res) => {
+quizRouter.get('/search', async (req, res) => {
   try {
-    const quizzes = await Quiz.find({})
-    res.json(quizzes)
-  } catch { res.status(500) }
+    const allQuizzes = await Quiz.find({})
+    res.json({
+      ...$success('All Quizzes found'),
+      allQuizzes
+    })
+  } catch { res.status(500).json($error('couldnt get quizzes')) }
+})
+
+// get quizzes by search
+quizRouter.get('/search/:query', async (req, res) => {
+  const { query } = req.params
+
+  try {
+    const allQuizzes = await Quiz.find({})
+    const quizFromId = await Quiz.findOne({ id: query })
+    if (quizFromId) {
+      return res
+        .json({
+          ...$success('Quiz found by id'),
+          allQuizzes,
+          quizFromId
+        })
+    }
+    const matchedQuizzes = findMatchedQuizzes(query, allQuizzes)
+    return res
+      .json({
+        ...$success('Quizzes found by query'),
+        matchedQuizzes
+      })
+  } catch { res.status(500).json($error('couldnt search quizzes')) }
 })
 
 // get quiz

@@ -4,34 +4,20 @@ import { useStore } from '../../store/useStore.js'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import './browseQuizzesGrid.css'
-const API_URL = import.meta.env.VITE_API_URL
 
-export function BrowseQuizzesGrid () {
-  const [quizzes, setQuizzes] = useState([])
+export function BrowseQuizzesGrid ({ query, quizzes }) {
   const [notDisabled, setNotDisabled] = useState(true)
-
-  const fetchQuizzes = async () => {
-    try {
-      const res = await fetch(`${API_URL}/quiz/all`)
-      const data = await res.json()
-      setQuizzes(data)
-    } catch {}
-  }
-
-  useEffect(() => {
-    fetchQuizzes()
-  }, [])
 
   if (quizzes.length === 0) return
 
   return (
     <section className='browse-quizzes-grid'>
       {
-        quizzes.map((quiz, index) => (
+        quizzes.map(quiz => (
           <BrowseQuiz
             notDisabled={notDisabled}
             setNotDisabled={setNotDisabled}
-            key={index}
+            key={quiz.id}
             quiz={quiz}
           />
         ))
