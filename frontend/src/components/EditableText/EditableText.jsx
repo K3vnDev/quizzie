@@ -1,23 +1,12 @@
 import { useEditableText } from '../../hooks/useEditableText'
-import { useEffect, useRef, useState } from 'react'
+import { useCantWriteAnimation } from '../../hooks/useCantWriteAnimation'
+import { useEffect, useRef } from 'react'
 import './editableText.css'
-import { useCooldown } from '../../hooks/useCooldown'
-
-const useTextAnimation = () => {
-  const [animation, setAnimation] = useState('none')
-  const animationTime = 0.25
-  const triggerAnimation = useCooldown({
-    action: () => setAnimation(`not-able-to-keep-writing ${animationTime}s ease both`),
-    reset: () => setAnimation('none'),
-    cooldown: animationTime * 1000
-  })
-
-  return { animation, triggerAnimation }
-}
+import { validateInput } from '../../services/validateInput'
 
 export function EditableTextArea ({ initialText, setIsEditing, handleTextChange, maxLength, outsideContainerRef, selectOn }) {
   const inputRef = useRef()
-  const { animation, triggerAnimation } = useTextAnimation()
+  const { animation, triggerAnimation } = useCantWriteAnimation()
   const exitEditMode = () => setIsEditing(false)
 
   const resizeScroll = setCursor => {
@@ -40,17 +29,11 @@ export function EditableTextArea ({ initialText, setIsEditing, handleTextChange,
 
   const handleChange = e => {
     const { value } = e.target
-    if (
-      (value.length > maxLength &&
-      value.length >= initialText.length) ||
-      value.slice(-2) === '  '
-    ) {
-      triggerAnimation()
-      return
-    }
-
-    handleTextChange(value.trimStart())
-    resizeScroll(false)
+    const newInput = validateInput({ prevInput: initialText, newInput: value, maxLength })
+    if (newInput !== initialText) {
+      handleTextChange(value.trimStart())
+      resizeScroll()
+    } else triggerAnimation()
   }
 
   const selectInitialText = () => {
@@ -80,7 +63,7 @@ export function EditableTextArea ({ initialText, setIsEditing, handleTextChange,
 
 export function EditableTextInput ({ initialText, maxLength, setIsEditing, handleTextChange }) {
   const inputRef = useRef()
-  const { animation, triggerAnimation } = useTextAnimation()
+  const { animation, triggerAnimation } = useCantWriteAnimation()
   const exitEditMode = () => setIsEditing(false)
 
   const resizeScroll = () => {
@@ -96,17 +79,11 @@ export function EditableTextInput ({ initialText, maxLength, setIsEditing, handl
 
   const handleChange = e => {
     const { value } = e.target
-    if (
-      (value.length > maxLength &&
-      value.length >= initialText.length) ||
-      value.slice(-2) === '  '
-    ) {
-      triggerAnimation()
-      return
-    }
-
-    handleTextChange(value.trimStart())
-    resizeScroll()
+    const newInput = validateInput({ prevInput: initialText, newInput: value, maxLength })
+    if (newInput !== initialText) {
+      handleTextChange(value.trimStart())
+      resizeScroll()
+    } else triggerAnimation()
   }
 
   return (
