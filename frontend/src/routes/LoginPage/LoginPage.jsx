@@ -34,10 +34,6 @@ export function LoginPage () {
     window.localStorage.setItem('token', token)
   }
 
-  const handleLogOut = async () => {
-    window.localStorage.removeItem('token')
-  }
-
   return (
     <>
       <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
@@ -60,9 +56,6 @@ export function LoginPage () {
         </button>
         <button onClick={handleSignUp}>
           Sign Up
-        </button>
-        <button onClick={handleLogOut}>
-          Logout
         </button>
       </main>
       {

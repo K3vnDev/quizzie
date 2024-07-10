@@ -15,12 +15,18 @@
   left: 0;
 
   background: #1C1C1C;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 0;
+}
+
+#root.dashboard aside section{
   width: var(--side-bar-width);
   --element-size: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
   gap: 40px;
 }
 
@@ -37,6 +43,7 @@
   align-items: center;
   gap: 40px;
   height: 90px;
+  user-select: none;
 }
 
 #root.dashboard main header h2{
@@ -44,8 +51,9 @@
 }
 
 #root.dashboard main header h3{
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 600;
+  font-style: italic;
 }
 
 #root.dashboard main header button{
@@ -55,6 +63,7 @@
   border-radius: 6px;
   background: #313131;
   border: 1px solid #5A5A5A;
+  font-style: italic;
   cursor: pointer;
 
   transition: all .15s ease;
@@ -68,20 +77,6 @@
   }
 }
 
-#root.dashboard main header .buttons{
-  --button-size: 40px;
-  display: flex;
-  gap: 14px;
-}
-
-#root.dashboard main header .buttons button{
-  height: var(--button-size);
-  width: var(--button-size);
-  border: none;
-  border-radius: 6px;
-}
-
-
 #root.dashboard aside .user-profile-pic{
   width: var(--element-size);
   height: var(--element-size);
@@ -93,6 +88,20 @@
   border: none;
   border-radius: 50%;
   background: #343434;
+  cursor: pointer;
+
+  transition: 
+    all .25s ease-out,
+    filter .15s ease
+  ;
+  &:hover{
+    scale: 1.05;
+    filter: brightness(120%);
+  }
+  &:active{
+    scale: .98;
+    filter: brightness(150%);
+  }
 }
 
 #root.dashboard aside button svg{
@@ -102,11 +111,13 @@
 }
 
 
-#root.dashboard aside .delete-btn{
+#root.dashboard aside .delete-btn,
+#root.dashboard aside .logout-btn{
   background: #262626;
 }
 
-#root.dashboard aside .delete-btn svg{
+#root.dashboard aside .delete-btn svg, 
+#root.dashboard aside .logout-btn svg{
   stroke-width: 1.5;
   color: #b8b8b8;
 }

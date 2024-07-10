@@ -21,7 +21,9 @@ export function MenuQuestion () {
     },
     {
       text: 'Play an existing quiz',
-      callback: () => {}
+      callback: () => {
+        navigate('/browse')
+      }
     },
     {
       text: 'Make my own quiz',

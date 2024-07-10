@@ -2,12 +2,10 @@ import { useEffect, useState } from 'react'
 import './dashboardPage.css'
 import { useNavigate } from 'react-router-dom'
 import useRouteClassName from '../../hooks/useRouteClassName.js'
-import { Search as SearchIcon } from '../../icons/Search.jsx'
-import { UserProfilePic } from '../../components/UserProfilePic/UserProfilePic.jsx'
 import { UserQuizzesGrid } from '../../components/UserQuizzesGrid/UserQuizzesGrid.jsx'
 import { TransitionRound } from '../../components/TransitionRound/TransitionRound.jsx'
-import { Delete as DeleteIcon } from '../../icons/Delete.jsx'
 import useReset from '../../hooks/useReset.js'
+import { DashboardSidebar } from '../../components/DashboardSidebar/DashboardSidebar.jsx'
 const { VITE_API_URL: API_URL } = import.meta.env
 
 export function DashboardPage () {
@@ -53,17 +51,11 @@ export function DashboardPage () {
 
   return (
     <>
-      <aside>
-        <UserProfilePic
-          username={userData.username}
-          profileColor={userData.profileColor}
-        />
-        <SearchButton />
-        <DeleteModeButton
-          setDeleteMode={setDeleteMode}
-          userQuizzes={userData.quizzes}
-        />
-      </aside>
+      <DashboardSidebar
+        userData={userData}
+        deleteMode={deleteMode}
+        setDeleteMode={setDeleteMode}
+      />
       <main>
         <UserQuizzesHeader
           deleteMode={deleteMode}
@@ -88,7 +80,7 @@ const UserQuizzesHeader = ({ deleteMode, setDeleteMode }) => {
   if (deleteMode) {
     return (
       <header>
-        <h3>Select a quiz to delete</h3>
+        <h3>Select a quiz to delete...</h3>
         <button onClick={handleCancel}>
           Cancel
         </button>
@@ -100,37 +92,5 @@ const UserQuizzesHeader = ({ deleteMode, setDeleteMode }) => {
     <header>
       <h2>Your Quizzes</h2>
     </header>
-  )
-}
-
-const DeleteModeButton = ({ setDeleteMode, userQuizzes }) => {
-  const handleClick = () => {
-    setDeleteMode(c => !c)
-  }
-
-  return (
-    <button
-      className='delete-btn'
-      onClick={handleClick}
-      disabled={userQuizzes.length === 0}
-    >
-      <DeleteIcon />
-    </button>
-  )
-}
-
-const SearchButton = () => {
-  const navigate = useNavigate()
-  const handleClick = () => {
-    navigate('/browse')
-  }
-
-  return (
-    <button
-      className='search'
-      onClick={handleClick}
-    >
-      <SearchIcon />
-    </button>
   )
 }
