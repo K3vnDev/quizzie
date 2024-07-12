@@ -1,0 +1,72 @@
+.browse-quiz{
+  width: var(--element-width);
+  height: var(--element-height);
+  background: var(--bg-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  position: relative;
+  user-select: none;
+  padding: 48px 52px;
+  transition: all .6s ease-out;
+}
+
+.browse-quiz.not-disabled{
+  cursor: pointer;
+  transition: all .25s ease-out;
+  &:hover{
+    scale: 1.04;
+    filter: brightness(115%);
+    box-shadow: 0 0 10px var(--bg-color);
+  }
+  &:active{
+    scale: .98;
+    filter: brightness(90%);
+    box-shadow: none;
+  }
+}
+
+.browse-quiz h4{
+  text-align: center;
+  font-size: 38px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.browse-quiz .info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.browse-quiz .info h6{
+  font-size: 24px;
+  font-weight: 400;
+  opacity: .9;
+}
+
+.browse-quiz .info div{
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  opacity: .75;
+}
+
+.browse-quiz .info div span{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.browse-quiz .info div span svg{
+  --size: 26px;
+  width: var(--size);
+  height: var(--size);
+}
+
+.browse-quiz .info div span p{
+  font-size: 20px;
+}

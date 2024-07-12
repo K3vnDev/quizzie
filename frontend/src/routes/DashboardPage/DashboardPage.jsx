@@ -80,7 +80,7 @@ const UserQuizzesHeader = ({ deleteMode, setDeleteMode }) => {
   if (deleteMode) {
     return (
       <header>
-        <h3>Select a quiz to delete...</h3>
+        <h3>Click on a quiz to delete...</h3>
         <button onClick={handleCancel}>
           Cancel
         </button>

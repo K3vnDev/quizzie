@@ -31,8 +31,7 @@ quizRouter.get('/search/:query', async (req, res) => {
       return res
         .json({
           ...$success('Quiz found by id'),
-          allQuizzes,
-          quizFromId
+          matchedQuizzes: [quizFromId]
         })
     }
     const matchedQuizzes = findMatchedQuizzes(query, allQuizzes)
