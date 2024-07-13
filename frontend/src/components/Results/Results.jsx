@@ -117,7 +117,7 @@ function ScoreMessage ({ score }) {
 
 function HomeButton () {
   const navigate = useNavigate()
-  const disabledButtons = useStore(state => state.disabledButtons)
+  const transitioning = useStore(state => state.transitioning)
 
   const handleClick = () => {
     navigate('/')
@@ -126,7 +126,7 @@ function HomeButton () {
   return (
     <button
       onClick={handleClick}
-      disabled={disabledButtons}
+      disabled={transitioning}
     >
       <Home />
     </button>
@@ -135,30 +135,19 @@ function HomeButton () {
 
 function PlayAgainButton () {
   const { resetPlayMode } = useReset()
-  const [setTransitioning, disabledButtons, setDisabledButtons] = useStore(
-    state => [
-      state.setTransitioning,
-      state.disabledButtons,
-      state.setDisabledButtons
-    ]
-  )
+  const setTransitioning = useStore(state => state.setTransitioning)
+  const transitioning = useStore(state => state.transitioning)
 
   const handleClick = async () => {
     setTransitioning(true)
-    setDisabledButtons(true)
     await waitForSeconds(1)
     resetPlayMode()
   }
 
-  useEffect(() => {
-    setDisabledButtons(false)
-    return () => setDisabledButtons(false)
-  }, [])
-
   return (
     <button
       onClick={handleClick}
-      disabled={disabledButtons}
+      disabled={transitioning}
     >
       <PlayAgain />
     </button>

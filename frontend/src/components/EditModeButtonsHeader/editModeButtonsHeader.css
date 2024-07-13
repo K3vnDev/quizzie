@@ -1,4 +1,4 @@
-body.edit .edit-mode-header{
+body.edit .edit-mode-header {
   --nav-size: 80px;
   display: flex;
   width: 100vw;
@@ -11,7 +11,7 @@ body.edit .edit-mode-header{
   top: 0;
 }
 
-body.edit .edit-mode-header section{
+body.edit .edit-mode-header section {
   display: flex;
   align-items: center;
   --buttons-gap: 28px;
@@ -19,51 +19,50 @@ body.edit .edit-mode-header section{
   gap: var(--buttons-gap);
 }
 
-body.edit .edit-mode-header section button{
+body.edit .edit-mode-header section button {
   border: none;
   border-radius: 12px;
   height: var(--nav-size);
   width: var(--nav-size);
   --svg-size: 85%;
 }
-body.edit .edit-mode-header section button svg{
+body.edit .edit-mode-header section button svg {
   width: var(--svg-size);
   height: var(--svg-size);
   stroke-width: 1.2;
 }
-body.edit .edit-mode-header section .quiz-share-btn{
+body.edit .edit-mode-header section .quiz-share-btn {
   background: #1f1f1f;
 }
-body.edit .edit-mode-header section .quiz-share-btn svg{
+body.edit .edit-mode-header section .quiz-share-btn svg {
   --svg-size: 65%;
   stroke-width: 1.5;
   color: gray;
 }
 
-.quiz-settings-btn, .quiz-play-btn, .quiz-share-btn{
-  background: var(--bg-color);
-  transition: 
-    filter .1s ease,
-    scale .25s ease-out
-  ;
+body.edit .edit-mode-header section a {
+  margin-left: 12px;
 }
 
-.quiz-share-btn:not(:disabled), 
-.quiz-settings-btn:not(:disabled), 
-.quiz-play-btn:not(:disabled){
+body.edit .edit-mode-header button:not(.app-logo) {
+  background: var(--bg-color);
+  transition: filter 0.1s ease, scale 0.25s ease-out;
+}
+
+body.edit .edit-mode-header button:not(.app-logo):not(:disabled) {
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     filter: brightness(115%);
     scale: 1.03;
   }
-  &:active{
+  &:active {
     filter: brightness(90%);
-    scale: .98;
+    scale: 0.98;
   }
 }
 
-.quiz-url-copied-message{
+.quiz-url-copied-message {
   --bg-color: #350d89;
   text-wrap: nowrap;
   position: absolute;
@@ -77,7 +76,7 @@ body.edit .edit-mode-header section .quiz-share-btn svg{
   padding: 4px 12px;
   opacity: 0;
 
-  &::before{
+  &::before {
     content: '';
     background: var(--bg-color);
     --size: 24px;
@@ -92,20 +91,22 @@ body.edit .edit-mode-header section .quiz-share-btn svg{
   }
 }
 
-@keyframes copied-message-appear{
-  0%, 100%{
-    scale: .8 .4;
+@keyframes copied-message-appear {
+  0%,
+  100% {
+    scale: 0.8 0.4;
     opacity: 0;
     translate: 50% -50%;
   }
-  10%, 85%{
+  10%,
+  85% {
     scale: 1;
     opacity: 1;
     translate: 50% 10%;
   }
 }
 
-body.edit .edit-mode-header section > div{
+body.edit .edit-mode-header section > div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,30 +114,31 @@ body.edit .edit-mode-header section > div{
   margin-left: 12px;
 }
 
-body.edit .edit-mode-header section div svg{
+body.edit .edit-mode-header section div svg {
   width: 86%;
   height: 86%;
-  opacity: .2;
-  animation: cloud-svg-pop .2s ease-out both;
+  opacity: 0.2;
+  animation: cloud-svg-pop 0.2s ease-out both;
 }
 
-@keyframes cloud-svg-pop{
-  0%{
-    scale: .99;
+@keyframes cloud-svg-pop {
+  0% {
+    scale: 0.99;
   }
-  20%{
+  20% {
     scale: 1.05;
-    opacity: .25;
+    opacity: 0.25;
   }
-  100%{
+  100% {
     scale: 1;
   }
 }
 
-.quiz-settings-btn:disabled, .quiz-play-btn:disabled{
-  opacity: .9;
+.quiz-settings-btn:disabled,
+.quiz-play-btn:disabled {
+  opacity: 0.9;
 }
 
-body.edit .edit-mode-header .app-logo{
+body.edit .edit-mode-header .app-logo {
   --app-logo-size: var(--nav-size);
 }

@@ -1,48 +1,48 @@
-import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { colorAndIcon } from '../../services/colorAndIcon.jsx'
 import { useStore } from '../../store/useStore.js'
 import { demoQuiz } from '../../store/quizzes/demoQuiz.js'
 import { validateQuiz } from '../../services/validateQuiz.js'
 import { templateQuiz } from '../../store/quizzes/templateQuiz.js'
+import { useTransition } from '../../hooks/useTransition.js'
 
 export function MenuQuestion () {
-  const navigate = useNavigate()
-  const [buttonPressed, setButtonPressed] = useState(false)
   const setQuiz = useStore(state => state.setQuiz)
+  const navigate = useNavigate()
+  const { makeTransition } = useTransition()
+
+  const handleMakeMyOwnQuiz = () => {
+    const quizFromStorage = JSON.parse(
+      window.localStorage.getItem('localQuiz')
+    )
+    if (quizFromStorage) {
+      const { success } = validateQuiz(quizFromStorage)
+      setQuiz(
+        success
+          ? quizFromStorage
+          : templateQuiz
+      )
+    } else {
+      setQuiz(templateQuiz)
+    }
+    navigate('/edit')
+  }
 
   const answers = [
     {
       text: 'Play a demo quiz',
       callback: () => {
         setQuiz(demoQuiz)
-        navigate('/play')
+        makeTransition('/play')
       }
     },
     {
       text: 'Play an existing quiz',
-      callback: () => {
-        navigate('/browse')
-      }
+      callback: () => navigate('/browse')
     },
     {
       text: 'Make my own quiz',
-      callback: () => {
-        const quizFromStorage = JSON.parse(
-          window.localStorage.getItem('localQuiz')
-        )
-        if (quizFromStorage) {
-          const { success } = validateQuiz(quizFromStorage)
-          setQuiz(
-            success
-              ? quizFromStorage
-              : templateQuiz
-          )
-        } else {
-          setQuiz(templateQuiz)
-        }
-        navigate('/edit')
-      }
+      callback: handleMakeMyOwnQuiz
     }
   ]
 
@@ -55,8 +55,6 @@ export function MenuQuestion () {
             <MenuAnswer
               index={i} key={i}
               callback={ans.callback}
-              buttonPressed={buttonPressed}
-              setButtonPressed={setButtonPressed}
             >
               {ans.text}
             </MenuAnswer>
@@ -68,26 +66,15 @@ export function MenuQuestion () {
   )
 }
 
-function MenuAnswer ({ children, callback, index, buttonPressed, setButtonPressed }) {
+function MenuAnswer ({ children, callback, index }) {
   const { color, icon } = colorAndIcon[index]
-  const setTransitioning = useStore(state => state.setTransitioning)
-  const timeoutRef = useRef()
-
-  const handleClick = () => {
-    setButtonPressed(true)
-    setTransitioning(true)
-    timeoutRef.current = setTimeout(callback, 1000)
-  }
-
-  useEffect(() => {
-    return () => clearTimeout(timeoutRef.current)
-  }, [])
+  const transitioning = useStore(state => state.transitioning)
 
   return (
     <button
       className='answer-box'
-      onClick={handleClick}
-      disabled={buttonPressed}
+      onClick={callback}
+      disabled={transitioning}
       style={{
         '--bg-color': color,
         '--bg-color-st': color + '80'

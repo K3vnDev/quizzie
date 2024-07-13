@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../store/useStore'
-import { useEffect, useRef } from 'react'
+import { useTransition } from '../../hooks/useTransition.js'
 import { Timer as TimerIcon } from '../../icons/Timer.jsx'
 import { Question as QuestionIcon } from '../../icons/Question.jsx'
 import { Edit as EditIcon } from '../../icons/Edit.jsx'
@@ -70,21 +70,12 @@ export function UserQuiz ({ quizzes, index, deleteMode, setUserData }) {
 
 const UserQuizEditMenu = ({ quiz }) => {
   const setQuiz = useStore(state => state.setQuiz)
-  const setTransitioning = useStore(state => state.setTransitioning)
+  const { makeTransition } = useTransition()
   const navigate = useNavigate()
-  const timeoutRef = useRef()
-
-  useEffect(() => {
-    return () => clearTimeout(timeoutRef.current)
-  }, [])
 
   const handleEnterPlayMode = () => {
-    setTransitioning(true)
-
-    timeoutRef.current = setTimeout(() => {
-      setQuiz(quiz)
-      navigate('/play')
-    }, 1000)
+    setQuiz(quiz)
+    makeTransition('/play')
   }
 
   const handleEnterEditMode = () => {

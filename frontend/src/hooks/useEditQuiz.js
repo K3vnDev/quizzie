@@ -99,9 +99,7 @@ export function useEditQuiz () {
   }, [quiz])
 
   useEffect(() => {
-    if (debouncedQuiz) {
-      saveQuizToDB(debouncedQuiz)
-    }
+    if (debouncedQuiz && token) saveQuizToDB(debouncedQuiz)
   }, [debouncedQuiz])
 
   return { isLoading }

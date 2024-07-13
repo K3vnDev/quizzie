@@ -34,6 +34,7 @@ export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode }) {
 
 const CreateNewQuizButton = () => {
   const setQuiz = useStore(state => state.setQuiz)
+  const transitioning = useStore(state => state.transitioning)
   const [buttonLoading, setButtonLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -69,7 +70,7 @@ const CreateNewQuizButton = () => {
     <button
       className={className}
       onClick={handleClick}
-      disabled={buttonLoading}
+      disabled={buttonLoading || transitioning}
     >
       {
         buttonLoading

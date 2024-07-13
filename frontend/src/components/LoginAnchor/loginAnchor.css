@@ -1,0 +1,14 @@
+.login-anchor {
+  font-size: 22px;
+  color: #989898;
+  cursor: pointer;
+
+  transition: all 0.1s ease;
+  &:hover {
+    color: #a37df3;
+    text-decoration: underline;
+  }
+  &:active {
+    opacity: 0.5;
+  }
+}

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Play as PlayIcon } from '../../icons/Play.jsx'
 import { Share as ShareIcon } from '../../icons/Share.jsx'
 import { Settings as SettingsIcon } from '../../icons/Settings.jsx'
@@ -10,32 +9,30 @@ import { Check as CheckIcon } from '../../icons/Check.jsx'
 import { useCooldown } from '../../hooks/useCooldown.js'
 import { useStore } from '../../store/useStore.js'
 import { AppLogo } from '../AppLogo/AppLogo.jsx'
+import { LoginAnchor } from '../LoginAnchor/LoginAnchor.jsx'
 import { LoadingArrows } from '../LoadingArrows/LoadingArrows.jsx'
 import './editModeButtonsHeader.css'
+import { useTransition } from '../../hooks/useTransition.js'
 
 export function EditModeButtonsHeader () {
-  const [disabledButtons, setDisabledButtons] = useState(false)
+  const token = window.localStorage.getItem('token')
 
   return (
     <header className='edit-mode-header'>
       <section>
-        <AppLogo
-          disabledButtons={disabledButtons}
-        />
-        <CloudInfo />
+        <AppLogo />
+        {
+          token
+            ? <CloudInfo />
+            : <LoginAnchor />
+        }
+
       </section>
 
       <section>
-        <ShareButton
-          disabledButtons={disabledButtons}
-        />
-        <SettingsButton
-          disabledButtons={disabledButtons}
-        />
-        <PlayButton
-          disabledButtons={disabledButtons}
-          setDisabledButtons={setDisabledButtons}
-        />
+        <ShareButton />
+        <SettingsButton />
+        <PlayButton />
       </section>
     </header>
   )
@@ -58,8 +55,9 @@ const CloudInfo = () => {
   )
 }
 
-const ShareButton = ({ disabledButtons }) => {
+const ShareButton = () => {
   const { id } = useStore(state => state.quiz)
+  const transitioning = useStore(state => state.transitioning)
   const [animation, setAnimation] = useState('none')
   const animationTime = 2.5
 
@@ -81,8 +79,8 @@ const ShareButton = ({ disabledButtons }) => {
       <>
         <button
           className='quiz-share-btn'
-          style={{ '--bg-color': '#343434' }}
-          disabled={disabledButtons || animation !== 'none'}
+          style={{ '--bg-color': '#222' }}
+          disabled={transitioning || animation !== 'none'}
           onClick={handleClick}
         >
           {
@@ -102,11 +100,13 @@ const ShareButton = ({ disabledButtons }) => {
     : <></>
 }
 
-const SettingsButton = ({ disabledButtons }) => {
+const SettingsButton = () => {
+  const transitioning = useStore(state => state.transitioning)
+
   return (
     <button
       className='quiz-settings-btn'
-      disabled={disabledButtons}
+      disabled={transitioning}
       style={{ '--bg-color': '#343434' }}
     >
       <SettingsIcon />
@@ -114,18 +114,12 @@ const SettingsButton = ({ disabledButtons }) => {
   )
 }
 
-const PlayButton = ({ disabledButtons, setDisabledButtons }) => {
-  const navigate = useNavigate()
+const PlayButton = () => {
   const timeoutRef = useRef()
-  const setTransitioning = useStore(state => state.setTransitioning)
+  const { makeTransition } = useTransition()
+  const transitioning = useStore(state => state.transitioning)
 
-  const handleClick = () => {
-    setDisabledButtons(true)
-    setTransitioning(true)
-    timeoutRef.current = setTimeout(() => {
-      navigate('/play')
-    }, 1000)
-  }
+  const handleClick = () => makeTransition('/play')
 
   useEffect(() => {
     return () => clearTimeout(timeoutRef.current)
@@ -135,7 +129,7 @@ const PlayButton = ({ disabledButtons, setDisabledButtons }) => {
     <button
       className='quiz-play-btn'
       onClick={handleClick}
-      disabled={disabledButtons}
+      disabled={transitioning}
       style={{ '--bg-color': '#0647ED' }}
     >
       <PlayIcon />
