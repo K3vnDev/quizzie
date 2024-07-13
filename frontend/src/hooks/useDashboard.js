@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useReset from '../hooks/useReset.js'
+import { useReset } from './useReset'
 
 const { VITE_API_URL: API_URL } = import.meta.env
 

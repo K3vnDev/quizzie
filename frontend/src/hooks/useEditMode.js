@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '../store/useStore'
-import useReset from './useReset'
+import { useReset } from './useReset'
 
 export function useEditMode () {
   const [

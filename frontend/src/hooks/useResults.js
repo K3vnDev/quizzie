@@ -1,4 +1,4 @@
-import useRouteClassName from './useRouteClassName'
+import { useRouteClassName } from './useRouteClassName'
 
 export function useResults ({ results }) {
   useRouteClassName('results')

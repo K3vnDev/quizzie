@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import { useReset } from './useReset'
 import { useStore } from '../store/useStore'
-import { waitForSeconds } from '../services/waitForSeconds'
 import { useShuffle } from './useShuffle'
-import useReset from './useReset'
+import { waitForSeconds } from '../services/waitForSeconds'
 
-export default function usePlayMode () {
+export function usePlayMode () {
   const [
     { name, questions, config },
     setIsShowingQuestion,

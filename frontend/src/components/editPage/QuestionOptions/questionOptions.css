@@ -1,0 +1,64 @@
+.edit-question-options {
+  --btn-size: 46px;
+  --btn-gap: 10px;
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--btn-gap);
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  padding: var(--btn-gap);
+
+  width: calc(var(--btn-size) + var(--btn-gap));
+  overflow: hidden;
+
+  &:hover {
+    width: calc(var(--btn-size) * 2 + var(--btn-gap) * 3);
+  }
+  transition: all ease 0.3s;
+}
+
+.edit-question-options button {
+  height: var(--btn-size);
+  width: var(--btn-size);
+  min-width: var(--btn-size);
+  border: none;
+  border-radius: 8px;
+  background: rgb(0 0 0 / 0.4);
+}
+
+.edit-question-options .change-btn,
+.edit-question-options .delete-btn {
+  backdrop-filter: blur(8px);
+}
+
+.edit-question-options button:not(:disabled) {
+  &:hover {
+    background: black;
+    scale: 1.025;
+  }
+  &:active {
+    background: rgb(0 0 0 / 0.4);
+    scale: 0.99;
+  }
+  transition: all 0.15s ease;
+}
+
+.edit-question-options button:disabled {
+  opacity: 0.5;
+}
+
+.edit-question-options .more-btn {
+  background: transparent;
+  scale: 1.5;
+}
+
+.edit-question-options:hover .more-btn {
+  transition: all 0.4s ease;
+  display: none;
+}
+
+.edit-question-options button svg {
+  stroke-width: 1.2;
+  scale: 0.95;
+}

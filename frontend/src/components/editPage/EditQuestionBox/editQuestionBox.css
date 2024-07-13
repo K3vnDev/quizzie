@@ -1,0 +1,106 @@
+.edit-question-box {
+  background: #262627;
+  border-radius: 20px;
+  padding: 50px;
+  max-width: 1000px;
+  max-height: 500px;
+  position: relative;
+}
+
+.edit-question-box header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.edit-question-box header .question-query {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: calc(100% - 80px);
+  user-select: none;
+  gap: 10px;
+}
+
+.edit-question-box header .question-query textarea {
+  --bg-color: #2b2b2c;
+  border-radius: 10px;
+  border: none;
+  font-size: 32px;
+  background: var(--bg-color);
+  outline: 10px solid var(--bg-color);
+  resize: none;
+}
+
+.edit-question-box header .question-query span {
+  font-size: 32px;
+  font-weight: 500;
+  width: 100%;
+  cursor: pointer;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+
+  &:hover {
+    animation: question-query-blink 0.9s ease infinite both;
+  }
+  transition: all 0.2s ease;
+}
+
+@keyframes question-query-blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.edit-question-box header .question-query span:hover ~ svg {
+  opacity: 0.5;
+}
+
+.edit-question-box header .question-query svg {
+  --svg-size: 22px;
+  max-width: var(--svg-size);
+  max-height: var(--svg-size);
+  min-width: var(--svg-size);
+  min-height: var(--svg-size);
+  opacity: 0;
+  transition: all 0.12s ease;
+}
+
+.edit-question-box header .edit-question-options svg {
+  --svg-size: 34px;
+  max-width: var(--svg-size);
+  max-height: var(--svg-size);
+  min-width: var(--svg-size);
+  min-height: var(--svg-size);
+}
+
+.add-answer-btn {
+  background: #313131;
+  border: 1px solid #5a5a5a;
+  border-radius: 10px;
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    filter: brightness(115%);
+    scale: 1.02;
+  }
+  &:active {
+    box-shadow: none;
+    filter: brightness(95%);
+    scale: 0.99;
+  }
+}
+.add-answer-btn svg {
+  width: 30px;
+  height: 30px;
+}

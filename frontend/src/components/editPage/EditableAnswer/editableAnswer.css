@@ -1,0 +1,133 @@
+.edit-question-box .answers .edit-answer-box {
+  border-radius: 10px;
+  user-select: none;
+  background: var(--bg-color);
+  border: none;
+  text-align: left;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 12px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.edit-question-box .answers .edit-answer-box span {
+  font-family: Roboto;
+  line-height: 36px;
+}
+
+/* IF LIST */
+.edit-question-box .answers.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 600px;
+}
+.edit-question-box .answers.list .edit-answer-box {
+  padding: 16px 32px 16px 16px;
+  padding-right: 36px;
+  width: max-content;
+  min-width: 120px;
+  max-width: 100%;
+
+  &:hover {
+    min-width: 220px;
+  }
+}
+.edit-question-box .answers.list .edit-answer-box span {
+  max-width: 700px;
+  overflow: hidden;
+  word-wrap: break-word;
+  font-size: 22px;
+  line-height: 28px;
+  max-height: 55px;
+}
+.edit-question-box .answers.list .edit-answer-box > svg {
+  opacity: 0.9;
+  min-width: 30px;
+  height: 30px;
+  scale: 1.1;
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+.edit-question-box .answers.list .edit-answer-box .edit-answer-menu {
+  &:hover {
+    opacity: 1;
+    transition: all 0.4s ease;
+  }
+}
+.edit-question-box .answers.list .add-answer-btn {
+  padding: 10px;
+  width: 40%;
+}
+.edit-question-box .answers.list .edit-answer-box .edit-answer-menu {
+  gap: 10px;
+}
+.edit-question-box .answers.list .edit-answer-box .edit-answer-menu button {
+  --btn-size: 55px;
+  height: var(--btn-size);
+  width: calc(var(--btn-size) + 4px);
+}
+
+/* ENDIF */
+
+/* IF GRID */
+.edit-question-box .answers.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  gap: 14px;
+}
+.edit-question-box .answers.grid .edit-answer-box {
+  padding: 26px 28px 26px 16px;
+  max-height: 180px;
+}
+.edit-question-box .answers.grid .edit-answer-box span {
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  font-size: 24px;
+  line-height: 32px;
+  max-height: 100px;
+}
+.edit-question-box .answers.grid .edit-answer-box > svg {
+  opacity: 0.9;
+  min-width: 30px;
+  height: 38px;
+  scale: 1.1;
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+.edit-question-box .answers.grid .edit-answer-box .edit-answer-menu {
+  &:hover {
+    opacity: 1;
+    transition: all 0.2s ease;
+  }
+}
+.edit-question-box .answers.grid .add-answer-btn {
+  width: 100%;
+  padding: 20px;
+}
+.edit-question-box .answers.grid .edit-answer-box .edit-answer-menu {
+  gap: 16px;
+}
+.edit-question-box .answers.grid .edit-answer-box .edit-answer-menu button {
+  --btn-size: 65px;
+  height: var(--btn-size);
+  width: calc(var(--btn-size) + 8px);
+}
+/* ENDIF */
+
+.edit-answer-box textarea {
+  font-size: 24px;
+  font-family: Roboto;
+  overflow: hidden;
+  resize: none;
+  padding: 4px;
+  border: none;
+  outline: 10px solid #00000014;
+  background: #00000014;
+  border-radius: 10px;
+}

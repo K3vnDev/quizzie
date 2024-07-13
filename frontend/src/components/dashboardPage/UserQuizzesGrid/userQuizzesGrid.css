@@ -1,0 +1,47 @@
+.user-quizzes-grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  gap: 30px;
+
+  grid-template-columns: repeat(auto-fit, var(--element-width));
+  grid-template-rows: repeat(auto-fit, var(--element-height));
+  align-items: start;
+
+  --element-width: 400px;
+  --element-height: 200px;
+}
+
+.user-quizzes-grid .create-new-quiz-btn {
+  width: var(--element-width);
+  height: var(--element-height);
+  background: #313131;
+  border: 1px solid #5a5a5a;
+  border-radius: 10px;
+
+  transition: all 0.2s ease;
+}
+
+.user-quizzes-grid .create-new-quiz-btn:not(:disabled) {
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.03;
+    filter: brightness(120%);
+  }
+  &:active {
+    scale: 0.98;
+    filter: brightness(90%);
+  }
+}
+
+.user-quizzes-grid .create-new-quiz-btn svg {
+  --size: 30%;
+  width: var(--size);
+  height: var(--size);
+  opacity: 0.5;
+}
+
+.user-quizzes-grid .create-new-quiz-btn.loading svg {
+  --size: 50%;
+}

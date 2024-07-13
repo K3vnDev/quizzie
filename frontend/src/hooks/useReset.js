@@ -1,6 +1,6 @@
 import { useStore } from '../store/useStore'
 
-export default function useReset () {
+export function useReset () {
   const [
     setIsShowingQuestion,
     setIsUnloadingQuestion,

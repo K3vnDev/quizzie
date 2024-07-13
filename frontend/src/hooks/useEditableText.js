@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-const event = new Event('editmodeexitfromenterkey', { target: 'hola' })
+const event = new Event('editmodeexitfromenterkey', { target: '' })
 export function useEditableText ({ inputRef, outsideContainerRef, exitEditMode, resizeScroll }) {
   const firstClick = useRef(true)
 
