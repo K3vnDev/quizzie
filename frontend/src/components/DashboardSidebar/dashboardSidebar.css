@@ -1,0 +1,73 @@
+.dashboard-sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 0;
+}
+
+.dashboard-sidebar section {
+  width: var(--side-bar-width);
+  --element-size: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.dashboard-sidebar .user-profile-pic {
+  background: #343434;
+  width: var(--element-size);
+  height: var(--element-size);
+  border-radius: 50%;
+}
+
+.dashboard-sidebar button {
+  width: var(--element-size);
+  height: var(--element-size);
+  border: none;
+  border-radius: 50%;
+  background: #343434;
+
+  transition: all 0.25s ease-out, filter 0.15s ease;
+}
+
+.dashboard-sidebar button:not(:disabled) {
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.05;
+    filter: brightness(120%);
+  }
+  &:active {
+    scale: 0.98;
+    filter: brightness(150%);
+  }
+}
+
+.dashboard-sidebar button svg {
+  stroke-width: 2;
+  width: 65%;
+  height: 65%;
+}
+
+.dashboard-sidebar button:not(.search-btn) {
+  background: #262626;
+}
+
+.dashboard-sidebar button:not(.search-btn) svg {
+  stroke-width: 1.5;
+  color: #b8b8b8;
+}
+
+.dashboard-sidebar button.loading,
+.user-profile-pic.loading {
+  background: var(--loading-bg-color);
+  background-size: var(--loading-bg-size);
+  animation: var(--loading-bg-anim);
+}

@@ -168,3 +168,9 @@
     rotate: calc(var(--del-vib-rate) * -1);
   }
 }
+
+.user-quizzes-grid .user-quiz.loading {
+  background: var(--loading-bg-color);
+  background-size: var(--loading-bg-size);
+  animation: var(--loading-bg-anim);
+}

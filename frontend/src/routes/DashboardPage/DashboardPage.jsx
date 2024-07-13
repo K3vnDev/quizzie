@@ -1,53 +1,15 @@
-import { useEffect, useState } from 'react'
+import '../../index.css'
 import './dashboardPage.css'
-import { useNavigate } from 'react-router-dom'
 import useRouteClassName from '../../hooks/useRouteClassName.js'
 import { UserQuizzesGrid } from '../../components/UserQuizzesGrid/UserQuizzesGrid.jsx'
 import { TransitionRound } from '../../components/TransitionRound/TransitionRound.jsx'
-import useReset from '../../hooks/useReset.js'
 import { DashboardSidebar } from '../../components/DashboardSidebar/DashboardSidebar.jsx'
-const { VITE_API_URL: API_URL } = import.meta.env
+import { useDashboard } from '../../hooks/useDashboard.js'
+import { UserQuizzesHeader } from '../../components/UserQuizzesHeader/UserQuizzesHeader.jsx'
 
 export function DashboardPage () {
-  const [isLoading, setIsLoading] = useState(true)
-  const [userData, setUserData] = useState({})
-  const { resetDashboard } = useReset()
-  const [deleteMode, setDeleteMode] = useState(false)
-
-  const navigate = useNavigate()
+  const { userData, setUserData, deleteMode, setDeleteMode, isLoading } = useDashboard()
   useRouteClassName('dashboard')
-
-  const fetchQuizzes = async () => {
-    const token = window.localStorage.getItem('token')
-    if (!token) return navigate('/login')
-
-    const res = await fetch(`${API_URL}/user/quizzes`, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    const data = await res.json()
-    if (res.ok) {
-      setUserData(data.data)
-      setIsLoading(false)
-    } else {
-      navigate('/login')
-    }
-  }
-
-  useEffect(() => {
-    if (
-      userData.quizzes &&
-      userData.quizzes.length === 0
-    ) {
-      setDeleteMode(false)
-    }
-  }, [userData.quizzes])
-
-  useEffect(() => {
-    resetDashboard()
-    fetchQuizzes()
-  }, [])
-
-  if (isLoading) return
 
   return (
     <>
@@ -55,42 +17,22 @@ export function DashboardPage () {
         userData={userData}
         deleteMode={deleteMode}
         setDeleteMode={setDeleteMode}
+        isLoading={isLoading}
       />
       <main>
         <UserQuizzesHeader
           deleteMode={deleteMode}
           setDeleteMode={setDeleteMode}
+          isLoading={isLoading}
         />
         <UserQuizzesGrid
           quizzes={userData.quizzes}
           deleteMode={deleteMode}
           setUserData={setUserData}
+          isLoading={isLoading}
         />
       </main>
       <TransitionRound />
     </>
-  )
-}
-
-const UserQuizzesHeader = ({ deleteMode, setDeleteMode }) => {
-  const handleCancel = () => {
-    setDeleteMode(false)
-  }
-
-  if (deleteMode) {
-    return (
-      <header>
-        <h3>Click on a quiz to delete...</h3>
-        <button onClick={handleCancel}>
-          Cancel
-        </button>
-      </header>
-    )
-  }
-
-  return (
-    <header>
-      <h2>Your Quizzes</h2>
-    </header>
   )
 }

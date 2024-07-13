@@ -9,13 +9,16 @@ import { UserQuiz } from './UserQuiz.jsx'
 import { LoadingArrows } from '../LoadingArrows/LoadingArrows.jsx'
 const API_URL = import.meta.env.VITE_API_URL
 
-export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode }) {
+export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode, isLoading }) {
+  if (isLoading) {
+    return <QuizzesPreview />
+  }
+
   return (
-    <section className='user-quizzes-grid grid'>
-      {
-        !deleteMode &&
-          <CreateNewQuizButton />
-      }
+    <section className='user-quizzes-grid'>
+      <CreateNewQuizButton
+        deleteMode={deleteMode}
+      />
       <LocalQuiz />
       {
         quizzes.map((quiz, index) => (
@@ -32,11 +35,13 @@ export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode }) {
   )
 }
 
-const CreateNewQuizButton = () => {
+const CreateNewQuizButton = ({ deleteMode }) => {
   const setQuiz = useStore(state => state.setQuiz)
   const transitioning = useStore(state => state.transitioning)
   const [buttonLoading, setButtonLoading] = useState(false)
   const navigate = useNavigate()
+
+  if (deleteMode) return
 
   const handleClick = async () => {
     const token = window.localStorage.getItem('token')
@@ -78,5 +83,22 @@ const CreateNewQuizButton = () => {
           : <AddIcon />
       }
     </button>
+  )
+}
+
+const QuizzesPreview = () => {
+  const quizzesPreview = Array(6).fill({})
+
+  return (
+    <section className='user-quizzes-grid'>
+      {
+        quizzesPreview.map((_, i) => (
+          <div
+            className='user-quiz loading'
+            key={i}
+          />
+        ))
+      }
+    </section>
   )
 }

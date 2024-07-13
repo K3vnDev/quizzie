@@ -1,8 +1,11 @@
-body.landing{
+body.landing {
   margin: 0 calc(8vw + 20px);
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #171818, #0c0c0c);
 }
 
-#root.landing{
+#root.landing {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -11,44 +14,44 @@ body.landing{
   justify-content: space-between;
 }
 
-.title-n-slogan h1{
+.title-n-slogan h1 {
   font-size: 96px;
   margin-bottom: 8px;
   font-family: Poppins;
 }
-.title-n-slogan h3{
+.title-n-slogan h3 {
   font-size: 36px;
-  color: #CDCDCD;
+  color: #cdcdcd;
   font-family: Poppins;
   font-weight: 500;
   line-height: 42px;
   margin-bottom: 20px;
 }
-.title-n-slogan h3 span{
-  color: #A37DF3;
+.title-n-slogan h3 span {
+  color: #a37df3;
 }
 
-.menu-question-box{
-  background: #262627;  
+.menu-question-box {
+  background: #262627;
   border-radius: 20px;
   padding: 60px;
   max-width: 1000px;
 }
 
-.menu-question-box h2{
+.menu-question-box h2 {
   font-size: 48px;
   font-family: Poppins;
   margin: 0 30px 42px 0;
   text-wrap: wrap;
 }
 
-.menu-question-box section{
+.menu-question-box section {
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
-.menu-question-box .answer-box{
+.menu-question-box .answer-box {
   background: var(--bg-color);
   border-radius: 10px;
   padding: 24px 32px 24px 18px;
@@ -61,37 +64,37 @@ body.landing{
   box-shadow: none;
   border: none;
 
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
-.menu-question-box .answer-box{
-  &:hover{
+.menu-question-box .answer-box {
+  &:hover {
     scale: 1.03;
     filter: brightness(120%);
     box-shadow: 0 0 16px var(--bg-color-st);
   }
-  &:active{
-    scale: .99;
+  &:active {
+    scale: 0.99;
     box-shadow: 0 0 16px transparent;
     filter: brightness(95%);
     transform: translateX(25px);
   }
 }
-.menu-question-box .answer-box:hover svg{
+.menu-question-box .answer-box:hover svg {
   scale: 1.1;
 }
-.menu-question-box .answer-box:disabled svg path, .menu-question-box .answer-box:disabled{
+.menu-question-box .answer-box:disabled svg path,
+.menu-question-box .answer-box:disabled {
   pointer-events: none;
   filter: brightness(75%);
   color: white;
 }
 
-.menu-question-box .answer-box span{
+.menu-question-box .answer-box span {
   font-size: 36px;
   font-family: Roboto;
 }
-.menu-question-box .answer-box svg{
-  transition: all .3s ease;
+.menu-question-box .answer-box svg {
+  transition: all 0.3s ease;
   margin-right: 20px;
-  scale: .85;
+  scale: 0.85;
 }
-
