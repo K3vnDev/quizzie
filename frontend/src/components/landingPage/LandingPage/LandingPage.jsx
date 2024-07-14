@@ -7,11 +7,13 @@ import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
 import { LoginAnchor } from '../../root/LoginAnchor/LoginAnchor.jsx'
 import { MenuQuestion } from '../MenuQuestion/MenuQuestion.jsx'
 import { useRouteClassName } from '../../../hooks/useRouteClassName.js'
+import { useReset } from '../../../hooks/useReset.js'
 
 export function LandingPage () {
   useRouteClassName('landing')
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
+  const resetState = useReset()
 
   const [
     setIsShowingResults,
@@ -23,6 +25,7 @@ export function LandingPage () {
 
   useEffect(() => {
     setQuiz(null)
+    resetState()
     setIsShowingResults(false)
 
     const token = window.localStorage.getItem('token')

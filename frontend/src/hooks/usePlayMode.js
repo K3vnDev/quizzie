@@ -25,7 +25,6 @@ export function usePlayMode () {
     s.addResult
   ])
 
-  const { resetPlayMode } = useReset()
   const [questionsToShow] = useShuffle(questions, config.shuffleQuestions, questions)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [timeBarPaused, setTimeBarPaused] = useState(false)
@@ -48,15 +47,13 @@ export function usePlayMode () {
     }
   }, [currentQuestionIndex])
 
+  const resetState = useReset()
+  useEffect(resetState, [])
+
   const progress = {
     current: currentQuestionIndex + 1,
     last: questionsToShow.length
   }
-
-  // Reset states
-  useEffect(() => {
-    resetPlayMode()
-  }, [])
 
   const timeBarWaitTime = 0.8 * 1000
   const answerTime = config.answerTime * 1000

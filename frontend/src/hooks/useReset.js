@@ -6,42 +6,21 @@ export function useReset () {
     setIsUnloadingQuestion,
     setIsUnloadingPlayMode,
     setIsShowingResults,
-    resetResults,
-    setDisabledButtons
+    resetResults
   ] =
   useStore(s => [
     s.setIsShowingQuestion,
     s.setIsUnloadingQuestion,
     s.setIsUnloadingPlayMode,
     s.setIsShowingResults,
-    s.resetResults,
-    s.setDisabledButtons
+    s.resetResults
   ])
 
-  const resetPlayMode = () => {
+  return () => {
     setIsShowingQuestion(true)
     setIsUnloadingQuestion(false)
     setIsUnloadingPlayMode(false)
     setIsShowingResults(false)
     resetResults()
   }
-
-  const resetEditMode = () => {
-    setIsShowingQuestion(true)
-    setIsUnloadingQuestion(false)
-    setIsUnloadingPlayMode(false)
-    setIsShowingResults(false)
-    resetResults()
-  }
-
-  const resetDashboard = () => {
-    setIsShowingQuestion(true)
-    setIsUnloadingQuestion(false)
-    setIsUnloadingPlayMode(false)
-    setIsShowingResults(false)
-    setDisabledButtons(false)
-    resetResults()
-  }
-
-  return { resetPlayMode, resetEditMode, resetDashboard }
 }

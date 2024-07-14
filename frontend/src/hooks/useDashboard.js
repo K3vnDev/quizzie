@@ -6,11 +6,10 @@ const { VITE_API_URL: API_URL } = import.meta.env
 
 export function useDashboard () {
   const [userData, setUserData] = useState({})
-  const { resetDashboard } = useReset()
   const [deleteMode, setDeleteMode] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-
   const navigate = useNavigate()
+  const resetState = useReset()
 
   const fetchQuizzes = async () => {
     const token = window.localStorage.getItem('token')
@@ -38,7 +37,7 @@ export function useDashboard () {
   }, [userData.quizzes])
 
   useEffect(() => {
-    resetDashboard()
+    resetState()
     fetchQuizzes()
   }, [])
 

@@ -134,14 +134,14 @@ function HomeButton () {
 }
 
 function PlayAgainButton () {
-  const { resetPlayMode } = useReset()
+  const resetState = useReset()
   const setTransitioning = useStore(state => state.setTransitioning)
   const transitioning = useStore(state => state.transitioning)
 
   const handleClick = async () => {
     setTransitioning(true)
     await waitForSeconds(1)
-    resetPlayMode()
+    resetState()
   }
 
   return (

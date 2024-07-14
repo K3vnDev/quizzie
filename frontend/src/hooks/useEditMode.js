@@ -15,11 +15,9 @@ export function useEditMode () {
   ])
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const { resetEditMode } = useReset()
 
-  useEffect(() => {
-    resetEditMode()
-  }, [])
+  const resetState = useReset()
+  useEffect(resetState, [])
 
   const navigateQuestion = value => {
     switch (value) {
