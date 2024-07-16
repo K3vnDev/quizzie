@@ -1,47 +1,36 @@
-import { useNavigate } from 'react-router-dom'
-import { useStore } from '../../../store/useStore.js'
 import { Timer as TimerIcon } from '../../../icons/Timer.jsx'
 import { Question as QuestionIcon } from '../../../icons/Question.jsx'
-import { Edit as EditIcon } from '../../../icons/Edit.jsx'
-import { Play as PlayIcon } from '../../../icons/Play.jsx'
-import { useTransition } from '../../../hooks/useTransition.js'
+import { UserQuizOptionsMenu } from '../UserQuizOptionsMenu/UserQuizOptionsMenu.jsx'
 import './userQuiz.css'
-const API_URL = import.meta.env.VITE_API_URL
+import { useEffect, useRef, useState } from 'react'
+import { UserQuizDeleteMenu } from '../../UserQuizDeleteMenu/UserQuizDeleteMenu.jsx'
 
 export function UserQuiz ({ quizzes, index, deleteMode, setUserData }) {
   const quiz = quizzes[index]
-  const { name, previewColor, config, questions } = quiz
+  const [showingDeleteMenu, setShowingDeleteMenu] = useState(false)
+  const { id, name, previewColor, config, questions } = quiz
+  const userQuizRef = useRef()
+
+  useEffect(() => {
+    const handleMouseLeave = () => {
+      setShowingDeleteMenu(false)
+    }
+
+    userQuizRef.current.addEventListener('mouseleave', handleMouseLeave)
+    return () => {
+      if (userQuizRef.current) {
+        userQuizRef.current.removeEventListener('mouseleave', handleMouseLeave)
+      }
+    }
+  }, [])
 
   const className = deleteMode
     ? 'user-quiz delete-mode'
     : 'user-quiz'
 
-  const handleClick = () => {
-    if (deleteMode) {
-      const token = window.localStorage.getItem('token')
-
-      const prevQuizzes = structuredClone(quizzes)
-      setUserData(u => {
-        const newUserData = structuredClone(u)
-        const quizIndex = quizzes.findIndex(q => q.id === quiz.id)
-        newUserData.quizzes.splice(quizIndex, 1)
-        return newUserData
-      })
-
-      fetch(`${API_URL}/quiz/${quiz.id}`, {
-        method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` }
-      })
-        .then(res => {
-          if (!res.ok) {
-            setUserData(u => {
-              const newUserData = structuredClone(u)
-              newUserData.quizzes = prevQuizzes
-              return newUserData
-            })
-          }
-        })
-    }
+  const handleClick = e => {
+    e.stopPropagation()
+    if (deleteMode) setShowingDeleteMenu(true)
   }
 
   return (
@@ -49,6 +38,7 @@ export function UserQuiz ({ quizzes, index, deleteMode, setUserData }) {
       className={className}
       style={{ '--bg-color': previewColor }}
       onClick={handleClick}
+      ref={userQuizRef}
     >
       <h4>{name}</h4>
       <section>
@@ -62,36 +52,18 @@ export function UserQuiz ({ quizzes, index, deleteMode, setUserData }) {
         </div>
       </section>
       {
-        !deleteMode &&
-          <UserQuizEditMenu quiz={quiz} />
+        deleteMode
+          ? (
+            <UserQuizDeleteMenu
+              setUserData={setUserData}
+              showingDeleteMenu={showingDeleteMenu}
+              setShowingDeleteMenu={setShowingDeleteMenu}
+              quizId={id}
+              quizzes={quizzes}
+            />
+            )
+          : <UserQuizOptionsMenu quiz={quiz} />
       }
-    </div>
-  )
-}
-
-const UserQuizEditMenu = ({ quiz }) => {
-  const setQuiz = useStore(state => state.setQuiz)
-  const { makeTransition } = useTransition()
-  const navigate = useNavigate()
-
-  const handleEnterPlayMode = () => {
-    setQuiz(quiz)
-    makeTransition('/play')
-  }
-
-  const handleEnterEditMode = () => {
-    setQuiz(quiz)
-    navigate('/edit')
-  }
-
-  return (
-    <div className='edit-menu'>
-      <button onClick={handleEnterPlayMode}>
-        <PlayIcon />
-      </button>
-      <button onClick={handleEnterEditMode}>
-        <EditIcon />
-      </button>
     </div>
   )
 }

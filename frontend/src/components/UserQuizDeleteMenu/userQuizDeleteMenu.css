@@ -1,0 +1,70 @@
+.user-quiz-delete-menu {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+  background: rgb(0 0 0 / 0.65);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  gap: 12px;
+  opacity: 0;
+
+  transition: all 0.1s ease-out;
+}
+
+.user-quiz-delete-menu.visible {
+  opacity: 1;
+}
+.user-quiz-delete-menu.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.user-quiz-delete-menu.hidden h4,
+.user-quiz-delete-menu.hidden .buttons-wrapper {
+  scale: 0.75;
+}
+
+.user-quiz-delete-menu h4 {
+  font-family: Poppins;
+  font-size: 36px;
+}
+
+.user-quiz-delete-menu .buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  align-items: center;
+  min-width: 100%;
+}
+
+.user-quiz-delete-menu button {
+  border: none;
+  border-radius: 10px;
+  background: rgb(0 0 0 / 0.4);
+  font-size: 42px;
+  color: #fff;
+  font-weight: 700;
+  padding: 16px 24px;
+
+  transition: all 0.25s ease-out, background 0.15s ease;
+}
+
+.user-quiz-delete-menu button:not(:disabled) {
+  cursor: pointer;
+
+  &:hover {
+    background: rgb(0 0 0 / 0.7);
+    scale: 1.05;
+  }
+  &:active {
+    scale: 0.96;
+    background: rgb(0 0 0 / 0.6);
+  }
+}

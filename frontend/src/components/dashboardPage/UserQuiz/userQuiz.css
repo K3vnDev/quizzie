@@ -41,51 +41,6 @@
 .user-quizzes-grid .user-quiz section div span {
   font-size: 28px;
 }
-
-.user-quizzes-grid .user-quiz .edit-menu {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background: rgb(0 0 0 / 0.4);
-  backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 36px;
-  opacity: 0;
-
-  transition: all 0.1s ease-out;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.user-quizzes-grid .user-quiz .edit-menu button {
-  --size: 140px;
-  width: var(--size);
-  height: var(--size);
-  border: none;
-  border-radius: 10px;
-  background: rgb(0 0 0 / 0.4);
-  cursor: pointer;
-
-  transition: all 0.25s ease-out, background 0.15s ease;
-  &:hover {
-    background: rgb(0 0 0 / 0.7);
-    scale: 1.05;
-  }
-  &:active {
-    scale: 0.96;
-    background: rgb(0 0 0 / 0.6);
-  }
-}
-
-.user-quizzes-grid .user-quiz .edit-menu button svg {
-  width: 80%;
-  height: 80%;
-}
-
 :root {
   --del-vib-rate: 0.4deg;
 }
