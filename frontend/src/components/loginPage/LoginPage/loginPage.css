@@ -1,0 +1,52 @@
+body.login {
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.login .app-logo {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+}
+
+body.login main {
+  border-radius: 10px;
+  background: #262627;
+  width: 1100px;
+  height: 650px;
+  display: flex;
+  position: relative;
+  --min-w: 42.5%;
+  --max-w: 57.5%;
+}
+
+.login-wrapper,
+.sign-up-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 100px;
+  transition: all 1.5s ease;
+  position: relative;
+  gap: 18px;
+}
+
+body.login .showing {
+  width: var(--max-w);
+}
+body.login .not-showing {
+  width: var(--min-w);
+}
+
+.login-wrapper h3,
+.sign-up-wrapper h3 {
+  font-size: 48px;
+  line-height: 20px;
+  margin-bottom: 24px;
+  text-wrap: nowrap;
+}

@@ -20,8 +20,8 @@ export const User = model('User', userSchema)
 
 // Validations
 const userValidationSchema = z.object({
-  username: z.string().trim().min(3).max(20),
-  password: z.string().min(5).max(50)
+  username: z.string().trim().min(3).max(10),
+  password: z.string().min(5).max(20)
 })
 
 export const validateUser = user => userValidationSchema.safeParse(user)

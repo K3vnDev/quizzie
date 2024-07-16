@@ -51,7 +51,7 @@ userRouter.post('/signup', async (req, res) => {
           token
         }
       })
-  } catch { res.status(500).json($error('Couldnt create username')) }
+  } catch { res.status(500).json($error('Couldn\'t sign up, try again later')) }
 })
 
 userRouter.post('/login', async (req, res) => {
@@ -88,7 +88,9 @@ userRouter.post('/login', async (req, res) => {
         })
     }
     res.status(401).json($error('Invalid username or password'))
-  } catch { res.status(500) }
+  } catch {
+    res.status(500).json($error('Couldn\'t login, try again later'))
+  }
 })
 
 userRouter.use(userAuth)

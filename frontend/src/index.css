@@ -26,3 +26,16 @@ body {
     background-position-x: var(--loading-bg-size);
   }
 }
+
+@keyframes not-able-to-keep-writing {
+  0% {
+    translate: 0px 0px;
+  }
+  38% {
+    translate: 10px 0px;
+    color: rgb(255 255 255 / 0.5);
+  }
+  100% {
+    translate: 0px 0px;
+  }
+}

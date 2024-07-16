@@ -1,0 +1,99 @@
+.form-curtain {
+  position: absolute;
+  height: 100%;
+  width: var(--min-w);
+  border-radius: 10px;
+  background: #a37df3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  top: 0;
+
+  transition: all 1s ease;
+}
+
+.form-curtain div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.form-curtain h4 {
+  font-family: Poppins;
+  line-height: 50px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.form-curtain button {
+  font-size: 28px;
+  font-weight: 500;
+  font-family: Poppins;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background: rgb(255 255 255 / 0.15);
+  color: #fff;
+  padding: 8px 20px;
+
+  transition: all 0.25s ease-out, background 0.1s ease;
+}
+
+.form-curtain button:not(:disabled) {
+  cursor: pointer;
+
+  &:hover {
+    background: rgb(255 255 255 / 0.3);
+  }
+  &:active {
+    scale: 0.975;
+    transform: translateY(6px);
+    background: rgb(255 255 255 / 0.15);
+  }
+}
+
+.form-curtain button:disabled {
+  opacity: 0.4;
+}
+
+@keyframes transition-to-sign-up {
+  0% {
+    width: var(--min-w);
+    right: 0;
+  }
+  50% {
+    width: var(--max-w);
+  }
+  100% {
+    width: var(--min-w);
+    right: calc(100% - var(--min-w));
+  }
+}
+
+@keyframes transition-to-login {
+  0% {
+    width: var(--min-w);
+    left: 0;
+  }
+  50% {
+    width: var(--max-w);
+  }
+  100% {
+    width: var(--min-w);
+    left: calc(100% - var(--min-w));
+  }
+}
+
+@keyframes transition-inner-content {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  35%,
+  65% {
+    opacity: 0;
+  }
+}

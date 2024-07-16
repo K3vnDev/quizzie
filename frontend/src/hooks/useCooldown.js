@@ -1,24 +1,22 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export function useCooldown ({ action, reset, cooldown }) {
+  const [waiting, setWaiting] = useState(false)
   const timeout = useRef()
-  const waiting = useRef(false)
 
-  useEffect(() => {
-    return () => clearTimeout(timeout.current)
-  }, [])
+  useEffect(() => () => clearTimeout(timeout.current), [])
 
   const triggerAction = () => {
-    if (!waiting.current) {
-      action()
-      waiting.current = true
+    if (waiting) return
 
-      timeout.current = setTimeout(() => {
-        if (reset) reset()
-        waiting.current = false
-      }, cooldown)
-    }
+    action()
+    setWaiting(true)
+
+    timeout.current = setTimeout(() => {
+      if (reset) reset()
+      setWaiting(false)
+    }, cooldown)
   }
 
-  return triggerAction
+  return [triggerAction, waiting]
 }

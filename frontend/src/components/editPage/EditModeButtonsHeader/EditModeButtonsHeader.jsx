@@ -61,7 +61,7 @@ const ShareButton = () => {
   const [animation, setAnimation] = useState('none')
   const animationTime = 2.5
 
-  const toggleMessageClassName = useCooldown({
+  const [toggleMessageClassName] = useCooldown({
     action: () => setAnimation(`copied-message-appear ${animationTime}s ease both`),
     reset: () => setAnimation('none'),
     cooldown: animationTime * 1000

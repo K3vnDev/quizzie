@@ -112,5 +112,8 @@ export const useStore = create((set, get) => ({
   resetResults: () => set(() => ({ results: [] })),
 
   cloudState: 'saved', // 'not saved', 'uploading'
-  setCloudState: value => set(() => ({ cloudState: value }))
+  setCloudState: value => set(() => ({ cloudState: value })),
+
+  formTransitionating: false,
+  setFormTransitionating: value => set(() => ({ formTransitionating: value }))
 }))
