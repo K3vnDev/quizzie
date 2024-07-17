@@ -77,7 +77,7 @@ export const demoQuiz = {
     },
     {
       query: "Who wrote the play 'Romeo and Juliet'?",
-      displayMode: 'list',
+      displayMode: 'grid',
       answers: [
         {
           text: 'Mark Twain',
