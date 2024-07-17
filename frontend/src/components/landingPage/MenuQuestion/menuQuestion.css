@@ -10,6 +10,7 @@
   font-family: Poppins;
   margin: 0 30px 42px 0;
   text-wrap: wrap;
+  cursor: default;
 }
 
 .menu-question-box section {

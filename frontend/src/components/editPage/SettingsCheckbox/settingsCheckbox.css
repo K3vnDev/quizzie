@@ -1,0 +1,32 @@
+.settings-checkbox {
+  --btn-size: 32px;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: 5px;
+  border: 1px solid #949494;
+  background: #4b4b4b;
+  cursor: pointer;
+  position: relative;
+
+  transition: all 0.2s ease-out, filter 0.1s ease;
+
+  &:hover {
+    filter: brightness(120%);
+  }
+  &:active {
+    filter: brightness(90%);
+    scale: 0.9;
+  }
+}
+
+.settings-checkbox svg {
+  --svg-size: 40px;
+  color: #a37df3;
+  stroke-width: 4px;
+  position: absolute;
+  width: var(--svg-size);
+  height: var(--svg-size);
+  scale: 1.1 1;
+  left: 2px;
+  bottom: 0;
+}

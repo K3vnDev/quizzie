@@ -8,7 +8,7 @@ import { useBrowse } from '../../../hooks/useBrowse'
 import { BrowseQuizzesGrid } from '../BrowseQuizzesGrid/BrowseQuizzesGrid'
 
 export function BrowsePage () {
-  const { input, setInput, quizzes, isFetching } = useBrowse()
+  const { input, setInput, quizzes, isFetching, isLoading } = useBrowse()
   useRouteClassName('browse')
 
   return (
@@ -20,7 +20,7 @@ export function BrowsePage () {
         input={input}
       />
       <BrowseQuizzesGrid
-        query={input}
+        isLoading={isLoading}
         quizzes={quizzes}
       />
       <TransitionRound />

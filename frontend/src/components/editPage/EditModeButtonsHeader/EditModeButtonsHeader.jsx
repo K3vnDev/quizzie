@@ -102,12 +102,18 @@ const ShareButton = () => {
 
 const SettingsButton = () => {
   const transitioning = useStore(state => state.transitioning)
+  const setIsDisplayingQuizSettings = useStore(state => state.setIsDisplayingQuizSettings)
+
+  const handleClick = () => {
+    setIsDisplayingQuizSettings(true)
+  }
 
   return (
     <button
       className='quiz-settings-btn'
       disabled={transitioning}
       style={{ '--bg-color': '#343434' }}
+      onClick={handleClick}
     >
       <SettingsIcon />
     </button>

@@ -73,6 +73,32 @@ export const useStore = create((set, get) => ({
     return { quiz: newQuiz }
   }),
 
+  setShuffleQuestions: value => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.config.shuffleQuestions = value
+    return { quiz: newQuiz }
+  }),
+  setShuffleAnswers: value => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.config.shuffleAnswers = value
+    return { quiz: newQuiz }
+  }),
+  setShuffleAnswerColors: value => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.config.shuffleAnswerColors = value
+    return { quiz: newQuiz }
+  }),
+  setShowIcons: value => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.config.showIcons = value
+    return { quiz: newQuiz }
+  }),
+  setAnswerTime: value => set(state => {
+    const newQuiz = structuredClone(state.quiz)
+    newQuiz.config.answerTime = value
+    return { quiz: newQuiz }
+  }),
+
   transitioning: false,
   setTransitioning: value => set(() => ({ transitioning: value })),
 
@@ -115,5 +141,8 @@ export const useStore = create((set, get) => ({
   setCloudState: value => set(() => ({ cloudState: value })),
 
   formTransitionating: false,
-  setFormTransitionating: value => set(() => ({ formTransitionating: value }))
+  setFormTransitionating: value => set(() => ({ formTransitionating: value })),
+
+  isDisplayingQuizSettings: false,
+  setIsDisplayingQuizSettings: value => set(() => ({ isDisplayingQuizSettings: value }))
 }))

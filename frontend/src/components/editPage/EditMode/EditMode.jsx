@@ -9,6 +9,7 @@ import { EditModeButtonsHeader } from '../EditModeButtonsHeader/EditModeButtonsH
 import { EditQuestionBox } from '../EditQuestionBox/EditQuestionBox.jsx'
 import { QuestionNavigationPoints } from '../QuestionNavigationPoints/QuestionNavigationPoints.jsx'
 import { EditableTextInput } from '../EditableText/EditableText.jsx'
+import { EditQuizSettings } from '../EditQuizSettings/EditQuizSettings.jsx'
 
 export function EditMode () {
   const {
@@ -36,6 +37,7 @@ export function EditMode () {
         questionIndex={currentQuestionIndex}
         navigateQuestion={navigateQuestion}
       />
+      <EditQuizSettings />
       <TransitionRound />
     </>
   )

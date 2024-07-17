@@ -1,4 +1,4 @@
-.browse-quizzes-form{
+.browse-quizzes-form {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -6,14 +6,14 @@
   gap: 12px;
 }
 
-.browse-quizzes-form h2{
+.browse-quizzes-form h2 {
   font-family: Poppins;
   font-size: 64px;
 }
 
-.browse-quizzes-form label{
+.browse-quizzes-form label {
   display: flex;
-  background: #0C0C0C;
+  background: #0c0c0c;
   border: 1px solid #313131;
   border-radius: 10px;
   padding: 0 12px;
@@ -22,21 +22,21 @@
   gap: 14px;
   height: 54px;
   cursor: pointer;
-  transition: all .1s ease-out;
+  transition: all 0.1s ease-out;
 
-  &:hover{
+  &:hover {
     border: 1px solid #4e4e4e;
   }
 }
 
-.browse-quizzes-form label svg{
+.browse-quizzes-form label svg {
   width: 26px;
   height: 26px;
-  opacity: .6;
-  transition: all .25s ease-out;
+  opacity: 0.6;
+  transition: all 0.25s ease-out;
 }
 
-.browse-quizzes-form label input{
+.browse-quizzes-form label input {
   background: none;
   outline: none;
   border: none;
@@ -44,22 +44,22 @@
   width: 100%;
 }
 
-.browse-quizzes-form label input::placeholder{
-  transition: opacity .2s ease;
-  color: #4F4F4F;
+.browse-quizzes-form label input::placeholder {
+  transition: opacity 0.2s ease;
+  color: #4f4f4f;
   font-size: 18px;
   font-family: Roboto;
 }
 
-.browse-quizzes-form label input:focus{
+.browse-quizzes-form label input:focus {
   cursor: text;
 }
 
-.browse-quizzes-form label input:focus::placeholder{
-  opacity: .7;
+.browse-quizzes-form label input:focus::placeholder {
+  opacity: 0.7;
 }
 
-.browse-quizzes-form label input{
+.browse-quizzes-form label input {
   color: #dbdbdb;
   font-size: 18px;
   font-family: Roboto;

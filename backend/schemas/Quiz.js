@@ -44,7 +44,7 @@ const quizValidationSchema = z.object({
     shuffleAnswers: z.boolean(),
     shuffleAnswerColors: z.boolean(),
     showIcons: z.boolean(),
-    answerTime: z.number().min(3).positive()
+    answerTime: z.number().min(3).max(30)
   }),
   questions: z.array(
     z.object({

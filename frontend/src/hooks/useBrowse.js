@@ -6,6 +6,7 @@ export function useBrowse () {
   const [input, setInput] = useState('')
   const [quizzes, setQuizzes] = useState([])
   const [isFetching, setIsFetching] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const firstRender = useRef(true)
   const query = useDebounce(input, 300)
 
@@ -33,6 +34,7 @@ export function useBrowse () {
     setIsFetching(true)
     await fetchQuizzes(query)
     setIsFetching(false)
+    setIsLoading(false)
   }
 
   const fetchQuizzes = async (query) => {
@@ -45,5 +47,5 @@ export function useBrowse () {
     } catch {}
   }
 
-  return { input, setInput, quizzes, isFetching }
+  return { input, setInput, quizzes, isFetching, isLoading }
 }

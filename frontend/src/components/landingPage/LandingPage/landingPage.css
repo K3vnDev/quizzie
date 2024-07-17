@@ -18,6 +18,7 @@ body.landing {
   font-size: 96px;
   margin-bottom: 8px;
   font-family: Poppins;
+  cursor: default;
 }
 .title-n-slogan h3 {
   font-size: 36px;
@@ -26,6 +27,7 @@ body.landing {
   font-weight: 500;
   line-height: 42px;
   margin-bottom: 20px;
+  cursor: default;
 }
 .title-n-slogan h3 span {
   color: #a37df3;

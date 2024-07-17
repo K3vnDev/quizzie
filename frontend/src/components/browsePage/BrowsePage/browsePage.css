@@ -4,7 +4,7 @@
   flex-direction: column;
   width: 100vw;
   padding: 0 300px;
-  gap: 70px;
+  gap: 75px;
 }
 
 body.browse .app-logo {

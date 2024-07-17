@@ -1,4 +1,4 @@
-.browse-quizzes-grid{
+.browse-quizzes-grid {
   height: 100%;
   width: 100%;
   display: grid;
@@ -6,8 +6,20 @@
 
   grid-template-columns: repeat(auto-fit, var(--element-width));
   grid-template-rows: repeat(auto-fit, var(--element-height));
+  place-content: center;
   align-items: start;
 
   --element-width: 400px;
   --element-height: 200px;
+}
+
+.browse-quiz.loading {
+  background: var(--loading-bg-color);
+  background-size: var(--loading-bg-size);
+  animation: var(--loading-bg-anim);
+}
+
+.browse-quizzes-message {
+  font-size: 26px;
+  color: #9e9e9e;
 }
