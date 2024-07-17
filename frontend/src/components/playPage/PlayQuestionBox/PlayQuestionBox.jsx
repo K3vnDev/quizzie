@@ -10,8 +10,8 @@ export function PlayQuestionBox ({ question, setResponse }) {
   const isUnloadingQuestion = useStore(state => state.isUnloadingQuestion)
   const setDisabledButtons = useStore(state => state.setDisabledButtons)
   const addResult = useStore(state => state.addResult)
-  const { shufleAnswers, shuffleAnswerColors } = useStore(state => state.quiz.config)
-  const [answersToShow] = useShuffle(answers, shufleAnswers, answers)
+  const { shuffleAnswers, shuffleAnswerColors } = useStore(state => state.quiz.config)
+  const [answersToShow] = useShuffle(answers, shuffleAnswers, answers)
   const [colorsAndIconsToShow] = useShuffle(colorAndIcon, shuffleAnswerColors, answers)
 
   useEffect(() => {
