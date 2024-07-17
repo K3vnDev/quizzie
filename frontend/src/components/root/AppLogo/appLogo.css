@@ -1,9 +1,9 @@
-:root{
+:root {
   --app-logo-size: 100px;
 }
 
-.app-logo{
-  background: url(../../../public/favicon.png);
+.app-logo {
+  background: url(../../../assets/app-logo.png);
   width: var(--app-logo-size);
   height: var(--app-logo-size);
   background-size: 115%;
@@ -12,12 +12,12 @@
   border: none;
 }
 
-.app-logo:not(:disabled){
-  &:hover{
-    filter: brightness(110%)
+.app-logo:not(:disabled) {
+  &:hover {
+    filter: brightness(110%);
   }
   cursor: pointer;
 }
-.app-logo:disabled{
-  opacity: .8;
+.app-logo:disabled {
+  opacity: 0.8;
 }
