@@ -1,0 +1,68 @@
+body.not-found {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #171818, #0c0c0c);
+}
+
+.not-found {
+  background: #262627;
+  border-radius: 10px;
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  font-family: Poppins;
+  animation: not-found-pop-in 0.2s ease-out both;
+}
+
+.not-found h3 {
+  --query-fs: 36px;
+  font-size: var(--query-fs);
+  font-weight: 600;
+}
+
+.not-found h3 span {
+  font-size: calc(var(--query-fs) * 0.8);
+  margin-left: 12px;
+  opacity: 0.1;
+}
+
+.not-found button {
+  border-radius: 15px;
+  background: #a37df3;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 600;
+  font-family: Poppins;
+  border: none;
+  padding: 10px 22px;
+  margin-top: 12px;
+  cursor: pointer;
+
+  transition: all 0.25s ease-out, filter 0.1s ease;
+
+  &:hover {
+    scale: 1.025;
+    filter: brightness(120%);
+  }
+  &:active {
+    scale: 0.95;
+    filter: brightness(75%);
+  }
+}
+
+@keyframes not-found-pop-in {
+  from {
+    opacity: 0;
+    scale: 0.9;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}

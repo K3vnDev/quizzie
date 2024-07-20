@@ -7,7 +7,7 @@ import { useRouteClassName } from '../../../hooks/useRouteClassName.js'
 import { usePlayQuiz } from '../../../hooks/usePlayQuiz.js'
 import { LoadingArrows } from '../../root/LoadingArrows/LoadingArrows.jsx'
 import { useEffect, useRef, useState } from 'react'
-import { QuizNotFound } from '../QuizNotFound/QuizNotFound.jsx'
+import { QuizNotFound } from '../../root/NotFound/NotFound.jsx'
 
 export function PlayPage () {
   const isShowingResults = useStore(state => state.isShowingResults)
