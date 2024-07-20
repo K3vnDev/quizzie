@@ -8,6 +8,7 @@ import { LoginAnchor } from '../../root/LoginAnchor/LoginAnchor.jsx'
 import { MenuQuestion } from '../MenuQuestion/MenuQuestion.jsx'
 import { useRouteClassName } from '../../../hooks/useRouteClassName.js'
 import { useReset } from '../../../hooks/useReset.js'
+const { VITE_API_URL: API_URL } = import.meta.env
 
 export function LandingPage () {
   useRouteClassName('landing')
@@ -27,6 +28,7 @@ export function LandingPage () {
     setQuiz(null)
     resetState()
     setIsShowingResults(false)
+    fetch(`${API_URL}/fizz`)
 
     const token = window.localStorage.getItem('token')
     if (token) navigate('/dashboard')

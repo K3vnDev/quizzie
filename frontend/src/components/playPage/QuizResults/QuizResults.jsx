@@ -1,4 +1,4 @@
-import './results.css'
+import './quizResults.css'
 import { useStore } from '../../../store/useStore'
 import { useResults } from '../../../hooks/useResults'
 import { Stars } from '../Stars/Stars'
@@ -15,7 +15,7 @@ import { waitForSeconds } from '../../../services/waitForSeconds'
 import { useReset } from '../../../hooks/useReset'
 import { randomElement } from '../../../services/randomElement'
 
-export function Results () {
+export function QuizResults () {
   const results = useStore(state => state.results)
   const {
     questionBoxClassName,

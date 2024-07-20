@@ -8,6 +8,7 @@ export function usePlayQuiz () {
   const setQuiz = useStore(state => state.setQuiz)
   const setQuizOwnedByUser = useStore(state => state.setQuizOwnedByUser)
   const [isLoading, setIsLoading] = useState(true)
+  const [quizNotFound, setQuizNotFound] = useState(false)
   const navigate = useNavigate()
 
   const setQueryParam = id => window.history.replaceState({}, '', `play?q=${id}`)
@@ -21,10 +22,12 @@ export function usePlayQuiz () {
       if (data.status !== 'error') {
         setQuiz(data)
         setIsLoading(false)
-      } else throw new Error('')
-    } catch (err) {
-      // show not found error
-      console.error(err)
+      } else {
+        throw new Error('')
+      }
+    } catch {
+      setIsLoading(false)
+      setQuizNotFound(true)
     }
   }
 
@@ -55,5 +58,5 @@ export function usePlayQuiz () {
     else navigate('/')
   }, [])
 
-  return { isLoading, fetchQuiz }
+  return { isLoading, quizNotFound }
 }

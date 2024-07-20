@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { templateQuiz } from '../store/quizzes/templateQuiz'
 import { validateQuiz } from '../services/validateQuiz'
 import { useDebounce } from './useDebounce'
-const API_URL = import.meta.env.VITE_API_URL
+const { VITE_API_URL: API_URL } = import.meta.env
 
 export function useEditQuiz () {
   const quiz = useStore(state => state.quiz)
