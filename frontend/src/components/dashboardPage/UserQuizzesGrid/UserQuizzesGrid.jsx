@@ -1,13 +1,12 @@
 import { Add as AddIcon } from '../../../icons/Add.jsx'
 import { useStore } from '../../../store/useStore.js'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './userQuizzesGrid.css'
 import { UserQuiz } from '../UserQuiz/UserQuiz.jsx'
-import { validateQuiz } from '../../../services/validateQuiz.js'
 import { templateQuiz } from '../../../store/quizzes/templateQuiz.js'
 import { LoadingArrows } from '../../root/LoadingArrows/LoadingArrows.jsx'
-
+import { LocalQuiz } from '../LocalQuiz/LocalQuiz.jsx'
 const API_URL = import.meta.env.VITE_API_URL
 
 export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode, isLoading }) {
@@ -20,7 +19,6 @@ export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode, isLoading }
       <CreateNewQuizButton
         deleteMode={deleteMode}
       />
-      <LocalQuiz />
       {
         quizzes.map((quiz, index) => (
           <UserQuiz
@@ -32,6 +30,9 @@ export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode, isLoading }
           />
         ))
       }
+      <LocalQuiz
+        setUserData={setUserData}
+      />
     </section>
   )
 }
@@ -102,42 +103,4 @@ const QuizzesPreview = () => {
       }
     </section>
   )
-}
-
-const LocalQuiz = () => {
-  const [localQuiz, setLocalQuiz] = useState(null)
-
-  useEffect(() => {
-    let quizFromLS = window.localStorage.getItem('localQuiz')
-    if (!quizFromLS) return
-
-    quizFromLS = JSON.parse(quizFromLS)
-    const { success, data: validatedQuiz } = validateQuiz(quizFromLS)
-
-    if (!success) return
-
-    setLocalQuiz(validatedQuiz)
-
-    const token = window.localStorage.getItem('token')
-
-    fetch(`${API_URL}/quiz`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(validatedQuiz)
-    })
-      .then(res => {
-        if (res.ok) window.localStorage.removeItem('localQuiz')
-        else {
-          res.json()
-            .then(data => console.log(data))
-        }
-      })
-  }, [])
-
-  return localQuiz
-    ? <UserQuiz quiz={localQuiz} />
-    : <></>
 }

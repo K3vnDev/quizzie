@@ -1,9 +1,9 @@
 import { Timer as TimerIcon } from '../../../icons/Timer.jsx'
 import { Question as QuestionIcon } from '../../../icons/Question.jsx'
 import { UserQuizOptionsMenu } from '../UserQuizOptionsMenu/UserQuizOptionsMenu.jsx'
-import './userQuiz.css'
 import { useEffect, useRef, useState } from 'react'
 import { UserQuizDeleteMenu } from '../../UserQuizDeleteMenu/UserQuizDeleteMenu.jsx'
+import './userQuiz.css'
 
 export function UserQuiz ({ quizzes, index, deleteMode, setUserData }) {
   const quiz = quizzes[index]

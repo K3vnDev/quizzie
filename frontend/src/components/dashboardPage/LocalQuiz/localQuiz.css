@@ -1,0 +1,25 @@
+.local-quiz {
+  width: var(--element-width);
+  height: var(--element-height);
+  background: #1f1f1f;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  user-select: none;
+  gap: 16px;
+}
+
+.local-quiz p {
+  font-size: 24px;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.local-quiz svg {
+  --svg-size: 62px;
+  width: var(--svg-size);
+  height: var(--svg-size);
+  opacity: 0.5;
+}

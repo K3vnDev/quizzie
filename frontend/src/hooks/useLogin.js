@@ -20,7 +20,6 @@ export function useLogin () {
       if (!data.status || data.status === 'error') return data
 
       const { token } = data.data
-      console.log(token)
       window.localStorage.setItem('token', token)
       return data
     } catch {

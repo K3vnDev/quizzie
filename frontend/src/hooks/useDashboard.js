@@ -13,16 +13,20 @@ export function useDashboard () {
 
   const fetchQuizzes = async () => {
     const token = window.localStorage.getItem('token')
-    if (!token) return navigate('/login')
 
-    const res = await fetch(`${API_URL}/user/quizzes`, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    const data = await res.json()
-    if (res.ok) {
-      setUserData(data.data)
+    try {
+      if (!token) throw new Error('')
+      setIsLoading(true)
+
+      const res = await fetch(`${API_URL}/user/quizzes`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      if (!res.ok) throw new Error('')
+
+      const { data } = await res.json()
+      setUserData(data)
       setIsLoading(false)
-    } else {
+    } catch {
       navigate('/login')
     }
   }
