@@ -11,13 +11,13 @@ import { EditButton } from '../../root/EditButton/EditButton.jsx'
 export function PlayMode () {
   const {
     quizName, progress, currentQuestion,
-    setResponse, answerTime, timeBarWaitTime, timeBarPaused
+    setResponse, answerTime, timeBarWaitTime,
+    timeBarPaused, nameAppearTime
   } = usePlayMode()
 
   const setTransitioning = useStore(state => state.setTransitioning)
   const transitioning = useStore(state => state.transitioning)
   const isUnloadingPlayMode = useStore(state => state.isUnloadingPlayMode)
-  const nameAppearTime = 3.4
 
   useEffect(() => {
     setTransitioning(true)

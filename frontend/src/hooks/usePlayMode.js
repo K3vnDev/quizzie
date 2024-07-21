@@ -34,7 +34,7 @@ export function usePlayMode () {
   useEffect(() => {
     clearTimeout(loadNextQuestion.current)
     const timeOutTime = firstRender.current
-      ? answerTime + timeBarWaitTime + 3000
+      ? answerTime + timeBarWaitTime + nameAppearTime
       : answerTime + timeBarWaitTime
 
     firstRender.current = false
@@ -57,6 +57,7 @@ export function usePlayMode () {
 
   const timeBarWaitTime = 0.8 * 1000
   const answerTime = config.answerTime * 1000
+  const nameAppearTime = 3.4 * 1000
 
   const nextQuestion = async (response) => {
     clearTimeout(loadNextQuestion.current)
@@ -113,6 +114,7 @@ export function usePlayMode () {
     setResponse,
     answerTime: answerTime / 1000,
     timeBarWaitTime: timeBarWaitTime / 1000,
-    timeBarPaused
+    timeBarPaused,
+    nameAppearTime: nameAppearTime / 1000
   }
 }
