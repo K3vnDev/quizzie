@@ -1,26 +1,33 @@
-
-.play-question-box{
-  background: #262627;  
+.play-question-box {
+  background: #262627;
   border-radius: 20px;
-  padding: 50px;
+  padding: 45px;
   max-width: 1000px;
-  animation: question-box-appear .6s ease both;
+  user-select: none;
+
+  animation: question-box-appear 0.6s ease both;
 }
 
-.play-question-box.unloading{
-  animation: question-box-disappear .3s ease-out both;
+.play-question-box.unloading {
+  animation: question-box-disappear 0.3s ease-out both;
 }
 
-.play-question-box h2{
+.play-question-box h2 {
   font-size: 28px;
+  line-height: 34px;
   font-weight: 600;
   font-family: Poppins;
-  margin: 0 30px 34px 0;
+  margin: 0 30px 28px 0;
   text-wrap: wrap;
+  word-break: break-all;
 }
 
 /* DEFAULT */
-.play-question-box .answers .answer-box{
+.play-question-box .answers {
+  gap: 14px;
+}
+
+.play-question-box .answers .answer-box {
   border-radius: 10px;
   user-select: none;
   cursor: pointer;
@@ -32,134 +39,126 @@
   align-items: center;
   justify-content: start;
   gap: 12px;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
-.play-question-box .answers .answer-box span{
-  font-size: 24px;
+.play-question-box .answers .answer-box span {
   font-family: Roboto;
-  line-height: 36px;
 }
-.play-question-box .answers .answer-box svg{
+.play-question-box .answers .answer-box svg {
   min-width: 40px;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
-.answer-box:disabled{
+.answer-box:disabled {
   pointer-events: none;
 }
 
-.play-question-box .answers .answer-box:not(:disabled){
-  &:hover{
+.play-question-box .answers .answer-box:not(:disabled) {
+  &:hover {
     filter: brightness(120%);
     box-shadow: 0 0 10px var(--bg-color-st);
   }
-  &:active{
+  &:active {
     box-shadow: 0 0 10px transparent;
     filter: brightness(95%);
   }
 }
-.play-question-box .answers .answer-box:not(:disabled):hover svg{
+.play-question-box .answers .answer-box:not(:disabled):hover svg {
   scale: 1.1;
 }
-.play-question-box .answers .answer-box:disabled svg path, .play-question-box .answers .answer-box:disabled{
+.play-question-box .answers .answer-box:disabled svg path,
+.play-question-box .answers .answer-box:disabled {
   filter: brightness(75%);
   color: white;
 }
 
 /* IF LIST */
-.play-question-box .answers.list{
+.play-question-box .answers.list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
-.play-question-box .answers.list .answer-box{
-  padding: 18px;
+.play-question-box .answers.list .answer-box {
+  padding: 14px 18px;
   padding-right: 36px;
   width: max-content;
   max-width: 100%;
 }
-.play-question-box .answers.list .answer-box span{
+.play-question-box .answers.list .answer-box span {
   max-width: 700px;
   overflow: hidden;
   word-wrap: break-word;
+  line-height: 30px;
+  font-size: 22px;
 }
-
-.play-question-box .answers.list .answer-box:not(:disabled){
-  &:hover{
+.play-question-box .answers.list .answer-box:not(:disabled) {
+  &:hover {
     scale: 1.01;
   }
-  &:active{
-    scale: .99;
+  &:active {
+    scale: 0.99;
     transform: translateX(25px);
   }
 }
 
 /* IF GRID */
-.play-question-box .answers.grid{
+.play-question-box .answers.grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(300px, 1fr));
-  gap: 14px;
 }
-.play-question-box .answers.grid .answer-box{
+.play-question-box .answers.grid .answer-box {
   padding: 25px 20px;
 }
-
-.play-question-box .answers.grid .answer-box:not(:disabled){
-  &:hover{
+.play-question-box .answers.grid .answer-box:not(:disabled) {
+  &:hover {
     scale: 1.02;
   }
-  &:active{
-    scale: .99;
+  &:active {
+    scale: 0.99;
   }
 }
-  
-.play-question-box .answers.grid .answer-box span{
+.play-question-box .answers.grid .answer-box span {
   overflow: hidden;
   word-wrap: break-word;
   text-overflow: ellipsis;
+  line-height: 32px;
+  font-size: 24px;
 }
 
-
-
-
-
-@keyframes question-box-appear{
-  0%{
-    scale: .7;
+@keyframes question-box-appear {
+  0% {
+    scale: 0.7;
     opacity: 0;
     rotate: 4deg;
   }
-  85%{
+  85% {
     scale: 1.02;
   }
-  100%{
+  100% {
     scale: 1;
     opacity: 1;
     rotate: 0;
   }
 }
-
-@keyframes answer-box-appear{
-  0%{
-    scale: .85;
+@keyframes answer-box-appear {
+  0% {
+    scale: 0.85;
     opacity: 0;
   }
-  90%{
+  90% {
     scale: 1.01;
   }
-  100%{
+  100% {
     scale: 1;
     opacity: 1;
   }
 }
-
-@keyframes question-box-disappear{
-  50%{
-    scale: .96;
+@keyframes question-box-disappear {
+  50% {
+    scale: 0.96;
     opacity: 1;
   }
-  100%{
+  100% {
     transform: translateY(-40px);
     opacity: 0;
-    scale: .96;
+    scale: 0.96;
   }
 }

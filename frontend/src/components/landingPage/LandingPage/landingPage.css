@@ -27,8 +27,73 @@ body.landing {
   font-weight: 500;
   line-height: 42px;
   margin-bottom: 20px;
+  text-wrap: nowrap;
   cursor: default;
 }
 .title-n-slogan h3 span {
   color: #a37df3;
+}
+
+@media screen and (max-width: 1600px) {
+  .title-n-slogan h1 {
+    font-size: 86px;
+    margin-bottom: 6px;
+  }
+  .title-n-slogan h3 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 1450px) {
+  .title-n-slogan h1 {
+    font-size: 74px;
+    margin-bottom: 4px;
+  }
+  .title-n-slogan h3 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .title-n-slogan h1 {
+    font-size: 64px;
+    margin-bottom: 4px;
+  }
+  .title-n-slogan h3 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body.landing {
+    height: auto;
+    overflow: scroll;
+  }
+  #root.landing {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .title-n-slogan {
+    margin-top: 60px;
+    margin-bottom: 32px;
+  }
+  .title-n-slogan h1 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .title-n-slogan h3 {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 400px) {
+  .title-n-slogan h1 {
+    font-size: 50px;
+  }
+  .title-n-slogan h3 {
+    font-size: 20px;
+    line-height: 26px;
+  }
 }
