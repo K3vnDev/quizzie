@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Pencil as PencilIcon } from '../../../icons/Pencil.jsx'
 import { Left as LeftIcon } from '../../../icons/Left.jsx'
 import { Right as RightIcon } from '../../../icons/Rigth.jsx'
@@ -52,6 +52,12 @@ const TitleAndProgress = ({ questionIndex }) => {
     setIsEditing(true)
   }
 
+  useEffect(() => {
+    if (!isEditing && quizName === '') {
+      setQuizName('My New Quiz')
+    }
+  }, [isEditing])
+
   return (
     <div className='quiz-title-and-progress'>
       <div className='quiz-title'>
@@ -62,6 +68,7 @@ const TitleAndProgress = ({ questionIndex }) => {
               maxLength={25}
               setIsEditing={setIsEditing}
               handleTextChange={setQuizName}
+              selectOn={['My New Quiz']}
             />
           : (
             <h3 onClick={enterEditMode}>

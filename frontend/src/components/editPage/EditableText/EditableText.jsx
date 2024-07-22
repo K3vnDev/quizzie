@@ -61,7 +61,7 @@ export function EditableTextArea ({ initialText, setIsEditing, handleTextChange,
   )
 }
 
-export function EditableTextInput ({ initialText, maxLength, setIsEditing, handleTextChange }) {
+export function EditableTextInput ({ initialText, maxLength, setIsEditing, handleTextChange, selectOn }) {
   const inputRef = useRef()
   const { animation, triggerAnimation } = useCantWriteAnimation()
   const exitEditMode = () => setIsEditing(false)
@@ -86,11 +86,20 @@ export function EditableTextInput ({ initialText, maxLength, setIsEditing, handl
     } else triggerAnimation()
   }
 
+  const selectInitialText = () => {
+    if (selectOn && selectOn.includes(initialText)) {
+      inputRef.current.select()
+    }
+  }
+
+  useEffect(selectInitialText, [])
+
   return (
     <input
       type='text'
       value={initialText}
       onChange={handleChange}
+      onFocus={selectInitialText}
       style={{
         overflow: 'hidden',
         resize: 'none',
