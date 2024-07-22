@@ -1,4 +1,4 @@
-.question-warning-message{
+.question-warning-message {
   position: absolute;
   left: 50%;
   translate: -50% 75%;
@@ -9,13 +9,13 @@
   color: #eaea79;
 }
 
-.question-warning-message svg{
+.question-warning-message svg {
   --size: 28px;
   width: var(--size);
   height: var(--size);
 }
 
-.question-warning-message span{
+.question-warning-message span {
   font-size: 22px;
   line-height: 0;
   text-wrap: nowrap;

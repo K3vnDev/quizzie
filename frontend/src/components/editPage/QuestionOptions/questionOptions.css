@@ -5,8 +5,9 @@
   justify-content: flex-start;
   gap: var(--btn-gap);
   position: absolute;
-  top: 40px;
-  right: 50px;
+  top: var(--question-box-padding);
+  right: var(--question-box-padding);
+  translate: 0 -25%;
   padding: var(--btn-gap);
 
   width: calc(var(--btn-size) + var(--btn-gap));

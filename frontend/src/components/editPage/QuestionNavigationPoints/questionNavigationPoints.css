@@ -1,4 +1,4 @@
-.question-navigation-points{
+.question-navigation-points {
   position: absolute;
   bottom: 90px;
   left: 50%;
@@ -8,7 +8,7 @@
   gap: calc(var(--size) / 1.1);
 }
 
-.question-navigation-points .navigation-point{
+.question-navigation-points .navigation-point {
   width: var(--size);
   height: var(--size);
   border: none;
@@ -16,20 +16,17 @@
   cursor: pointer;
   position: relative;
   background: white;
-  opacity: .2;
+  opacity: 0.2;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 
-    all .15s ease-out,
-    background 0s ease
-  ;
+  transition: all 0.15s ease-out, background 0s ease;
 
-  &:hover{
-    opacity: .25;
+  &:hover {
+    opacity: 0.25;
     filter: brightness(120%);
   }
-  &::before{
+  &::before {
     position: absolute;
     content: '';
     --ratio: 150%;
@@ -41,13 +38,13 @@
   }
 }
 
-.question-navigation-points .navigation-point.invalid{
+.question-navigation-points .navigation-point.invalid {
   background: #ffff81;
 }
 
-.question-navigation-points .navigation-point.selected{
+.question-navigation-points .navigation-point.selected {
   scale: 1.25;
   cursor: default;
   filter: saturate(140%);
-  opacity: .55;
+  opacity: 0.55;
 }

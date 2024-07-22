@@ -11,13 +11,15 @@ import { EditableTextArea } from '../EditableText/EditableText.jsx'
 export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
   const { config, questions } = useStore(state => state.quiz)
   const { query, displayMode, answers } = questions[currentQuestionIndex]
+  const transitioning = useStore(state => state.transitioning)
+
+  const className = `edit-question-box ${transitioning ? 'disabled' : ''}`
 
   return (
-    <div className='edit-question-box'>
+    <div className={className}>
       <header>
         <QuestionQuery
           questionIndex={currentQuestionIndex}
-          answers={answers}
           query={query}
         />
         <QuestionOptions
@@ -48,6 +50,7 @@ export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
 
 const AddAnswerButton = ({ questionIndex }) => {
   const createNewAnswer = useStore(state => state.createNewAnswer)
+  const transitioning = useStore(state => state.transitioning)
 
   const handleClick = () => {
     createNewAnswer(questionIndex)
@@ -57,13 +60,14 @@ const AddAnswerButton = ({ questionIndex }) => {
     <button
       className='add-answer-btn'
       onClick={handleClick}
+      disabled={transitioning}
     >
       <AddIcon />
     </button>
   )
 }
 
-const QuestionQuery = ({ query, questionIndex, answers }) => {
+const QuestionQuery = ({ query, questionIndex }) => {
   const [isEditing, setIsEditing] = useState(false)
   const setQuestionQuery = useStore(state => state.setQuestionQuery)
 

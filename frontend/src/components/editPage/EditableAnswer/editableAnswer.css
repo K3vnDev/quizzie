@@ -1,3 +1,4 @@
+/* DEFAULT */
 .edit-question-box .answers .edit-answer-box {
   border-radius: 10px;
   user-select: none;
@@ -12,6 +13,9 @@
   gap: 12px;
   transition: all 0.3s ease;
   overflow: hidden;
+
+  --list-font-size: 21px;
+  --grid-font-size: 24px;
 }
 
 .edit-question-box .answers .edit-answer-box span {
@@ -41,7 +45,7 @@
   max-width: 700px;
   overflow: hidden;
   word-wrap: break-word;
-  font-size: 22px;
+  font-size: var(--list-font-size);
   line-height: 28px;
   max-height: 55px;
 }
@@ -88,7 +92,7 @@
   overflow: hidden;
   word-wrap: break-word;
   text-overflow: ellipsis;
-  font-size: 24px;
+  font-size: var(--grid-font-size);
   line-height: 32px;
   max-height: 100px;
 }
@@ -121,7 +125,7 @@
 /* ENDIF */
 
 .edit-answer-box textarea {
-  font-size: 24px;
+  font-size: var(--list-font-size);
   font-family: Roboto;
   overflow: hidden;
   resize: none;

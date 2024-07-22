@@ -1,10 +1,15 @@
 .edit-question-box {
   background: #262627;
   border-radius: 20px;
-  padding: 50px;
+  --question-box-padding: 45px;
+  padding: var(--question-box-padding);
   max-width: 1000px;
-  max-height: 500px;
+  max-height: 600px;
   position: relative;
+}
+
+.edit-question-box.disabled {
+  pointer-events: none;
 }
 
 .edit-question-box header {
@@ -28,14 +33,15 @@
   --bg-color: #2b2b2c;
   border-radius: 10px;
   border: none;
-  font-size: 32px;
+  font-size: 28px;
   background: var(--bg-color);
   outline: 10px solid var(--bg-color);
   resize: none;
 }
 
 .edit-question-box header .question-query span {
-  font-size: 32px;
+  font-size: 28px;
+  line-height: 34px;
   font-weight: 500;
   width: 100%;
   cursor: pointer;
@@ -87,8 +93,10 @@
   background: #313131;
   border: 1px solid #5a5a5a;
   border-radius: 10px;
-
   transition: all 0.2s ease;
+}
+.add-answer-btn:not(:disabled) {
+  cursor: pointer;
 
   &:hover {
     filter: brightness(115%);
