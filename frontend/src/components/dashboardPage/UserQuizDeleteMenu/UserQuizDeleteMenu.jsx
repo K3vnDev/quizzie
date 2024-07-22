@@ -1,5 +1,5 @@
 import './userQuizDeleteMenu.css'
-import { useDebounce } from '../../hooks/useDebounce'
+import { useDebounce } from '../../../hooks/useDebounce.js'
 const API_URL = import.meta.env.VITE_API_URL
 
 export function UserQuizDeleteMenu ({ showingDeleteMenu, setShowingDeleteMenu, setUserData, quizzes, quizId }) {
