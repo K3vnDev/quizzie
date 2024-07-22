@@ -8,7 +8,7 @@ import { LoginAnchor } from '../../root/LoginAnchor/LoginAnchor.jsx'
 import { MenuQuestion } from '../MenuQuestion/MenuQuestion.jsx'
 import { useRouteClassName } from '../../../hooks/useRouteClassName.js'
 import { useReset } from '../../../hooks/useReset.js'
-import { useResize } from '../../../hooks/useResize.js'
+import { useMinWidth } from '../../../hooks/useMinWidth.js'
 const { VITE_API_URL: API_URL } = import.meta.env
 
 export function LandingPage () {
@@ -48,7 +48,7 @@ export function LandingPage () {
 }
 
 const TitleAndSlogan = () => {
-  const showingLoginAnchor = useResize(1000)
+  const showingLoginAnchor = useMinWidth(1000)
 
   return (
     <main className='title-n-slogan'>

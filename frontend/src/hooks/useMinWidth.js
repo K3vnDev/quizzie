@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-export function useResize (minWidth) {
-  const [value, setValue] = useState(window.innerWidth > minWidth)
+export function useMinWidth (minWidth) {
+  const [value, setValue] = useState(document.documentElement.clientWidth > minWidth)
 
   const handleResize = () => {
-    setValue(window.innerWidth > minWidth)
+    setValue(document.documentElement.clientWidth > minWidth)
   }
 
   useEffect(() => {
