@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Pencil as PencilIcon } from '../../../icons/Pencil.jsx'
-import { Left as LeftIcon } from '../../../icons/Left.jsx'
-import { Right as RightIcon } from '../../../icons/Rigth.jsx'
 import { useStore } from '../../../store/useStore.js'
 import { useEditMode } from '../../../hooks/useEditMode.js'
 import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
@@ -10,6 +8,7 @@ import { EditQuestionBox } from '../EditQuestionBox/EditQuestionBox.jsx'
 import { QuestionNavigationPoints } from '../QuestionNavigationPoints/QuestionNavigationPoints.jsx'
 import { EditableTextInput } from '../EditableText/EditableText.jsx'
 import { EditQuizSettings } from '../EditQuizSettings/EditQuizSettings.jsx'
+import { QuestionNavigationArrows } from '../QuestionNavigationArrows/QuestionNavigationArrows.jsx'
 
 export function EditMode () {
   const {
@@ -81,27 +80,6 @@ const TitleAndProgress = ({ questionIndex }) => {
       <span className='quiz-progress'>
         {`Question ${questionIndex + 1} of ${questions.length}`}
       </span>
-    </div>
-  )
-}
-
-const QuestionNavigationArrows = ({ navigateQuestion, questionIndex }) => {
-  return (
-    <div className='edit-question-navigation'>
-      <button
-        className='left'
-        onClick={() => navigateQuestion('left')}
-        disabled={questionIndex === 0}
-      >
-        <LeftIcon />
-      </button>
-      <button
-        className='right'
-        onClick={() => navigateQuestion('right')}
-        disabled={questionIndex >= 14}
-      >
-        <RightIcon />
-      </button>
     </div>
   )
 }

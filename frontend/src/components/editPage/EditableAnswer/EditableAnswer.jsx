@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
-import { Checkbox as CheckboxIcon } from '../../../icons/Checkbox.jsx'
-import { Cross as CrossIcon } from '../../../icons/Cross.jsx'
 import './editableAnswer.css'
 import { colorAndIcon } from '../../../services/colorAndIcon.jsx'
 import { useStore } from '../../../store/useStore.js'
 import { EditableTextArea } from '../EditableText/EditableText.jsx'
 import { EditAnswerMenu } from '../EditAnswerMenu/EditAnswerMenu.jsx'
+import { Check as CheckIcon } from '../../../icons/Check.jsx'
+import { XMark as XMarkIcon } from '../../../icons/XMark.jsx'
 
 export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex }) {
   const { color } = colorAndIcon[answerIndex]
@@ -37,19 +37,20 @@ export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex 
   }, [])
 
   const icon = isCorrect
-    ? <CheckboxIcon />
-    : <CrossIcon />
+    ? <CheckIcon />
+    : <XMarkIcon />
 
   const style = {
     '--bg-color': color,
-    '--bg-color-st': color + 80
+    '--bg-color-st': color + 80,
+    '--svg-op-sc': isCorrect ? 0.9 : 0.6
   }
 
   return (
     <div
       className='edit-answer-box'
-      style={style}
       ref={answerBoxRef}
+      style={style}
     >
       {icon}
       <TextContent
