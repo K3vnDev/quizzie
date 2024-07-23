@@ -1,11 +1,12 @@
 .bg-transition-round {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 200vw;
   border-radius: 50vh;
   right: -200vw;
   top: 0;
   background: black;
+  z-index: 999;
 }
 .bg-transition-round:not(.transitioning) {
   display: none;

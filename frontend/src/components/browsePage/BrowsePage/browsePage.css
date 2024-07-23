@@ -7,32 +7,8 @@
   gap: 75px;
 }
 
-body.browse .app-logo {
-  position: fixed;
-  --size: 80px;
-  --padding: 40px;
-  width: var(--size);
-  height: var(--size);
-  top: var(--padding);
-  left: var(--padding);
-}
-
 @media screen and (max-width: 2000px) {
   #root.browse {
     padding: 0;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  body.browse .app-logo {
-    --size: 65px;
-    --padding: 32px;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  body.browse .app-logo {
-    --size: 48px;
-    --padding: 25px;
   }
 }
