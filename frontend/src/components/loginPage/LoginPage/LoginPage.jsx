@@ -11,7 +11,11 @@ import { FormError } from '../FormError/FormError.jsx'
 import { useNavigate } from 'react-router-dom'
 
 export function LoginPage () {
-  const { login, signUp, showing, setShowing, fetching } = useLogin()
+  const {
+    login, signUp, showing,
+    setShowing, fetching, verifyingAuth
+  } = useLogin()
+
   useRouteClassName('login')
 
   const dispatchAnimEvent = inputName => {
@@ -19,8 +23,11 @@ export function LoginPage () {
     document.dispatchEvent(animEvent)
   }
 
+  if (verifyingAuth) return
+
   return (
     <>
+      <AppLogo />
       <main>
         <LoginForm
           login={login}
@@ -39,7 +46,6 @@ export function LoginPage () {
           setShowing={setShowing}
         />
       </main>
-      <AppLogo />
     </>
   )
 }

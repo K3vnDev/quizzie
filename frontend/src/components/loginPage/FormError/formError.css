@@ -6,6 +6,9 @@
   font-weight: 500;
   user-select: none;
   margin-top: 10px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 
   transition: all 0.15s ease;
 }
@@ -18,4 +21,31 @@
 .form-error.hidden {
   opacity: 0;
   scale: 0.95;
+}
+
+@media screen and (max-width: 1400px) {
+  .form-error {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .form-error {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .form-error {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .form-error {
+    font-size: 12px;
+    margin-top: 6px;
+  }
 }

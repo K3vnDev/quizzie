@@ -3,6 +3,7 @@ import './formCurtain.css'
 import { useCooldown } from '../../../hooks/useCooldown'
 import { useDebounce } from '../../../hooks/useDebounce'
 import { useStore } from '../../../store/useStore'
+import { useMinWidth } from '../../../hooks/useMinWidth'
 
 export function FormCurtain ({ showing, setShowing }) {
   const [animation, setAnimation] = useState('')
@@ -45,6 +46,7 @@ export function FormCurtain ({ showing, setShowing }) {
 const InnerContent = ({ showing, toggleShowing, animationTime }) => {
   const [animation, setAnimation] = useState('')
   const setFormTransitionating = useStore(state => state.setFormTransitionating)
+  const hideShortMessages = useMinWidth(1000)
 
   const [triggerAction, transitioning] = useCooldown({
     action: () => setAnimation(`transition-inner-content ${animationTime}s ease both`),
@@ -57,9 +59,13 @@ const InnerContent = ({ showing, toggleShowing, animationTime }) => {
   }, [transitioning])
 
   const { title, button } = (() => {
-    return showing === 'login'
-      ? { title: 'New on Quizzie?', button: 'Create an account' }
-      : { title: 'Been here before?', button: 'Login to your account' }
+    return hideShortMessages
+      ? showing === 'login'
+        ? { title: 'New on Quizzie?', button: 'Create an account' }
+        : { title: 'Been here before?', button: 'Login to your account' }
+      : showing === 'login'
+        ? { title: 'New Here?', button: 'Sign up' }
+        : { title: 'Been Here?', button: 'Login' }
   })()
 
   const delayedTitle = useDebounce(title, animationTime * 500)

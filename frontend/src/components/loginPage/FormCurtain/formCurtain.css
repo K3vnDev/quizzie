@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
   right: 0;
   top: 0;
 
@@ -27,6 +28,7 @@
   text-align: center;
   font-weight: 600;
   font-size: 30px;
+  text-wrap: nowrap;
 }
 
 .form-curtain button {
@@ -95,5 +97,59 @@
   35%,
   65% {
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .form-curtain h4 {
+    line-height: 46px;
+    font-size: 26px;
+  }
+
+  .form-curtain button {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .form-curtain h4 {
+    line-height: 40px;
+    font-size: 22px;
+  }
+  .form-curtain div {
+    gap: 6px;
+  }
+
+  .form-curtain button {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .form-curtain h4 {
+    line-height: 36px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .form-curtain div {
+    gap: 4px;
+  }
+
+  .form-curtain button {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .form-curtain h4 {
+    font-size: 14px;
+  }
+  .form-curtain div {
+    gap: 2px;
+  }
+
+  .form-curtain button {
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 14px;
   }
 }
