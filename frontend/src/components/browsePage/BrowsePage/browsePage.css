@@ -3,14 +3,36 @@
   align-items: center;
   flex-direction: column;
   width: 100vw;
-  padding: 0 300px;
+  padding: 0 180px;
   gap: 75px;
 }
 
 body.browse .app-logo {
   position: fixed;
-  width: 80px;
-  height: 80px;
-  top: 40px;
-  left: 40px;
+  --size: 80px;
+  --padding: 40px;
+  width: var(--size);
+  height: var(--size);
+  top: var(--padding);
+  left: var(--padding);
+}
+
+@media screen and (max-width: 2000px) {
+  #root.browse {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body.browse .app-logo {
+    --size: 65px;
+    --padding: 32px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body.browse .app-logo {
+    --size: 48px;
+    --padding: 25px;
+  }
 }

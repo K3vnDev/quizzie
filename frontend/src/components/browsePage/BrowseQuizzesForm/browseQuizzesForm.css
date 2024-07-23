@@ -23,6 +23,7 @@
   height: 54px;
   cursor: pointer;
   transition: all 0.1s ease-out;
+  --font-size: 18px;
 
   &:hover {
     border: 1px solid #4e4e4e;
@@ -30,8 +31,9 @@
 }
 
 .browse-quizzes-form label svg {
-  width: 26px;
-  height: 26px;
+  --size: 26px;
+  width: var(--size);
+  height: var(--size);
   opacity: 0.6;
   transition: all 0.25s ease-out;
 }
@@ -41,13 +43,14 @@
   outline: none;
   border: none;
   cursor: pointer;
+  font-size: var(--font-size);
   width: 100%;
 }
 
 .browse-quizzes-form label input::placeholder {
   transition: opacity 0.2s ease;
   color: #4f4f4f;
-  font-size: 18px;
+  font-size: var(--font-size);
   font-family: Roboto;
 }
 
@@ -63,4 +66,80 @@
   color: #dbdbdb;
   font-size: 18px;
   font-family: Roboto;
+}
+
+@media screen and (max-width: 1300px) {
+  .browse-quizzes-form h2 {
+    font-size: 58px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .browse-quizzes-form {
+    margin-top: 60px;
+  }
+  .browse-quizzes-form h2 {
+    font-size: 52px;
+  }
+  .browse-quizzes-form label {
+    padding: 0 10px;
+    width: 500px;
+    gap: 12px;
+    height: 48px;
+    --font-size: 16px;
+  }
+  .browse-quizzes-form label svg {
+    --size: 22px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .browse-quizzes-form {
+    margin-top: 70px;
+  }
+  .browse-quizzes-form h2 {
+    font-size: 46px;
+  }
+  .browse-quizzes-form label {
+    width: 420px;
+    height: 44px;
+    gap: 10px;
+    border-radius: 8px;
+    --font-size: 14px;
+  }
+  .browse-quizzes-form label svg {
+    --size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .browse-quizzes-form {
+    margin-top: 80px;
+  }
+  .browse-quizzes-form h2 {
+    font-size: 40px;
+  }
+  .browse-quizzes-form label {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .browse-quizzes-form {
+    margin-top: 90px;
+  }
+  .browse-quizzes-form h2 {
+    font-size: 32px;
+  }
+  .browse-quizzes-form label {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .browse-quizzes-form h2 {
+    font-size: 28px;
+  }
+  .browse-quizzes-form label {
+    width: 270px;
+  }
 }

@@ -1,14 +1,15 @@
 .browse-quizzes-grid {
   height: 100%;
-  width: 100%;
   display: grid;
-  gap: 30px;
+  width: 100%;
+  gap: var(--gap);
 
   grid-template-columns: repeat(auto-fit, var(--element-width));
   grid-template-rows: repeat(auto-fit, var(--element-height));
   place-content: center;
   align-items: start;
 
+  --gap: 30px;
   --element-width: 400px;
   --element-height: 200px;
 }
@@ -22,4 +23,65 @@
 .browse-quizzes-message {
   font-size: 26px;
   color: #9e9e9e;
+}
+
+@media screen and (max-width: 2000px) {
+  .browse-quizzes-grid {
+    grid-template-columns: repeat(3, var(--element-width));
+    grid-template-rows: repeat(3, var(--element-height));
+  }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1300px) {
+  .browse-quizzes-grid {
+    --gap: 28px;
+    --element-width: 350px;
+    --element-height: 180px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .browse-quizzes-grid {
+    grid-template-columns: repeat(2, var(--element-width));
+    grid-template-rows: repeat(2, var(--element-height));
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 700px) {
+  .browse-quizzes-grid {
+    --gap: 24px;
+    --element-width: 320px;
+    --element-height: 170px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 700px) {
+  .browse-quizzes-grid {
+    --gap: 18px;
+    --element-width: 270px;
+    --element-height: 150px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .browse-quizzes-grid {
+    grid-template-columns: var(--element-width);
+    grid-template-rows: var(--element-height);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .browse-quizzes-grid {
+    --gap: 28px;
+    --element-width: 350px;
+    --element-height: 180px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .browse-quizzes-grid {
+    --gap: 18px;
+    --element-width: 270px;
+    --element-height: 150px;
+  }
 }

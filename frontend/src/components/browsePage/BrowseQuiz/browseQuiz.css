@@ -1,34 +1,34 @@
-.browse-quiz{
+.browse-quiz {
   width: var(--element-width);
   height: var(--element-height);
   background: var(--bg-color);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   justify-content: space-between;
   position: relative;
   user-select: none;
   padding: 48px 52px;
-  transition: all .6s ease-out;
+  transition: all 0.6s ease-out;
 }
 
-.browse-quiz.not-disabled{
+.browse-quiz.not-disabled {
   cursor: pointer;
-  transition: all .25s ease-out;
-  &:hover{
+  transition: all 0.25s ease-out;
+
+  &:hover {
     scale: 1.04;
     filter: brightness(115%);
     box-shadow: 0 0 10px var(--bg-color);
   }
-  &:active{
-    scale: .98;
+  &:active {
+    scale: 0.98;
     filter: brightness(90%);
     box-shadow: none;
   }
 }
 
-.browse-quiz h4{
+.browse-quiz h4 {
   text-align: center;
   font-size: 38px;
   text-wrap: nowrap;
@@ -36,37 +36,157 @@
   text-overflow: ellipsis;
 }
 
-.browse-quiz .info{
+.browse-quiz .info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.browse-quiz .info h6{
+.browse-quiz .info h6 {
   font-size: 24px;
   font-weight: 400;
-  opacity: .9;
+  opacity: 0.9;
 }
 
-.browse-quiz .info div{
+.browse-quiz .info div {
   display: flex;
   gap: 28px;
   align-items: center;
-  opacity: .75;
+  opacity: 0.75;
 }
 
-.browse-quiz .info div span{
+.browse-quiz .info div span {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.browse-quiz .info div span svg{
+.browse-quiz .info div span svg {
   --size: 26px;
   width: var(--size);
   height: var(--size);
 }
 
-.browse-quiz .info div span p{
+.browse-quiz .info div span p {
   font-size: 20px;
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1300px) {
+  .browse-quiz {
+    padding: 45px 50px;
+  }
+  .browse-quiz h4 {
+    font-size: 32px;
+  }
+  .browse-quiz .info h6 {
+    font-size: 20px;
+  }
+  .browse-quiz .info div {
+    gap: 18px;
+  }
+  .browse-quiz .info div span {
+    gap: 4px;
+  }
+  .browse-quiz .info div span svg {
+    --size: 22px;
+  }
+  .browse-quiz .info div span p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 700px) {
+  .browse-quiz {
+    padding: 42px 50px;
+  }
+  .browse-quiz h4 {
+    font-size: 28px;
+  }
+  .browse-quiz .info h6 {
+    font-size: 18px;
+  }
+  .browse-quiz .info div {
+    gap: 16px;
+  }
+  .browse-quiz .info div span {
+    gap: 4px;
+  }
+  .browse-quiz .info div span svg {
+    --size: 20px;
+  }
+  .browse-quiz .info div span p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 700px) {
+  .browse-quiz {
+    padding: 38px 40px;
+  }
+  .browse-quiz h4 {
+    font-size: 24px;
+  }
+  .browse-quiz .info h6 {
+    font-size: 16px;
+  }
+  .browse-quiz .info div {
+    gap: 14px;
+  }
+  .browse-quiz .info div span {
+    gap: 4px;
+  }
+  .browse-quiz .info div span svg {
+    --size: 18px;
+  }
+  .browse-quiz .info div span p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .browse-quiz {
+    padding: 45px 50px;
+  }
+  .browse-quiz h4 {
+    font-size: 32px;
+  }
+  .browse-quiz .info h6 {
+    font-size: 20px;
+  }
+  .browse-quiz .info div {
+    gap: 18px;
+  }
+  .browse-quiz .info div span {
+    gap: 4px;
+  }
+  .browse-quiz .info div span svg {
+    --size: 22px;
+  }
+  .browse-quiz .info div span p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .browse-quiz {
+    padding: 38px 40px;
+  }
+  .browse-quiz h4 {
+    font-size: 24px;
+  }
+  .browse-quiz .info h6 {
+    font-size: 16px;
+  }
+  .browse-quiz .info div {
+    gap: 14px;
+  }
+  .browse-quiz .info div span {
+    gap: 4px;
+  }
+  .browse-quiz .info div span svg {
+    --size: 18px;
+  }
+  .browse-quiz .info div span p {
+    font-size: 14px;
+  }
 }
