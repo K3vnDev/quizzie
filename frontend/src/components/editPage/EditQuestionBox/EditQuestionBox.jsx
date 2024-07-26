@@ -6,7 +6,7 @@ import './editQuestionBox.css'
 import { QuestionWarningMessage } from '../QuestionWarningMessage/QuestionWarningMessage.jsx'
 import { EditableAnswer } from '../EditableAnswer/EditableAnswer.jsx'
 import { QuestionOptions } from '../QuestionOptions/QuestionOptions.jsx'
-import { EditableTextArea } from '../EditableText/EditableText.jsx'
+import { EditableText } from '../EditableText/EditableText.jsx'
 
 export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
   const { config, questions } = useStore(state => state.quiz)
@@ -84,11 +84,12 @@ const QuestionQuery = ({ query, questionIndex }) => {
   if (isEditing) {
     return (
       <div className='question-query'>
-        <EditableTextArea
+        <EditableText
           initialText={query}
           setIsEditing={setIsEditing}
           handleTextChange={handleTextChange}
           selectOn={['my question']}
+          displayAsTextArea
           maxLength={50}
         />
       </div>

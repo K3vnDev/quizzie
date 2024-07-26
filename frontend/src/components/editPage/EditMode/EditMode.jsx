@@ -6,7 +6,7 @@ import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
 import { EditModeButtonsHeader } from '../EditModeButtonsHeader/EditModeButtonsHeader.jsx'
 import { EditQuestionBox } from '../EditQuestionBox/EditQuestionBox.jsx'
 import { QuestionNavigationPoints } from '../QuestionNavigationPoints/QuestionNavigationPoints.jsx'
-import { EditableTextInput } from '../EditableText/EditableText.jsx'
+import { EditableText } from '../EditableText/EditableText.jsx'
 import { EditQuizSettings } from '../EditQuizSettings/EditQuizSettings.jsx'
 import { QuestionNavigationArrows } from '../QuestionNavigationArrows/QuestionNavigationArrows.jsx'
 
@@ -62,7 +62,7 @@ const TitleAndProgress = ({ questionIndex }) => {
       <div className='quiz-title'>
         {
         isEditing
-          ? <EditableTextInput
+          ? <EditableText
               initialText={quizName}
               maxLength={25}
               setIsEditing={setIsEditing}

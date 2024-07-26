@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import './editableAnswer.css'
 import { colorAndIcon } from '../../../services/colorAndIcon.jsx'
 import { useStore } from '../../../store/useStore.js'
-import { EditableTextArea } from '../EditableText/EditableText.jsx'
 import { EditAnswerMenu } from '../EditAnswerMenu/EditAnswerMenu.jsx'
 import { Check as CheckIcon } from '../../../icons/Check.jsx'
 import { XMark as XMarkIcon } from '../../../icons/XMark.jsx'
+import { EditableText } from '../EditableText/EditableText.jsx'
 
 export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex }) {
   const { color } = colorAndIcon[answerIndex]
@@ -77,12 +77,13 @@ const TextContent = ({ questionIndex, answerIndex, answerText, answerBoxRef, can
   }
 
   return isEditing
-    ? <EditableTextArea
+    ? <EditableText
         initialText={answerText}
         setIsEditing={setIsEditing}
         handleTextChange={handleTextChange}
         outsideContainerRef={answerBoxRef}
         selectOn={['first answer', 'second answer']}
+        displayAsTextArea
         maxLength={50}
       />
     : (

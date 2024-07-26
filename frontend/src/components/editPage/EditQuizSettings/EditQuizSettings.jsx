@@ -15,6 +15,8 @@ export function EditQuizSettings () {
     const handleClick = e => {
       e.stopPropagation()
       const { className } = e.target
+      if (typeof className !== 'string') return
+
       if (
         className.includes('quiz-settings-wrapper') ||
         className.includes('okay-btn')
