@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 
 export function useWidth (minWidth = 0) {
-  const [onMinWidth, setOnMinWidt] = useState(document.documentElement.clientWidth > minWidth)
+  const [onMinWidth, setOnMinWidth] = useState(getWith() > minWidth)
   const [onVerticalView, setOnVerticalView] = useState(checkVerticalView())
+  const [clientWidth, setClientWidth] = useState(getWith())
 
   const handleResize = () => {
-    setOnMinWidt(document.documentElement.clientWidth > minWidth)
+    setOnMinWidth(getWith() > minWidth)
     setOnVerticalView(checkVerticalView())
+    setClientWidth(getWith())
   }
 
   useEffect(() => {
@@ -15,9 +17,10 @@ export function useWidth (minWidth = 0) {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  return { onMinWidth, onVerticalView }
+  return { onMinWidth, onVerticalView, clientWidth }
 }
 
 const checkVerticalView = () => {
-  return document.documentElement.clientWidth < document.documentElement.clientHeight
+  return getWith() < document.documentElement.clientHeight
 }
+const getWith = () => document.documentElement.clientWidth

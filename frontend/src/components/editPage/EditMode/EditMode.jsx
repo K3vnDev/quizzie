@@ -64,7 +64,7 @@ const TitleAndProgress = ({ questionIndex }) => {
         isEditing
           ? <EditableText
               initialText={quizName}
-              maxLength={25}
+              maxLength={20}
               setIsEditing={setIsEditing}
               handleTextChange={setQuizName}
               selectOn={['My New Quiz']}

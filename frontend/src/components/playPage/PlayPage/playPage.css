@@ -6,6 +6,10 @@ body.play {
   background: #090909;
   height: 100vh;
   overflow: hidden;
+
+  --q-name-font-xl: 130px;
+  --q-name-font-s: 56px;
+  --q-name-mtop: 70px;
 }
 
 .header-buttons-wrapper {
@@ -22,6 +26,8 @@ body.play {
 }
 
 .header-buttons-wrapper .app-logo {
+  height: calc(var(--header-btns-size) * 1.35);
+  width: calc(var(--header-btns-size) * 1.35);
   animation: header-btn-appear 0.4s ease 0.3s both;
 }
 
@@ -45,20 +51,6 @@ body.play {
   animation: header-btn-appear 0.4s ease 0.5s both;
 }
 
-@keyframes header-btn-appear {
-  0% {
-    opacity: 0;
-    scale: 0.8;
-  }
-  90% {
-    scale: 1.01;
-  }
-  100% {
-    opacity: 1;
-    scale: 1;
-  }
-}
-
 .header-buttons-wrapper .edit-btn svg {
   width: 85%;
   height: 85%;
@@ -72,7 +64,7 @@ body.play {
   text-align: center;
   position: absolute;
   gap: 6px;
-  top: 70px;
+  top: var(--q-name-mtop);
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 10;
@@ -80,13 +72,17 @@ body.play {
 }
 
 .text-section h2 {
-  font-size: 56px;
+  font-size: var(--q-name-font-s);
   text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1200px;
 }
 
 .text-section h6 {
   font-size: 28px;
   color: #cdcdcd;
+  font-weight: 500;
   animation: message-slide-in 0.3s ease-out both;
 }
 
@@ -119,26 +115,130 @@ body.play {
 
 @keyframes quiz-name-appear {
   0% {
-    transform: translate(60vw, calc(50vh - 170px));
-    font-size: 125px;
+    transform: translate(60vw, calc(50vh - 50% - var(--q-name-mtop)));
+    font-size: calc(var(--q-name-font-xl) * 0.96);
     opacity: 0;
     rotate: 2deg;
     filter: blur(4px);
+    max-width: 75vw;
   }
   30% {
-    transform: translate(-12px, calc(50vh - 170px));
+    transform: translate(-12px, calc(50vh - 50% - var(--q-name-mtop)));
     opacity: 1;
     filter: blur(0);
   }
   40%,
   75% {
-    transform: translate(0, calc(50vh - 170px));
-    font-size: 130px;
+    transform: translate(0, calc(50vh - 50% - var(--q-name-mtop)));
+    font-size: var(--q-name-font-xl);
     rotate: 0deg;
     text-shadow: 0 0 4px #ffffff5d;
+    max-width: 75vw;
   }
   100% {
-    font-size: 56px;
+    font-size: var(--q-name-font-s);
     transform: translate(0, 0);
+    max-width: 1200px;
+  }
+}
+
+@keyframes header-btn-appear {
+  0% {
+    opacity: 0;
+    scale: 0.8;
+  }
+  90% {
+    scale: 1.01;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  body.play {
+    --q-name-font-xl: 120px;
+    --q-name-font-s: 52px;
+    --q-name-mtop: 50px;
+  }
+  .header-buttons-wrapper {
+    top: 28px;
+    padding: 0 60px;
+    --header-btns-size: 70px;
+  }
+  .text-section {
+    gap: 4px;
+  }
+  .text-section h2 {
+    max-width: 800px;
+  }
+  .text-section h6 {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  body.play {
+    --q-name-font-xl: 84px;
+    --q-name-font-s: 46px;
+  }
+  .header-buttons-wrapper {
+    padding: 0 50px;
+    --header-btns-size: 60px;
+  }
+  .text-section {
+    gap: 4px;
+  }
+  .text-section h2 {
+    max-width: 500px;
+  }
+  .text-section h6 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  body.play {
+    --q-name-font-xl: 60px;
+    --q-name-font-s: 40px;
+  }
+  .header-buttons-wrapper {
+    padding: 0 40px;
+    --header-btns-size: 50px;
+  }
+  .text-section h2 {
+    max-width: 450px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  body.play {
+    --q-name-font-xl: 56px;
+    --q-name-font-s: 36px;
+    --q-name-mtop: 96px;
+  }
+  .header-buttons-wrapper {
+    padding: 0 40px;
+    --header-btns-size: 50px;
+  }
+  .text-section h2 {
+    max-width: 450px;
+  }
+  .text-section h6 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body.play {
+    --q-name-font-xl: 45px;
+    --q-name-font-s: 28px;
+  }
+  .text-section h2 {
+    max-width: 400px;
+  }
+  .text-section h6 {
+    font-size: 18px;
   }
 }

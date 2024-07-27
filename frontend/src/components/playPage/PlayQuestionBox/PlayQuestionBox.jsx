@@ -3,9 +3,10 @@ import { useStore } from '../../../store/useStore'
 import { useShuffle } from '../../../hooks/useShuffle'
 import { colorAndIcon } from '../../../services/colorAndIcon'
 import './playQuestionBox.css'
+import { useWidth } from '../../../hooks/useWidth'
 
 export function PlayQuestionBox ({ question, setResponse }) {
-  const { query, answers, displayMode } = question
+  const { query, answers, displayMode: defaultDisplayMode } = question
   const isShowingQuestion = useStore(state => state.isShowingQuestion)
   const isUnloadingQuestion = useStore(state => state.isUnloadingQuestion)
   const setDisabledButtons = useStore(state => state.setDisabledButtons)
@@ -13,6 +14,7 @@ export function PlayQuestionBox ({ question, setResponse }) {
   const { shuffleAnswers, shuffleAnswerColors } = useStore(state => state.quiz.config)
   const [answersToShow] = useShuffle(answers, shuffleAnswers, answers)
   const [colorsAndIconsToShow] = useShuffle(colorAndIcon, shuffleAnswerColors, answers)
+  const { clientWidth } = useWidth(1100)
 
   useEffect(() => {
     const timeOutId = setTimeout(() => {
@@ -35,6 +37,23 @@ export function PlayQuestionBox ({ question, setResponse }) {
       })()
     })
   }
+
+  const displayMode = (() => {
+    if (clientWidth > 1100) return defaultDisplayMode
+
+    const checkShortAnswers = maxLength => {
+      return answers.every(answer => answer.text.length <= maxLength)
+    }
+    if (checkShortAnswers(16) && clientWidth >= 750) {
+      return defaultDisplayMode
+    }
+    if (checkShortAnswers(8) && clientWidth >= 600) {
+      return defaultDisplayMode
+    }
+    return checkShortAnswers(3)
+      ? defaultDisplayMode
+      : 'list'
+  })()
 
   if (!isShowingQuestion) return
 
