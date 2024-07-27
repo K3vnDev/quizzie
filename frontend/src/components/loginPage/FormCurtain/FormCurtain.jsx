@@ -3,7 +3,7 @@ import './formCurtain.css'
 import { useCooldown } from '../../../hooks/useCooldown'
 import { useDebounce } from '../../../hooks/useDebounce'
 import { useStore } from '../../../store/useStore'
-import { useMinWidth } from '../../../hooks/useMinWidth'
+import { useWidth } from '../../../hooks/useWidth'
 
 export function FormCurtain ({ showing, setShowing }) {
   const [animation, setAnimation] = useState('')
@@ -46,7 +46,7 @@ export function FormCurtain ({ showing, setShowing }) {
 const InnerContent = ({ showing, toggleShowing, animationTime }) => {
   const [animation, setAnimation] = useState('')
   const setFormTransitionating = useStore(state => state.setFormTransitionating)
-  const hideShortMessages = useMinWidth(1000)
+  const { onMinWidth: hideShortMessages } = useWidth(1000)
 
   const [triggerAction, transitioning] = useCooldown({
     action: () => setAnimation(`transition-inner-content ${animationTime}s ease both`),

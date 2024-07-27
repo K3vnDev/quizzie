@@ -6,13 +6,13 @@ import { validateQuiz } from '../../../services/validateQuiz.js'
 import { templateQuiz } from '../../../store/quizzes/templateQuiz.js'
 import { useTransition } from '../../../hooks/useTransition.js'
 import './menuQuestion.css'
-import { useMinWidth } from '../../../hooks/useMinWidth.js'
+import { useWidth } from '../../../hooks/useWidth.js'
 
 export function MenuQuestion () {
   const setQuiz = useStore(state => state.setQuiz)
   const navigate = useNavigate()
   const { makeTransition } = useTransition()
-  const showLoginOrSignUp = useMinWidth(1000)
+  const { onMinWidth: showLoginOrSignUp } = useWidth(1000)
 
   const handleMakeMyOwnQuiz = () => {
     const quizFromStorage = JSON.parse(
