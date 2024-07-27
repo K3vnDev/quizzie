@@ -5,12 +5,20 @@ import { Logout as LogoutIcon } from '../../../icons/Logout.jsx'
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../../store/useStore.js'
 import './dashboardSidebar.css'
+import { useScroll } from '../../../hooks/useScroll.js'
+import { useMinWidth } from '../../../hooks/useMinWidth.js'
 
 export function DashboardSidebar ({ userData, deleteMode, setDeleteMode, isLoading }) {
   const { username, profileColor, quizzes } = userData
+  const { scrollIsOnTop } = useScroll()
+  const onMinWidth = !useMinWidth(900)
+
+  const className = !scrollIsOnTop && onMinWidth
+    ? 'dashboard-sidebar semi-transparent'
+    : 'dashboard-sidebar'
 
   return (
-    <aside className='dashboard-sidebar'>
+    <aside className={className}>
       <section>
         <UserProfilePic
           username={username}

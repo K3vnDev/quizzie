@@ -1,3 +1,7 @@
+body.browse {
+  background: #121212;
+}
+
 #root.browse {
   display: flex;
   align-items: center;

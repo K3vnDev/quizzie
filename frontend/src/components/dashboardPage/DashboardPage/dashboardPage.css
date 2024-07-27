@@ -1,17 +1,56 @@
+body.dashboard {
+  background: #121212;
+}
+
 #root.dashboard {
   display: flex;
-  height: 100vh;
+  height: auto;
 
   --side-bar-width: 100px;
   margin-left: var(--side-bar-width);
   width: calc(100vw - var(--side-bar-width));
-  padding: 80px 140px;
+  padding: 60px 140px 80px 140px;
 }
 
 #root.dashboard main {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 16px;
   height: 100%;
   width: 100%;
+}
+
+@media screen and (max-width: 1700px) {
+  #root.dashboard {
+    padding: 50px 120px 70px 120px;
+  }
+}
+
+@media screen and (max-width: 1450px) {
+  #root.dashboard {
+    --side-bar-width: 85px;
+    padding: 50px 110px 70px 110px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #root.dashboard {
+    padding: 40px 90px 70px 90px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body.dashboard {
+    display: flex;
+    justify-content: center;
+  }
+  #root.dashboard {
+    width: 100vh;
+    margin-left: 0;
+    padding: 80px 0 0 0;
+  }
+
+  #root.dashboard main {
+    align-items: center;
+  }
 }

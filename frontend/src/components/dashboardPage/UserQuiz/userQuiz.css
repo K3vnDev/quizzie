@@ -30,12 +30,14 @@
 .user-quizzes-grid .user-quiz section div {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
 }
 
 .user-quizzes-grid .user-quiz section div svg {
-  width: 32px;
-  height: 32px;
+  --svg-size: 32px;
+  width: var(--svg-size);
+  height: var(--svg-size);
 }
 
 .user-quizzes-grid .user-quiz section div span {
@@ -80,4 +82,63 @@
   background: var(--loading-bg-color);
   background-size: var(--loading-bg-size);
   animation: var(--loading-bg-anim);
+}
+
+@media screen and (max-width: 1700px) and (min-width: 1450px) {
+  .user-quizzes-grid .user-quiz {
+    gap: 18px;
+  }
+  .user-quizzes-grid .user-quiz h4 {
+    font-size: 32px;
+  }
+  .user-quizzes-grid .user-quiz section {
+    width: 52%;
+  }
+  .user-quizzes-grid .user-quiz section div {
+    gap: 8px;
+  }
+  .user-quizzes-grid .user-quiz section div svg {
+    --svg-size: 30px;
+  }
+  .user-quizzes-grid .user-quiz section div span {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 750px),
+  screen and (max-width: 600px) {
+  .user-quizzes-grid .user-quiz {
+    gap: 14px;
+  }
+  .user-quizzes-grid .user-quiz h4 {
+    font-size: 26px;
+    font-weight: 600;
+  }
+  .user-quizzes-grid .user-quiz section {
+    width: 50%;
+  }
+  .user-quizzes-grid .user-quiz section div {
+    gap: 6px;
+  }
+  .user-quizzes-grid .user-quiz section div svg {
+    --svg-size: 26px;
+  }
+  .user-quizzes-grid .user-quiz section div span {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .user-quizzes-grid .user-quiz h4 {
+    font-size: 21px;
+  }
+  .user-quizzes-grid .user-quiz section div {
+    gap: 4px;
+  }
+  .user-quizzes-grid .user-quiz section div svg {
+    --svg-size: 22px;
+  }
+  .user-quizzes-grid .user-quiz section div span {
+    font-size: 18px;
+  }
 }

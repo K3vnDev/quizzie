@@ -4,11 +4,19 @@
   top: 0;
   left: 0;
 
-  background: #1c1c1c;
   display: flex;
   flex-direction: column;
+  background: #1c1c1c;
   justify-content: space-between;
   padding: 40px 0;
+  --element-gap: 40px;
+  --element-bg: #343434;
+}
+
+.dashboard-sidebar.semi-transparent {
+  background: rgb(0 0 0 / 0.5);
+  backdrop-filter: blur(8px);
+  --element-bg: #0f0f0f;
 }
 
 .dashboard-sidebar section {
@@ -17,11 +25,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: var(--element-gap);
 }
 
 .dashboard-sidebar .user-profile-pic {
-  background: #343434;
+  background: var(--element-bg);
   width: var(--element-size);
   height: var(--element-size);
   border-radius: 50%;
@@ -32,9 +40,9 @@
   height: var(--element-size);
   border: none;
   border-radius: 50%;
-  background: #343434;
+  background: var(--element-bg);
 
-  transition: all 0.25s ease-out, filter 0.15s ease;
+  transition: all 0.25s ease-out, filter 0.15s ease, background 0.15s ease-out;
 }
 
 .dashboard-sidebar button:not(:disabled) {
@@ -56,13 +64,9 @@
   height: 65%;
 }
 
-.dashboard-sidebar button:not(.search-btn) {
-  background: #262626;
-}
-
 .dashboard-sidebar button:not(.search-btn) svg {
-  stroke-width: 1.5;
-  color: #b8b8b8;
+  stroke-width: 1.25;
+  color: #aeaeae;
 }
 
 .dashboard-sidebar button.loading,
@@ -70,4 +74,57 @@
   background: var(--loading-bg-color);
   background-size: var(--loading-bg-size);
   animation: var(--loading-bg-anim);
+}
+
+@media screen and (max-width: 1450px) {
+  .dashboard-sidebar section {
+    --element-size: 55px;
+    --element-gap: 38px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard-sidebar {
+    height: var(--side-bar-width);
+    width: auto;
+    --element-gap: 36px;
+    border-radius: 16px;
+    left: 50%;
+    top: 16px;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--element-gap);
+    padding: 0 calc(var(--element-gap) * 0.75);
+  }
+  .dashboard-sidebar section {
+    flex-direction: row;
+    gap: var(--element-gap);
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .dashboard-sidebar {
+    --element-gap: 24px;
+    --side-bar-width: 72px;
+    top: 12px;
+  }
+  .dashboard-sidebar section {
+    --element-size: 48px;
+    --element-gap: 24px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dashboard-sidebar {
+    --element-gap: 16px;
+    --side-bar-width: 55px;
+  }
+  .dashboard-sidebar section {
+    --element-gap: 16px;
+    --element-size: 40px;
+  }
 }

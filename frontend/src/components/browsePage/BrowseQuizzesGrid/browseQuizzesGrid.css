@@ -1,5 +1,6 @@
 .browse-quizzes-grid {
-  height: 100%;
+  height: auto;
+  padding-bottom: 70px;
   display: grid;
   width: 100%;
   gap: var(--gap);

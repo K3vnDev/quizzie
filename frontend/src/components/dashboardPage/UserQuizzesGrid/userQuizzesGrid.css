@@ -1,8 +1,9 @@
 .user-quizzes-grid {
-  height: 100%;
+  height: auto;
   width: 100%;
   display: grid;
   gap: 30px;
+  padding-bottom: 70px;
 
   grid-template-columns: repeat(auto-fit, var(--element-width));
   grid-template-rows: repeat(auto-fit, var(--element-height));
@@ -44,4 +45,42 @@
 
 .user-quizzes-grid .create-new-quiz-btn.loading svg {
   --size: 50%;
+}
+
+@media screen and (max-width: 1700px) and (min-width: 1450px) {
+  .user-quizzes-grid {
+    --element-width: 340px;
+    --element-height: 180px;
+    gap: 26px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 750px) {
+  .user-quizzes-grid {
+    --element-width: 300px;
+    --element-height: 160px;
+    gap: 22px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .user-quizzes-grid {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .user-quizzes-grid {
+    --element-width: 300px;
+    --element-height: 160px;
+    gap: 22px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .user-quizzes-grid {
+    --element-width: 250px;
+    --element-height: 140px;
+    gap: 16px;
+  }
 }

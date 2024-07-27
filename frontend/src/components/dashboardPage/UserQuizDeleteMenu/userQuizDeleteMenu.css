@@ -68,3 +68,41 @@
     background: rgb(0 0 0 / 0.6);
   }
 }
+
+@media screen and (max-width: 1700px) and (min-width: 1450px) {
+  .user-quiz-delete-menu {
+    gap: 10px;
+  }
+  .user-quiz-delete-menu h4 {
+    font-size: 32px;
+  }
+  .user-quiz-delete-menu .buttons-wrapper {
+    gap: 24px;
+  }
+  .user-quiz-delete-menu button {
+    font-size: 42px;
+    padding: 12px 22px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 900px),
+  screen and (max-width: 600px) {
+  .user-quiz-delete-menu .buttons-wrapper {
+    gap: 18px;
+  }
+  .user-quiz-delete-menu button {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .user-quiz-delete-menu {
+    gap: 6px;
+  }
+  .user-quiz-delete-menu .buttons-wrapper {
+    gap: 12px;
+  }
+  .user-quiz-delete-menu button {
+    font-size: 32px;
+  }
+}
