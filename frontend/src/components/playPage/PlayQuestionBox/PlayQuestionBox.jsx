@@ -50,7 +50,7 @@ export function PlayQuestionBox ({ question, setResponse }) {
     if (checkShortAnswers(8) && clientWidth >= 600) {
       return defaultDisplayMode
     }
-    return checkShortAnswers(3)
+    return checkShortAnswers(4)
       ? defaultDisplayMode
       : 'list'
   })()

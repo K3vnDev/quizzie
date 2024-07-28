@@ -33,3 +33,9 @@
     font-size: 28px;
   }
 }
+
+@media screen and (max-width: 750px) {
+  .question-answer-message {
+    font-size: 24px;
+  }
+}

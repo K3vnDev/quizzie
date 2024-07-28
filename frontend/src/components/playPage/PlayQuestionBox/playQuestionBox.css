@@ -3,6 +3,7 @@
   border-radius: 20px;
   padding: 45px;
   max-width: 1000px;
+  min-width: 250px;
   user-select: none;
 
   animation: question-box-appear 0.6s ease both;
@@ -300,12 +301,13 @@
 
 @media screen and (max-width: 600px) {
   .play-question-box {
-    padding: 28px;
-    width: calc(100vw - 80px);
+    padding: 24px;
+    width: calc(100vw - 60px);
   }
   .play-question-box h2 {
     font-size: 18px;
     line-height: 20px;
+    margin: 0 22px 18px 0;
   }
   /* DEFAULT */
   .play-question-box .answers .answer-box svg {
