@@ -6,7 +6,7 @@
   border-radius: 10px;
   background: #313131;
   border: 2px solid #39393a;
-  font-family: Poppins;
+  font-family: var(--poppins);
   font-size: 26px;
   font-weight: 500;
   margin-top: 16px;
@@ -28,6 +28,7 @@
   &:hover {
     filter: brightness(120%);
   }
+
   &:active {
     filter: brightness(90%);
     scale: 0.975;

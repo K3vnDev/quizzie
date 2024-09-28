@@ -1,5 +1,5 @@
 .question-answer-message {
-  font-family: Poppins;
+  font-family: var(--poppins);
   font-weight: 600;
   position: absolute;
   left: 50%;
@@ -15,12 +15,14 @@
     opacity: 0;
     translate: -50% 0;
   }
+
   30% {
     opacity: 1;
     scale: 1.1;
     translate: -50% 15px;
     text-shadow: 0 0 10px var(--qm-color-st);
   }
+
   100% {
     opacity: 0;
     scale: 1.11;

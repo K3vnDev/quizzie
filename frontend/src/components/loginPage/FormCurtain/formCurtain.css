@@ -23,7 +23,7 @@
 }
 
 .form-curtain h4 {
-  font-family: Poppins;
+  font-family: var(--poppins);
   line-height: 50px;
   text-align: center;
   font-weight: 600;
@@ -34,7 +34,7 @@
 .form-curtain button {
   font-size: 28px;
   font-weight: 500;
-  font-family: Poppins;
+  font-family: var(--poppins);
   border-radius: 10px;
   border: 2px solid #fff;
   background: rgb(255 255 255 / 0.15);
@@ -50,6 +50,7 @@
   &:hover {
     background: rgb(255 255 255 / 0.3);
   }
+
   &:active {
     scale: 0.975;
     transform: translateY(6px);
@@ -66,9 +67,11 @@
     width: var(--min-w);
     right: 0;
   }
+
   50% {
     width: var(--max-w);
   }
+
   100% {
     width: var(--min-w);
     right: calc(100% - var(--min-w));
@@ -80,9 +83,11 @@
     width: var(--min-w);
     left: 0;
   }
+
   50% {
     width: var(--max-w);
   }
+
   100% {
     width: var(--min-w);
     left: calc(100% - var(--min-w));
@@ -90,10 +95,12 @@
 }
 
 @keyframes transition-inner-content {
+
   0%,
   100% {
     opacity: 1;
   }
+
   35%,
   65% {
     opacity: 0;
@@ -110,11 +117,13 @@
     font-size: 22px;
   }
 }
+
 @media screen and (max-width: 1400px) {
   .form-curtain h4 {
     line-height: 40px;
     font-size: 22px;
   }
+
   .form-curtain div {
     gap: 6px;
   }
@@ -130,6 +139,7 @@
     font-size: 20px;
     font-weight: 500;
   }
+
   .form-curtain div {
     gap: 4px;
   }
@@ -143,6 +153,7 @@
   .form-curtain h4 {
     font-size: 14px;
   }
+
   .form-curtain div {
     gap: 2px;
   }

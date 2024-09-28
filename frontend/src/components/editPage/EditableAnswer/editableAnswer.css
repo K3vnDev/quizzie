@@ -19,11 +19,11 @@
 }
 
 .edit-question-box .answers .edit-answer-box span {
-  font-family: Roboto;
+  font-family: var(--roboto);
   line-height: 36px;
 }
 
-.edit-question-box .answers .edit-answer-box > svg {
+.edit-question-box .answers .edit-answer-box>svg {
   --svg-size: 32px;
   height: var(--svg-size);
   width: var(--svg-size);
@@ -42,6 +42,7 @@
   gap: 12px;
   min-width: 600px;
 }
+
 .edit-question-box .answers.list .edit-answer-box {
   padding: 16px 32px 16px 16px;
   padding-right: 36px;
@@ -53,6 +54,7 @@
     min-width: 220px;
   }
 }
+
 .edit-question-box .answers.list .edit-answer-box span {
   max-width: 700px;
   overflow: hidden;
@@ -61,22 +63,27 @@
   line-height: 28px;
   max-height: 55px;
 }
-.edit-question-box .answers.list .edit-answer-box > svg {
+
+.edit-question-box .answers.list .edit-answer-box>svg {
   height: 30px;
 }
+
 .edit-question-box .answers.list .edit-answer-box .edit-answer-menu {
   &:hover {
     opacity: 1;
     transition: all 0.4s ease;
   }
 }
+
 .edit-question-box .answers.list .add-answer-btn {
   padding: 10px;
   width: 40%;
 }
+
 .edit-question-box .answers.list .edit-answer-box .edit-answer-menu {
   gap: 10px;
 }
+
 .edit-question-box .answers.list .edit-answer-box .edit-answer-menu button {
   --btn-size: 55px;
   height: var(--btn-size);
@@ -91,10 +98,12 @@
   grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 14px;
 }
+
 .edit-question-box .answers.grid .edit-answer-box {
   padding: 26px 28px 26px 16px;
   max-height: 180px;
 }
+
 .edit-question-box .answers.grid .edit-answer-box span {
   overflow: hidden;
   word-wrap: break-word;
@@ -103,32 +112,38 @@
   line-height: 32px;
   max-height: 100px;
 }
-.edit-question-box .answers.grid .edit-answer-box > svg {
+
+.edit-question-box .answers.grid .edit-answer-box>svg {
   height: 38px;
 }
+
 .edit-question-box .answers.grid .edit-answer-box .edit-answer-menu {
   &:hover {
     opacity: 1;
     transition: all 0.2s ease;
   }
 }
+
 .edit-question-box .answers.grid .add-answer-btn {
   width: 100%;
   padding: 20px;
 }
+
 .edit-question-box .answers.grid .edit-answer-box .edit-answer-menu {
   gap: 16px;
 }
+
 .edit-question-box .answers.grid .edit-answer-box .edit-answer-menu button {
   --btn-size: 65px;
   height: var(--btn-size);
   width: calc(var(--btn-size) + 8px);
 }
+
 /* ENDIF */
 
 .edit-answer-box textarea {
   font-size: var(--list-font-size);
-  font-family: Roboto;
+  font-family: var(--roboto);
   overflow: hidden;
   resize: none;
   padding: 4px;

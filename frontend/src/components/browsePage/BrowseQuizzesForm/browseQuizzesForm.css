@@ -7,7 +7,7 @@
 }
 
 .browse-quizzes-form h2 {
-  font-family: Poppins;
+  font-family: var(--poppins);
   font-size: 64px;
 }
 
@@ -51,7 +51,7 @@
   transition: opacity 0.2s ease;
   color: #4f4f4f;
   font-size: var(--font-size);
-  font-family: Roboto;
+  font-family: var(--roboto);
 }
 
 .browse-quizzes-form label input:focus {
@@ -65,7 +65,7 @@
 .browse-quizzes-form label input {
   color: #dbdbdb;
   font-size: 18px;
-  font-family: Roboto;
+  font-family: var(--roboto);
 }
 
 @media screen and (max-width: 1300px) {
@@ -78,9 +78,11 @@
   .browse-quizzes-form {
     margin-top: 60px;
   }
+
   .browse-quizzes-form h2 {
     font-size: 52px;
   }
+
   .browse-quizzes-form label {
     padding: 0 10px;
     width: 500px;
@@ -88,6 +90,7 @@
     height: 48px;
     --font-size: 16px;
   }
+
   .browse-quizzes-form label svg {
     --size: 22px;
   }
@@ -97,9 +100,11 @@
   .browse-quizzes-form {
     margin-top: 70px;
   }
+
   .browse-quizzes-form h2 {
     font-size: 46px;
   }
+
   .browse-quizzes-form label {
     width: 420px;
     height: 44px;
@@ -107,6 +112,7 @@
     border-radius: 8px;
     --font-size: 14px;
   }
+
   .browse-quizzes-form label svg {
     --size: 20px;
   }
@@ -116,9 +122,11 @@
   .browse-quizzes-form {
     margin-top: 80px;
   }
+
   .browse-quizzes-form h2 {
     font-size: 40px;
   }
+
   .browse-quizzes-form label {
     width: 350px;
   }
@@ -128,17 +136,21 @@
   .browse-quizzes-form {
     margin-top: 90px;
   }
+
   .browse-quizzes-form h2 {
     font-size: 32px;
   }
+
   .browse-quizzes-form label {
     width: 300px;
   }
 }
+
 @media screen and (max-width: 400px) {
   .browse-quizzes-form h2 {
     font-size: 28px;
   }
+
   .browse-quizzes-form label {
     width: 270px;
   }

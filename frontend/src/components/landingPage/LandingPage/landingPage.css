@@ -17,19 +17,21 @@ body.landing {
 .title-n-slogan h1 {
   font-size: 96px;
   margin-bottom: 8px;
-  font-family: Poppins;
+  font-family: var(--poppins);
   cursor: default;
 }
+
 .title-n-slogan h3 {
   font-size: 36px;
   color: #cdcdcd;
-  font-family: Poppins;
+  font-family: var(--poppins);
   font-weight: 500;
   line-height: 42px;
   margin-bottom: 20px;
   text-wrap: nowrap;
   cursor: default;
 }
+
 .title-n-slogan h3 span {
   color: #a37df3;
 }
@@ -39,6 +41,7 @@ body.landing {
     font-size: 86px;
     margin-bottom: 6px;
   }
+
   .title-n-slogan h3 {
     font-size: 32px;
     line-height: 40px;
@@ -50,6 +53,7 @@ body.landing {
     font-size: 74px;
     margin-bottom: 4px;
   }
+
   .title-n-slogan h3 {
     font-size: 28px;
     line-height: 34px;
@@ -61,6 +65,7 @@ body.landing {
     font-size: 64px;
     margin-bottom: 4px;
   }
+
   .title-n-slogan h3 {
     font-size: 24px;
     line-height: 30px;
@@ -76,28 +81,34 @@ body.landing {
     padding-bottom: 100px;
     margin: 0;
   }
+
   #root.landing {
     height: auto;
     overflow-x: hidden;
     flex-direction: column;
     justify-content: flex-start;
   }
+
   .title-n-slogan {
     margin-top: 64px;
     margin-bottom: 48px;
   }
+
   .title-n-slogan h1 {
     text-align: center;
     margin-bottom: 16px;
   }
+
   .title-n-slogan h3 {
     text-align: center;
   }
 }
+
 @media screen and (max-width: 400px) {
   .title-n-slogan h1 {
     font-size: 50px;
   }
+
   .title-n-slogan h3 {
     font-size: 20px;
     line-height: 26px;
