@@ -1,19 +1,23 @@
 import './loginPage.css'
 import '../../../index.css'
+import { useNavigate } from 'react-router-dom'
+import { useAppName } from '../../../hooks/useAppName.js'
+import { useError } from '../../../hooks/useError.js'
 import { useLogin } from '../../../hooks/useLogin'
 import { useRouteClassName } from '../../../hooks/useRouteClassName.js'
 import { AppLogo } from '../../root/AppLogo/AppLogo.jsx'
-import { FormInput } from '../FormInput/FormInput.jsx'
 import { FormCurtain } from '../FormCurtain/FormCurtain.jsx'
-import { FormSubmitButton } from '../FormSubmitButton/FormSubmitButton.jsx'
-import { useError } from '../../../hooks/useError.js'
 import { FormError } from '../FormError/FormError.jsx'
-import { useNavigate } from 'react-router-dom'
+import { FormInput } from '../FormInput/FormInput.jsx'
+import { FormSubmitButton } from '../FormSubmitButton/FormSubmitButton.jsx'
 
 export function LoginPage() {
   const { login, signUp, showing, setShowing, fetching, verifyingAuth } = useLogin()
 
   useRouteClassName('login')
+
+  const name = showing === 'login' ? 'Login to Quizzie' : 'Sign Up to Quizzie'
+  useAppName(name, showing)
 
   const dispatchAnimEvent = inputName => {
     const animEvent = new CustomEvent('animateinput', { detail: { inputName } })

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { useStore } from '../store/useStore'
 import { useNavigate } from 'react-router-dom'
-import { templateQuiz } from '../store/quizzes/templateQuiz'
 import { validateQuiz } from '../services/validateQuiz'
+import { templateQuiz } from '../store/quizzes/templateQuiz'
+import { useStore } from '../store/useStore'
+import { useAppName } from './useAppName'
 import { useDebounce } from './useDebounce'
 const { VITE_API_URL: API_URL } = import.meta.env
 
@@ -15,6 +16,9 @@ export function useEditQuiz() {
   const isFirstRender = useRef(true)
   const debouncedQuiz = useDebounce(quiz, 400)
   const navigate = useNavigate()
+
+  const name = quiz ? `${quiz.name} - Quizzie` : 'Quizzie'
+  useAppName(name, quiz)
 
   const token = window.localStorage.getItem('token')
 

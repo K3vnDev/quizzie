@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router-dom'
 import '../../../index.css'
 import './landingPage.css'
 import { useEffect, useState } from 'react'
-import { useStore } from '../../../store/useStore'
-import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
-import { LoginAnchor } from '../../root/LoginAnchor/LoginAnchor.jsx'
-import { MenuQuestion } from '../MenuQuestion/MenuQuestion.jsx'
-import { useRouteClassName } from '../../../hooks/useRouteClassName.js'
+import { useAppName } from '../../../hooks/useAppName.js'
 import { useReset } from '../../../hooks/useReset.js'
+import { useRouteClassName } from '../../../hooks/useRouteClassName.js'
 import { useWidth } from '../../../hooks/useWidth.js'
+import { useStore } from '../../../store/useStore'
+import { LoginAnchor } from '../../root/LoginAnchor/LoginAnchor.jsx'
+import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
+import { MenuQuestion } from '../MenuQuestion/MenuQuestion.jsx'
 const { VITE_API_URL: API_URL } = import.meta.env
 
 export function LandingPage() {
@@ -16,6 +17,7 @@ export function LandingPage() {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
   const resetState = useReset()
+  useAppName('Quizzie')
 
   const [setIsShowingResults, setQuiz] = useStore(state => [
     state.setIsShowingResults,

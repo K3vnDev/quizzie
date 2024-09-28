@@ -4,68 +4,65 @@
   flex-direction: column;
   margin-top: 60px;
   gap: 12px;
-}
 
-.browse-quizzes-form h2 {
-  font-family: var(--poppins);
-  font-size: 64px;
-}
-
-.browse-quizzes-form label {
-  display: flex;
-  background: #0c0c0c;
-  border: 1px solid #313131;
-  border-radius: 10px;
-  padding: 0 12px;
-  width: 600px;
-  align-items: center;
-  gap: 14px;
-  height: 54px;
-  cursor: pointer;
-  transition: all 0.1s ease-out;
-  --font-size: 18px;
-
-  &:hover {
-    border: 1px solid #4e4e4e;
+  h2 {
+    font-family: var(--poppins);
+    font-size: 64px;
   }
-}
 
-.browse-quizzes-form label svg {
-  --size: 26px;
-  width: var(--size);
-  height: var(--size);
-  opacity: 0.6;
-  transition: all 0.25s ease-out;
-}
+  label {
+    display: flex;
+    background: #0c0c0c;
+    border: 1px solid #313131;
+    border-radius: 10px;
+    padding: 0 12px;
+    width: 600px;
+    align-items: center;
+    gap: 14px;
+    height: 54px;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+    --font-size: 18px;
 
-.browse-quizzes-form label input {
-  background: none;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  font-size: var(--font-size);
-  width: 100%;
-}
+    &:hover {
+      border: 1px solid #4e4e4e;
+    }
 
-.browse-quizzes-form label input::placeholder {
-  transition: opacity 0.2s ease;
-  color: #4f4f4f;
-  font-size: var(--font-size);
-  font-family: var(--roboto);
-}
+    svg {
+      --size: 26px;
+      width: var(--size);
+      height: var(--size);
+      opacity: 0.6;
+      transition: all 0.25s ease-out;
+    }
 
-.browse-quizzes-form label input:focus {
-  cursor: text;
-}
+    input {
+      background: none;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      font-size: var(--font-size);
+      color: #dbdbdb;
+      font-size: 18px;
+      font-family: var(--roboto);
+      width: 100%;
 
-.browse-quizzes-form label input:focus::placeholder {
-  opacity: 0.7;
-}
+      &:focus {
+        cursor: text;
 
-.browse-quizzes-form label input {
-  color: #dbdbdb;
-  font-size: 18px;
-  font-family: var(--roboto);
+        &::placeholder {
+          opacity: 0.7;
+        }
+      }
+
+      &::placeholder {
+        transition: opacity 0.2s ease;
+        color: #4f4f4f;
+        font-size: var(--font-size);
+        font-family: var(--roboto);
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 1300px) {

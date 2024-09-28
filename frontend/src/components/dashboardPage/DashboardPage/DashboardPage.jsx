@@ -1,5 +1,6 @@
 import '../../../index.css'
 import './dashboardPage.css'
+import { useAppName } from '../../../hooks/useAppName.js'
 import { useDashboard } from '../../../hooks/useDashboard.js'
 import { useRouteClassName } from '../../../hooks/useRouteClassName'
 import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
@@ -10,6 +11,7 @@ import { UserQuizzesHeader } from '../UserQuizzesHeader/UserQuizzesHeader.jsx'
 export function DashboardPage() {
   const { userData, setUserData, deleteMode, setDeleteMode, isLoading } = useDashboard()
   useRouteClassName('dashboard')
+  useAppName('My Dashboard')
 
   return (
     <>

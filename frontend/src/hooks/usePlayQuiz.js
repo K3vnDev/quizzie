@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useStore } from '../store/useStore'
 import { useNavigate } from 'react-router-dom'
+import { useStore } from '../store/useStore'
+import { useAppName } from './useAppName'
 const { VITE_API_URL: API_URL } = import.meta.env
 
 export function usePlayQuiz() {
@@ -12,6 +13,9 @@ export function usePlayQuiz() {
   const navigate = useNavigate()
 
   const setQueryParam = id => window.history.replaceState({}, '', `play?q=${id}`)
+
+  const name = quiz ? `${quiz.name} - Quizzie` : 'Quizzie'
+  useAppName(name, quiz)
 
   const fetchQuiz = async id => {
     try {
