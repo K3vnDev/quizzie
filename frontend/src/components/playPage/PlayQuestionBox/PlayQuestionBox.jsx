@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { useStore } from '../../../store/useStore'
 import { useShuffle } from '../../../hooks/useShuffle'
 import { colorAndIcon } from '../../../services/colorAndIcon'
+import { useStore } from '../../../store/useStore'
 import './playQuestionBox.css'
 import { useWidth } from '../../../hooks/useWidth'
 
@@ -60,7 +60,7 @@ export function PlayQuestionBox({ question, setResponse }) {
   return (
     <div className={className}>
       <h2>{query}</h2>
-      <section className={'answers ' + displayMode}>
+      <section className={`answers ${displayMode}`}>
         {answersToShow.map((answer, i) => (
           <PlayAnswerButton
             answer={answer}
@@ -85,7 +85,7 @@ function PlayAnswerButton({ answer, index, handleResponse, colorAndIcon }) {
   const delay = index * 0.15 + 0.3
   const style = {
     '--bg-color': color,
-    '--bg-color-st': color + '80',
+    '--bg-color-st': `${color}80`,
     animation: `answer-box-appear .4s ease ${delay}s backwards`
   }
 

@@ -20,6 +20,7 @@
   25% {
     fill: currentColor;
   }
+
   45%,
   55% {
     scale: calc(var(--star-base-scale) * 1.2);
@@ -27,6 +28,7 @@
     fill: currentColor;
     filter: brightness(125%);
   }
+
   100% {
     scale: calc(var(--star-base-scale) * 1.075);
     fill: currentColor;
@@ -36,21 +38,45 @@
   }
 }
 
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 920px),
+screen and (max-width: 900px) {
   .stars-wrapper {
     gap: 52px;
     margin-bottom: 0;
   }
+
   .stars-wrapper svg {
     --svg-size: 64px;
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px),
+screen and (max-height: 750px) {
   .stars-wrapper {
-    gap: 46px;
+    gap: 45px;
   }
+
   .stars-wrapper svg {
-    --svg-size: 58px;
+    --svg-size: 56px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .stars-wrapper {
+    gap: 32px;
+  }
+
+  .stars-wrapper svg {
+    --svg-size: 40px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .stars-wrapper {
+    gap: 22px;
+  }
+
+  .stars-wrapper svg {
+    --svg-size: 30px;
   }
 }

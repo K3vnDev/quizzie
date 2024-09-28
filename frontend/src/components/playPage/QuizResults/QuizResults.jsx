@@ -1,19 +1,19 @@
 import './quizResults.css'
-import { useStore } from '../../../store/useStore'
+import confetti from 'canvas-confetti'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useReset } from '../../../hooks/useReset'
 import { useResults } from '../../../hooks/useResults'
-import { Stars } from '../Stars/Stars'
-import { EditButton } from '../../root/EditButton/EditButton'
-import { TransitionRound } from '../../root/TransitionRound/TransitionRound'
 import { Checkbox as CheckboxIcon } from '../../../icons/Checkbox'
 import { Cross as CrossIcon } from '../../../icons/Cross'
 import { Home as HomeIcon } from '../../../icons/Home'
 import { PlayAgain as PlayAgainIcon } from '../../../icons/PlayAgain'
-import { useEffect } from 'react'
-import confetti from 'canvas-confetti'
-import { useNavigate } from 'react-router-dom'
-import { waitForSeconds } from '../../../services/waitForSeconds'
-import { useReset } from '../../../hooks/useReset'
 import { randomElement } from '../../../services/randomElement'
+import { waitForSeconds } from '../../../services/waitForSeconds'
+import { useStore } from '../../../store/useStore'
+import { EditButton } from '../../root/EditButton/EditButton'
+import { TransitionRound } from '../../root/TransitionRound/TransitionRound'
+import { Stars } from '../Stars/Stars'
 
 export function QuizResults() {
   const results = useStore(state => state.results)
@@ -60,7 +60,7 @@ function QuestionResultBox({ question, isQuestionCorrect, index }) {
       className='result-question'
       style={{
         '--result-color': color,
-        '--result-color-st': color + '2f',
+        '--result-color-st': `${color}2f`,
         animation: `result-question-appear .3s ease ${delay}s both`
       }}
     >
@@ -132,7 +132,7 @@ function HomeButton() {
   }
 
   return (
-    <button onClick={handleClick} disabled={transitioning}>
+    <button className='home' onClick={handleClick} disabled={transitioning}>
       <HomeIcon />
     </button>
   )
@@ -150,7 +150,7 @@ function PlayAgainButton() {
   }
 
   return (
-    <button onClick={handleClick} disabled={transitioning}>
+    <button className='play-again' onClick={handleClick} disabled={transitioning}>
       <PlayAgainIcon />
     </button>
   )
