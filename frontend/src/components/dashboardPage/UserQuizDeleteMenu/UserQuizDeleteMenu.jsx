@@ -2,7 +2,13 @@ import './userQuizDeleteMenu.css'
 import { useDebounce } from '../../../hooks/useDebounce.js'
 const API_URL = import.meta.env.VITE_API_URL
 
-export function UserQuizDeleteMenu ({ showingDeleteMenu, setShowingDeleteMenu, setUserData, quizzes, quizId }) {
+export function UserQuizDeleteMenu({
+  showingDeleteMenu,
+  setShowingDeleteMenu,
+  setUserData,
+  quizzes,
+  quizId
+}) {
   const debouncedShowingDeleteMenu = useDebounce(showingDeleteMenu, 250)
 
   const handleDelete = e => {
@@ -20,22 +26,18 @@ export function UserQuizDeleteMenu ({ showingDeleteMenu, setShowingDeleteMenu, s
     fetch(`${API_URL}/quiz/${quizId}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` }
+    }).then(res => {
+      if (!res.ok) {
+        setUserData(u => {
+          const newUserData = structuredClone(u)
+          newUserData.quizzes = prevQuizzes
+          return newUserData
+        })
+      }
     })
-      .then(res => {
-        if (!res.ok) {
-          setUserData(u => {
-            const newUserData = structuredClone(u)
-            newUserData.quizzes = prevQuizzes
-            return newUserData
-          })
-        }
-      })
   }
 
-  const display =
-    debouncedShowingDeleteMenu || showingDeleteMenu
-      ? 'flex'
-      : 'none'
+  const display = debouncedShowingDeleteMenu || showingDeleteMenu ? 'flex' : 'none'
 
   const handleCancel = e => {
     e.stopPropagation()
@@ -47,22 +49,13 @@ export function UserQuizDeleteMenu ({ showingDeleteMenu, setShowingDeleteMenu, s
     : 'user-quiz-delete-menu hidden'
 
   return (
-    <div
-      className={className}
-      style={{ display }}
-    >
+    <div className={className} style={{ display }}>
       <h4>Are you sure?</h4>
       <div className='buttons-wrapper'>
-        <button
-          onClick={handleDelete}
-          disabled={!showingDeleteMenu}
-        >
+        <button onClick={handleDelete} disabled={!showingDeleteMenu}>
           Yes
         </button>
-        <button
-          onClick={handleCancel}
-          disabled={!showingDeleteMenu}
-        >
+        <button onClick={handleCancel} disabled={!showingDeleteMenu}>
           No
         </button>
       </div>

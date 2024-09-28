@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useCooldown } from './useCooldown'
 
-export function useCantWriteAnimation () {
+export function useCantWriteAnimation() {
   const [animation, setAnimation] = useState('none')
   const animationTime = 0.25
   const [triggerAnimation] = useCooldown({

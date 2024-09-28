@@ -58,8 +58,7 @@
 }
 
 @media screen and (max-width: 1200px) and (min-width: 900px),
-  screen and (max-width: 900px) and (min-width: 750px),
-  screen and (max-width: 600px) {
+  screen and (max-width: 900px) and (min-width: 750px), screen and (max-width: 600px) {
   .user-quiz-options-menu {
     gap: 30px;
   }

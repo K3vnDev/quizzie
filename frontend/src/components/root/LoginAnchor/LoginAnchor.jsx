@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import './loginAnchor.css'
 
-export function LoginAnchor () {
+export function LoginAnchor() {
   const navigate = useNavigate()
 
   const handleClick = e => {
@@ -10,10 +10,7 @@ export function LoginAnchor () {
   }
 
   return (
-    <a
-      className='login-anchor'
-      onClick={handleClick}
-    >
+    <a className='login-anchor' onClick={handleClick}>
       Login or Sign up
     </a>
   )

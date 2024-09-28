@@ -77,7 +77,7 @@ body.edit .edit-mode-header button:not(.app-logo):not(:disabled) {
   opacity: 0;
 
   &::before {
-    content: '';
+    content: "";
     background: var(--bg-color);
     --size: 24px;
     width: var(--size);

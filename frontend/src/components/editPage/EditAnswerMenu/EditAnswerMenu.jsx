@@ -4,18 +4,12 @@ import { Checkbox as CheckboxIcon } from '../../../icons/Checkbox.jsx'
 import './editAnswerMenu.css'
 import { useStore } from '../../../store/useStore.js'
 
-export function EditAnswerMenu ({ setEditingText, questionIndex, answerIndex }) {
+export function EditAnswerMenu({ setEditingText, questionIndex, answerIndex }) {
   return (
     <div className='edit-answer-menu'>
       <EditModeButton setEditingText={setEditingText} />
-      <MakeCorrectButton
-        questionIndex={questionIndex}
-        answerIndex={answerIndex}
-      />
-      <DeleteButton
-        questionIndex={questionIndex}
-        answerIndex={answerIndex}
-      />
+      <MakeCorrectButton questionIndex={questionIndex} answerIndex={answerIndex} />
+      <DeleteButton questionIndex={questionIndex} answerIndex={answerIndex} />
     </div>
   )
 }

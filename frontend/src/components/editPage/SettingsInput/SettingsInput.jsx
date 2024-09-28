@@ -2,18 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { useCantWriteAnimation } from '../../../hooks/useCantWriteAnimation'
 import './settingsInput.css'
 
-export function SettingsInput ({ value, action }) {
+export function SettingsInput({ value, action }) {
   const [text, setText] = useState(value)
   const { animation, triggerAnimation } = useCantWriteAnimation()
   const inputRef = useRef()
   const focusing = useRef(false)
 
   useEffect(() => {
-    setText(
-      !focusing.current
-        ? `${value}s`
-        : value
-    )
+    setText(!focusing.current ? `${value}s` : value)
   }, [value])
 
   useEffect(() => {
@@ -49,8 +45,7 @@ export function SettingsInput ({ value, action }) {
     if (text < 3) {
       triggerAnimation()
       action(3)
-    } else if
-    (text > 30) {
+    } else if (text > 30) {
       triggerAnimation()
       action(30)
     } else {

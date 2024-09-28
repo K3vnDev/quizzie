@@ -9,7 +9,7 @@ import { LoadingArrows } from '../../root/LoadingArrows/LoadingArrows.jsx'
 import { useEffect, useRef, useState } from 'react'
 import { QuizNotFound } from '../../root/NotFound/NotFound.jsx'
 
-export function PlayPage () {
+export function PlayPage() {
   const isShowingResults = useStore(state => state.isShowingResults)
   const { isLoading, quizNotFound } = usePlayQuiz()
 
@@ -39,7 +39,5 @@ const LoadingQuiz = () => {
     return () => clearTimeout(timeout.current)
   }, [])
 
-  return !isWaiting
-    ? <LoadingArrows />
-    : <></>
+  return !isWaiting ? <LoadingArrows /> : <></>
 }

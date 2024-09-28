@@ -5,7 +5,7 @@ import { colorAndIcon } from '../../../services/colorAndIcon'
 import './playQuestionBox.css'
 import { useWidth } from '../../../hooks/useWidth'
 
-export function PlayQuestionBox ({ question, setResponse }) {
+export function PlayQuestionBox({ question, setResponse }) {
   const { query, answers, displayMode: defaultDisplayMode } = question
   const isShowingQuestion = useStore(state => state.isShowingQuestion)
   const isUnloadingQuestion = useStore(state => state.isUnloadingQuestion)
@@ -50,38 +50,32 @@ export function PlayQuestionBox ({ question, setResponse }) {
     if (checkShortAnswers(8) && clientWidth >= 600) {
       return defaultDisplayMode
     }
-    return checkShortAnswers(4)
-      ? defaultDisplayMode
-      : 'list'
+    return checkShortAnswers(4) ? defaultDisplayMode : 'list'
   })()
 
   if (!isShowingQuestion) return
 
-  const className = isUnloadingQuestion
-    ? 'play-question-box unloading'
-    : 'play-question-box'
+  const className = isUnloadingQuestion ? 'play-question-box unloading' : 'play-question-box'
 
   return (
     <div className={className}>
       <h2>{query}</h2>
       <section className={'answers ' + displayMode}>
-        {
-          answersToShow.map((answer, i) => (
-            <PlayAnswerButton
-              answer={answer}
-              index={i}
-              colorAndIcon={colorsAndIconsToShow[i]}
-              key={i}
-              handleResponse={handleResponse}
-            />
-          ))
-        }
+        {answersToShow.map((answer, i) => (
+          <PlayAnswerButton
+            answer={answer}
+            index={i}
+            colorAndIcon={colorsAndIconsToShow[i]}
+            key={i}
+            handleResponse={handleResponse}
+          />
+        ))}
       </section>
     </div>
   )
 }
 
-function PlayAnswerButton ({ answer, index, handleResponse, colorAndIcon }) {
+function PlayAnswerButton({ answer, index, handleResponse, colorAndIcon }) {
   const disabledButtons = useStore(state => state.disabledButtons)
   const setDisabledButtons = useStore(state => state.setDisabledButtons)
   const { showIcons } = useStore(state => state.quiz.config)
@@ -101,12 +95,7 @@ function PlayAnswerButton ({ answer, index, handleResponse, colorAndIcon }) {
   }
 
   return (
-    <button
-      className='answer-box'
-      style={style}
-      onClick={handleClick}
-      disabled={disabledButtons}
-    >
+    <button className='answer-box' style={style} onClick={handleClick} disabled={disabledButtons}>
       {showIcons && icon}
       <span>{text}</span>
     </button>

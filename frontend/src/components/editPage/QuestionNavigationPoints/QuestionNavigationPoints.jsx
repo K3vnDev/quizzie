@@ -1,22 +1,20 @@
 import { useStore } from '../../../store/useStore.js'
 import './questionNavigationPoints.css'
 
-export function QuestionNavigationPoints ({ navigateQuestion, questionIndex }) {
+export function QuestionNavigationPoints({ navigateQuestion, questionIndex }) {
   const { questions } = useStore(state => state.quiz)
 
   return (
     <div className='question-navigation-points'>
-      {
-        questions.map((question, index) => (
-          <NavigationPoint
-            navigateQuestion={navigateQuestion}
-            questionIndex={questionIndex}
-            question={question}
-            index={index}
-            key={index}
-          />
-        ))
-      }
+      {questions.map((question, index) => (
+        <NavigationPoint
+          navigateQuestion={navigateQuestion}
+          questionIndex={questionIndex}
+          question={question}
+          index={index}
+          key={index}
+        />
+      ))}
     </div>
   )
 }
@@ -32,10 +30,5 @@ const NavigationPoint = ({ navigateQuestion, question, questionIndex, index }) =
     return val
   })()
 
-  return (
-    <button
-      className={className}
-      onClick={() => navigateQuestion(index)}
-    />
-  )
+  return <button className={className} onClick={() => navigateQuestion(index)} />
 }

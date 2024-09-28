@@ -4,10 +4,10 @@ import { LoadingArrows } from '../../root/LoadingArrows/LoadingArrows'
 import './localQuiz.css'
 const API_URL = import.meta.env.VITE_API_URL
 
-export function LocalQuiz ({ setUserData }) {
+export function LocalQuiz({ setUserData }) {
   const [loading, setLoading] = useState(false)
 
-  const fetchQuiz = async (validatedQuiz) => {
+  const fetchQuiz = async validatedQuiz => {
     const token = window.localStorage.getItem('token')
     setLoading(true)
 
@@ -30,7 +30,8 @@ export function LocalQuiz ({ setUserData }) {
       })
 
       window.localStorage.removeItem('localQuiz')
-    } catch {} finally {
+    } catch {
+    } finally {
       setLoading(false)
     }
   }
@@ -49,12 +50,12 @@ export function LocalQuiz ({ setUserData }) {
     }
   }, [])
 
-  return loading
-    ? (
-      <div className='local-quiz'>
-        <p>Uploading local quiz...</p>
-        <LoadingArrows />
-      </div>
-      )
-    : <></>
+  return loading ? (
+    <div className='local-quiz'>
+      <p>Uploading local quiz...</p>
+      <LoadingArrows />
+    </div>
+  ) : (
+    <></>
+  )
 }

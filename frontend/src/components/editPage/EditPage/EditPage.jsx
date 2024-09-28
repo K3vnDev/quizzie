@@ -4,11 +4,9 @@ import { EditMode } from '../EditMode/EditMode.jsx'
 import '../../../index.css'
 import './editPage.css'
 
-export function EditPage () {
+export function EditPage() {
   const { isLoading } = useEditQuiz()
   useRouteClassName('edit')
 
-  return !isLoading
-    ? <EditMode />
-    : <></>
+  return !isLoading ? <EditMode /> : <></>
 }

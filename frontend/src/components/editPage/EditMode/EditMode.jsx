@@ -10,20 +10,14 @@ import { EditableText } from '../EditableText/EditableText.jsx'
 import { EditQuizSettings } from '../EditQuizSettings/EditQuizSettings.jsx'
 import { QuestionNavigationArrows } from '../QuestionNavigationArrows/QuestionNavigationArrows.jsx'
 
-export function EditMode () {
-  const {
-    currentQuestionIndex,
-    navigateQuestion,
-    deleteQuestion
-  } = useEditMode()
+export function EditMode() {
+  const { currentQuestionIndex, navigateQuestion, deleteQuestion } = useEditMode()
 
   return (
     <>
       <EditModeButtonsHeader />
 
-      <TitleAndProgress
-        questionIndex={currentQuestionIndex}
-      />
+      <TitleAndProgress questionIndex={currentQuestionIndex} />
       <EditQuestionBox
         currentQuestionIndex={currentQuestionIndex}
         deleteQuestion={deleteQuestion}
@@ -60,22 +54,20 @@ const TitleAndProgress = ({ questionIndex }) => {
   return (
     <div className='quiz-title-and-progress'>
       <div className='quiz-title'>
-        {
-        isEditing
-          ? <EditableText
-              initialText={quizName}
-              maxLength={20}
-              setIsEditing={setIsEditing}
-              handleTextChange={setQuizName}
-              selectOn={['My New Quiz']}
-            />
-          : (
-            <h3 onClick={enterEditMode}>
-              {quizName}
-              <PencilIcon />
-            </h3>
-            )
-          }
+        {isEditing ? (
+          <EditableText
+            initialText={quizName}
+            maxLength={20}
+            setIsEditing={setIsEditing}
+            handleTextChange={setQuizName}
+            selectOn={['My New Quiz']}
+          />
+        ) : (
+          <h3 onClick={enterEditMode}>
+            {quizName}
+            <PencilIcon />
+          </h3>
+        )}
       </div>
       <span className='quiz-progress'>
         {`Question ${questionIndex + 1} of ${questions.length}`}

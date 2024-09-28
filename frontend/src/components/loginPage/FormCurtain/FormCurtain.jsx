@@ -5,14 +5,13 @@ import { useDebounce } from '../../../hooks/useDebounce'
 import { useStore } from '../../../store/useStore'
 import { useWidth } from '../../../hooks/useWidth'
 
-export function FormCurtain ({ showing, setShowing }) {
+export function FormCurtain({ showing, setShowing }) {
   const [animation, setAnimation] = useState('')
   const firstRender = useRef(true)
   const animationTime = 1.2
 
   const [triggerAction] = useCooldown({
-    action: () =>
-      setAnimation(`transition-to-${showing} ${animationTime}s ease-in-out both`),
+    action: () => setAnimation(`transition-to-${showing} ${animationTime}s ease-in-out both`),
     cooldown: animationTime * 1000
   })
 
@@ -26,19 +25,12 @@ export function FormCurtain ({ showing, setShowing }) {
   }, [showing])
 
   const toggleShowing = () => {
-    setShowing(s => showing === 'login' ? 'sign-up' : 'login')
+    setShowing(s => (showing === 'login' ? 'sign-up' : 'login'))
   }
 
   return (
-    <div
-      className='form-curtain'
-      style={{ animation }}
-    >
-      <InnerContent
-        toggleShowing={toggleShowing}
-        animationTime={animationTime}
-        showing={showing}
-      />
+    <div className='form-curtain' style={{ animation }}>
+      <InnerContent toggleShowing={toggleShowing} animationTime={animationTime} showing={showing} />
     </div>
   )
 }
@@ -79,10 +71,7 @@ const InnerContent = ({ showing, toggleShowing, animationTime }) => {
   return (
     <div style={{ animation }}>
       <h4>{delayedTitle}</h4>
-      <button
-        onClick={handleClick}
-        disabled={transitioning}
-      >
+      <button onClick={handleClick} disabled={transitioning}>
         {delayedButton}
       </button>
     </div>

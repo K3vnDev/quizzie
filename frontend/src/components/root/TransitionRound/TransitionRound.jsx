@@ -3,14 +3,12 @@ import { useStore } from '../../../store/useStore'
 import './transitionRound.css'
 import { useWidth } from '../../../hooks/useWidth'
 
-export function TransitionRound () {
+export function TransitionRound() {
   const { onVerticalView } = useWidth()
-  const [transitioning, setTransitioning] = useStore(
-    state => [
-      state.transitioning,
-      state.setTransitioning
-    ]
-  )
+  const [transitioning, setTransitioning] = useStore(state => [
+    state.transitioning,
+    state.setTransitioning
+  ])
   useEffect(() => setTransitioning(false), [])
 
   const transitionClassName = (() => {

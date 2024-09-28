@@ -6,7 +6,7 @@ import { SettingsInput } from '../SettingsInput/SettingsInput'
 import { SettingsRange } from '../SettingsRange/SettingsRange'
 import './editQuizSettings.css'
 
-export function EditQuizSettings () {
+export function EditQuizSettings() {
   const isDisplaying = useStore(state => state.isDisplayingQuizSettings)
   const setIsDisplaying = useStore(state => state.setIsDisplayingQuizSettings)
   const debouncedIsDisplaying = useDebounce(isDisplaying, 200)
@@ -17,10 +17,7 @@ export function EditQuizSettings () {
       const { className } = e.target
       if (typeof className !== 'string') return
 
-      if (
-        className.includes('quiz-settings-wrapper') ||
-        className.includes('okay-btn')
-      ) {
+      if (className.includes('quiz-settings-wrapper') || className.includes('okay-btn')) {
         setIsDisplaying(false)
       }
     }
@@ -29,19 +26,12 @@ export function EditQuizSettings () {
     return () => document.removeEventListener('click', handleClick)
   }, [])
 
-  const mode = isDisplaying
-    ? 'visible'
-    : 'hidden'
+  const mode = isDisplaying ? 'visible' : 'hidden'
 
-  const display = isDisplaying || debouncedIsDisplaying
-    ? 'flex'
-    : 'none'
+  const display = isDisplaying || debouncedIsDisplaying ? 'flex' : 'none'
 
   return (
-    <div
-      className={`edit-quiz-settings-wrapper ${mode}`}
-      style={{ display }}
-    >
+    <div className={`edit-quiz-settings-wrapper ${mode}`} style={{ display }}>
       <main className={`edit-quiz-settings ${mode}`}>
         <h2>Quiz Settings</h2>
 
@@ -56,7 +46,9 @@ export function EditQuizSettings () {
 }
 
 const Shuffle = () => {
-  const { shuffleQuestions, shuffleAnswers, shuffleAnswerColors } = useStore(state => state.quiz.config)
+  const { shuffleQuestions, shuffleAnswers, shuffleAnswerColors } = useStore(
+    state => state.quiz.config
+  )
   const setShuffleQuestions = useStore(state => state.setShuffleQuestions)
   const setShuffleAnswers = useStore(state => state.setShuffleAnswers)
   const setShuffleAnswerColors = useStore(state => state.setShuffleAnswerColors)
@@ -66,24 +58,15 @@ const Shuffle = () => {
       <h5>Shuffle:</h5>
       <div>
         <h4>Questions</h4>
-        <SettingsCheckbox
-          value={shuffleQuestions}
-          action={setShuffleQuestions}
-        />
+        <SettingsCheckbox value={shuffleQuestions} action={setShuffleQuestions} />
       </div>
       <div>
         <h4>Answers</h4>
-        <SettingsCheckbox
-          value={shuffleAnswers}
-          action={setShuffleAnswers}
-        />
+        <SettingsCheckbox value={shuffleAnswers} action={setShuffleAnswers} />
       </div>
       <div>
         <h4>Answer colors</h4>
-        <SettingsCheckbox
-          value={shuffleAnswerColors}
-          action={setShuffleAnswerColors}
-        />
+        <SettingsCheckbox value={shuffleAnswerColors} action={setShuffleAnswerColors} />
       </div>
     </section>
   )
@@ -96,10 +79,7 @@ const ShowIcons = () => {
   return (
     <div>
       <h4>Show Icons</h4>
-      <SettingsCheckbox
-        value={showIcons}
-        action={setShowIcons}
-      />
+      <SettingsCheckbox value={showIcons} action={setShowIcons} />
     </div>
   )
 }
@@ -112,15 +92,9 @@ const AnswerTime = () => {
     <section>
       <div>
         <h4>Answer time</h4>
-        <SettingsInput
-          value={answerTime}
-          action={setAnswerTime}
-        />
+        <SettingsInput value={answerTime} action={setAnswerTime} />
       </div>
-      <SettingsRange
-        value={answerTime}
-        action={setAnswerTime}
-      />
+      <SettingsRange value={answerTime} action={setAnswerTime} />
     </section>
   )
 }

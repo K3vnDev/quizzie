@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import { Quiz, validateQuiz } from '../schemas/Quiz.js'
-import { generateQuizId } from '../services/generateQuizId.js'
-import { User } from '../schemas/User.js'
 import { userAuth } from '../middleware/userAuth.js'
-import { $error, $success } from '../services/jsonMessages.js'
-import { generateQuizColor } from '../services/generateQuizColor.js'
+import { Quiz, validateQuiz } from '../schemas/Quiz.js'
+import { User } from '../schemas/User.js'
 import { findMatchedQuizzes } from '../services/findMatchedQuizzes.js'
+import { generateQuizColor } from '../services/generateQuizColor.js'
+import { generateQuizId } from '../services/generateQuizId.js'
+import { $error, $success } from '../services/jsonMessages.js'
 
 export const quizRouter = Router()
 
@@ -17,7 +17,9 @@ quizRouter.get('/search', async (req, res) => {
       ...$success('All Quizzes found'),
       allQuizzes
     })
-  } catch { res.status(500).json($error('couldnt get quizzes')) }
+  } catch {
+    res.status(500).json($error('couldnt get quizzes'))
+  }
 })
 
 // get quizzes by search
@@ -28,19 +30,19 @@ quizRouter.get('/search/:query', async (req, res) => {
     const allQuizzes = await Quiz.find({})
     const quizFromId = await Quiz.findOne({ id: query })
     if (quizFromId) {
-      return res
-        .json({
-          ...$success('Quiz found by id'),
-          matchedQuizzes: [quizFromId]
-        })
+      return res.json({
+        ...$success('Quiz found by id'),
+        matchedQuizzes: [quizFromId]
+      })
     }
     const matchedQuizzes = findMatchedQuizzes(query, allQuizzes)
-    return res
-      .json({
-        ...$success('Quizzes found by query'),
-        matchedQuizzes
-      })
-  } catch { res.status(500).json($error('couldnt search quizzes')) }
+    return res.json({
+      ...$success('Quizzes found by query'),
+      matchedQuizzes
+    })
+  } catch {
+    res.status(500).json($error('couldnt search quizzes'))
+  }
 })
 
 // get quiz
@@ -90,7 +92,8 @@ quizRouter.post('/', async (req, res) => {
     previewColor,
     ...validatedQuiz
   })
-  newQuiz.save()
+  newQuiz
+    .save()
     .then(savedQuiz => {
       res.status(201).json({
         ...$success('quiz created'),
@@ -114,10 +117,9 @@ quizRouter.put('/', async (req, res) => {
   const { success, data: validatedQuiz, error } = validateQuiz(quizFromReq)
   if (!success) return res.status(300).json(error.issues)
 
-  await Quiz.updateOne({ id }, validatedQuiz)
-    .catch(() => {
-      res.status(500).json($error('error updating quiz'))
-    })
+  await Quiz.updateOne({ id }, validatedQuiz).catch(() => {
+    res.status(500).json($error('error updating quiz'))
+  })
   res.json(validatedQuiz)
 })
 
@@ -129,8 +131,9 @@ quizRouter.delete('/:id', async (req, res) => {
   const quizFromDb = await Quiz.findOne({ id })
   if (quizFromDb.owner !== username) return res.status(401).json($error('unauthorized'))
 
-  const { deletedCount } = await Quiz.deleteOne({ id })
-    .catch(() => res.status(500).json($error('couldnt delete quiz')))
+  const { deletedCount } = await Quiz.deleteOne({ id }).catch(() =>
+    res.status(500).json($error('couldnt delete quiz'))
+  )
 
   if (deletedCount === 1) return res.json($success('quiz deleted'))
   res.status(404).json($error('requested quiz not found'))

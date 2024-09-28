@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useCooldown ({ action, reset, cooldown }) {
+export function useCooldown({ action, reset, cooldown }) {
   const [waiting, setWaiting] = useState(false)
   const timeout = useRef()
 

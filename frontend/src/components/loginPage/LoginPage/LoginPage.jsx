@@ -10,11 +10,8 @@ import { useError } from '../../../hooks/useError.js'
 import { FormError } from '../FormError/FormError.jsx'
 import { useNavigate } from 'react-router-dom'
 
-export function LoginPage () {
-  const {
-    login, signUp, showing,
-    setShowing, fetching, verifyingAuth
-  } = useLogin()
+export function LoginPage() {
+  const { login, signUp, showing, setShowing, fetching, verifyingAuth } = useLogin()
 
   useRouteClassName('login')
 
@@ -41,10 +38,7 @@ export function LoginPage () {
           fetching={fetching}
           dispatchAnimEvent={dispatchAnimEvent}
         />
-        <FormCurtain
-          showing={showing}
-          setShowing={setShowing}
-        />
+        <FormCurtain showing={showing} setShowing={setShowing} />
       </main>
     </>
   )
@@ -88,7 +82,7 @@ const LoginForm = ({ login, showing, fetching, dispatchAnimEvent }) => {
     const { status, message } = await login(username, password)
 
     if (!status) {
-      showError('Couldn\'t login, try again later')
+      showError("Couldn't login, try again later")
     } else if (status === 'error') {
       showError(message)
       dispatchAnimEvent('')
@@ -98,26 +92,15 @@ const LoginForm = ({ login, showing, fetching, dispatchAnimEvent }) => {
     }
   }
 
-  const className = showing === 'login'
-    ? 'login-wrapper showing'
-    : 'login-wrapper not-showing'
+  const className = showing === 'login' ? 'login-wrapper showing' : 'login-wrapper not-showing'
 
   return (
-    <form
-      className={className}
-      onSubmit={handleLogin}
-    >
+    <form className={className} onSubmit={handleLogin}>
       <h3>Welcome back!</h3>
       <FormInput m='Username' />
       <FormInput password m='Password' />
-      <FormSubmitButton
-        label='Login'
-        fetching={fetching}
-      />
-      <FormError
-        errorMessage={errorMessage}
-        errorOpacity={errorOpacity}
-      />
+      <FormSubmitButton label='Login' fetching={fetching} />
+      <FormError errorMessage={errorMessage} errorOpacity={errorOpacity} />
     </form>
   )
 }
@@ -169,7 +152,7 @@ const SignUpForm = ({ signUp, showing, fetching, dispatchAnimEvent }) => {
     const { status, message } = await signUp(username, password)
 
     if (!status) {
-      showError('Couldn\'t login, try again later')
+      showError("Couldn't login, try again later")
       dispatchAnimEvent('')
     } else if (status === 'error') {
       showError(message)
@@ -179,27 +162,16 @@ const SignUpForm = ({ signUp, showing, fetching, dispatchAnimEvent }) => {
     }
   }
 
-  const className = showing === 'sign-up'
-    ? 'login-wrapper showing'
-    : 'login-wrapper not-showing'
+  const className = showing === 'sign-up' ? 'login-wrapper showing' : 'login-wrapper not-showing'
 
   return (
-    <form
-      className={className}
-      onSubmit={handleSignUp}
-    >
+    <form className={className} onSubmit={handleSignUp}>
       <h3>Join Quizzie!</h3>
       <FormInput m='Username' />
       <FormInput password m='Password' />
       <FormInput password m='Confirm Password' />
-      <FormSubmitButton
-        label='Sign Up'
-        fetching={fetching}
-      />
-      <FormError
-        errorMessage={errorMessage}
-        errorOpacity={errorOpacity}
-      />
+      <FormSubmitButton label='Sign Up' fetching={fetching} />
+      <FormError errorMessage={errorMessage} errorOpacity={errorOpacity} />
     </form>
   )
 }

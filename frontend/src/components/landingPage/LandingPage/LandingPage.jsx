@@ -11,16 +11,13 @@ import { useReset } from '../../../hooks/useReset.js'
 import { useWidth } from '../../../hooks/useWidth.js'
 const { VITE_API_URL: API_URL } = import.meta.env
 
-export function LandingPage () {
+export function LandingPage() {
   useRouteClassName('landing')
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
   const resetState = useReset()
 
-  const [
-    setIsShowingResults,
-    setQuiz
-  ] = useStore(state => [
+  const [setIsShowingResults, setQuiz] = useStore(state => [
     state.setIsShowingResults,
     state.setQuiz
   ])
@@ -54,13 +51,11 @@ const TitleAndSlogan = () => {
     <main className='title-n-slogan'>
       <h1>Quizzie</h1>
       <h3>
-        A simple way to <span>create</span><br />
+        A simple way to <span>create</span>
+        <br />
         your own <span>quizzes.</span>
       </h3>
-      {
-        showingLoginAnchor &&
-          <LoginAnchor />
-      }
+      {showingLoginAnchor && <LoginAnchor />}
     </main>
   )
 }

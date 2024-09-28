@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export function useWidth (minWidth = 0) {
+export function useWidth(minWidth = 0) {
   const [onMinWidth, setOnMinWidth] = useState(getWith() > minWidth)
   const [onVerticalView, setOnVerticalView] = useState(checkVerticalView())
   const [clientWidth, setClientWidth] = useState(getWith())

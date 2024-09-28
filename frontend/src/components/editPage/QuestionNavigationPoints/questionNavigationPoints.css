@@ -28,7 +28,7 @@
   }
   &::before {
     position: absolute;
-    content: '';
+    content: "";
     --ratio: 150%;
     width: var(--ratio);
     height: var(--ratio);

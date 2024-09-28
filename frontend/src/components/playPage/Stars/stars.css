@@ -1,35 +1,56 @@
-
-.stars-wrapper{
+.stars-wrapper {
   display: flex;
-  gap: 52px;
+  gap: 60px;
   margin-bottom: 10px;
+  --star-base-scale: 1.75;
 }
 
-.stars-wrapper svg{
+.stars-wrapper svg {
   color: #f6d242;
-  width: 50px;
-  scale: 2.2;
-  stroke-width: .8;
-  opacity: .5;
+  --svg-size: 82px;
+  scale: var(--star-base-scale);
+  width: var(--svg-size);
+  width: var(--svg-size);
+  stroke-width: 0.8;
+  opacity: 0.5;
   fill: none;
 }
 
-
-@keyframes star-popup{
-  25%{
+@keyframes star-popup {
+  25% {
     fill: currentColor;
   }
-  45%, 55%{
-    scale: 2.35;
+  45%,
+  55% {
+    scale: calc(var(--star-base-scale) * 1.2);
     opacity: 1;
     fill: currentColor;
     filter: brightness(125%);
   }
-  100%{
-    scale: 2.2;
+  100% {
+    scale: calc(var(--star-base-scale) * 1.075);
     fill: currentColor;
     filter: brightness(110%);
     opacity: 1;
-    stroke-width: .1;
+    stroke-width: 0.1;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .stars-wrapper {
+    gap: 52px;
+    margin-bottom: 0;
+  }
+  .stars-wrapper svg {
+    --svg-size: 64px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .stars-wrapper {
+    gap: 46px;
+  }
+  .stars-wrapper svg {
+    --svg-size: 58px;
   }
 }

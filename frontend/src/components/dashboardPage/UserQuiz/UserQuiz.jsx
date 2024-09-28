@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import './userQuiz.css'
 import { UserQuizDeleteMenu } from '../UserQuizDeleteMenu/UserQuizDeleteMenu.jsx'
 
-export function UserQuiz ({ quizzes, index, deleteMode, setUserData }) {
+export function UserQuiz({ quizzes, index, deleteMode, setUserData }) {
   const quiz = quizzes[index]
   const [showingDeleteMenu, setShowingDeleteMenu] = useState(false)
   const { id, name, previewColor, config, questions } = quiz
@@ -24,9 +24,7 @@ export function UserQuiz ({ quizzes, index, deleteMode, setUserData }) {
     }
   }, [])
 
-  const className = deleteMode
-    ? 'user-quiz delete-mode'
-    : 'user-quiz'
+  const className = deleteMode ? 'user-quiz delete-mode' : 'user-quiz'
 
   const handleClick = e => {
     e.stopPropagation()
@@ -51,19 +49,17 @@ export function UserQuiz ({ quizzes, index, deleteMode, setUserData }) {
           <span>{questions.length}</span>
         </div>
       </section>
-      {
-        deleteMode
-          ? (
-            <UserQuizDeleteMenu
-              setUserData={setUserData}
-              showingDeleteMenu={showingDeleteMenu}
-              setShowingDeleteMenu={setShowingDeleteMenu}
-              quizId={id}
-              quizzes={quizzes}
-            />
-            )
-          : <UserQuizOptionsMenu quiz={quiz} />
-      }
+      {deleteMode ? (
+        <UserQuizDeleteMenu
+          setUserData={setUserData}
+          showingDeleteMenu={showingDeleteMenu}
+          setShowingDeleteMenu={setShowingDeleteMenu}
+          quizId={id}
+          quizzes={quizzes}
+        />
+      ) : (
+        <UserQuizOptionsMenu quiz={quiz} />
+      )}
     </div>
   )
 }

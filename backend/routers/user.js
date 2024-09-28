@@ -1,11 +1,11 @@
+import { compare, hash } from 'bcrypt'
 import { Router } from 'express'
 import jwt from 'jsonwebtoken'
-import { User, validateUser } from '../schemas/User.js'
-import { compare, hash } from 'bcrypt'
-import { $error, $success } from '../services/jsonMessages.js'
-import { Quiz } from '../schemas/Quiz.js'
 import { userAuth } from '../middleware/userAuth.js'
+import { Quiz } from '../schemas/Quiz.js'
+import { User, validateUser } from '../schemas/User.js'
 import { generateUserColor } from '../services/generateUserColor.js'
+import { $error, $success } from '../services/jsonMessages.js'
 
 export const userRouter = Router()
 
@@ -14,12 +14,10 @@ userRouter.post('/signup', async (req, res) => {
 
   const { success, data: validatedUser, error } = validateUser(userFromReq)
   if (!success) {
-    return res
-      .status(400)
-      .json({
-        ...$error('Invalid Data'),
-        issues: error.issues
-      })
+    return res.status(400).json({
+      ...$error('Invalid Data'),
+      issues: error.issues
+    })
   }
 
   const { username, password } = validatedUser
@@ -38,20 +36,24 @@ userRouter.post('/signup', async (req, res) => {
     })
     await newUser.save()
 
-    const token = jwt.sign({
-      username, profileColor
-    }, process.env.SKW)
+    const token = jwt.sign(
+      {
+        username,
+        profileColor
+      },
+      process.env.SKW
+    )
 
-    return res
-      .status(201)
-      .json({
-        ...$success('Sign up Successful'),
-        data: {
-          username,
-          token
-        }
-      })
-  } catch { res.status(500).json($error('Couldn\'t sign up, try again later')) }
+    return res.status(201).json({
+      ...$success('Sign up Successful'),
+      data: {
+        username,
+        token
+      }
+    })
+  } catch {
+    res.status(500).json($error("Couldn't sign up, try again later"))
+  }
 })
 
 userRouter.post('/login', async (req, res) => {
@@ -59,12 +61,10 @@ userRouter.post('/login', async (req, res) => {
     const userFromReq = req.body
     const { success, data: validatedUser, error } = validateUser(userFromReq)
     if (!success) {
-      return res
-        .status(400)
-        .json({
-          ...$error('Invalid Data'),
-          issues: error.issues
-        })
+      return res.status(400).json({
+        ...$error('Invalid Data'),
+        issues: error.issues
+      })
     }
     const { username, password } = validatedUser
 
@@ -74,22 +74,25 @@ userRouter.post('/login', async (req, res) => {
     const { profileColor } = user
 
     if (await compare(password, user.passwordHash)) {
-      const token = jwt.sign({
-        username, profileColor
-      }, process.env.SKW)
+      const token = jwt.sign(
+        {
+          username,
+          profileColor
+        },
+        process.env.SKW
+      )
 
-      return res
-        .json({
-          ...$success('Login Successful'),
-          data: {
-            username,
-            token
-          }
-        })
+      return res.json({
+        ...$success('Login Successful'),
+        data: {
+          username,
+          token
+        }
+      })
     }
     res.status(401).json($error('Invalid username or password'))
   } catch {
-    res.status(500).json($error('Couldn\'t login, try again later'))
+    res.status(500).json($error("Couldn't login, try again later"))
   }
 })
 

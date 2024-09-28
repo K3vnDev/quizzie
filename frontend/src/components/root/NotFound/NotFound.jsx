@@ -9,7 +9,7 @@ const useNotFound = () => {
   return { navigate }
 }
 
-export function PageNotFound () {
+export function PageNotFound() {
   const { navigate } = useNotFound()
 
   const handleClick = () => {
@@ -21,14 +21,12 @@ export function PageNotFound () {
       <h3>
         Oops, page not found :( <span>404</span>
       </h3>
-      <button onClick={handleClick}>
-        Back to main page
-      </button>
+      <button onClick={handleClick}>Back to main page</button>
     </div>
   )
 }
 
-export function QuizNotFound () {
+export function QuizNotFound() {
   const { navigate } = useNotFound()
 
   const handleClick = () => {
@@ -40,9 +38,7 @@ export function QuizNotFound () {
       <h3>
         Sorry, quiz not found :( <span>404</span>
       </h3>
-      <button onClick={handleClick}>
-        Browse other quizzes
-      </button>
+      <button onClick={handleClick}>Browse other quizzes</button>
     </div>
   )
 }

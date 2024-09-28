@@ -4,7 +4,7 @@ import { useStore } from '../store/useStore'
 import { useShuffle } from './useShuffle'
 import { waitForSeconds } from '../services/waitForSeconds'
 
-export function usePlayMode () {
+export function usePlayMode() {
   const [
     { name, questions, config },
     setIsShowingQuestion,
@@ -59,15 +59,11 @@ export function usePlayMode () {
   const answerTime = config.answerTime * 1000
   const nameAppearTime = 3.4 * 1000
 
-  const nextQuestion = async (response) => {
+  const nextQuestion = async response => {
     clearTimeout(loadNextQuestion.current)
 
     showQuestionAnsweredMessage(
-      response === true
-        ? 'correct'
-        : response === false
-          ? 'incorrect'
-          : 'timeout'
+      response === true ? 'correct' : response === false ? 'incorrect' : 'timeout'
     )
     setTimeBarPaused(true)
     setDisabledButtons(true)
@@ -96,7 +92,7 @@ export function usePlayMode () {
     setCurrentQuestionIndex(c => c + 1)
   }
 
-  const setResponse = (response) => {
+  const setResponse = response => {
     if (response === null) {
       const question = questionsToShow[currentQuestionIndex]
       addResult({

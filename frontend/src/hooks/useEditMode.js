@@ -2,13 +2,8 @@ import { useEffect, useState } from 'react'
 import { useStore } from '../store/useStore'
 import { useReset } from './useReset'
 
-export function useEditMode () {
-  const [
-    { name, questions },
-    createNewQuestion,
-    deleteQuestion
-  ] =
-  useStore(s => [
+export function useEditMode() {
+  const [{ name, questions }, createNewQuestion, deleteQuestion] = useStore(s => [
     s.quiz,
     s.createNewQuestion,
     s.deleteQuestion
@@ -35,7 +30,7 @@ export function useEditMode () {
         break
 
       default:
-        if (typeof (value) === 'number') {
+        if (typeof value === 'number') {
           setCurrentQuestionIndex(value)
         }
         break

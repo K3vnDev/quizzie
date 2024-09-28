@@ -1,14 +1,13 @@
 import { useStore } from '../store/useStore'
 
-export function useReset () {
+export function useReset() {
   const [
     setIsShowingQuestion,
     setIsUnloadingQuestion,
     setIsUnloadingPlayMode,
     setIsShowingResults,
     resetResults
-  ] =
-  useStore(s => [
+  ] = useStore(s => [
     s.setIsShowingQuestion,
     s.setIsUnloadingQuestion,
     s.setIsUnloadingPlayMode,

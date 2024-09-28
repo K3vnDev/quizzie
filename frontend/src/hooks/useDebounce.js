@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useDebounce (value, wait) {
+export function useDebounce(value, wait) {
   const timeout = useRef()
   const firstTrigger = useRef(true)
   const [debouncedValue, setDebouncedValue] = useState(value)

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useDebounce } from './useDebounce'
 const API_URL = import.meta.env.VITE_API_URL
 
-export function useBrowse () {
+export function useBrowse() {
   const [input, setInput] = useState('')
   const [quizzes, setQuizzes] = useState([])
   const [isFetching, setIsFetching] = useState(false)
@@ -30,14 +30,14 @@ export function useBrowse () {
     window.history.replaceState({}, '', newUrl)
   }, [input])
 
-  const handleFetchQuizzes = async (query) => {
+  const handleFetchQuizzes = async query => {
     setIsFetching(true)
     await fetchQuizzes(query)
     setIsFetching(false)
     setIsLoading(false)
   }
 
-  const fetchQuizzes = async (query) => {
+  const fetchQuizzes = async query => {
     try {
       const res = await fetch(`${API_URL}/quiz/search/${query}`)
       if (!res.ok) throw new Error('Error fetching quizzes')

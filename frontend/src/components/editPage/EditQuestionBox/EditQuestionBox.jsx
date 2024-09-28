@@ -8,7 +8,7 @@ import { EditableAnswer } from '../EditableAnswer/EditableAnswer.jsx'
 import { QuestionOptions } from '../QuestionOptions/QuestionOptions.jsx'
 import { EditableText } from '../EditableText/EditableText.jsx'
 
-export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
+export function EditQuestionBox({ currentQuestionIndex, deleteQuestion }) {
   const { config, questions } = useStore(state => state.quiz)
   const { query, displayMode, answers } = questions[currentQuestionIndex]
   const transitioning = useStore(state => state.transitioning)
@@ -18,30 +18,20 @@ export function EditQuestionBox ({ currentQuestionIndex, deleteQuestion }) {
   return (
     <div className={className}>
       <header>
-        <QuestionQuery
-          questionIndex={currentQuestionIndex}
-          query={query}
-        />
-        <QuestionOptions
-          questionIndex={currentQuestionIndex}
-          deleteQuestion={deleteQuestion}
-        />
+        <QuestionQuery questionIndex={currentQuestionIndex} query={query} />
+        <QuestionOptions questionIndex={currentQuestionIndex} deleteQuestion={deleteQuestion} />
       </header>
       <section className={`answers ${displayMode}`}>
-        {
-          answers.map((answer, i) => (
-            <EditableAnswer
-              answer={answer}
-              answerIndex={i} key={i}
-              showIcons={config.showIcons}
-              questionIndex={currentQuestionIndex}
-            />
-          ))
-        }
-        {
-          answers.length < 4 &&
-            <AddAnswerButton questionIndex={currentQuestionIndex} />
-        }
+        {answers.map((answer, i) => (
+          <EditableAnswer
+            answer={answer}
+            answerIndex={i}
+            key={i}
+            showIcons={config.showIcons}
+            questionIndex={currentQuestionIndex}
+          />
+        ))}
+        {answers.length < 4 && <AddAnswerButton questionIndex={currentQuestionIndex} />}
       </section>
       <QuestionWarningMessage answers={answers} />
     </div>
@@ -57,11 +47,7 @@ const AddAnswerButton = ({ questionIndex }) => {
   }
 
   return (
-    <button
-      className='add-answer-btn'
-      onClick={handleClick}
-      disabled={transitioning}
-    >
+    <button className='add-answer-btn' onClick={handleClick} disabled={transitioning}>
       <AddIcon />
     </button>
   )
@@ -97,10 +83,7 @@ const QuestionQuery = ({ query, questionIndex }) => {
   }
 
   return (
-    <div
-      className='question-query'
-      onClick={() => setIsEditing(true)}
-    >
+    <div className='question-query' onClick={() => setIsEditing(true)}>
       <span>{query}</span>
       <PencilIcon />
     </div>

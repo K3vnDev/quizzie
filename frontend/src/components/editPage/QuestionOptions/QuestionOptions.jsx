@@ -5,7 +5,7 @@ import { List as ListIcon } from '../../../icons/List.jsx'
 import { useStore } from '../../../store/useStore.js'
 import './questionOptions.css'
 
-export function QuestionOptions ({ questionIndex, deleteQuestion }) {
+export function QuestionOptions({ questionIndex, deleteQuestion }) {
   const { questions } = useStore(state => state.quiz)
   const { displayMode } = questions[questionIndex]
 
@@ -14,13 +14,8 @@ export function QuestionOptions ({ questionIndex, deleteQuestion }) {
       <button className='more-btn'>
         <MoreIcon />
       </button>
-      <ChangeButton
-        displayMode={displayMode}
-        questionIndex={questionIndex}
-      />
-      <DeleteButton
-        deleteQuestion={deleteQuestion}
-      />
+      <ChangeButton displayMode={displayMode} questionIndex={questionIndex} />
+      <DeleteButton deleteQuestion={deleteQuestion} />
     </div>
   )
 }
@@ -33,15 +28,8 @@ const ChangeButton = ({ displayMode, questionIndex }) => {
   }
 
   return (
-    <button
-      className='change-btn'
-      onClick={handleClick}
-    >
-      {
-        displayMode === 'list'
-          ? <GridIcon />
-          : <ListIcon />
-      }
+    <button className='change-btn' onClick={handleClick}>
+      {displayMode === 'list' ? <GridIcon /> : <ListIcon />}
     </button>
   )
 }
@@ -49,11 +37,7 @@ const ChangeButton = ({ displayMode, questionIndex }) => {
 const DeleteButton = ({ deleteQuestion }) => {
   const { questions } = useStore(state => state.quiz)
   return (
-    <button
-      className='delete-btn'
-      onClick={deleteQuestion}
-      disabled={questions.length === 1}
-    >
+    <button className='delete-btn' onClick={deleteQuestion} disabled={questions.length === 1}>
       <DeleteIcon m='Delete' />
     </button>
   )

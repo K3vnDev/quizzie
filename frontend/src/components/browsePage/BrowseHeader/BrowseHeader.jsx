@@ -5,15 +5,16 @@ import { useStore } from '../../../store/useStore'
 import { AppLogo } from '../../root/AppLogo/AppLogo'
 import './browseHeader.css'
 
-export function BrowseHeader () {
+export function BrowseHeader() {
   const { scrolledUp } = useScroll()
   const debouncedScrolledUp = useDebounce(scrolledUp, 75)
   const browsePageInputIsVisible = useStore(state => state.browsePageInputIsVisible)
   const transitioning = useStore(state => state.transitioning)
 
-  const className = (scrolledUp && debouncedScrolledUp) && !browsePageInputIsVisible
-    ? 'browse-header visible'
-    : 'browse-header hidden'
+  const className =
+    scrolledUp && debouncedScrolledUp && !browsePageInputIsVisible
+      ? 'browse-header visible'
+      : 'browse-header hidden'
 
   const handleClick = () => {
     window.scrollTo({
@@ -28,11 +29,7 @@ export function BrowseHeader () {
       <AppLogo />
       <header className={className}>
         <AppLogo />
-        <button
-          className='search-btn'
-          onClick={handleClick}
-          disabled={transitioning}
-        >
+        <button className='search-btn' onClick={handleClick} disabled={transitioning}>
           <SearchIcon />
         </button>
       </header>

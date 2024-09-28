@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import './appLogo.css'
 import { useStore } from '../../../store/useStore'
 
-export function AppLogo () {
+export function AppLogo() {
   const navigate = useNavigate()
   const transitioning = useStore(state => state.transitioning)
 
@@ -13,11 +13,5 @@ export function AppLogo () {
     navigate('/dashboard')
   }
 
-  return (
-    <button
-      className='app-logo'
-      disabled={transitioning}
-      onClick={handleClick}
-    />
-  )
+  return <button className='app-logo' disabled={transitioning} onClick={handleClick} />
 }

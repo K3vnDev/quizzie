@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useError () {
+export function useError() {
   const [errorMessage, setErrorMessage] = useState('')
   const [errorOpacity, setErrorOpacity] = useState('hidden')
   const timeout = useRef()

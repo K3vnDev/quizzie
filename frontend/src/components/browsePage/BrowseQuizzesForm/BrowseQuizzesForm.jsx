@@ -6,7 +6,7 @@ import { useCantWriteAnimation } from '../../../hooks/useCantWriteAnimation.js'
 import { LoadingArrows } from '../../root/LoadingArrows/LoadingArrows.jsx'
 import { useStore } from '../../../store/useStore.js'
 
-export function BrowseQuizzesForm ({ input, setInput, isFetching }) {
+export function BrowseQuizzesForm({ input, setInput, isFetching }) {
   const { animation, triggerAnimation } = useCantWriteAnimation()
   const setBrowsePageInputIsVisible = useStore(state => state.setBrowsePageInputIsVisible)
   const inputRef = useRef()
@@ -39,21 +39,10 @@ export function BrowseQuizzesForm ({ input, setInput, isFetching }) {
 
   return (
     <header className='browse-quizzes-form'>
-      <h2 ref={titleRef}>
-        Browse Quizzes
-      </h2>
+      <h2 ref={titleRef}>Browse Quizzes</h2>
       <label style={{ animation }}>
-        {
-          isFetching
-            ? <LoadingArrows />
-            : <SearchIcon />
-        }
-        <input
-          placeholder='name or id...'
-          value={input}
-          onChange={handleChange}
-          ref={inputRef}
-        />
+        {isFetching ? <LoadingArrows /> : <SearchIcon />}
+        <input placeholder='name or id...' value={input} onChange={handleChange} ref={inputRef} />
       </label>
     </header>
   )

@@ -15,34 +15,25 @@ import { waitForSeconds } from '../../../services/waitForSeconds'
 import { useReset } from '../../../hooks/useReset'
 import { randomElement } from '../../../services/randomElement'
 
-export function QuizResults () {
+export function QuizResults() {
   const results = useStore(state => state.results)
-  const {
-    questionBoxClassName,
-    numberOfStars,
-    isQuestionCorrect,
-    score
-  } = useResults({ results })
+  const { questionBoxClassName, numberOfStars, isQuestionCorrect, score } = useResults({ results })
 
   return (
     <>
-      <h2 className='results-title'>
-        Your Results
-      </h2>
+      <h2 className='results-title'>Your Results</h2>
       <div className='results-box'>
         <Stars n={numberOfStars} />
         <ScoreMessage score={score} />
         <div className={questionBoxClassName}>
-          {
-            results.map((question, index) => (
-              <QuestionResultBox
-                key={index}
-                isQuestionCorrect={isQuestionCorrect}
-                question={question}
-                index={index}
-              />
-            ))
-          }
+          {results.map((question, index) => (
+            <QuestionResultBox
+              key={index}
+              isQuestionCorrect={isQuestionCorrect}
+              question={question}
+              index={index}
+            />
+          ))}
         </div>
         <section className='buttons'>
           <HomeButton />
@@ -55,13 +46,13 @@ export function QuizResults () {
   )
 }
 
-function QuestionResultBox ({ question, isQuestionCorrect, index }) {
+function QuestionResultBox({ question, isQuestionCorrect, index }) {
   const { questions } = useStore(state => state.quiz)
   const { color, icon } = isQuestionCorrect(question)
     ? { color: '#00B15C', icon: <CheckboxIcon /> }
     : { color: '#C12323', icon: <CrossIcon /> }
 
-  const lengthFactor = (1 - (questions.length / 15)) / 3 + 0.07
+  const lengthFactor = (1 - questions.length / 15) / 3 + 0.07
   const delay = index * lengthFactor + 0.4
 
   return (
@@ -79,25 +70,42 @@ function QuestionResultBox ({ question, isQuestionCorrect, index }) {
   )
 }
 
-function ScoreMessage ({ score }) {
+function ScoreMessage({ score }) {
   const message = (() => {
     if (score <= 30) {
       return randomElement(
-        'Better luck next time!', 'Keep trying!', 'Practice makes perfect!', 'Try again!', 'Next time will be better!'
+        'Better luck next time!',
+        'Keep trying!',
+        'Practice makes perfect!',
+        'Try again!',
+        'Next time will be better!'
       )
     }
     if (score <= 60) {
       return randomElement(
-        'Good start!', 'Nice try!', 'Not bad!', 'Almost there!', "You're getting there!", 'Good attempt!'
+        'Good start!',
+        'Nice try!',
+        'Not bad!',
+        'Almost there!',
+        "You're getting there!",
+        'Good attempt!'
       )
     }
     if (score <= 90) {
       return randomElement(
-        'Great job!', 'Well done!', 'Almost perfect!', 'Impressive!', 'Really good!'
+        'Great job!',
+        'Well done!',
+        'Almost perfect!',
+        'Impressive!',
+        'Really good!'
       )
     }
     return randomElement(
-      'Amazing!', 'Outstanding!', "You're a star!", 'You nailed it!', 'You rock!'
+      'Amazing!',
+      'Outstanding!',
+      "You're a star!",
+      'You nailed it!',
+      'You rock!'
     )
   })()
 
@@ -115,7 +123,7 @@ function ScoreMessage ({ score }) {
   )
 }
 
-function HomeButton () {
+function HomeButton() {
   const navigate = useNavigate()
   const transitioning = useStore(state => state.transitioning)
 
@@ -124,16 +132,13 @@ function HomeButton () {
   }
 
   return (
-    <button
-      onClick={handleClick}
-      disabled={transitioning}
-    >
+    <button onClick={handleClick} disabled={transitioning}>
       <HomeIcon />
     </button>
   )
 }
 
-function PlayAgainButton () {
+function PlayAgainButton() {
   const resetState = useReset()
   const setTransitioning = useStore(state => state.setTransitioning)
   const transitioning = useStore(state => state.transitioning)
@@ -145,10 +150,7 @@ function PlayAgainButton () {
   }
 
   return (
-    <button
-      onClick={handleClick}
-      disabled={transitioning}
-    >
+    <button onClick={handleClick} disabled={transitioning}>
       <PlayAgainIcon />
     </button>
   )

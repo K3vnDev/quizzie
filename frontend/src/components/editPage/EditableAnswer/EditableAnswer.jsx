@@ -7,7 +7,7 @@ import { Check as CheckIcon } from '../../../icons/Check.jsx'
 import { XMark as XMarkIcon } from '../../../icons/XMark.jsx'
 import { EditableText } from '../EditableText/EditableText.jsx'
 
-export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex }) {
+export function EditableAnswer({ answer, answerIndex, showIcons, questionIndex }) {
   const { color } = colorAndIcon[answerIndex]
   const { text: answerText, isCorrect } = answer
   const [canShowMenu, setCanShowMenu] = useState(true)
@@ -31,14 +31,13 @@ export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex 
 
     return () => {
       document.removeEventListener('editmodeexitfromenterkey', handleEnterKey)
-      if (answerBoxRef.current) answerBoxRef.current.removeEventListener('mouseleave', handleMouseLeave)
+      if (answerBoxRef.current)
+        answerBoxRef.current.removeEventListener('mouseleave', handleMouseLeave)
       clearTimeout(timeout.current)
     }
   }, [])
 
-  const icon = isCorrect
-    ? <CheckIcon />
-    : <XMarkIcon />
+  const icon = isCorrect ? <CheckIcon /> : <XMarkIcon />
 
   const style = {
     '--bg-color': color,
@@ -47,11 +46,7 @@ export function EditableAnswer ({ answer, answerIndex, showIcons, questionIndex 
   }
 
   return (
-    <div
-      className='edit-answer-box'
-      ref={answerBoxRef}
-      style={style}
-    >
+    <div className='edit-answer-box' ref={answerBoxRef} style={style}>
       {icon}
       <TextContent
         questionIndex={questionIndex}
@@ -76,27 +71,26 @@ const TextContent = ({ questionIndex, answerIndex, answerText, answerBoxRef, can
     setAnswerText(text, questionIndex, answerIndex)
   }
 
-  return isEditing
-    ? <EditableText
-        initialText={answerText}
-        setIsEditing={setIsEditing}
-        handleTextChange={handleTextChange}
-        outsideContainerRef={answerBoxRef}
-        selectOn={['first answer', 'second answer']}
-        displayAsTextArea
-        maxLength={50}
-      />
-    : (
-      <>
-        <span>{answerText}</span>
-        {
-          canShowMenu &&
-            <EditAnswerMenu
-              setEditingText={setIsEditing}
-              questionIndex={questionIndex}
-              answerIndex={answerIndex}
-            />
-          }
-      </>
-      )
+  return isEditing ? (
+    <EditableText
+      initialText={answerText}
+      setIsEditing={setIsEditing}
+      handleTextChange={handleTextChange}
+      outsideContainerRef={answerBoxRef}
+      selectOn={['first answer', 'second answer']}
+      displayAsTextArea
+      maxLength={50}
+    />
+  ) : (
+    <>
+      <span>{answerText}</span>
+      {canShowMenu && (
+        <EditAnswerMenu
+          setEditingText={setIsEditing}
+          questionIndex={questionIndex}
+          answerIndex={answerIndex}
+        />
+      )}
+    </>
+  )
 }

@@ -141,7 +141,7 @@ export const newQuiz = {
       ]
     },
     {
-      query: 'What is the most abundant gas in the Earth\'s atmosphere?',
+      query: "What is the most abundant gas in the Earth's atmosphere?",
       displayMode: 'grid',
       answers: [
         {

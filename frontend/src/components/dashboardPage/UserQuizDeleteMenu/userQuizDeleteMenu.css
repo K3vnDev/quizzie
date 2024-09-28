@@ -85,8 +85,7 @@
   }
 }
 
-@media screen and (max-width: 1200px) and (min-width: 900px),
-  screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) and (min-width: 900px), screen and (max-width: 600px) {
   .user-quiz-delete-menu .buttons-wrapper {
     gap: 18px;
   }

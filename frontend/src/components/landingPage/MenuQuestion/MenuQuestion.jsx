@@ -8,23 +8,17 @@ import { useTransition } from '../../../hooks/useTransition.js'
 import './menuQuestion.css'
 import { useWidth } from '../../../hooks/useWidth.js'
 
-export function MenuQuestion () {
+export function MenuQuestion() {
   const setQuiz = useStore(state => state.setQuiz)
   const navigate = useNavigate()
   const { makeTransition } = useTransition()
   const { onMinWidth: showLoginOrSignUp } = useWidth(1000)
 
   const handleMakeMyOwnQuiz = () => {
-    const quizFromStorage = JSON.parse(
-      window.localStorage.getItem('localQuiz')
-    )
+    const quizFromStorage = JSON.parse(window.localStorage.getItem('localQuiz'))
     if (quizFromStorage) {
       const { success } = validateQuiz(quizFromStorage)
-      setQuiz(
-        success
-          ? quizFromStorage
-          : templateQuiz
-      )
+      setQuiz(success ? quizFromStorage : templateQuiz)
     } else {
       setQuiz(templateQuiz)
     }
@@ -60,23 +54,17 @@ export function MenuQuestion () {
     <div className='menu-question-box'>
       <h2>What do you want to do?</h2>
       <section>
-        {
-          answers.map((ans, i) => (
-            <MenuAnswer
-              index={i} key={i}
-              callback={ans.callback}
-            >
-              {ans.text}
-            </MenuAnswer>
-          )
-          )
-        }
+        {answers.map((ans, i) => (
+          <MenuAnswer index={i} key={i} callback={ans.callback}>
+            {ans.text}
+          </MenuAnswer>
+        ))}
       </section>
     </div>
   )
 }
 
-function MenuAnswer ({ children, callback, index }) {
+function MenuAnswer({ children, callback, index }) {
   const { color, icon } = colorAndIcon[index]
   const transitioning = useStore(state => state.transitioning)
 
@@ -90,7 +78,8 @@ function MenuAnswer ({ children, callback, index }) {
         '--bg-color-st': color + '80'
       }}
     >
-      {icon}<span>{children}</span>
+      {icon}
+      <span>{children}</span>
     </button>
   )
 }

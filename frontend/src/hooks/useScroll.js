@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export function useScroll () {
+export function useScroll() {
   const initialState = document.documentElement.scrollTop === 0
   const [scrollIsOnTop, setScrollIsOnTop] = useState(initialState)
   const [scrolledUp, setScrolledUp] = useState(false)

@@ -9,30 +9,24 @@ import { LoadingArrows } from '../../root/LoadingArrows/LoadingArrows.jsx'
 import { LocalQuiz } from '../LocalQuiz/LocalQuiz.jsx'
 const API_URL = import.meta.env.VITE_API_URL
 
-export function UserQuizzesGrid ({ quizzes, setUserData, deleteMode, isLoading }) {
+export function UserQuizzesGrid({ quizzes, setUserData, deleteMode, isLoading }) {
   if (isLoading) {
     return <QuizzesPreview />
   }
 
   return (
     <section className='user-quizzes-grid'>
-      <CreateNewQuizButton
-        deleteMode={deleteMode}
-      />
-      {
-        quizzes.map((quiz, index) => (
-          <UserQuiz
-            quizzes={quizzes}
-            key={quiz.id}
-            deleteMode={deleteMode}
-            setUserData={setUserData}
-            index={index}
-          />
-        ))
-      }
-      <LocalQuiz
-        setUserData={setUserData}
-      />
+      <CreateNewQuizButton deleteMode={deleteMode} />
+      {quizzes.map((quiz, index) => (
+        <UserQuiz
+          quizzes={quizzes}
+          key={quiz.id}
+          deleteMode={deleteMode}
+          setUserData={setUserData}
+          index={index}
+        />
+      ))}
+      <LocalQuiz setUserData={setUserData} />
     </section>
   )
 }
@@ -69,21 +63,11 @@ const CreateNewQuizButton = ({ deleteMode }) => {
     }
   }
 
-  const className = buttonLoading
-    ? 'create-new-quiz-btn loading'
-    : 'create-new-quiz-btn'
+  const className = buttonLoading ? 'create-new-quiz-btn loading' : 'create-new-quiz-btn'
 
   return (
-    <button
-      className={className}
-      onClick={handleClick}
-      disabled={buttonLoading || transitioning}
-    >
-      {
-        buttonLoading
-          ? <LoadingArrows />
-          : <AddIcon />
-      }
+    <button className={className} onClick={handleClick} disabled={buttonLoading || transitioning}>
+      {buttonLoading ? <LoadingArrows /> : <AddIcon />}
     </button>
   )
 }
@@ -93,14 +77,9 @@ const QuizzesPreview = () => {
 
   return (
     <section className='user-quizzes-grid'>
-      {
-        quizzesPreview.map((_, i) => (
-          <div
-            className='user-quiz loading'
-            key={i}
-          />
-        ))
-      }
+      {quizzesPreview.map((_, i) => (
+        <div className='user-quiz loading' key={i} />
+      ))}
     </section>
   )
 }

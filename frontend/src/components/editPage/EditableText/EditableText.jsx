@@ -3,7 +3,15 @@ import { useEffect, useRef } from 'react'
 import { validateInput } from '../../../services/validateInput.js'
 import './editableText.css'
 
-export function EditableText ({ initialText, setIsEditing, handleTextChange, maxLength, outsideContainerRef, selectOn, displayAsTextArea }) {
+export function EditableText({
+  initialText,
+  setIsEditing,
+  handleTextChange,
+  maxLength,
+  outsideContainerRef,
+  selectOn,
+  displayAsTextArea
+}) {
   const inputRef = useRef()
   const { animation, triggerAnimation } = useCantWriteAnimation()
   const exitEditMode = () => setIsEditing(false)
@@ -14,18 +22,14 @@ export function EditableText ({ initialText, setIsEditing, handleTextChange, max
     if (displayAsTextArea) {
       input.style.textWrap = 'nowrap'
       input.style.width = '0px'
-      input.style.width = input.scrollWidth > 180
-        ? `${input.scrollWidth + 25}px`
-        : '200px'
+      input.style.width = input.scrollWidth > 180 ? `${input.scrollWidth + 25}px` : '200px'
       input.style.textWrap = 'wrap'
 
       input.style.height = '0px'
       input.style.height = `${input.scrollHeight}px`
     } else {
       input.style.width = '0px'
-      input.style.width = input.scrollWidth > 40
-        ? `${input.scrollWidth + 30}px`
-        : '60px'
+      input.style.width = input.scrollWidth > 40 ? `${input.scrollWidth + 30}px` : '60px'
     }
 
     if (setCursor) input.setSelectionRange(input.value.length, input.value.length)
@@ -50,38 +54,38 @@ export function EditableText ({ initialText, setIsEditing, handleTextChange, max
 
   useEffect(selectInitialText, [])
 
-  return displayAsTextArea
-    ? (
-      <textarea
-        type='text'
-        value={initialText}
-        onChange={handleChange}
-        onFocus={selectInitialText}
-        style={{
-          overflow: 'hidden',
-          resize: 'none',
-          boxShadow: 'none',
-          animation
-        }}
-        ref={inputRef}
-      />
-      )
-    : <input
-        type='text'
-        value={initialText}
-        onChange={handleChange}
-        onFocus={selectInitialText}
-        style={{
-          overflow: 'hidden',
-          resize: 'none',
-          boxShadow: 'none',
-          animation
-        }}
-        ref={inputRef}
-      />
+  return displayAsTextArea ? (
+    <textarea
+      type='text'
+      value={initialText}
+      onChange={handleChange}
+      onFocus={selectInitialText}
+      style={{
+        overflow: 'hidden',
+        resize: 'none',
+        boxShadow: 'none',
+        animation
+      }}
+      ref={inputRef}
+    />
+  ) : (
+    <input
+      type='text'
+      value={initialText}
+      onChange={handleChange}
+      onFocus={selectInitialText}
+      style={{
+        overflow: 'hidden',
+        resize: 'none',
+        boxShadow: 'none',
+        animation
+      }}
+      ref={inputRef}
+    />
+  )
 }
 
-function useEditableText ({ inputRef, outsideContainerRef, exitEditMode, resizeScroll }) {
+function useEditableText({ inputRef, outsideContainerRef, exitEditMode, resizeScroll }) {
   const firstClick = useRef(true)
   const event = useRef(new Event('editmodeexitfromenterkey', { target: '' }))
 
@@ -93,8 +97,7 @@ function useEditableText ({ inputRef, outsideContainerRef, exitEditMode, resizeS
 
     if (
       inputRef.current.contains(target) ||
-      (outsideContainerRef &&
-      outsideContainerRef.current.contains(target))
+      (outsideContainerRef && outsideContainerRef.current.contains(target))
     ) {
       inputRef.current.focus()
     } else exitEditMode()

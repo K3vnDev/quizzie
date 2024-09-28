@@ -1,11 +1,7 @@
 import './formError.css'
 
-export function FormError ({ errorMessage, errorOpacity }) {
+export function FormError({ errorMessage, errorOpacity }) {
   const className = `form-error ${errorOpacity}`
 
-  return (
-    <div className={className}>
-      {errorMessage}.
-    </div>
-  )
+  return <div className={className}>{errorMessage}.</div>
 }

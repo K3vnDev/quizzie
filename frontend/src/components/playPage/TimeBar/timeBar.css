@@ -1,4 +1,4 @@
-.time-bar-wrapper{
+.time-bar-wrapper {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -10,12 +10,12 @@
   animation: time-bar-appear .4s ease-out both;
 }
 
-.time-bar-wrapper.unloading{
+.time-bar-wrapper.unloading {
   animation: time-bar-disappear .3s ease-in both;
 }
 
-.time-bar{
-  background: #A37DF3;
+.time-bar {
+  background: #a37df3;
   width: 0%;
   height: 100%;
   border-radius: 20px;
@@ -25,31 +25,30 @@
 }
 
 @keyframes time-bar {
-  from{
+  from {
     width: 0%;
     filter: saturate(100%);
   }
-  to{
+  to {
     width: calc(100% + 40px);
     filter: saturate(120%);
   }
 }
 
-@keyframes time-bar-appear{
-  from{
-    transform: translateY(40px)
+@keyframes time-bar-appear {
+  from {
+    transform: translateY(40px);
   }
-  to{
-    transform: translateY(0)
-  }
-}
-
-@keyframes time-bar-disappear{
-  from{
-    transform: translateY(0)
-  }
-  to{
-    transform: translateY(40px)
+  to {
+    transform: translateY(0);
   }
 }
 
+@keyframes time-bar-disappear {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(40px);
+  }
+}

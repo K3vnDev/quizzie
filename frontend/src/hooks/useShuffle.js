@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export function useShuffle (originalArray, condition, valueToLook) {
+export function useShuffle(originalArray, condition, valueToLook) {
   const [shuffledArray, setShuffledArray] = useState(originalArray)
 
   const shuffleArray = array => {
@@ -16,11 +16,7 @@ export function useShuffle (originalArray, condition, valueToLook) {
   }
 
   useEffect(() => {
-    setShuffledArray(
-      condition
-        ? shuffleArray([...originalArray])
-        : originalArray
-    )
+    setShuffledArray(condition ? shuffleArray([...originalArray]) : originalArray)
   }, [valueToLook])
 
   return [shuffledArray]

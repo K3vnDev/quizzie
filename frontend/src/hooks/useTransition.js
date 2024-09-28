@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useStore } from '../store/useStore'
 import { useNavigate } from 'react-router-dom'
 
-export function useTransition () {
+export function useTransition() {
   const setTransitioning = useStore(state => state.setTransitioning)
   const navigate = useNavigate()
   const timeoutRef = useRef()

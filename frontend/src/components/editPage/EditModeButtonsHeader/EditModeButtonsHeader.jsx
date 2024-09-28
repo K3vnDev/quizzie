@@ -14,19 +14,14 @@ import { useTransition } from '../../../hooks/useTransition.js'
 import { LoadingArrows } from '../../root/LoadingArrows/LoadingArrows.jsx'
 import './editModeButtonsHeader.css'
 
-export function EditModeButtonsHeader () {
+export function EditModeButtonsHeader() {
   const token = window.localStorage.getItem('token')
 
   return (
     <header className='edit-mode-header'>
       <section>
         <AppLogo />
-        {
-          token
-            ? <CloudInfo />
-            : <LoginAnchor />
-        }
-
+        {token ? <CloudInfo /> : <LoginAnchor />}
       </section>
 
       <section>
@@ -48,11 +43,7 @@ const CloudInfo = () => {
     error: <CloudErrorIcon />
   }
 
-  return (
-    <div className='cloud-info'>
-      {icon[cloudState]}
-    </div>
-  )
+  return <div className='cloud-info'>{icon[cloudState]}</div>
 }
 
 const ShareButton = () => {
@@ -74,30 +65,23 @@ const ShareButton = () => {
     toggleMessageClassName()
   }
 
-  return token
-    ? (
-      <>
-        <button
-          className='quiz-share-btn'
-          style={{ '--bg-color': '#222' }}
-          disabled={transitioning || animation !== 'none'}
-          onClick={handleClick}
-        >
-          {
-            animation === 'none'
-              ? <ShareIcon />
-              : <CheckIcon />
-          }
-        </button>
-        <div
-          className='quiz-url-copied-message'
-          style={{ animation }}
-        >
-          Url copied to clipboard!
-        </div>
-      </>
-      )
-    : <></>
+  return token ? (
+    <>
+      <button
+        className='quiz-share-btn'
+        style={{ '--bg-color': '#222' }}
+        disabled={transitioning || animation !== 'none'}
+        onClick={handleClick}
+      >
+        {animation === 'none' ? <ShareIcon /> : <CheckIcon />}
+      </button>
+      <div className='quiz-url-copied-message' style={{ animation }}>
+        Url copied to clipboard!
+      </div>
+    </>
+  ) : (
+    <></>
+  )
 }
 
 const SettingsButton = () => {

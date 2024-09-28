@@ -3,7 +3,7 @@ import { useStore } from '../store/useStore'
 import { useNavigate } from 'react-router-dom'
 const { VITE_API_URL: API_URL } = import.meta.env
 
-export function usePlayQuiz () {
+export function usePlayQuiz() {
   const quiz = useStore(state => state.quiz)
   const setQuiz = useStore(state => state.setQuiz)
   const setQuizOwnedByUser = useStore(state => state.setQuizOwnedByUser)
@@ -13,7 +13,7 @@ export function usePlayQuiz () {
 
   const setQueryParam = id => window.history.replaceState({}, '', `play?q=${id}`)
 
-  const fetchQuiz = async (id) => {
+  const fetchQuiz = async id => {
     try {
       const res = await fetch(`${API_URL}/quiz/${id}`)
       if (!res.ok) throw new Error('')
@@ -39,8 +39,9 @@ export function usePlayQuiz () {
 
     fetch(`${API_URL}/quiz/edit/${quiz.id}`, {
       headers: { Authorization: `Bearer ${token}` }
+    }).then(res => {
+      if (res.ok) setQuizOwnedByUser(true)
     })
-      .then(res => { if (res.ok) setQuizOwnedByUser(true) })
 
     return () => setQuizOwnedByUser(false)
   }, [quiz])

@@ -8,23 +8,18 @@ import './dashboardSidebar.css'
 import { useScroll } from '../../../hooks/useScroll.js'
 import { useWidth } from '../../../hooks/useWidth.js'
 
-export function DashboardSidebar ({ userData, deleteMode, setDeleteMode, isLoading }) {
+export function DashboardSidebar({ userData, deleteMode, setDeleteMode, isLoading }) {
   const { username, profileColor, quizzes } = userData
   const { scrollIsOnTop } = useScroll()
   const { onMinWidth } = !useWidth(900)
 
-  const className = !scrollIsOnTop && onMinWidth
-    ? 'dashboard-sidebar semi-transparent'
-    : 'dashboard-sidebar'
+  const className =
+    !scrollIsOnTop && onMinWidth ? 'dashboard-sidebar semi-transparent' : 'dashboard-sidebar'
 
   return (
     <aside className={className}>
       <section>
-        <UserProfilePic
-          username={username}
-          profileColor={profileColor}
-          isLoading={isLoading}
-        />
+        <UserProfilePic username={username} profileColor={profileColor} isLoading={isLoading} />
         <SearchButton isLoading={isLoading} />
         <DeleteModeButton
           deleteMode={deleteMode}
@@ -45,20 +40,11 @@ const SearchButton = ({ isLoading }) => {
   const transitioning = useStore(state => state.transitioning)
 
   if (isLoading) {
-    return (
-      <button
-        className='search-btn loading'
-        disabled
-      />
-    )
+    return <button className='search-btn loading' disabled />
   }
 
   return (
-    <button
-      className='search-btn'
-      onClick={() => navigate('/browse')}
-      disabled={transitioning}
-    >
+    <button className='search-btn' onClick={() => navigate('/browse')} disabled={transitioning}>
       <SearchIcon />
     </button>
   )
@@ -69,12 +55,7 @@ const DeleteModeButton = ({ deleteMode, setDeleteMode, userQuizzes, isLoading })
   const style = deleteMode ? { filter: 'invert(100%)' } : {}
 
   if (isLoading) {
-    return (
-      <button
-        className='delete-btn loading'
-        disabled
-      />
-    )
+    return <button className='delete-btn loading' disabled />
   }
 
   return (
@@ -99,20 +80,11 @@ const LogoutButton = ({ isLoading }) => {
   }
 
   if (isLoading) {
-    return (
-      <button
-        className='delete-btn loading'
-        disabled
-      />
-    )
+    return <button className='delete-btn loading' disabled />
   }
 
   return (
-    <button
-      className='logout-btn'
-      onClick={handleClick}
-      disabled={transitioning}
-    >
+    <button className='logout-btn' onClick={handleClick} disabled={transitioning}>
       <LogoutIcon />
     </button>
   )

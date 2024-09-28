@@ -2,12 +2,12 @@ import '../../../index.css'
 import './dashboardPage.css'
 import { useDashboard } from '../../../hooks/useDashboard.js'
 import { useRouteClassName } from '../../../hooks/useRouteClassName'
-import { UserQuizzesHeader } from '../UserQuizzesHeader/UserQuizzesHeader.jsx'
+import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
 import { DashboardSidebar } from '../DashboardSidebar/DashboardSidebar.jsx'
 import { UserQuizzesGrid } from '../UserQuizzesGrid/UserQuizzesGrid.jsx'
-import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
+import { UserQuizzesHeader } from '../UserQuizzesHeader/UserQuizzesHeader.jsx'
 
-export function DashboardPage () {
+export function DashboardPage() {
   const { userData, setUserData, deleteMode, setDeleteMode, isLoading } = useDashboard()
   useRouteClassName('dashboard')
 

@@ -1,7 +1,7 @@
 import { Warning as WarningIcon } from '../../../icons/Warning.jsx'
 import './questionWarningMessage.css'
 
-export function QuestionWarningMessage ({ answers }) {
+export function QuestionWarningMessage({ answers }) {
   const noCorrectAnswer = answers.every(ans => !ans.isCorrect)
   const fewAnswers = answers.length < 2
 

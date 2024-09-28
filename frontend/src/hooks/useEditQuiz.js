@@ -6,7 +6,7 @@ import { validateQuiz } from '../services/validateQuiz'
 import { useDebounce } from './useDebounce'
 const { VITE_API_URL: API_URL } = import.meta.env
 
-export function useEditQuiz () {
+export function useEditQuiz() {
   const quiz = useStore(state => state.quiz)
   const setQuiz = useStore(state => state.setQuiz)
   const setCloudState = useStore(state => state.setCloudState)
@@ -21,7 +21,7 @@ export function useEditQuiz () {
   const setQueryParam = id => {
     if (id) window.history.replaceState({}, '', `edit?q=${id}`)
   }
-  const fetchQuiz = async (id) => {
+  const fetchQuiz = async id => {
     try {
       const res = await fetch(`${API_URL}/quiz/edit/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -39,12 +39,11 @@ export function useEditQuiz () {
     }
   }
 
-  const saveQuizToDB = async (q) => {
+  const saveQuizToDB = async q => {
     setCloudState('uploading')
 
     try {
-      const res = await fetch(
-      `${API_URL}/quiz`, {
+      const res = await fetch(`${API_URL}/quiz`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -55,7 +54,7 @@ export function useEditQuiz () {
 
       if (res.ok) {
         setCloudState('saved')
-      // TODO: Handle Errors
+        // TODO: Handle Errors
       } else throw new Error('Error fetching data')
     } catch {
       setCloudState('error')
@@ -74,16 +73,10 @@ export function useEditQuiz () {
     if (quizIdFromUrl) {
       fetchQuiz(quizIdFromUrl)
     } else {
-      const quizFromStorage = JSON.parse(
-        window.localStorage.getItem('localQuiz')
-      )
+      const quizFromStorage = JSON.parse(window.localStorage.getItem('localQuiz'))
       if (quizFromStorage) {
         const { success } = validateQuiz(quizFromStorage)
-        setQuiz(
-          success
-            ? quizFromStorage
-            : templateQuiz
-        )
+        setQuiz(success ? quizFromStorage : templateQuiz)
       } else {
         navigate('/dashboard')
       }

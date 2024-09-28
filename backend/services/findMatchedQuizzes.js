@@ -1,4 +1,4 @@
-export function findMatchedQuizzes (query, allQuizzes) {
+export function findMatchedQuizzes(query, allQuizzes) {
   query = query.toLowerCase()
   const matchedQuizzes = allQuizzes.filter(quiz => {
     const name = quiz.name.toLowerCase()

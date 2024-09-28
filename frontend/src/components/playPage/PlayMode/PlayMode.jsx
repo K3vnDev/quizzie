@@ -8,11 +8,16 @@ import { usePlayMode } from '../../../hooks/usePlayMode.js'
 import { QuestionAnswerMessage } from '../QuestionAnswerMessage/QuestionAnswerMessage.jsx'
 import { EditButton } from '../../root/EditButton/EditButton.jsx'
 
-export function PlayMode () {
+export function PlayMode() {
   const {
-    quizName, progress, currentQuestion,
-    setResponse, answerTime, timeBarWaitTime,
-    timeBarPaused, nameAppearTime
+    quizName,
+    progress,
+    currentQuestion,
+    setResponse,
+    answerTime,
+    timeBarWaitTime,
+    timeBarPaused,
+    nameAppearTime
   } = usePlayMode()
 
   const setTransitioning = useStore(state => state.setTransitioning)
@@ -44,33 +49,20 @@ export function PlayMode () {
 
   return (
     <>
-      <header
-        className='header-buttons-wrapper'
-      >
+      <header className='header-buttons-wrapper'>
         <AppLogo />
         <EditButton onMenu={false} />
       </header>
 
       <section
         className='text-section'
-        style={
-          isUnloadingPlayMode
-            ? { opacity: 0, translate: '0 -20px' }
-            : {}
-        }
+        style={isUnloadingPlayMode ? { opacity: 0, translate: '0 -20px' } : {}}
       >
         <h2>{quizName}</h2>
         <ProgressMessage progress={progress} />
       </section>
-      <PlayQuestionBox
-        question={currentQuestion}
-        setResponse={setResponse}
-      />
-      <TimeBar
-        time={answerTime}
-        wait={timeBarWaitTime}
-        paused={timeBarPaused}
-      />
+      <PlayQuestionBox question={currentQuestion} setResponse={setResponse} />
+      <TimeBar time={answerTime} wait={timeBarWaitTime} paused={timeBarPaused} />
       <QuestionAnswerMessage />
     </>
   )

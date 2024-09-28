@@ -3,7 +3,7 @@ import { useStore } from '../../../store/useStore'
 import { randomElement } from '../../../services/randomElement'
 import './questionAnswerMessage.css'
 
-export function QuestionAnswerMessage () {
+export function QuestionAnswerMessage() {
   const questionAnsweredMessage = useStore(state => state.questionAnsweredMessage)
   const [message, setMessage] = useState('')
 
@@ -15,18 +15,30 @@ export function QuestionAnswerMessage () {
     setMessage(() => {
       switch (questionAnsweredMessage) {
         case 'timeout':
-          return randomElement(
-            'Time out!', 'Too slow!', 'Out of time!'
-          )
+          return randomElement('Time out!', 'Too slow!', 'Out of time!')
         case 'correct':
           return randomElement(
-            'Correct!', 'Great!', 'Excellent!', 'Well done!',
-            'Nice!', 'Good job!', 'Right!', 'Yep!', 'Exactly!'
+            'Correct!',
+            'Great!',
+            'Excellent!',
+            'Well done!',
+            'Nice!',
+            'Good job!',
+            'Right!',
+            'Yep!',
+            'Exactly!'
           )
         case 'incorrect':
           return randomElement(
-            'Incorrect!', 'Bad!', 'Wrong!', 'Nope!', 'Not quite!',
-            'Uh-oh!', 'Oops!', 'Missed it!', 'Sorry!'
+            'Incorrect!',
+            'Bad!',
+            'Wrong!',
+            'Nope!',
+            'Not quite!',
+            'Uh-oh!',
+            'Oops!',
+            'Missed it!',
+            'Sorry!'
           )
       }
     })

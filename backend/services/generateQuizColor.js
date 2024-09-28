@@ -9,13 +9,11 @@ const colors = [
   '#b05625' // orange
 ]
 
-export function generateQuizColor (userQuizzes) {
+export function generateQuizColor(userQuizzes) {
   const randomIndex = Math.floor(Math.random() * colors.length)
   const randomColor = colors[randomIndex]
 
-  const lastColors = userQuizzes.slice(
-    1 - Math.floor(colors.length / 1.5)
-  )
+  const lastColors = userQuizzes.slice(1 - Math.floor(colors.length / 1.5))
 
   return lastColors.some(quiz => quiz.previewColor === randomColor)
     ? generateQuizColor(userQuizzes)

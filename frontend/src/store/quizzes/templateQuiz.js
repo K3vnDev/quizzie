@@ -22,7 +22,5 @@ export const templateQuiz = {
     showIcons: true,
     answerTime: 10
   },
-  questions: [
-    { ...templateQuestion }
-  ]
+  questions: [{ ...templateQuestion }]
 }

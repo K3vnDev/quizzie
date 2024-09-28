@@ -7,22 +7,15 @@ import { useBrowse } from '../../../hooks/useBrowse'
 import { BrowseQuizzesGrid } from '../BrowseQuizzesGrid/BrowseQuizzesGrid'
 import { BrowseHeader } from '../BrowseHeader/BrowseHeader'
 
-export function BrowsePage () {
+export function BrowsePage() {
   const { input, setInput, quizzes, isFetching, isLoading } = useBrowse()
   useRouteClassName('browse')
 
   return (
     <>
       <BrowseHeader />
-      <BrowseQuizzesForm
-        isFetching={isFetching}
-        setInput={setInput}
-        input={input}
-      />
-      <BrowseQuizzesGrid
-        isLoading={isLoading}
-        quizzes={quizzes}
-      />
+      <BrowseQuizzesForm isFetching={isFetching} setInput={setInput} input={input} />
+      <BrowseQuizzesGrid isLoading={isLoading} quizzes={quizzes} />
       <TransitionRound />
     </>
   )

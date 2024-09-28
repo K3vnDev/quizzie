@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 const { VITE_API_URL: API_URL } = import.meta.env
 
-export function useLogin () {
+export function useLogin() {
   const [fetching, setFetching] = useState(false)
   const [verifyingAuth, setVerifyingAuth] = useState(true)
   const [showing, setShowing] = useState('login')

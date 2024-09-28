@@ -4,7 +4,7 @@ import { useReset } from './useReset'
 
 const { VITE_API_URL: API_URL } = import.meta.env
 
-export function useDashboard () {
+export function useDashboard() {
   const [userData, setUserData] = useState({})
   const [deleteMode, setDeleteMode] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -32,10 +32,7 @@ export function useDashboard () {
   }
 
   useEffect(() => {
-    if (
-      userData.quizzes &&
-      userData.quizzes.length === 0
-    ) {
+    if (userData.quizzes && userData.quizzes.length === 0) {
       setDeleteMode(false)
     }
   }, [userData.quizzes])

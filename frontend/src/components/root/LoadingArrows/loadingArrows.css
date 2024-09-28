@@ -1,8 +1,8 @@
-@keyframes loading-spin{
-  from{
+@keyframes loading-spin {
+  from {
     rotate: 0deg;
   }
-  to{
+  to {
     rotate: 360deg;
   }
 }
