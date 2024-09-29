@@ -1,7 +1,8 @@
+import { Checkbox as CheckboxIcon } from '../../../icons/Checkbox.jsx'
 import { Delete as DeleteIcon } from '../../../icons/Delete.jsx'
 import { Edit as EditIcon } from '../../../icons/Edit.jsx'
-import { Checkbox as CheckboxIcon } from '../../../icons/Checkbox.jsx'
 import './editAnswerMenu.css'
+import { dispatchOnCannotShowAnswerMenu } from '../../../services/cannotShowAnswerMenu.js'
 import { useStore } from '../../../store/useStore.js'
 
 export function EditAnswerMenu({ setEditingText, questionIndex, answerIndex }) {
@@ -31,6 +32,7 @@ const MakeCorrectButton = ({ questionIndex, answerIndex }) => {
 
   const handleClick = () => {
     setCorrectAnswer(questionIndex, answerIndex)
+    dispatchOnCannotShowAnswerMenu()
   }
 
   return (

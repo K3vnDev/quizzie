@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
-import { useStore } from '../../../store/useStore.js'
-import { ProgressMessage } from '../ProgressMessage/ProgressMessage.jsx'
-import { PlayQuestionBox } from '../PlayQuestionBox/PlayQuestionBox.jsx'
-import { TimeBar } from '../TimeBar/TimeBar.jsx'
-import { AppLogo } from '../../root/AppLogo/AppLogo.jsx'
 import { usePlayMode } from '../../../hooks/usePlayMode.js'
-import { QuestionAnswerMessage } from '../QuestionAnswerMessage/QuestionAnswerMessage.jsx'
+import { useStore } from '../../../store/useStore.js'
+import { AppLogo } from '../../root/AppLogo/AppLogo.jsx'
 import { EditButton } from '../../root/EditButton/EditButton.jsx'
+import { PlayQuestionBox } from '../PlayQuestionBox/PlayQuestionBox.jsx'
+import { ProgressMessage } from '../ProgressMessage/ProgressMessage.jsx'
+import { QuestionAnswerMessage } from '../QuestionAnswerMessage/QuestionAnswerMessage.jsx'
+import { TimeBar } from '../TimeBar/TimeBar.jsx'
 
 export function PlayMode() {
   const {

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import './editableAnswer.css'
+import { Check as CheckIcon } from '../../../icons/Check.jsx'
+import { XMark as XMarkIcon } from '../../../icons/XMark.jsx'
+import { onCannotShowAnswerMenu } from '../../../services/cannotShowAnswerMenu.js'
 import { colorAndIcon } from '../../../services/colorAndIcon.jsx'
 import { useStore } from '../../../store/useStore.js'
 import { EditAnswerMenu } from '../EditAnswerMenu/EditAnswerMenu.jsx'
-import { Check as CheckIcon } from '../../../icons/Check.jsx'
-import { XMark as XMarkIcon } from '../../../icons/XMark.jsx'
 import { EditableText } from '../EditableText/EditableText.jsx'
 
 export function EditableAnswer({ answer, answerIndex, showIcons, questionIndex }) {
@@ -15,24 +16,23 @@ export function EditableAnswer({ answer, answerIndex, showIcons, questionIndex }
   const timeout = useRef()
 
   useEffect(() => {
-    const handleEnterKey = () => {
+    const handleOnCannotShowAnswerMenu = () => {
       const isHovering = answerBoxRef.current.matches(':hover')
       setCanShowMenu(!isHovering)
 
       clearTimeout(timeout.current)
-      timeout.current = setTimeout(() => {
-        setCanShowMenu(true)
-      }, 1000)
+      timeout.current = setTimeout(() => setCanShowMenu(true), 900)
     }
     const handleMouseLeave = () => setCanShowMenu(true)
 
-    document.addEventListener('editmodeexitfromenterkey', handleEnterKey)
+    document.addEventListener(onCannotShowAnswerMenu, handleOnCannotShowAnswerMenu)
     answerBoxRef.current.addEventListener('mouseleave', handleMouseLeave)
 
     return () => {
-      document.removeEventListener('editmodeexitfromenterkey', handleEnterKey)
-      if (answerBoxRef.current)
+      if (answerBoxRef.current) {
         answerBoxRef.current.removeEventListener('mouseleave', handleMouseLeave)
+      }
+      document.removeEventListener(onCannotShowAnswerMenu, handleOnCannotShowAnswerMenu)
       clearTimeout(timeout.current)
     }
   }, [])

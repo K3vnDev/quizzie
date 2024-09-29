@@ -13,11 +13,6 @@ export function PlayPage() {
   const isShowingResults = useStore(state => state.isShowingResults)
   const { isLoading, quizNotFound } = usePlayQuiz()
 
-  // Debug Results
-  const debugResults = useStore(state => state.debugResults)
-  useEffect(() => debugResults(15), [])
-  //
-
   useRouteClassName('play')
 
   if (isLoading) {

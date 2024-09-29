@@ -147,18 +147,6 @@ export const useStore = create((set, get) => ({
   addResult: value => set(state => ({ results: [...state.results, value] })),
   resetResults: () => set(() => ({ results: [] })),
 
-  debugResults: n =>
-    set(({ setIsShowingResults }) => {
-      setIsShowingResults(true)
-
-      return {
-        results: Array(n).fill({
-          questionQuery: '',
-          answers: Array(4).fill({ chosen: true })
-        })
-      }
-    }),
-
   cloudState: 'saved', // 'not saved', 'uploading'
   setCloudState: value => set(() => ({ cloudState: value })),
 

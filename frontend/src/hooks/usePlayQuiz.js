@@ -12,7 +12,9 @@ export function usePlayQuiz() {
   const [quizNotFound, setQuizNotFound] = useState(false)
   const navigate = useNavigate()
 
-  const setQueryParam = id => window.history.replaceState({}, '', `play?q=${id}`)
+  const setQueryParam = id => {
+    window.history.replaceState({}, '', `play?q=${id}`)
+  }
 
   const name = quiz ? `${quiz.name} - Quizzie` : 'Quizzie'
   useAppName(name, quiz)
@@ -23,6 +25,7 @@ export function usePlayQuiz() {
       if (!res.ok) throw new Error('')
 
       const data = await res.json()
+
       if (data.status !== 'error') {
         setQuiz(data)
         setIsLoading(false)
@@ -49,6 +52,10 @@ export function usePlayQuiz() {
 
     return () => setQuizOwnedByUser(false)
   }, [quiz])
+
+  useEffect(() => {
+    if (quiz && !quiz.id) setQuizOwnedByUser(true)
+  }, [])
 
   useEffect(() => {
     if (quiz) {

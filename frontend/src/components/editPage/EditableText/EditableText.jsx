@@ -1,7 +1,8 @@
-import { useCantWriteAnimation } from '../../../hooks/useCantWriteAnimation.js'
 import { useEffect, useRef } from 'react'
+import { useCantWriteAnimation } from '../../../hooks/useCantWriteAnimation.js'
 import { validateInput } from '../../../services/validateInput.js'
 import './editableText.css'
+import { dispatchOnCannotShowAnswerMenu } from '../../../services/cannotShowAnswerMenu.js'
 
 export function EditableText({
   initialText,
@@ -47,7 +48,7 @@ export function EditableText({
   }
 
   const selectInitialText = () => {
-    if (selectOn && selectOn.includes(initialText)) {
+    if (selectOn?.includes(initialText)) {
       inputRef.current.select()
     }
   }
@@ -87,7 +88,6 @@ export function EditableText({
 
 function useEditableText({ inputRef, outsideContainerRef, exitEditMode, resizeScroll }) {
   const firstClick = useRef(true)
-  const event = useRef(new Event('editmodeexitfromenterkey', { target: '' }))
 
   const handleClick = ({ target }) => {
     if (firstClick.current) {
@@ -95,10 +95,7 @@ function useEditableText({ inputRef, outsideContainerRef, exitEditMode, resizeSc
       return
     }
 
-    if (
-      inputRef.current.contains(target) ||
-      (outsideContainerRef && outsideContainerRef.current.contains(target))
-    ) {
+    if (inputRef.current.contains(target) || outsideContainerRef?.current.contains(target)) {
       inputRef.current.focus()
     } else exitEditMode()
   }
@@ -106,7 +103,7 @@ function useEditableText({ inputRef, outsideContainerRef, exitEditMode, resizeSc
   const handleKeyDown = e => {
     if (e.code === 'Enter') {
       e.preventDefault()
-      document.dispatchEvent(event.current)
+      dispatchOnCannotShowAnswerMenu()
       exitEditMode()
     }
   }
