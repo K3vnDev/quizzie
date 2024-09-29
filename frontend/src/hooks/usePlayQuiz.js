@@ -54,7 +54,10 @@ export function usePlayQuiz() {
   }, [quiz])
 
   useEffect(() => {
-    if (quiz && !quiz.id) setQuizOwnedByUser(true)
+    const localQuiz = window.localStorage.getItem('localQuiz')
+    console.log(localQuiz === JSON.stringify(quiz))
+    if (localQuiz === JSON.stringify(quiz)) setQuizOwnedByUser(true)
+    return () => setQuizOwnedByUser(false)
   }, [])
 
   useEffect(() => {
