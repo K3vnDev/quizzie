@@ -9,6 +9,7 @@ import { useWidth } from '../../../hooks/useWidth.js'
 import { useStore } from '../../../store/useStore'
 import { LoginAnchor } from '../../root/LoginAnchor/LoginAnchor.jsx'
 import { TransitionRound } from '../../root/TransitionRound/TransitionRound.jsx'
+import { AnimatedBackground } from '../AnimatedBackground/AnimatedBackground.jsx'
 import { MenuQuestion } from '../MenuQuestion/MenuQuestion.jsx'
 const { VITE_API_URL: API_URL } = import.meta.env
 
@@ -42,6 +43,7 @@ export function LandingPage() {
       <TitleAndSlogan />
       <MenuQuestion />
       <TransitionRound />
+      <AnimatedBackground />
     </>
   )
 }
