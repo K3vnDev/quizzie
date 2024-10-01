@@ -5,18 +5,20 @@ import { Timer as TimerIcon } from '../../../icons/Timer.jsx'
 import { XMark as XMarkIcon } from '../../../icons/XMark.jsx'
 import { randomRange } from '../../../services/randomRange.js'
 import './animatedBackground.css'
+import { useAvoidAnimationReset } from '../../../hooks/useAvoidAnimationReset.js'
 
 export const AnimatedBackground = () => {
   const [elements, setElements] = useState([])
   const interval = useRef(0)
 
+  useAvoidAnimationReset('.animated-background .element')
+
   const frequence = 2000
   const [minTime, maxTime] = [14, 20]
-  const [minScale, maxScale] = [0.8, 1.2]
-  const [minColor, maxColor] = [0.025, 0.065]
+  const [minScale, maxScale] = [0.7, 1.2]
+  const [minColor, maxColor] = [0.02, 0.05]
   const maxRotation = 25
-  const yRange = 45
-  const minElementsGap = 30
+  const yRange = 55
 
   const generateId = () => {
     const id = Math.random()
