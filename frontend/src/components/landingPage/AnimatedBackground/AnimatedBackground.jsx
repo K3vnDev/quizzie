@@ -7,18 +7,26 @@ import { randomRange } from '../../../services/randomRange.js'
 import './animatedBackground.css'
 import { useAvoidAnimationReset } from '../../../hooks/useAvoidAnimationReset.js'
 
+const iconsList = [
+  <QuestionMarkIcon />,
+  <QuestionMarkIcon />,
+  <XMarkIcon />,
+  <TimerIcon />,
+  <CheckIcon />
+]
+
 export const AnimatedBackground = () => {
   const [elements, setElements] = useState([])
   const interval = useRef(0)
 
   useAvoidAnimationReset('.animated-background .element')
 
-  const frequence = 2000
+  const frequence = 1500
   const [minTime, maxTime] = [14, 20]
   const [minScale, maxScale] = [0.7, 1.2]
   const [minColor, maxColor] = [0.02, 0.05]
   const maxRotation = 25
-  const yRange = 55
+  const yRange = 70
 
   const generateId = () => {
     const id = Math.random()
@@ -34,7 +42,7 @@ export const AnimatedBackground = () => {
     const scale = randomRange(minScale, maxScale, false)
     const rotation = randomRange(-maxRotation, maxRotation, false)
     const color = randomRange(minColor, maxColor, false)
-    const type = randomRange(0, 4)
+    const type = randomRange(0, iconsList.length)
 
     setTimeout(
       () =>
@@ -80,6 +88,4 @@ export const AnimatedBackground = () => {
   )
 }
 
-const Element = ({ type }) =>
-  // biome-ignore lint/correctness/useJsxKeyInIterable: <>
-  [<QuestionMarkIcon />, <XMarkIcon />, <TimerIcon />, <CheckIcon />][type]
+const Element = ({ type }) => iconsList[type]

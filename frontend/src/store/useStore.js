@@ -154,8 +154,5 @@ export const useStore = create((set, get) => ({
   setFormTransitionating: value => set(() => ({ formTransitionating: value })),
 
   isDisplayingQuizSettings: false,
-  setIsDisplayingQuizSettings: value => set(() => ({ isDisplayingQuizSettings: value })),
-
-  browsePageInputIsVisible: false,
-  setBrowsePageInputIsVisible: value => set(() => ({ browsePageInputIsVisible: value }))
+  setIsDisplayingQuizSettings: value => set(() => ({ isDisplayingQuizSettings: value }))
 }))

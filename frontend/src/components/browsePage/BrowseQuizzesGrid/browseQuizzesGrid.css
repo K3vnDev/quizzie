@@ -13,12 +13,12 @@
   --gap: 30px;
   --element-width: 400px;
   --element-height: 200px;
-}
 
-.browse-quiz.loading {
-  background: var(--loading-bg-color);
-  background-size: var(--loading-bg-size);
-  animation: var(--loading-bg-anim);
+  &.loading {
+    background: var(--loading-bg-color);
+    background-size: var(--loading-bg-size);
+    animation: var(--loading-bg-anim);
+  }
 }
 
 .browse-quizzes-message {

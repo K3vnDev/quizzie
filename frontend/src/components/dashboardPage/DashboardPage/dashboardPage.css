@@ -10,14 +10,14 @@ body.dashboard {
   margin-left: var(--side-bar-width);
   width: calc(100vw - var(--side-bar-width));
   padding: 60px 140px 80px 140px;
-}
 
-#root.dashboard main {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  height: 100%;
-  width: 100%;
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 1700px) {

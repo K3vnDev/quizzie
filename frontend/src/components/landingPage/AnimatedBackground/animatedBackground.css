@@ -37,7 +37,7 @@ body.landing .animated-background {
   }
 
   100% {
-    left: 50vw;
+    left: 900px;
     opacity: 0;
     rotate: 0deg;
   }

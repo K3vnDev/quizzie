@@ -9,17 +9,17 @@
   justify-content: center;
   user-select: none;
   gap: 16px;
-}
 
-.local-quiz p {
-  font-size: 24px;
-  font-weight: 500;
-  opacity: 0.5;
-}
+  p {
+    font-size: 24px;
+    font-weight: 500;
+    opacity: 0.5;
+  }
 
-.local-quiz svg {
-  --svg-size: 62px;
-  width: var(--svg-size);
-  height: var(--svg-size);
-  opacity: 0.5;
+  svg {
+    --svg-size: 62px;
+    width: var(--svg-size);
+    height: var(--svg-size);
+    opacity: 0.5;
+  }
 }

@@ -10,39 +10,40 @@
   justify-content: center;
   position: relative;
   user-select: none;
+
+  h4 {
+    font-size: 36px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 75%;
+  }
+
+  section {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    opacity: 0.8;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      svg {
+        --svg-size: 32px;
+        width: var(--svg-size);
+        height: var(--svg-size);
+      }
+
+      span {
+        font-size: 28px;
+      }
+    }
+  }
 }
 
-.user-quizzes-grid .user-quiz h4 {
-  font-size: 36px;
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 75%;
-}
-
-.user-quizzes-grid .user-quiz section {
-  display: flex;
-  width: 50%;
-  justify-content: space-between;
-  opacity: 0.8;
-}
-
-.user-quizzes-grid .user-quiz section div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.user-quizzes-grid .user-quiz section div svg {
-  --svg-size: 32px;
-  width: var(--svg-size);
-  height: var(--svg-size);
-}
-
-.user-quizzes-grid .user-quiz section div span {
-  font-size: 28px;
-}
 :root {
   --del-vib-rate: 0.4deg;
 }
@@ -87,57 +88,72 @@
 @media screen and (max-width: 1700px) and (min-width: 1450px) {
   .user-quizzes-grid .user-quiz {
     gap: 18px;
-  }
-  .user-quizzes-grid .user-quiz h4 {
-    font-size: 32px;
-  }
-  .user-quizzes-grid .user-quiz section {
-    width: 52%;
-  }
-  .user-quizzes-grid .user-quiz section div {
-    gap: 8px;
-  }
-  .user-quizzes-grid .user-quiz section div svg {
-    --svg-size: 30px;
-  }
-  .user-quizzes-grid .user-quiz section div span {
-    font-size: 26px;
+
+    h4 {
+      font-size: 32px;
+    }
+
+    section {
+      width: 52%;
+
+      div {
+        gap: 8px;
+
+        svg {
+          --svg-size: 30px;
+        }
+
+        span {
+          font-size: 26px;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 750px), screen and (max-width: 600px) {
   .user-quizzes-grid .user-quiz {
     gap: 14px;
-  }
-  .user-quizzes-grid .user-quiz h4 {
-    font-size: 26px;
-    font-weight: 600;
-  }
-  .user-quizzes-grid .user-quiz section {
-    width: 50%;
-  }
-  .user-quizzes-grid .user-quiz section div {
-    gap: 6px;
-  }
-  .user-quizzes-grid .user-quiz section div svg {
-    --svg-size: 26px;
-  }
-  .user-quizzes-grid .user-quiz section div span {
-    font-size: 22px;
+
+    h4 {
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    section {
+      width: 50%;
+
+      div {
+        gap: 6px;
+
+        svg {
+          --svg-size: 26px;
+        }
+
+        span {
+          font-size: 22px;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 400px) {
-  .user-quizzes-grid .user-quiz h4 {
-    font-size: 21px;
-  }
-  .user-quizzes-grid .user-quiz section div {
-    gap: 4px;
-  }
-  .user-quizzes-grid .user-quiz section div svg {
-    --svg-size: 22px;
-  }
-  .user-quizzes-grid .user-quiz section div span {
-    font-size: 18px;
+  .user-quizzes-grid .user-quiz {
+    h4 {
+      font-size: 21px;
+    }
+
+    section div {
+      gap: 4px;
+
+      svg {
+        --svg-size: 22px;
+      }
+
+      span {
+        font-size: 18px;
+      }
+    }
   }
 }

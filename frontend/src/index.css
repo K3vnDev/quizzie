@@ -20,6 +20,9 @@ body {
   --roboto: Roboto, system-ui, Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif;
   --poppins: Poppins, "Segoe UI", system-ui, Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif;
 
+  /* color */
+  --page-header: #1c1c1c;
+
   /* question box vars*/
   --question-box-max-width: 850px;
   --question-box-min-width: 600px;

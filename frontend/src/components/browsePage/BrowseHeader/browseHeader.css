@@ -1,4 +1,4 @@
-#root.browse>.app-logo {
+#root.browse > .app-logo {
   position: absolute;
   --size: 80px;
   --padding: 40px;
@@ -10,27 +10,29 @@
 }
 
 .browse-header {
-  position: fixed;
   --height: 90px;
-  width: 100vw;
-  left: 0;
+  --hidden-pos: calc(-1 * var(--height));
+  --visible-pos: 16px;
+  --element-size: 70px;
+
+  position: fixed;
+  width: 320px;
   height: var(--height);
+  top: var(--hidden-pos);
+  left: 50%;
+  transform: translate(-50%);
+  border: 1px solid #333;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px;
-  background: rgb(0 0 0 / 0.75);
-  backdrop-filter: blur(8px);
+  padding: 0 30px;
+  background: var(--page-header);
   z-index: 40;
-  --element-size: 80px;
   transition: all 0.25s ease-out;
 
-  &.hidden {
-    top: calc(-1 * var(--height));
-  }
-
   &.visible {
-    top: 0;
+    top: var(--visible-pos);
   }
 
   .app-logo {
@@ -71,9 +73,8 @@
   }
 }
 
-
 @media screen and (max-width: 1000px) {
-  #root.browse>.app-logo {
+  #root.browse > .app-logo {
     --size: 65px;
     --padding: 32px;
   }
@@ -85,13 +86,14 @@
 }
 
 @media screen and (max-width: 700px) {
-  #root.browse>.app-logo {
+  #root.browse > .app-logo {
     --size: 48px;
     --padding: 25px;
   }
 
   .browse-header {
     --height: 80px;
-    --element-size: 68px;
+    --element-size: 70px;
+    width: 280px;
   }
 }
