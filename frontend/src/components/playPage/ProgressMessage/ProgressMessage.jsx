@@ -20,8 +20,8 @@ export function ProgressMessage({ progress }) {
 
   const message = (() => {
     if (last === 1) return 'Unique Question!'
-    else if (current === last) return 'Final Question!'
-    else return `Question ${current} of ${last}`
+    if (current === last) return 'Final Question!'
+    return `Question ${current} of ${last}`
   })()
 
   return <h6 style={style}>{message}</h6>

@@ -18,42 +18,42 @@ body.not-found {
   gap: 18px;
   font-family: var(--poppins);
   animation: not-found-pop-in 0.2s ease-out both;
-}
 
-.not-found h3 {
-  --query-fs: 36px;
-  font-size: var(--query-fs);
-  font-weight: 600;
-}
+  h3 {
+    --query-fs: 36px;
+    font-size: var(--query-fs);
+    font-weight: 600;
 
-.not-found h3 span {
-  font-size: calc(var(--query-fs) * 0.8);
-  margin-left: 12px;
-  opacity: 0.1;
-}
-
-.not-found button {
-  border-radius: 15px;
-  background: #a37df3;
-  color: #fff;
-  font-size: 36px;
-  font-weight: 600;
-  font-family: var(--poppins);
-  border: none;
-  padding: 10px 22px;
-  margin-top: 12px;
-  cursor: pointer;
-
-  transition: all 0.25s ease-out, filter 0.1s ease;
-
-  &:hover {
-    scale: 1.025;
-    filter: brightness(120%);
+    span {
+      font-size: calc(var(--query-fs) * 0.8);
+      margin-left: 12px;
+      opacity: 0.1;
+    }
   }
 
-  &:active {
-    scale: 0.95;
-    filter: brightness(75%);
+  button {
+    border-radius: 15px;
+    background: #a37df3;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 600;
+    font-family: var(--poppins);
+    border: none;
+    padding: 10px 22px;
+    margin-top: 12px;
+    cursor: pointer;
+
+    transition: all 0.25s ease-out, filter 0.1s ease;
+
+    &:hover {
+      scale: 1.025;
+      filter: brightness(120%);
+    }
+
+    &:active {
+      scale: 0.95;
+      filter: brightness(75%);
+    }
   }
 }
 

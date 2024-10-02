@@ -8,16 +8,18 @@
   background: black;
   z-index: 999;
   --transition-value: -50vw;
-}
-.bg-transition-round:not(.transitioning) {
-  display: none;
-}
-.bg-transition-round.transitioning {
-  animation: bg-transition-round 0.8s ease-in 0.2s both;
-}
 
-.bg-transition-round.on-vertical-view {
-  --transition-value: 0vw;
+  &:not(.transitioning) {
+    display: none;
+  }
+
+  &.transitioning {
+    animation: bg-transition-round 0.8s ease-in 0.2s both;
+  }
+
+  &.on-vertical-view {
+    --transition-value: 0vw;
+  }
 }
 
 @keyframes bg-transition-round {

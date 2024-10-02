@@ -6,23 +6,30 @@ body.login {
   justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom, #171818, #0c0c0c);
-}
 
-body.login .app-logo {
-  position: absolute;
-  top: 30px;
-  left: 40px;
-}
+  .app-logo {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+  }
 
-body.login main {
-  border-radius: 10px;
-  background: #262627;
-  width: 1100px;
-  height: 650px;
-  display: flex;
-  position: relative;
-  --min-w: 42.5%;
-  --max-w: 57.5%;
+  main {
+    border-radius: 10px;
+    background: #262627;
+    width: 1100px;
+    height: 650px;
+    display: flex;
+    position: relative;
+    --min-w: 42.5%;
+    --max-w: 57.5%;
+  }
+
+  .showing {
+    width: var(--max-w);
+  }
+  .not-showing {
+    width: var(--min-w);
+  }
 }
 
 .login-wrapper,
@@ -35,21 +42,13 @@ body.login main {
   transition: all 1.5s ease;
   position: relative;
   gap: 18px;
-}
 
-body.login .showing {
-  width: var(--max-w);
-}
-body.login .not-showing {
-  width: var(--min-w);
-}
-
-.login-wrapper h3,
-.sign-up-wrapper h3 {
-  font-size: 48px;
-  height: 40px;
-  margin-bottom: 24px;
-  text-wrap: nowrap;
+  h3 {
+    font-size: 48px;
+    height: 40px;
+    margin-bottom: 24px;
+    text-wrap: nowrap;
+  }
 }
 
 @media screen and (max-width: 1600px) {
@@ -57,6 +56,7 @@ body.login .not-showing {
     width: 950px;
     height: 625px;
   }
+
   .login-wrapper h3,
   .sign-up-wrapper h3 {
     font-size: 42px;
@@ -70,10 +70,12 @@ body.login .not-showing {
     --min-w: 40%;
     --max-w: 60%;
   }
+
   body.login .app-logo {
     top: 20px;
     left: 30px;
   }
+
   .login-wrapper,
   .sign-up-wrapper {
     padding: 70px;
@@ -86,15 +88,16 @@ body.login .not-showing {
     width: 680px;
     height: 550px;
   }
+
   .login-wrapper,
   .sign-up-wrapper {
     padding: 60px;
     gap: 12px;
-  }
-  .login-wrapper h3,
-  .sign-up-wrapper h3 {
-    font-size: 32px;
-    margin-bottom: 8px;
+
+    h3 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
   }
 }
 
@@ -108,7 +111,15 @@ body.login .not-showing {
     display: flex;
     justify-content: center;
     align-items: start;
+
+    .app-logo {
+      width: 80px;
+      height: 80px;
+      top: 16px;
+      left: 24px;
+    }
   }
+
   body.login main {
     margin-top: 140px;
     width: 500px;
@@ -116,24 +127,19 @@ body.login .not-showing {
     --min-w: 33.4%;
     --max-w: 66.6%;
   }
-  body.login .app-logo {
-    width: 80px;
-    height: 80px;
-    top: 16px;
-    left: 24px;
-  }
+
   .login-wrapper,
   .sign-up-wrapper {
     padding: 40px;
-  }
-  .login-wrapper h3,
-  .sign-up-wrapper h3 {
-    font-size: 28px;
-    font-weight: 500;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    margin-bottom: 4px;
+
+    h3 {
+      font-size: 28px;
+      font-weight: 500;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      margin-bottom: 4px;
+    }
   }
 }
 
@@ -144,19 +150,21 @@ body.login .not-showing {
     height: 500px;
     --min-w: 32%;
     --max-w: 68%;
+
+    .app-logo {
+      width: 60px;
+      height: 60px;
+    }
   }
-  body.login .app-logo {
-    width: 60px;
-    height: 60px;
-  }
+
   .login-wrapper,
   .sign-up-wrapper {
     gap: 10px;
     padding: 28px;
-  }
-  .login-wrapper h3,
-  .sign-up-wrapper h3 {
-    font-size: 22px;
-    margin-bottom: 2px;
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
   }
 }

@@ -14,26 +14,28 @@ body.landing {
   justify-content: space-between;
 }
 
-.title-n-slogan h1 {
-  font-size: 96px;
-  margin-bottom: 8px;
-  font-family: var(--poppins);
-  cursor: default;
-}
+.title-n-slogan {
+  h1 {
+    font-size: 96px;
+    margin-bottom: 8px;
+    font-family: var(--poppins);
+    cursor: default;
+  }
 
-.title-n-slogan h3 {
-  font-size: 36px;
-  color: #cdcdcd;
-  font-family: var(--poppins);
-  font-weight: 500;
-  line-height: 42px;
-  margin-bottom: 20px;
-  text-wrap: nowrap;
-  cursor: default;
-}
+  h3 {
+    font-size: 36px;
+    color: #cdcdcd;
+    font-family: var(--poppins);
+    font-weight: 500;
+    line-height: 42px;
+    margin-bottom: 20px;
+    text-wrap: nowrap;
+    cursor: default;
 
-.title-n-slogan h3 span {
-  color: #a37df3;
+    span {
+      color: #a37df3;
+    }
+  }
 }
 
 @media screen and (max-width: 1600px) {
@@ -92,15 +94,15 @@ body.landing {
   .title-n-slogan {
     margin-top: 64px;
     margin-bottom: 48px;
-  }
 
-  .title-n-slogan h1 {
-    text-align: center;
-    margin-bottom: 16px;
-  }
+    h1 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
 
-  .title-n-slogan h3 {
-    text-align: center;
+    h3 {
+      text-align: center;
+    }
   }
 }
 

@@ -13,30 +13,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.form-submit-button svg {
-  --svg-size: 40px;
-  width: var(--svg-size);
-  height: var(--svg-size);
-}
-
-.form-submit-button:not(:disabled) {
-  cursor: pointer;
-  transition: all 0.2s ease-out, filter 0.1s ease;
-
-  &:hover {
-    filter: brightness(120%);
+  svg {
+    --svg-size: 40px;
+    width: var(--svg-size);
+    height: var(--svg-size);
   }
 
-  &:active {
-    filter: brightness(90%);
-    scale: 0.975;
+  &:disabled {
+    opacity: 0.5;
   }
-}
 
-.form-submit-button:disabled {
-  opacity: 0.5;
+  &:not(:disabled) {
+    cursor: pointer;
+    transition: all 0.2s ease-out, filter 0.1s ease;
+
+    &:hover {
+      filter: brightness(120%);
+    }
+
+    &:active {
+      filter: brightness(90%);
+      scale: 0.975;
+    }
+  }
 }
 
 @media screen and (max-width: 1600px) {

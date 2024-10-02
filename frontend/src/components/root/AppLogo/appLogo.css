@@ -10,14 +10,15 @@
   background-repeat: no-repeat;
   background-position: center;
   border: none;
-}
 
-.app-logo:not(:disabled) {
-  &:hover {
-    filter: brightness(110%);
+  &:disabled {
+    opacity: 0.8;
   }
-  cursor: pointer;
-}
-.app-logo:disabled {
-  opacity: 0.8;
+
+  &:not(:disabled) {
+    &:hover {
+      filter: brightness(110%);
+    }
+    cursor: pointer;
+  }
 }

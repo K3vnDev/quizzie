@@ -23,38 +23,38 @@ body.play {
   align-items: center;
   height: var(--header-btns-size);
   --header-btns-size: 80px;
-}
 
-.header-buttons-wrapper .app-logo {
-  height: calc(var(--header-btns-size) * 1.35);
-  width: calc(var(--header-btns-size) * 1.35);
-  animation: header-btn-appear 0.4s ease 0.3s both;
-}
-
-.header-buttons-wrapper .edit-btn {
-  background: #0647ed;
-  border: none;
-  border-radius: 10px;
-  height: var(--header-btns-size);
-  width: var(--header-btns-size);
-  cursor: pointer;
-
-  transition: filter 0.1s ease, scale 0.25s ease-out;
-  &:hover {
-    filter: brightness(115%);
-    scale: 1.03;
+  .app-logo {
+    height: calc(var(--header-btns-size) * 1.35);
+    width: calc(var(--header-btns-size) * 1.35);
+    animation: header-btn-appear 0.4s ease 0.3s both;
   }
-  &:active {
-    filter: brightness(90%);
-    scale: 0.98;
-  }
-  animation: header-btn-appear 0.4s ease 0.5s both;
-}
 
-.header-buttons-wrapper .edit-btn svg {
-  width: 85%;
-  height: 85%;
-  stroke-width: 1.2;
+  .edit-btn {
+    background: #0647ed;
+    border: none;
+    border-radius: 10px;
+    height: var(--header-btns-size);
+    width: var(--header-btns-size);
+    cursor: pointer;
+
+    transition: filter 0.1s ease, scale 0.25s ease-out;
+    &:hover {
+      filter: brightness(115%);
+      scale: 1.03;
+    }
+    &:active {
+      filter: brightness(90%);
+      scale: 0.98;
+    }
+    animation: header-btn-appear 0.4s ease 0.5s both;
+
+    svg {
+      width: 85%;
+      height: 85%;
+      stroke-width: 1.2;
+    }
+  }
 }
 
 .text-section {
@@ -70,21 +70,21 @@ body.play {
   transform: translate(-50%, 0);
   z-index: 10;
   transition: all 0.3s ease;
-}
 
-.text-section h2 {
-  font-size: var(--q-name-font-s);
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 1200px;
-}
+  h2 {
+    font-size: var(--q-name-font-s);
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 1200px;
+  }
 
-.text-section h6 {
-  font-size: 28px;
-  color: #cdcdcd;
-  font-weight: 500;
-  animation: message-slide-in 0.3s ease-out both;
+  h6 {
+    font-size: 28px;
+    color: #cdcdcd;
+    font-weight: 500;
+    animation: message-slide-in 0.3s ease-out both;
+  }
 }
 
 @keyframes progress-message-pop {
@@ -170,12 +170,14 @@ body.play {
   }
   .text-section {
     gap: 4px;
-  }
-  .text-section h2 {
-    max-width: 800px;
-  }
-  .text-section h6 {
-    font-size: 26px;
+
+    h2 {
+      max-width: 800px;
+    }
+
+    h6 {
+      font-size: 26px;
+    }
   }
 }
 
@@ -190,12 +192,14 @@ body.play {
   }
   .text-section {
     gap: 4px;
-  }
-  .text-section h2 {
-    max-width: 500px;
-  }
-  .text-section h6 {
-    font-size: 22px;
+
+    h2 {
+      max-width: 500px;
+    }
+
+    h6 {
+      font-size: 22px;
+    }
   }
 }
 
