@@ -1,42 +1,73 @@
 .edit-answer-box .edit-answer-menu {
+  --svg-size: 75%;
+
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   background: rgba(0 0 0 / 0.3);
   border-radius: 10px;
   backdrop-filter: blur(4px);
 
-  transition: all 0.1s ease;
-  opacity: 0;
-}
+  display: flex;
 
-.edit-answer-box .edit-answer-menu button {
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  background: #00000095;
-  transition: all 0.25s ease;
+  --gap-n-padd: 8px;
+  padding: var(--gap-n-padd);
+  gap: var(--gap-n-padd);
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.15s ease;
+  /* opacity: 0; */
 
   &:hover {
-    background: #000000dc;
-    scale: 1.01;
-    transform: translate(0, -1px);
+    opacity: 1;
   }
-  &:active {
-    transform: translate(0, 1px);
-    scale: 0.95;
+
+  button {
+    --move-hover: 2px;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
     background: #00000095;
+    transition: all 0.25s ease;
+
+    svg {
+      width: var(--svg-size);
+      height: var(--svg-size);
+    }
+
+    &:hover {
+      background: #000000dc;
+      scale: 1.01;
+      transform: translate(0, calc(var(--move-hover) * -1));
+
+      svg {
+        scale: 1.05;
+      }
+    }
+
+    &:active {
+      transform: translate(0, var(--move-hover));
+      scale: 0.95;
+      background: #00000095;
+    }
   }
 }
 
-.edit-answer-box .edit-answer-menu button svg {
-  height: 40px;
-}
-.edit-answer-box .edit-answer-menu button:hover svg {
-  scale: 1.05;
+@media (max-width: 750px) {
+  .edit-answer-box .edit-answer-menu {
+    --gap-n-padd: 4px;
+
+    button {
+      min-height: 70%;
+    }
+  }
 }

@@ -2,7 +2,7 @@ import { Left as LeftIcon } from '../../../icons/Left.jsx'
 import { Right as RightIcon } from '../../../icons/Rigth.jsx'
 import './questionNavigationArrows.css'
 
-export function QuestionNavigationArrows({ navigateQuestion, questionIndex }) {
+export function QuestionNavigationArrows({ children, navigateQuestion, questionIndex }) {
   return (
     <div className='question-navigation-arrows'>
       <button
@@ -12,6 +12,7 @@ export function QuestionNavigationArrows({ navigateQuestion, questionIndex }) {
       >
         <LeftIcon />
       </button>
+      {children}
       <button
         className='right'
         onClick={() => navigateQuestion('right')}

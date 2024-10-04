@@ -8,7 +8,7 @@ import { useStore } from '../../../store/useStore.js'
 import { EditAnswerMenu } from '../EditAnswerMenu/EditAnswerMenu.jsx'
 import { EditableText } from '../EditableText/EditableText.jsx'
 
-export function EditableAnswer({ answer, answerIndex, showIcons, questionIndex }) {
+export function EditableAnswer({ answer, answerIndex, questionIndex }) {
   const { color } = colorAndIcon[answerIndex]
   const { text: answerText, isCorrect } = answer
   const [canShowMenu, setCanShowMenu] = useState(true)

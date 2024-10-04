@@ -9,6 +9,7 @@
   right: var(--question-box-padding);
   translate: 0 -25%;
   padding: var(--btn-gap);
+  transition: all ease 0.3s;
 
   width: calc(var(--btn-size) + var(--btn-gap));
   overflow: hidden;
@@ -16,50 +17,81 @@
   &:hover {
     width: calc(var(--btn-size) * 2 + var(--btn-gap) * 3);
   }
-  transition: all ease 0.3s;
-}
 
-.edit-question-options button {
-  height: var(--btn-size);
-  width: var(--btn-size);
-  min-width: var(--btn-size);
-  border: none;
-  border-radius: 8px;
-  background: rgb(0 0 0 / 0.4);
-}
-
-.edit-question-options .change-btn,
-.edit-question-options .delete-btn {
-  backdrop-filter: blur(8px);
-}
-
-.edit-question-options button:not(:disabled) {
-  &:hover {
-    background: black;
-    scale: 1.025;
-  }
-  &:active {
+  button {
+    height: var(--btn-size);
+    width: var(--btn-size);
+    min-width: var(--btn-size);
+    border: none;
+    border-radius: 8px;
     background: rgb(0 0 0 / 0.4);
-    scale: 0.99;
+    --svg-size: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      max-width: var(--svg-size);
+      max-height: var(--svg-size);
+
+      stroke-width: 1.2;
+      scale: 0.95;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    &:not(:disabled) {
+      &:hover {
+        background: black;
+        scale: 1.025;
+      }
+      &:active {
+        background: rgb(0 0 0 / 0.4);
+        scale: 0.99;
+      }
+      transition: all 0.15s ease;
+    }
+
+    &:not(.more-btn) {
+      backdrop-filter: blur(8px);
+    }
+
+    &.more-btn {
+      background: transparent;
+      scale: 1.5;
+    }
   }
-  transition: all 0.15s ease;
+
+  &:hover .more-btn {
+    transition: all 0.4s ease;
+    display: none;
+  }
 }
 
-.edit-question-options button:disabled {
-  opacity: 0.5;
+@media (max-width: 1100px) {
+  .edit-question-options {
+    --btn-size: 40px;
+    --btn-gap: 8px;
+  }
 }
 
-.edit-question-options .more-btn {
-  background: transparent;
-  scale: 1.5;
+@media (max-width: 750px) {
+  .edit-question-options {
+    --btn-size: 36px;
+    --btn-gap: 6px;
+
+    button {
+      border-radius: 6px;
+    }
+  }
 }
 
-.edit-question-options:hover .more-btn {
-  transition: all 0.4s ease;
-  display: none;
-}
-
-.edit-question-options button svg {
-  stroke-width: 1.2;
-  scale: 0.95;
+@media (max-width: 600px) {
+  .edit-question-options {
+    --btn-size: 30px;
+    --btn-gap: 6px;
+  }
 }

@@ -1,3 +1,10 @@
+.loading-arrows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: loading-spin 1.2s linear infinite both;
+}
+
 @keyframes loading-spin {
   from {
     rotate: 0deg;

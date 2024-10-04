@@ -10,45 +10,123 @@
   background: rgb(0 0 0 / 0.2);
   backdrop-filter: blur(5px);
   user-select: none;
-
   transition: all 0.2s ease;
-}
 
-.edit-quiz-settings-wrapper.visible {
-  opacity: 1;
-  backdrop-filter: blur(5px);
-}
+  &.visible {
+    opacity: 1;
+    backdrop-filter: blur(5px);
+  }
 
-.edit-quiz-settings-wrapper.hidden {
-  opacity: 0;
-  backdrop-filter: blur(0px);
-}
+  &.hidden {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
 
-.edit-quiz-settings {
-  background: #202020;
-  border: 1px solid #6a6a6a;
-  border-radius: 20px;
-  height: 700px;
-  width: 500px;
-  padding: 40px 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 38px;
+  .edit-quiz-settings {
+    background: #202020;
+    border: 1px solid #6a6a6a;
+    border-radius: 20px;
+    height: 700px;
+    width: 500px;
+    padding: 40px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 38px;
+    transition: all 0.2s ease;
+    animation: quiz-settings-appear 0.15s ease-out backwards;
 
-  transition: all 0.2s ease;
-  animation: quiz-settings-appear 0.15s ease-out backwards;
-}
+    &.visible {
+      opacity: 1;
+      scale: 1;
+    }
 
-.edit-quiz-settings.visible {
-  opacity: 1;
-  scale: 1;
-}
+    &.hidden {
+      opacity: 0;
+      scale: 0.85;
+    }
 
-.edit-quiz-settings.hidden {
-  opacity: 0;
-  scale: 0.85;
+    h2 {
+      font-family: var(--poppins);
+      font-size: 52px;
+      color: #fff;
+    }
+
+    h4 {
+      font-family: var(--roboto);
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 30px;
+      color: #fff;
+    }
+
+    h5 {
+      font-family: var(--roboto);
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 24px;
+      color: #939393;
+    }
+
+    section {
+      width: 100%;
+      display: flex;
+      gap: 5px;
+    }
+
+    .shuffle {
+      flex-direction: column;
+
+      div {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .show-icons {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .answer-time {
+      flex-direction: column;
+
+      .txt-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .okay-btn {
+      border-radius: 15px;
+      background: #a37df3;
+      color: #fff;
+      font-size: 36px;
+      font-weight: 600;
+      font-family: var(--poppins);
+      border: none;
+      padding: 10px 22px;
+      margin-top: 12px;
+      cursor: pointer;
+
+      transition: all 0.25s ease-out, filter 0.1s ease;
+
+      &:hover {
+        scale: 1.025;
+        filter: brightness(120%);
+      }
+
+      &:active {
+        scale: 0.95;
+        filter: brightness(75%);
+      }
+    }
+  }
 }
 
 @keyframes quiz-settings-appear {
@@ -64,67 +142,5 @@
   100% {
     opacity: 1;
     scale: 1;
-  }
-}
-
-.edit-quiz-settings h2 {
-  font-family: var(--poppins);
-  font-size: 52px;
-  color: #fff;
-}
-
-.edit-quiz-settings h4,
-.edit-quiz-settings h5 {
-  font-family: var(--roboto);
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.edit-quiz-settings h4 {
-  font-size: 30px;
-  color: #fff;
-}
-
-.edit-quiz-settings h5 {
-  font-size: 24px;
-  color: #939393;
-}
-
-.edit-quiz-settings section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.edit-quiz-settings div {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.edit-quiz-settings .okay-btn {
-  border-radius: 15px;
-  background: #a37df3;
-  color: #fff;
-  font-size: 36px;
-  font-weight: 600;
-  font-family: var(--poppins);
-  border: none;
-  padding: 10px 22px;
-  margin-top: 12px;
-  cursor: pointer;
-
-  transition: all 0.25s ease-out, filter 0.1s ease;
-
-  &:hover {
-    scale: 1.025;
-    filter: brightness(120%);
-  }
-
-  &:active {
-    scale: 0.95;
-    filter: brightness(75%);
   }
 }

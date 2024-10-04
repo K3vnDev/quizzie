@@ -7,16 +7,16 @@
   gap: 12px;
   align-items: center;
   color: #eaea79;
-}
 
-.question-warning-message svg {
-  --size: 28px;
-  width: var(--size);
-  height: var(--size);
-}
+  svg {
+    --size: 28px;
+    width: var(--size);
+    height: var(--size);
+  }
 
-.question-warning-message span {
-  font-size: 22px;
-  line-height: 0;
-  text-wrap: nowrap;
+  span {
+    font-size: 22px;
+    line-height: 0;
+    text-wrap: nowrap;
+  }
 }

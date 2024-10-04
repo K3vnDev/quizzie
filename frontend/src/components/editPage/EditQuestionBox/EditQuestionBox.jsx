@@ -1,15 +1,15 @@
+import { useEffect, useState } from 'react'
 import { Add as AddIcon } from '../../../icons/Add.jsx'
 import { Pencil as PencilIcon } from '../../../icons/Pencil.jsx'
 import { useStore } from '../../../store/useStore.js'
-import { useEffect, useState } from 'react'
 import './editQuestionBox.css'
-import { QuestionWarningMessage } from '../QuestionWarningMessage/QuestionWarningMessage.jsx'
 import { EditableAnswer } from '../EditableAnswer/EditableAnswer.jsx'
-import { QuestionOptions } from '../QuestionOptions/QuestionOptions.jsx'
 import { EditableText } from '../EditableText/EditableText.jsx'
+import { QuestionOptions } from '../QuestionOptions/QuestionOptions.jsx'
+import { QuestionWarningMessage } from '../QuestionWarningMessage/QuestionWarningMessage.jsx'
 
 export function EditQuestionBox({ currentQuestionIndex, deleteQuestion }) {
-  const { config, questions } = useStore(state => state.quiz)
+  const questions = useStore(state => state.quiz.questions)
   const { query, displayMode, answers } = questions[currentQuestionIndex]
   const transitioning = useStore(state => state.transitioning)
 
@@ -27,7 +27,6 @@ export function EditQuestionBox({ currentQuestionIndex, deleteQuestion }) {
             answer={answer}
             answerIndex={i}
             key={i}
-            showIcons={config.showIcons}
             questionIndex={currentQuestionIndex}
           />
         ))}

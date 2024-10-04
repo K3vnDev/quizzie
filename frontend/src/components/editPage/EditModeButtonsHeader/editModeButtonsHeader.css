@@ -1,5 +1,6 @@
 body.edit .edit-mode-header {
   --nav-size: 80px;
+  --btns-size: var(--nav-size);
   display: flex;
   width: 100vw;
   height: var(--nav-size);
@@ -9,136 +10,269 @@ body.edit .edit-mode-header {
   position: absolute;
   left: 0;
   top: 0;
-}
 
-body.edit .edit-mode-header section {
-  display: flex;
-  align-items: center;
-  --buttons-gap: 28px;
-  position: relative;
-  gap: var(--buttons-gap);
-}
+  section {
+    display: flex;
+    align-items: center;
+    --btns-gap: 28px;
+    position: relative;
+    gap: var(--btns-gap);
 
-body.edit .edit-mode-header section button {
-  border: none;
-  border-radius: 12px;
-  height: var(--nav-size);
-  width: var(--nav-size);
-  --svg-size: 85%;
-}
-body.edit .edit-mode-header section button svg {
-  width: var(--svg-size);
-  height: var(--svg-size);
-  stroke-width: 1.2;
-}
-body.edit .edit-mode-header section .quiz-share-btn {
-  background: #1f1f1f;
-}
-body.edit .edit-mode-header section .quiz-share-btn svg {
-  --svg-size: 65%;
-  stroke-width: 1.5;
-  color: gray;
-}
+    button {
+      border: none;
+      border-radius: 12px;
+      height: var(--btns-size);
+      width: var(--btns-size);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      --svg-size: 85%;
 
-body.edit .edit-mode-header section a {
-  margin-left: 12px;
-}
+      svg {
+        width: var(--svg-size);
+        height: var(--svg-size);
+        stroke-width: 1.2;
+      }
+    }
 
-body.edit .edit-mode-header button:not(.app-logo) {
-  background: var(--bg-color);
-  transition: filter 0.1s ease, scale 0.25s ease-out;
-}
+    .quiz-share-btn {
+      background: #1f1f1f;
+      position: relative;
 
-body.edit .edit-mode-header button:not(.app-logo):not(:disabled) {
-  cursor: pointer;
+      svg {
+        --svg-size: 65%;
+        stroke-width: 1.5;
+        color: gray;
+      }
 
-  &:hover {
-    filter: brightness(115%);
-    scale: 1.03;
+      .quiz-url-copied-message {
+        --bg-color: #350d89;
+        text-wrap: nowrap;
+        color: #fff;
+        position: absolute;
+        top: 135%;
+        max-height: 50px;
+        font-size: 24px;
+        background: var(--bg-color);
+        border-radius: 8px;
+        padding: 0 12px;
+        opacity: 0;
+        margin: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        line-height: 0;
+
+        &::before {
+          content: "";
+          background: var(--bg-color);
+          --size: 24px;
+          width: var(--size);
+          height: var(--size);
+          position: absolute;
+          top: 0;
+          left: 50%;
+          translate: -50% -40%;
+          rotate: 45deg;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    a {
+      margin-left: 12px;
+    }
+
+    .quiz-settings-btn:disabled,
+    .quiz-play-btn:disabled {
+      opacity: 0.9;
+    }
+
+    .app-logo {
+      --app-logo-size: var(--nav-size);
+    }
+
+    .cloud-info {
+      width: var(--btns-size);
+      height: var(--btns-size);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      margin-left: 12px;
+
+      svg {
+        width: 86%;
+        height: 86%;
+        opacity: 0.2;
+        animation: cloud-svg-pop 0.2s ease-out both;
+      }
+    }
   }
-  &:active {
-    filter: brightness(90%);
-    scale: 0.98;
-  }
-}
 
-.quiz-url-copied-message {
-  --bg-color: #350d89;
-  text-wrap: nowrap;
-  position: absolute;
-  top: 125%;
-  right: calc(var(--nav-size) * 2.5 + var(--buttons-gap) * 2);
-  max-height: 50px;
-  translate: 50% -50%;
-  font-size: 24px;
-  background: var(--bg-color);
-  border-radius: 8px;
-  padding: 4px 12px;
-  opacity: 0;
-
-  &::before {
-    content: "";
+  button:not(.app-logo) {
     background: var(--bg-color);
-    --size: 24px;
-    width: var(--size);
-    height: var(--size);
-    position: absolute;
-    top: 0;
-    left: 50%;
-    translate: -50% -40%;
-    rotate: 45deg;
-    border-radius: 4px;
+    transition: filter 0.1s ease, scale 0.25s ease-out;
+
+    &:not(:disabled) {
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(115%);
+        scale: 1.03;
+      }
+
+      &:active {
+        filter: brightness(90%);
+        scale: 0.98;
+      }
+    }
   }
 }
 
 @keyframes copied-message-appear {
   0%,
   100% {
-    scale: 0.8 0.4;
+    scale: 1 0;
     opacity: 0;
-    translate: 50% -50%;
+    translate: 0 -50%;
   }
+
   10%,
   85% {
     scale: 1;
     opacity: 1;
-    translate: 50% 10%;
+    translate: 0;
   }
-}
-
-body.edit .edit-mode-header section > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin-left: 12px;
-}
-
-body.edit .edit-mode-header section div svg {
-  width: 86%;
-  height: 86%;
-  opacity: 0.2;
-  animation: cloud-svg-pop 0.2s ease-out both;
 }
 
 @keyframes cloud-svg-pop {
   0% {
     scale: 0.99;
   }
+
   20% {
     scale: 1.05;
     opacity: 0.25;
   }
+
   100% {
     scale: 1;
   }
 }
 
-.quiz-settings-btn:disabled,
-.quiz-play-btn:disabled {
-  opacity: 0.9;
+@media (max-width: 1600px) {
+  body.edit .edit-mode-header {
+    --nav-size: 70px;
+    --btns-size: 65px;
+
+    section {
+      --btns-gap: 24px;
+
+      button {
+        border-radius: 11px;
+      }
+
+      .quiz-share-btn .quiz-url-copied-message {
+        font-size: 22px;
+      }
+    }
+  }
 }
 
-body.edit .edit-mode-header .app-logo {
-  --app-logo-size: var(--nav-size);
+@media (max-width: 1400px) {
+  body.edit .edit-mode-header {
+    --nav-size: 60px;
+    --btns-size: 55px;
+
+    section {
+      --btns-gap: 20px;
+
+      button {
+        border-radius: 10px;
+      }
+
+      .quiz-share-btn .quiz-url-copied-message {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  body.edit .edit-mode-header .quiz-share-btn .quiz-url-copied-message {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 750px) {
+  body.edit .edit-mode-header {
+    background: var(--page-header);
+    border-bottom: 1px solid #333;
+    margin-top: 0;
+    padding: 10px 40px;
+    height: auto;
+
+    section .quiz-share-btn .quiz-url-copied-message {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  body.edit .edit-mode-header {
+    --btns-size: 50px;
+    border: 1px solid #333;
+    position: absolute;
+    transform: translateX(-50%);
+    top: 20px;
+    left: 50%;
+    border-radius: 10px;
+    width: auto;
+    padding: 12px;
+    gap: 32px;
+
+    section {
+      --btns-gap: 16px;
+
+      &:first-child {
+        --btns-gap: 4px;
+        min-width: max-content;
+      }
+
+      button {
+        border-radius: 8px;
+      }
+
+      .quiz-share-btn .quiz-url-copied-message {
+        font-size: 12px;
+      }
+    }
+
+    .app-logo {
+      --app-logo-size: var(--btns-size);
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  body.edit .edit-mode-header {
+    --btns-size: 35px;
+    gap: 10px;
+    padding: 4px 8px;
+
+    section {
+      --btns-gap: 8px;
+
+      &:first-child {
+        --btns-gap: 2px;
+      }
+    }
+  }
 }

@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
-import { Play as PlayIcon } from '../../../icons/Play.jsx'
-import { Share as ShareIcon } from '../../../icons/Share.jsx'
-import { Settings as SettingsIcon } from '../../../icons/Settings.jsx'
-import { CloudSaved as CloudSavedIcon } from '../../../icons/CloudSaved.jsx'
-import { CloudUpload as CloudUploadIcon } from '../../../icons/CloudUpload.jsx'
-import { CloudError as CloudErrorIcon } from '../../../icons/CloudError.jsx'
-import { Check as CheckIcon } from '../../../icons/Check.jsx'
-import { AppLogo } from '../../root/AppLogo/AppLogo.jsx'
-import { LoginAnchor } from '../../root/LoginAnchor/LoginAnchor.jsx'
-import { useStore } from '../../../store/useStore.js'
 import { useCooldown } from '../../../hooks/useCooldown.js'
 import { useTransition } from '../../../hooks/useTransition.js'
+import { Check as CheckIcon } from '../../../icons/Check.jsx'
+import { CloudError as CloudErrorIcon } from '../../../icons/CloudError.jsx'
+import { CloudSaved as CloudSavedIcon } from '../../../icons/CloudSaved.jsx'
+import { CloudUpload as CloudUploadIcon } from '../../../icons/CloudUpload.jsx'
+import { Play as PlayIcon } from '../../../icons/Play.jsx'
+import { Settings as SettingsIcon } from '../../../icons/Settings.jsx'
+import { Share as ShareIcon } from '../../../icons/Share.jsx'
+import { useStore } from '../../../store/useStore.js'
+import { AppLogo } from '../../root/AppLogo/AppLogo.jsx'
 import { LoadingArrows } from '../../root/LoadingArrows/LoadingArrows.jsx'
+import { LoginAnchor } from '../../root/LoginAnchor/LoginAnchor.jsx'
 import './editModeButtonsHeader.css'
 
 export function EditModeButtonsHeader() {
@@ -73,11 +73,11 @@ const ShareButton = () => {
         disabled={transitioning || animation !== 'none'}
         onClick={handleClick}
       >
+        <div className='quiz-url-copied-message' style={{ animation }}>
+          Url copied to clipboard!
+        </div>
         {animation === 'none' ? <ShareIcon /> : <CheckIcon />}
       </button>
-      <div className='quiz-url-copied-message' style={{ animation }}>
-        Url copied to clipboard!
-      </div>
     </>
   ) : (
     <></>

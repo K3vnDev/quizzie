@@ -7,33 +7,6 @@ body.edit {
   overflow: hidden;
 }
 
-.quiz-title-and-progress {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 5vh;
-}
-
-.quiz-title-and-progress .quiz-title h3 {
-  font-family: var(--poppins);
-  font-size: 58px;
-  font-weight: 600;
-  text-wrap: nowrap;
-  color: #fff;
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-
-  &:hover {
-    animation: question-query-blink 0.9s ease infinite both;
-  }
-
-  transition: all 0.2s ease;
-}
-
 @keyframes question-query-blink {
   0% {
     color: #fff;
@@ -46,42 +19,4 @@ body.edit {
   100% {
     color: #fff;
   }
-}
-
-.quiz-title-and-progress .quiz-title input {
-  font-family: var(--poppins);
-  font-size: 58px;
-  font-weight: 500;
-  padding: 0 20px;
-  background: rgb(255 255 255 / 0.025);
-  outline: none;
-  text-align: center;
-  border: none;
-  border-radius: 20px;
-}
-
-.quiz-title-and-progress .quiz-title h3:hover svg {
-  opacity: 0.5;
-}
-
-.quiz-title-and-progress .quiz-title h3 svg {
-  --svg-size: 26px;
-  max-width: var(--svg-size);
-  max-height: var(--svg-size);
-  min-width: var(--svg-size);
-  min-height: var(--svg-size);
-  position: absolute;
-  color: #fff;
-  right: -42px;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0;
-  transition: all 0.12s ease;
-}
-
-.quiz-title-and-progress .quiz-progress {
-  font-family: var(--poppins);
-  font-size: 26px;
-  color: #cdcdcd;
-  user-select: none;
 }

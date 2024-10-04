@@ -54,7 +54,7 @@ const Shuffle = () => {
   const setShuffleAnswerColors = useStore(state => state.setShuffleAnswerColors)
 
   return (
-    <section>
+    <section className='shuffle'>
       <h5>Shuffle:</h5>
       <div>
         <h4>Questions</h4>
@@ -77,10 +77,10 @@ const ShowIcons = () => {
   const setShowIcons = useStore(state => state.setShowIcons)
 
   return (
-    <div>
+    <section className='show-icons'>
       <h4>Show Icons</h4>
       <SettingsCheckbox value={showIcons} action={setShowIcons} />
-    </div>
+    </section>
   )
 }
 
@@ -89,8 +89,8 @@ const AnswerTime = () => {
   const setAnswerTime = useStore(state => state.setAnswerTime)
 
   return (
-    <section>
-      <div>
+    <section className='answer-time'>
+      <div className='txt-wrapper'>
         <h4>Answer time</h4>
         <SettingsInput value={answerTime} action={setAnswerTime} />
       </div>

@@ -7,8 +7,19 @@
   background: #4b4b4b;
   cursor: pointer;
   position: relative;
-
   transition: all 0.2s ease-out, filter 0.1s ease;
+
+  svg {
+    --svg-size: 40px;
+    color: #a37df3;
+    stroke-width: 4px;
+    position: absolute;
+    width: var(--svg-size);
+    height: var(--svg-size);
+    scale: 1.1 1;
+    left: 2px;
+    bottom: 0;
+  }
 
   &:hover {
     filter: brightness(120%);
@@ -17,16 +28,4 @@
     filter: brightness(90%);
     scale: 0.9;
   }
-}
-
-.settings-checkbox svg {
-  --svg-size: 40px;
-  color: #a37df3;
-  stroke-width: 4px;
-  position: absolute;
-  width: var(--svg-size);
-  height: var(--svg-size);
-  scale: 1.1 1;
-  left: 2px;
-  bottom: 0;
 }
