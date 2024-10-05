@@ -2,7 +2,6 @@
   width: 100%;
   --height: 16px;
   height: var(--height);
-  margin-top: 20px;
   position: relative;
   --handler-size: 24px;
 
@@ -56,5 +55,12 @@
       background: #a37df3;
       width: calc(100% * var(--progress));
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-range-wrapper {
+    --height: 12px;
+    --handler-size: 22px;
   }
 }

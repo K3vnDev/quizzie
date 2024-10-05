@@ -30,10 +30,10 @@ export const QuizName = () => {
           selectOn={['My New Quiz']}
         />
       ) : (
-        <h3 onClick={enterEditMode}>
-          {quizName}
+        <>
+          <h3 onClick={enterEditMode}>{quizName}</h3>
           <PencilIcon />
-        </h3>
+        </>
       )}
     </div>
   )

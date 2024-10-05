@@ -10,6 +10,7 @@ export function LoginAnchor() {
   }
 
   return (
+    // biome-ignore lint/a11y/useValidAnchor: <>
     <a className='login-anchor' onClick={handleClick}>
       Login or Sign up
     </a>

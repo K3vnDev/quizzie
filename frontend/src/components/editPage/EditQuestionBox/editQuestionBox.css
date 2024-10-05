@@ -151,7 +151,7 @@
 @media (max-width: 600px) {
   .edit-question-box {
     --question-box-padding: 18px;
-    border-radius: 16px;
+    border-radius: 12px;
 
     header {
       margin-bottom: 16px;

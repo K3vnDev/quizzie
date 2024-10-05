@@ -10,7 +10,7 @@
   transition: all 0.2s ease-out, filter 0.1s ease;
 
   svg {
-    --svg-size: 40px;
+    --svg-size: 135%;
     color: #a37df3;
     stroke-width: 4px;
     position: absolute;
@@ -27,5 +27,24 @@
   &:active {
     filter: brightness(90%);
     scale: 0.9;
+  }
+}
+
+@media (max-width: 1400px) {
+  .settings-checkbox {
+    --btn-size: 30px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .settings-checkbox {
+    --btn-size: 26px;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-checkbox {
+    --btn-size: 20px;
+    border-radius: 2px;
   }
 }

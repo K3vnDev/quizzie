@@ -1,5 +1,5 @@
 .edit-answer-box .edit-answer-menu {
-  --svg-size: 75%;
+  --svg-size: 70%;
 
   position: absolute;
   width: 100%;
@@ -20,7 +20,7 @@
   justify-content: center;
 
   transition: all 0.15s ease;
-  /* opacity: 0; */
+  opacity: 0;
 
   &:hover {
     opacity: 1;

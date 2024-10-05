@@ -2,8 +2,9 @@
   font-size: 22px;
   color: #989898;
   cursor: pointer;
-
   transition: all 0.1s ease;
+  text-wrap: nowrap;
+
   &:hover {
     color: #a37df3;
     text-decoration: underline;
@@ -13,14 +14,20 @@
   }
 }
 
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1400px) {
   .login-anchor {
     font-size: 18px;
   }
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1100px) {
   .login-anchor {
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .login-anchor {
+    font-size: 14px;
   }
 }
