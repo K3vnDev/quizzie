@@ -18,6 +18,4 @@ app.get('/fizz', (_, res) => res.json($success('buzz')))
 app.use('/quiz', quizRouter)
 app.use('/user', userRouter)
 
-module.exports = (req, res) => {
-  app(req, res)
-}
+export default app
