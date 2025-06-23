@@ -9,8 +9,14 @@ import './database.js'
 const { FRONT_URL } = process.env
 export const app = express()
 
+const corsOptions = {
+  origin: FRONT_URL,
+  credentials: true
+}
+app.use(cors(corsOptions))
+app.options('*', cors(corsOptions))
+
 app.use(json())
-app.use(cors({ origin: FRONT_URL }))
 app.use(cookieParser())
 app.disable('x-powered-by')
 
