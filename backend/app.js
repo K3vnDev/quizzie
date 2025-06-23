@@ -18,5 +18,6 @@ app.get('/fizz', (_, res) => res.json($success('buzz')))
 app.use('/quiz', quizRouter)
 app.use('/user', userRouter)
 
-const port = process.env.PORT ?? 3000
-app.listen(port, () => console.log(`app listening on port ${port}!`))
+module.exports = (req, res) => {
+  app(req, res)
+}
