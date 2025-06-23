@@ -6,7 +6,7 @@ import cors from 'cors'
 import { userRouter } from './routers/user.js'
 import { $success } from './services/jsonMessages.js'
 
-const app = express()
+export const app = express()
 
 app.use(json())
 app.use(cors())
