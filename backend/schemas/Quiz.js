@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose'
 import { z } from 'zod'
+import { QUIZ } from '../../frontend/src/consts.js'
 
 const quizSchema = new Schema({
   id: String,
@@ -49,7 +50,7 @@ const quizValidationSchema = z.object({
   questions: z
     .array(
       z.object({
-        query: z.string().min(1).max(50).trim(),
+        query: z.string().min(1).max(QUIZ.MAX_QUERY_LENGTH).trim(),
         displayMode: z.string().length(4),
         answers: z
           .array(

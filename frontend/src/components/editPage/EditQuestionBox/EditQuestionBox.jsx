@@ -7,6 +7,7 @@ import { EditableAnswer } from '../EditableAnswer/EditableAnswer.jsx'
 import { EditableText } from '../EditableText/EditableText.jsx'
 import { QuestionOptions } from '../QuestionOptions/QuestionOptions.jsx'
 import { QuestionWarningMessage } from '../QuestionWarningMessage/QuestionWarningMessage.jsx'
+import { QUIZ } from '../../../consts.js'
 
 export function EditQuestionBox({ currentQuestionIndex, deleteQuestion }) {
   const questions = useStore(state => state.quiz.questions)
@@ -75,7 +76,7 @@ const QuestionQuery = ({ query, questionIndex }) => {
           handleTextChange={handleTextChange}
           selectOn={['my question']}
           displayAsTextArea
-          maxLength={50}
+          maxLength={QUIZ.MAX_QUERY_LENGTH}
         />
       </div>
     )
